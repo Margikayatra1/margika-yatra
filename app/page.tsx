@@ -29,6 +29,11 @@ import { ParticleEffects } from "@/components/particle-effects"
 import Image from "next/image"
 import Link from "next/link"
 
+import useEmblaCarousel from 'embla-carousel-react'
+import Autoplay from 'embla-carousel-autoplay';
+import { useCallback, useEffect, useState, useRef } from "react";
+
+
 export default function HomePage() {
   const { scrollYProgress } = useScroll()
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"])
@@ -41,6 +46,13 @@ export default function HomePage() {
     { icon: Heart, number: 5, suffix: "+", label: "Years Experience" },
   ];
 
+
+  const handleGeneralWhatsapp = () => {
+    const phoneNumber = '+918433684155'; // Replace with your WhatsApp number
+    const message = encodeURIComponent("Hello, I'm interested in a spiritual trip with Margika Yatra.");
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+    window.open(whatsappURL, '_blank');
+  }
 
   const packages = [
     {
@@ -92,12 +104,12 @@ export default function HomePage() {
       location: "Tamil Nadu",
     },
     {
-      name: "Arunachal Pradesh - Ziro Valley",
-      price: "₹54,999",
-      duration: "6N/7D",
-      image: "z.jpg",
-      description: "Mystical valleys and ancient wisdom",
-      location: "Arunachal Pradesh",
+      name: "Jagannath Puri",
+      price: "₹12,999",
+      duration: "2N/3D",
+      image: "puri.png",
+      description: "Sacred journey to the land of Lord Jagannath",
+      location: "Odisha",
     },
     {
       name: "Meghalaya",
@@ -131,7 +143,7 @@ export default function HomePage() {
       name: "Badal Yadav",
       role: "Co-Founder",
       description: "Visionary leader with 10+ years in spiritual tourism",
-      image: "/badal.JPG", // ✅ Actual image path
+      image: "/badal.JPG",
     },
     {
       name: "Yogesh Jain",
@@ -153,6 +165,60 @@ export default function HomePage() {
     },
   ]
 
+  const allUpcomingEvents = [
+    {
+      name: "Dev Deepawali",
+      date: "3rd–6th November",
+      location: "Varanasi (River Cruise Experience)",
+      image: "/dd.jpg",
+      description: "Experience the magical festival of lights in Varanasi.",
+    },
+    {
+      name: "Ziro Valley Retreat",
+      date: "23rd-29th September",
+      location: "Ziro Valley, Arunachal Pradesh",
+      image: "z.jpg",
+      description: "Immerse yourself in the serene beauty of Ziro Valley with our exclusive retreat.",
+    },
+    {
+      name: "Hornbill festival",
+      date: "1st–5th December",
+      location: "Nagaland",
+      image: "naga.jpg",
+      description: "Join us for the vibrant Hornbill Festival in Nagaland, celebrating the rich culture and traditions of the Naga tribes.",
+    }
+    //add more events as needed
+  ];
+
+  // Take only the first 3 upcoming events
+  const upcomingEvents = allUpcomingEvents.slice(0, 3);
+
+  const autoplay = useRef(Autoplay({ delay: 3000, stopOnInteraction: true }));
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
+    align: 'center',
+    slidesToScroll: 1,
+    dragFree: false,
+  }, [autoplay.current]);
+
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
+
+  const scrollTo = useCallback((index: number) => {
+    emblaApi && emblaApi.scrollTo(index);
+  }, [emblaApi]);
+
+  const onSelect = useCallback((emblaApi: any) => {
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, []);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect(emblaApi);
+    setScrollSnaps(emblaApi.scrollSnapList());
+    emblaApi.on('select', onSelect);
+    emblaApi.on('reInit', onSelect);
+  }, [emblaApi, setScrollSnaps, onSelect]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-orange-50 to-orange-100 text-gray-900 overflow-x-hidden relative">
@@ -203,8 +269,6 @@ export default function HomePage() {
           }}
         />
       </div>
-
-      {/* Logo Section */}
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center pt-8">
@@ -332,7 +396,6 @@ export default function HomePage() {
               and immerse you in the sacred energies of India's most mystical places.
             </p>
           </motion.div>
-
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-16">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -341,38 +404,23 @@ export default function HomePage() {
               viewport={{ once: true }}
             >
               <Card className="bg-white/80 backdrop-blur-sm border-orange-200 shadow-2xl">
-                <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold text-orange-600 mb-6">Our Leadership Team</h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-10 place-items-center">
-                    {teamMembers.map((member, index) => (
-                      <motion.div
-                        key={index}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: index * 0.1 }}
-                        viewport={{ once: true }}
-                        className="text-center"
-                      >
-                        <div className="w-40 h-40 mx-auto rounded-full overflow-hidden border-4 border-orange-300 shadow-lg relative mb-4 group">
-                          <Image
-                            src={member.image}
-                            alt={member.name}
-                            width={160}
-                            height={160}
-                            className="w-full h-full object-cover"
-                          />
-                          <motion.div
-                            className="absolute inset-0 bg-orange-400/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                            whileHover={{ scale: 1.05 }}
-                          />
-                        </div>
-                        <h4 className="font-bold text-gray-800 text-lg mt-4">{member.name}</h4>
-                        <p className="text-orange-600 font-semibold text-sm mb-1">{member.role}</p>
-                        <p className="text-gray-600 text-sm leading-snug max-w-xs mx-auto">{member.description}</p>
-                      </motion.div>
-                    ))}
+                <CardContent className="p-4">
+                  <h3 className="text-xl font-bold text-orange-600 mb-4">Watch Our Teaser</h3>
+                  <div className="w-full h-[300px] rounded-xl overflow-hidden shadow-xl">
+                    <iframe
+                      className="w-full h-full"
+                      src="https://www.youtube.com/embed/2q_caHypTkk?autoplay=1&mute=1"
+                      title="YouTube teaser"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    ></iframe>
                   </div>
                 </CardContent>
+
+
+
+
 
               </Card>
             </motion.div>
@@ -542,56 +590,76 @@ export default function HomePage() {
             </p>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="max-w-4xl mx-auto"
-          >
-            <Card className="bg-white/90 backdrop-blur-sm border-orange-200 overflow-hidden group hover:border-orange-300 transition-all duration-500 shadow-2xl">
-              <div className="relative h-64 md:h-80">
-                <Image
-                  src="/dd.jpg"
-                  alt="Dev Deepawali"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                {/* Removed dimming overlay */}
-                <Badge className="absolute top-4 left-4 bg-orange-500 text-white shadow-lg font-semibold">
-                  Featured Event
-                </Badge>
-              </div>
-
-              <CardContent className="p-8">
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-                  <div className="mb-4 md:mb-0">
-                    <h3 className="text-2xl md:text-3xl font-bold text-orange-600 mb-2">Dev Deepawali</h3>
-                    <div className="flex items-center text-gray-700 mb-2">
-                      <Calendar className="h-5 w-5 mr-2 text-orange-500" />
-                      <span className="font-medium">3rd–6th November</span>
-                    </div>
-                    <div className="flex items-center text-gray-700">
-                      <MapPin className="h-5 w-5 mr-2 text-orange-500" />
-                      <span className="font-medium">Varanasi (River Cruise Experience)</span>
-                    </div>
-                  </div>
+          {/* Embla Carousel for 1 visible slide at a time with dots and autoplay */}
+          <div className="relative embla max-w-3xl mx-auto"> {/* MODIFIED: Changed max-w-2xl to max-w-3xl */}
+            <div className="embla__viewport overflow-hidden" ref={emblaRef}>
+              <div className="embla__container flex -ml-4">
+                {upcomingEvents.map((event, index) => (
                   <motion.div
-                    whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(249, 115, 22, 0.3)" }}
-                    whileTap={{ scale: 0.95 }}
+                    key={index}
+                    className="embla__slide flex-shrink-0 w-full pl-4"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8, delay: 0.2 + index * 0.1 }}
+                    viewport={{ once: true }}
                   >
-                    <Button
-                      className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-3 shadow-xl font-semibold"
-                      onClick={() => handleBookNow("Dev Deepawali", "Special Event")}
-                    >
-                      Book Now
-                      <ChevronRight className="ml-2 h-5 w-5" />
-                    </Button>
+                    <Card className="bg-white/90 backdrop-blur-sm border-orange-200 overflow-hidden group hover:border-orange-300 transition-all duration-500 shadow-2xl h-full flex flex-col">
+                      <div className="relative h-64 md:h-80">
+                        <Image
+                          src={event.image}
+                          alt={event.name}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-700"
+                        />
+                        <Badge className="absolute top-4 left-4 bg-orange-500 text-white shadow-lg font-semibold">
+                          Featured Event
+                        </Badge>
+                      </div>
+
+                      <CardContent className="p-8 flex-grow flex flex-col justify-between">
+                        <div>
+                          <h3 className="text-2xl md:text-3xl font-bold text-orange-600 mb-2">{event.name}</h3>
+                          <p className="text-gray-700 text-base mb-4 line-clamp-2">{event.description}</p>
+                          <div className="flex items-center text-gray-700 mb-2">
+                            <Calendar className="h-5 w-5 mr-2 text-orange-500" />
+                            <span className="font-medium">{event.date}</span>
+                          </div>
+                          <div className="flex items-center text-gray-700 mb-6">
+                            <MapPin className="h-5 w-5 mr-2 text-orange-500" />
+                            <span className="font-medium">{event.location}</span>
+                          </div>
+                        </div>
+                        <motion.div
+                          whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(249, 115, 22, 0.3)" }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          <Button
+                            className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-3 shadow-xl font-semibold text-lg"
+                            onClick={() => handleBookNow(event.name, "Special Event")}
+                          >
+                            Book Now
+                            <ChevronRight className="ml-2 h-5 w-5" />
+                          </Button>
+                        </motion.div>
+                      </CardContent>
+                    </Card>
                   </motion.div>
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Carousel Navigation Dots */}
+            <div className="embla__dots flex justify-center mt-8">
+              {scrollSnaps.map((_, index) => (
+                <button
+                  key={index}
+                  className={`embla__dot w-3 h-3 rounded-full mx-1 transition-colors duration-200 ${index === selectedIndex ? 'bg-orange-500' : 'bg-orange-200 hover:bg-orange-300'
+                    }`}
+                  onClick={() => scrollTo(index)}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -724,38 +792,51 @@ export default function HomePage() {
                       </div>
                     </div>
 
-                    <div className="flex items-center">
-                      <Phone className="h-6 w-6 text-orange-500 mr-4" />
+                    {/* Primary Contact */}
+
+                    {/* Badal Yadav*/}
+                    <div className="flex items-start">
+                      <Phone className="h-6 w-6 text-orange-500 mr-4 mt-1 flex-shrink-0" />
                       <div>
-                        <h4 className="font-semibold text-gray-800 mb-1">Phone</h4>
+                        <h4 className="font-semibold text-gray-800 mb-1">Badal Yadav (Coordinator)</h4>
                         <a
                           href="tel:+918433684155"
-                          className="text-orange-600 hover:underline font-medium"
-                          target="_blank"
-                          rel="noopener noreferrer"
+                          className="text-orange-600 hover:underline font-medium block"
                         >
-                          +91 8433684155
+                          +91 84336 84155
                         </a>
                       </div>
                     </div>
 
-                    <div className="flex items-center">
-                      <Mail className="h-6 w-6 text-orange-500 mr-4" />
+                    {/* Yogesh Jain*/}
+                    <div className="flex items-start">
+                      <Phone className="h-6 w-6 text-orange-500 mr-4 mt-1 flex-shrink-0" />
+                      <div>
+                        <h4 className="font-semibold text-gray-800 mb-1">Yogesh Jain (Operations)</h4>
+                        <a
+                          href="tel:+9193365 66695"
+                          className="text-orange-600 hover:underline font-medium block"
+                        >
+                          +91 93365 66695
+                        </a>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start">
+                      <Mail className="h-6 w-6 text-orange-500 mr-4 mt-1 flex-shrink-0" />
                       <div>
                         <h4 className="font-semibold text-gray-800 mb-1">Email</h4>
                         <a
                           href="mailto:margikayatra@gmail.com"
                           className="text-orange-600 hover:underline"
-                          target="_blank"
-                          rel="noopener noreferrer"
                         >
                           margikayatra@gmail.com
                         </a>
                       </div>
                     </div>
 
-                    <div className="flex items-center">
-                      <Instagram className="h-6 w-6 text-orange-500 mr-4" />
+                    <div className="flex items-start">
+                      <Instagram className="h-6 w-6 text-orange-500 mr-4 mt-1 flex-shrink-0" />
                       <div>
                         <h4 className="font-semibold text-gray-800 mb-1">Instagram</h4>
                         <a
@@ -769,6 +850,7 @@ export default function HomePage() {
                       </div>
                     </div>
                   </div>
+
                 </CardContent>
 
               </Card>
@@ -790,30 +872,41 @@ export default function HomePage() {
                   <Card className="bg-gradient-to-br from-orange-500 to-orange-600 border-orange-400 hover:from-orange-600 hover:to-orange-700 transition-all duration-500 h-full shadow-2xl">
                     <CardContent className="p-8 text-center h-full flex flex-col justify-center">
                       <Calendar className="h-12 w-12 text-white mx-auto mb-4" />
-                      <h3 className="text-2xl font-bold text-white mb-2">Book Your Spiritual Journey</h3>
-                      <p className="text-orange-100 mb-4 font-medium">
-                        Choose from our curated packages and book instantly
+                      <h3 className="text-xl font-bold text-white mb-2">Book Your Trip</h3>
+                      <p className="text-orange-100 mb-6">
+                        Ready to book your spiritual adventure? Click here to start planning!
                       </p>
-                      <ChevronRight className="h-6 w-6 text-white mx-auto" />
+                      <Button
+                        variant="outline"
+                        className="bg-white/20 border-white text-white hover:bg-white hover:text-orange-600 font-semibold"
+                      >
+                        Book Now
+                        <ChevronRight className="ml-2 h-5 w-5" />
+                      </Button>
                     </CardContent>
                   </Card>
                 </motion.div>
               </Link>
-
               <Link href="/personalized-trip" className="flex-1">
                 <motion.div
-                  whileHover={{ scale: 1.02, boxShadow: "0 15px 40px rgba(249, 115, 22, 0.2)" }}
+                  whileHover={{ scale: 1.02, boxShadow: "0 15px 40px rgba(249, 115, 22, 0.3)" }}
                   whileTap={{ scale: 0.98 }}
                   className="h-full"
                 >
-                  <Card className="bg-white/90 backdrop-blur-sm border-orange-200 hover:border-orange-300 transition-all duration-500 h-full shadow-2xl">
+                  <Card className="bg-gradient-to-br from-orange-500 to-orange-600 border-orange-400 hover:from-orange-600 hover:to-orange-700 transition-all duration-500 h-full shadow-2xl">
                     <CardContent className="p-8 text-center h-full flex flex-col justify-center">
-                      <Heart className="h-12 w-12 text-orange-500 mx-auto mb-4" />
-                      <h3 className="text-2xl font-bold text-orange-600 mb-2">Plan Personalized Trip</h3>
-                      <p className="text-gray-600 mb-4 font-medium">
-                        Create a custom spiritual journey tailored for you
+                      <Users className="h-12 w-12 text-white mx-auto mb-4" />
+                      <h3 className="text-xl font-bold text-white mb-2">Personalized Journeys</h3>
+                      <p className="text-orange-100 mb-6">
+                        Have a specific destination in mind? Let us create a custom itinerary for you.
                       </p>
-                      <ChevronRight className="h-6 w-6 text-orange-500 mx-auto" />
+                      <Button
+                        variant="outline"
+                        className="bg-white/20 border-white text-white hover:bg-white hover:text-orange-600 font-semibold"
+                      >
+                        Plan Custom Trip
+                        <ChevronRight className="ml-2 h-5 w-5" />
+                      </Button>
                     </CardContent>
                   </Card>
                 </motion.div>
@@ -823,42 +916,93 @@ export default function HomePage() {
         </div>
       </section>
 
-      <Footer />
 
-      {/* Enhanced WhatsApp Float Button */}
+      {/* Team Section */}
+      {/* <section id="team" className="py-20 bg-gradient-to-b from-white to-orange-50">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-600 to-orange-700 bg-clip-text text-transparent">
+              Meet Our Team
+            </h2>
+            <p className="text-gray-700 text-lg max-w-2xl mx-auto">
+              The passionate individuals dedicated to making your spiritual journey unforgettable
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {teamMembers.map((member, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{
+                  y: -15,
+                  boxShadow: "0 20px 40px rgba(249, 115, 22, 0.2)",
+                }}
+              >
+                <Card className="bg-white/90 backdrop-blur-sm border-orange-200 shadow-xl text-center h-full flex flex-col">
+                  <CardContent className="p-6 flex-grow">
+                    <div className="relative w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-orange-300 shadow-lg">
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <h3 className="text-xl font-bold text-orange-600 mb-2">{member.name}</h3>
+                    <p className="text-gray-700 font-semibold mb-2">{member.role}</p>
+                    <p className="text-600 text-sm">{member.description}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section> */}
+
       <motion.div
         className="fixed bottom-6 right-6 z-50"
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ delay: 2, type: "spring", stiffness: 260, damping: 20 }}
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, delay: 1 }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
       >
-        <motion.a
-          href="https://wa.me/918433684155"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center justify-center w-16 h-16 bg-green-500 text-white rounded-full shadow-2xl hover:bg-green-600 transition-colors"
-          whileHover={{
-            scale: 1.1,
-            boxShadow: "0 0 30px rgba(34, 197, 94, 0.6)",
-          }}
+        <motion.div
+          className="fixed bottom-6 right-6 z-50"
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 1 }}
+          whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          animate={{
-            y: [0, -10, 0],
-            boxShadow: [
-              "0 10px 30px rgba(34, 197, 94, 0.3)",
-              "0 20px 40px rgba(34, 197, 94, 0.5)",
-              "0 10px 30px rgba(34, 197, 94, 0.3)",
-            ],
-          }}
-          transition={{
-            duration: 3,
-            repeat: Number.POSITIVE_INFINITY,
-            ease: "easeInOut",
-          }}
         >
-          <img src="/WhatsApp.svg" alt="WhatsApp" className="h-8 w-8" />
-        </motion.a>
+          <button
+            onClick={handleGeneralWhatsapp}
+            className="p-0 m-0 border-none bg-transparent hover:scale-105 transition-transform"
+            aria-label="Chat on WhatsApp"
+          >
+            <Image
+              src="/WhatsApp.svg" // Ensure this path is correct from your /public folder
+              alt="WhatsApp"
+              width={50}
+              height={50}
+              className="w-15 h-15"
+            />
+          </button>
+        </motion.div>
+
       </motion.div>
+
+      <Footer />
     </div>
-  )
+  );
 }
