@@ -79,7 +79,7 @@ export default function HomePage() {
       name: "Ujjain & Omkareshwar",
       price: "₹10,999",
       duration: "2N/3D",
-      image: "mp.jpg",
+      image: "/mp.jpg",
       description: "Visit the sacred Jyotirlingas",
       location: "Madhya Pradesh",
     },
@@ -87,7 +87,7 @@ export default function HomePage() {
       name: "3 Jyotirling of Maharashtra",
       price: "₹12,999",
       duration: "3N/4D",
-      image: "mh.jpg",
+      image: "/mh.jpg",
       description: "Explore Maharashtra's divine temples",
       location: "Maharashtra",
     },
@@ -95,7 +95,7 @@ export default function HomePage() {
       name: "Varanasi-Ayodhya-Prayagraj",
       price: "₹15,999",
       duration: "3N/4D",
-      image: "up.jpg",
+      image: "/up.jpg",
       description: "Tri-city spiritual circuit",
       location: "Uttar Pradesh",
     },
@@ -103,7 +103,7 @@ export default function HomePage() {
       name: "Rameshwaram",
       price: "₹14,999",
       duration: "3N/4D",
-      image: "rameshwaram.jpg",
+      image: "/rameshwaram.jpg",
       description: "Southern pilgrimage destination",
       location: "Tamil Nadu",
     },
@@ -111,7 +111,7 @@ export default function HomePage() {
       name: "Jagannath Puri",
       price: "₹12,999",
       duration: "2N/3D",
-      image: "puri.png",
+      image: "/puri.png",
       description: "Sacred journey to the land of Lord Jagannath",
       location: "Odisha",
     },
@@ -119,7 +119,7 @@ export default function HomePage() {
       name: "Meghalaya",
       price: "₹19,999",
       duration: "5N/6D",
-      image: "mg.png",
+      image: "/mg.png",
       description: "Land of clouds and natural beauty",
       location: "Meghalaya",
     },
@@ -184,14 +184,14 @@ export default function HomePage() {
       name: "Ziro Valley Retreat",
       date: "23rd-29th September",
       location: "Ziro Valley, Arunachal Pradesh",
-      image: "z.jpg",
+      image: "/z.jpg",
       description: "Immerse yourself in the serene beauty of Ziro Valley with our exclusive retreat.",
     },
     {
       name: "Hornbill festival",
       date: "1st–5th December",
       location: "Nagaland",
-      image: "naga.jpg",
+      image: "/naga.jpg",
       description: "Join us for the vibrant Hornbill Festival in Nagaland, celebrating the rich culture and traditions of the Naga tribes.",
     }
     //add more events as needed
@@ -327,7 +327,11 @@ export default function HomePage() {
                 <Button
                   size="lg"
                   className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-3 text-lg shadow-xl border-0 font-semibold"
-                  onClick={() => document.getElementById("packages")?.scrollIntoView({ behavior: "smooth" })}
+                  onClick={() => {
+                    if (typeof document !== 'undefined') {
+                      document.getElementById("packages")?.scrollIntoView({ behavior: "smooth" })
+                    }
+                  }}
                 >
                   Explore Packages
                   <ChevronRight className="ml-2 h-5 w-5" />
@@ -505,9 +509,8 @@ export default function HomePage() {
                             <Image
                               src={image}
                               alt={`Trip ${index + 1}`}
-                              layout="fill"
-                              objectFit="cover"
-                              className="transition-transform duration-300 group-hover:scale-105"
+                              fill
+                              className="object-cover transition-transform duration-300 group-hover:scale-105"
                             />
                             <div className="absolute bottom-3 left-3">
 

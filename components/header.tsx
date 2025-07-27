@@ -25,19 +25,25 @@ export function Header() {
 
   const handleNavClick = (href: string) => {
     if (href.startsWith('/#')) {
-      const element = document.getElementById(href.substring(2));
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+      if (typeof document !== 'undefined') {
+        const element = document.getElementById(href.substring(2));
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
       }
     }
   };
 
   useEffect(() => {
     const onScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      if (typeof window !== 'undefined') {
+        setIsScrolled(window.scrollY > 10);
+      }
     };
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', onScroll);
+      return () => window.removeEventListener('scroll', onScroll);
+    }
   }, []);
 
   return (

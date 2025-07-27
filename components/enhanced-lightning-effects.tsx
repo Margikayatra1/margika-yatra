@@ -110,12 +110,12 @@ export function EnhancedLightningEffects() {
           key={i}
           className="absolute w-2 h-2 bg-orange-400/40 rounded-full"
           initial={{
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
+            x: typeof window !== 'undefined' ? Math.random() * window.innerWidth : Math.random() * 1200,
+            y: typeof window !== 'undefined' ? Math.random() * window.innerHeight : Math.random() * 800,
           }}
           animate={{
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
+            x: typeof window !== 'undefined' ? Math.random() * window.innerWidth : Math.random() * 1200,
+            y: typeof window !== 'undefined' ? Math.random() * window.innerHeight : Math.random() * 800,
             opacity: [0, 0.6, 0],
           }}
           transition={{
