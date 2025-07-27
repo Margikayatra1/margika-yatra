@@ -5,12 +5,6 @@ import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import Link from 'next/link';
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  UserButton,
-} from '@clerk/nextjs';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -144,9 +138,6 @@ export function Header() {
                 )}
               </motion.div>
             ))}
-
-            {/* SignIn / UserButton inline */}
-            
           </nav>
 
           {/* Mobile Nav Toggle */}
@@ -174,13 +165,6 @@ export function Header() {
                   </div>
                 ))}
               </nav>
-
-              {/* Auth Buttons (Mobile) */}
-              <div className="mt-6 border-t pt-4">
-                
-                  <UserButton afterSignOutUrl="/" />
-                
-              </div>
             </SheetContent>
           </Sheet>
         </div>
