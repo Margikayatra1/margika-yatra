@@ -410,28 +410,8 @@ export default function HomePage() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              {/* <Card className="bg-white/80 backdrop-blur-sm border-orange-200 shadow-2xl">
-                <CardContent className="p-4">
-                  <h3 className="text-xl font-bold text-orange-600 mb-4">Watch Our Teaser</h3>
-                  <div className="w-full h-[300px] rounded-xl overflow-hidden shadow-xl">
-                    <iframe
-                      className="w-full h-full"
-                      // Corrected YouTube embed URL (example, replace 0 with actual video ID)
-                      src="https://youtu.be/2q_caHypTkk?si=IRE9dLb8ebpRgL67"
-                      title="YouTube teaser"
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    ></iframe>
-                  </div>
-                </CardContent>
 
-
-
-
-
-              </Card> */}
-              <TeaserSection />
+            <TeaserSection />
             </motion.div>
 
             <motion.div
@@ -806,8 +786,8 @@ export default function HomePage() {
                 <CardContent className="p-6">
                   <Mail className="h-12 w-12 text-orange-500 mx-auto mb-4" />
                   <h3 className="text-xl font-bold text-orange-600 mb-2">Email Us</h3>
-                  <p className="text-gray-700 mb-4">info@margikayatra.com</p>
-                  <a href="mailto:info@margikayatra.com">
+                  <p className="text-gray-700 mb-4">margikayatra@gmaiil.com</p>
+                  <a href="margikayatra@gmail.com">
                     <Button variant="outline" className="border-orange-500 text-orange-600 hover:bg-orange-500 hover:text-white">
                       Send Email
                     </Button>
@@ -828,7 +808,7 @@ export default function HomePage() {
                   <MapPin className="h-12 w-12 text-orange-500 mx-auto mb-4" />
                   <h3 className="text-xl font-bold text-orange-600 mb-2">Our Office</h3>
                   <p className="text-gray-700 mb-4">
-                    Margika Yatra, [Your Address Here]
+                    Azadnagar, Kolshet Road, Thane West (400607), Mumbai, Maharashtra
                   </p>
                   <a href="https://www.google.com/maps/search/Margika+Yatra" target="_blank" rel="noopener noreferrer">
                     <Button variant="outline" className="border-orange-500 text-orange-600 hover:bg-orange-500 hover:text-white">
