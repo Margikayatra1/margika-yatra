@@ -2,6 +2,7 @@
 import { motion, useScroll, useTransform } from "framer-motion"
 import CountUp from 'react-countup';
 import { useInView } from 'react-intersection-observer';
+import TeaserSection from "./youtube";
 import {
   Calendar,
   MapPin,
@@ -51,7 +52,10 @@ export default function HomePage() {
     const phoneNumber = '+918433684155'; // Replace with your WhatsApp number
     const message = encodeURIComponent("Hello, I'm interested in a spiritual trip with Margika Yatra.");
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
-    window.open(whatsappURL, '_blank');
+    // Safely access window object
+    if (typeof window !== 'undefined') {
+      window.open(whatsappURL, '_blank');
+    }
   }
 
   const packages = [
@@ -124,7 +128,10 @@ export default function HomePage() {
   const handleBookNow = (packageName: string, price: string) => {
     const message = `🙏 Namaste! I'm interested in booking the ${packageName} package (${price}). Please provide more details and availability. Thank you! 🕉️`
     const whatsappUrl = `https://wa.me/918433684155?text=${encodeURIComponent(message)}`
-    window.open(whatsappUrl, "_blank")
+    // Safely access window object
+    if (typeof window !== 'undefined') {
+      window.open(whatsappUrl, "_blank")
+    }
   }
 
   const tripImages = [
@@ -170,7 +177,7 @@ export default function HomePage() {
       name: "Dev Deepawali",
       date: "3rd–6th November",
       location: "Varanasi (River Cruise Experience)",
-      image: "/dd.jpg",
+      image: "/DD1.PNG",
       description: "Experience the magical festival of lights in Varanasi.",
     },
     {
@@ -403,13 +410,14 @@ export default function HomePage() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <Card className="bg-white/80 backdrop-blur-sm border-orange-200 shadow-2xl">
+              {/* <Card className="bg-white/80 backdrop-blur-sm border-orange-200 shadow-2xl">
                 <CardContent className="p-4">
                   <h3 className="text-xl font-bold text-orange-600 mb-4">Watch Our Teaser</h3>
                   <div className="w-full h-[300px] rounded-xl overflow-hidden shadow-xl">
                     <iframe
                       className="w-full h-full"
-                      src="https://www.youtube.com/embed/2q_caHypTkk?autoplay=1&mute=1"
+                      // Corrected YouTube embed URL (example, replace 0 with actual video ID)
+                      src="https://youtu.be/2q_caHypTkk?si=IRE9dLb8ebpRgL67"
                       title="YouTube teaser"
                       frameBorder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -422,7 +430,8 @@ export default function HomePage() {
 
 
 
-              </Card>
+              </Card> */}
+              <TeaserSection />
             </motion.div>
 
             <motion.div
@@ -634,10 +643,17 @@ export default function HomePage() {
                           whileTap={{ scale: 0.95 }}
                         >
                           <Button
-                            className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-3 shadow-xl font-semibold text-lg"
-                            onClick={() => handleBookNow(event.name, "Special Event")}
+                            size="lg"
+                            className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-3 text-lg shadow-xl border-0 font-semibold"
+                            onClick={() => {
+                              // You might want a specific handler for events or direct WhatsApp message
+                              if (typeof window !== 'undefined') {
+                                const eventMessage = `Hello, I'm interested in the "${event.name}" event (${event.date}). Can you provide more details?`;
+                                window.open(`https://wa.me/918433684155?text=${encodeURIComponent(eventMessage)}`, '_blank');
+                              }
+                            }}
                           >
-                            Book Now
+                            Enquire Now
                             <ChevronRight className="ml-2 h-5 w-5" />
                           </Button>
                         </motion.div>
@@ -646,24 +662,21 @@ export default function HomePage() {
                   </motion.div>
                 ))}
               </div>
-            </div>
-
-            {/* Carousel Navigation Dots */}
-            <div className="embla__dots flex justify-center mt-8">
-              {scrollSnaps.map((_, index) => (
-                <button
-                  key={index}
-                  className={`embla__dot w-3 h-3 rounded-full mx-1 transition-colors duration-200 ${index === selectedIndex ? 'bg-orange-500' : 'bg-orange-200 hover:bg-orange-300'
-                    }`}
-                  onClick={() => scrollTo(index)}
-                />
-              ))}
+              <div className="embla__dots flex justify-center mt-6">
+                {scrollSnaps.map((_, index) => (
+                  <button
+                    key={index}
+                    className={`embla__dot w-3 h-3 mx-1 rounded-full ${index === selectedIndex ? 'bg-orange-500' : 'bg-gray-300'}`}
+                    onClick={() => scrollTo(index)}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 365 Days Packages */}
+      {/* Package Section */}
       <section id="packages" className="py-20 bg-gradient-to-b from-white to-orange-50">
         <div className="container mx-auto px-4">
           <motion.div
@@ -674,14 +687,14 @@ export default function HomePage() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-600 to-orange-700 bg-clip-text text-transparent">
-              365 Days Packages
+              Our Spiritual Packages
             </h2>
             <p className="text-gray-700 text-lg max-w-2xl mx-auto">
-              Choose from our carefully curated spiritual journeys available throughout the year
+              Explore our curated spiritual tour packages designed to elevate your journey
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {packages.map((pkg, index) => (
               <motion.div
                 key={index}
@@ -689,236 +702,59 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                whileHover={{
-                  y: -15,
-                  boxShadow: "0 20px 40px rgba(249, 115, 22, 0.2)",
-                }}
-                className="group"
+                whileHover={{ scale: 1.03, boxShadow: "0 15px 35px rgba(249, 115, 22, 0.2)" }}
               >
-                <Card className="bg-white/90 backdrop-blur-sm border-orange-200 overflow-hidden h-full hover:border-orange-300 transition-all duration-500 shadow-xl">
-                  <div className="relative h-48">
+                <Card className="bg-white/90 backdrop-blur-sm border-orange-200 overflow-hidden group hover:border-orange-300 transition-all duration-500 shadow-2xl h-full flex flex-col">
+                  <div className="relative h-52">
                     <Image
-                      src={pkg.image || "/placeholder.svg"}
+                      src={pkg.image}
                       alt={pkg.name}
                       fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-700"
+                      className="object-cover group-hover:scale-105 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                    <Badge className="absolute top-3 right-3 bg-orange-500 text-white shadow-lg font-semibold">
-                      {pkg.duration}
+                    <Badge className="absolute top-4 left-4 bg-orange-500 text-white shadow-lg font-semibold">
+                      {pkg.location}
                     </Badge>
-                    <div className="absolute bottom-3 left-3">
-                      <div className="flex items-center text-orange-200 text-sm font-medium">
-                        <MapPin className="h-3 w-3 mr-1" />
-                        <span>{pkg.location}</span>
-                      </div>
-                    </div>
                   </div>
-                  <CardContent className="p-6">
-                    <h3 className="text-lg font-bold text-gray-800 mb-2 line-clamp-2">{pkg.name}</h3>
-                    <p className="text-gray-600 text-sm mb-4 line-clamp-2">{pkg.description}</p>
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="flex items-center text-2xl font-bold text-orange-600">
-                        <IndianRupee className="h-5 w-5" />
-                        <span>{pkg.price.replace("₹", "")}</span>
+                  <CardContent className="p-6 flex-grow flex flex-col justify-between">
+                    <div>
+                      <h3 className="text-2xl font-bold text-orange-600 mb-2">{pkg.name}</h3>
+                      <p className="text-gray-700 text-base mb-4 line-clamp-2">{pkg.description}</p>
+                      <div className="flex items-center text-gray-700 mb-2">
+                        <Clock className="h-5 w-5 mr-2 text-orange-500" />
+                        <span className="font-medium">{pkg.duration}</span>
                       </div>
-                      <div className="flex items-center text-gray-600">
-                        <Clock className="h-4 w-4 mr-1" />
-                        <span className="text-sm font-medium">{pkg.duration}</span>
+                      <div className="flex items-center text-gray-700 mb-6">
+                        <IndianRupee className="h-5 w-5 mr-2 text-orange-500" />
+                        <span className="font-bold text-xl">{pkg.price}</span>
                       </div>
                     </div>
-                    <div className="flex gap-2">
+                    <motion.div
+                      whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(249, 115, 22, 0.3)" }}
+                      whileTap={{ scale: 0.95 }}
+                    >
                       <Button
-                        variant="outline"
-                        size="sm"
-                        className="flex-1 border-orange-300 text-orange-600 hover:bg-orange-500 hover:text-white font-medium"
-                      >
-                        View Details
-                      </Button>
-                      <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="flex-1">
-                        <Button
-                          size="sm"
-                          className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg font-semibold"
-                          onClick={() => handleBookNow(pkg.name, pkg.price)}
-                        >
-                          Book Now
-                        </Button>
-                      </motion.div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="py-20 bg-gradient-to-b from-orange-50 to-white">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-600 to-orange-700 bg-clip-text text-transparent">
-              Get In Touch
-            </h2>
-            <p className="text-gray-700 text-lg max-w-2xl mx-auto">
-              Ready to embark on your spiritual journey? Contact us today to plan your perfect pilgrimage
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <Card className="bg-white/90 backdrop-blur-sm border-orange-200 h-full shadow-2xl">
-                <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold text-orange-600 mb-6">Contact Information</h3>
-                  <div className="space-y-6">
-                    <div className="flex items-start">
-                      <MapPin className="h-6 w-6 text-orange-500 mr-4 mt-1 flex-shrink-0" />
-                      <div>
-                        <h4 className="font-semibold text-gray-800 mb-1">Office Address</h4>
-                        <p className="text-gray-600">
-                          Azadnagar, Kolshet Road, Thane West (400607), Mumbai, Maharashtra
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Primary Contact */}
-
-                    {/* Badal Yadav*/}
-                    <div className="flex items-start">
-                      <Phone className="h-6 w-6 text-orange-500 mr-4 mt-1 flex-shrink-0" />
-                      <div>
-                        <h4 className="font-semibold text-gray-800 mb-1">Badal Yadav (Coordinator)</h4>
-                        <a
-                          href="tel:+918433684155"
-                          className="text-orange-600 hover:underline font-medium block"
-                        >
-                          +91 84336 84155
-                        </a>
-                      </div>
-                    </div>
-
-                    {/* Yogesh Jain*/}
-                    <div className="flex items-start">
-                      <Phone className="h-6 w-6 text-orange-500 mr-4 mt-1 flex-shrink-0" />
-                      <div>
-                        <h4 className="font-semibold text-gray-800 mb-1">Yogesh Jain (Operations)</h4>
-                        <a
-                          href="tel:+9193365 66695"
-                          className="text-orange-600 hover:underline font-medium block"
-                        >
-                          +91 93365 66695
-                        </a>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start">
-                      <Mail className="h-6 w-6 text-orange-500 mr-4 mt-1 flex-shrink-0" />
-                      <div>
-                        <h4 className="font-semibold text-gray-800 mb-1">Email</h4>
-                        <a
-                          href="mailto:margikayatra@gmail.com"
-                          className="text-orange-600 hover:underline"
-                        >
-                          margikayatra@gmail.com
-                        </a>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start">
-                      <Instagram className="h-6 w-6 text-orange-500 mr-4 mt-1 flex-shrink-0" />
-                      <div>
-                        <h4 className="font-semibold text-gray-800 mb-1">Instagram</h4>
-                        <a
-                          href="https://instagram.com/margika_yatra"
-                          className="text-orange-600 hover:underline"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          @margika_yatra
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-
-                </CardContent>
-
-              </Card>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="flex flex-col gap-4"
-            >
-              <Link href="/book-trip" className="flex-1">
-                <motion.div
-                  whileHover={{ scale: 1.02, boxShadow: "0 15px 40px rgba(249, 115, 22, 0.3)" }}
-                  whileTap={{ scale: 0.98 }}
-                  className="h-full"
-                >
-                  <Card className="bg-gradient-to-br from-orange-500 to-orange-600 border-orange-400 hover:from-orange-600 hover:to-orange-700 transition-all duration-500 h-full shadow-2xl">
-                    <CardContent className="p-8 text-center h-full flex flex-col justify-center">
-                      <Calendar className="h-12 w-12 text-white mx-auto mb-4" />
-                      <h3 className="text-xl font-bold text-white mb-2">Book Your Trip</h3>
-                      <p className="text-orange-100 mb-6">
-                        Ready to book your spiritual adventure? Click here to start planning!
-                      </p>
-                      <Button
-                        variant="outline"
-                        className="bg-white/20 border-white text-white hover:bg-white hover:text-orange-600 font-semibold"
+                        size="lg"
+                        className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-3 text-lg shadow-xl border-0 font-semibold"
+                        onClick={() => handleBookNow(pkg.name, pkg.price)}
                       >
                         Book Now
                         <ChevronRight className="ml-2 h-5 w-5" />
                       </Button>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              </Link>
-              <Link href="/personalized-trip" className="flex-1">
-                <motion.div
-                  whileHover={{ scale: 1.02, boxShadow: "0 15px 40px rgba(249, 115, 22, 0.3)" }}
-                  whileTap={{ scale: 0.98 }}
-                  className="h-full"
-                >
-                  <Card className="bg-gradient-to-br from-orange-500 to-orange-600 border-orange-400 hover:from-orange-600 hover:to-orange-700 transition-all duration-500 h-full shadow-2xl">
-                    <CardContent className="p-8 text-center h-full flex flex-col justify-center">
-                      <Users className="h-12 w-12 text-white mx-auto mb-4" />
-                      <h3 className="text-xl font-bold text-white mb-2">Personalized Journeys</h3>
-                      <p className="text-orange-100 mb-6">
-                        Have a specific destination in mind? Let us create a custom itinerary for you.
-                      </p>
-                      <Button
-                        variant="outline"
-                        className="bg-white/20 border-white text-white hover:bg-white hover:text-orange-600 font-semibold"
-                      >
-                        Plan Custom Trip
-                        <ChevronRight className="ml-2 h-5 w-5" />
-                      </Button>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              </Link>
-            </motion.div>
+                    </motion.div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-
       {/* Team Section */}
-      {/* <section id="team" className="py-20 bg-gradient-to-b from-white to-orange-50">
+      
+
+      {/* Contact Section */}
+      <section id="contact" className="py-20 bg-gradient-to-b from-white to-orange-50">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -928,81 +764,85 @@ export default function HomePage() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-600 to-orange-700 bg-clip-text text-transparent">
-              Meet Our Team
+              Contact Us
             </h2>
             <p className="text-gray-700 text-lg max-w-2xl mx-auto">
-              The passionate individuals dedicated to making your spiritual journey unforgettable
+              Have questions or ready to book your journey? Reach out to us!
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {teamMembers.map((member, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{
-                  y: -15,
-                  boxShadow: "0 20px 40px rgba(249, 115, 22, 0.2)",
-                }}
-              >
-                <Card className="bg-white/90 backdrop-blur-sm border-orange-200 shadow-xl text-center h-full flex flex-col">
-                  <CardContent className="p-6 flex-grow">
-                    <div className="relative w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-orange-300 shadow-lg">
-                      <Image
-                        src={member.image}
-                        alt={member.name}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    <h3 className="text-xl font-bold text-orange-600 mb-2">{member.name}</h3>
-                    <p className="text-gray-700 font-semibold mb-2">{member.role}</p>
-                    <p className="text-600 text-sm">{member.description}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(249, 115, 22, 0.2)" }}
+            >
+              <Card className="bg-white/90 backdrop-blur-sm border-orange-200 text-center shadow-xl h-full">
+                <CardContent className="p-6">
+                  <Phone className="h-12 w-12 text-orange-500 mx-auto mb-4" />
+                  <h3 className="text-xl font-bold text-orange-600 mb-2">Call Us</h3>
+                  <p className="text-gray-700 mb-4">+91 84336 84155</p>
+                  <Button
+                    variant="outline"
+                    className="border-orange-500 text-orange-600 hover:bg-orange-500 hover:text-white"
+                    onClick={handleGeneralWhatsapp} // Using the safely wrapped function
+                  >
+                    Message on WhatsApp
+                  </Button>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(249, 115, 22, 0.2)" }}
+            >
+              <Card className="bg-white/90 backdrop-blur-sm border-orange-200 text-center shadow-xl h-full">
+                <CardContent className="p-6">
+                  <Mail className="h-12 w-12 text-orange-500 mx-auto mb-4" />
+                  <h3 className="text-xl font-bold text-orange-600 mb-2">Email Us</h3>
+                  <p className="text-gray-700 mb-4">info@margikayatra.com</p>
+                  <a href="mailto:info@margikayatra.com">
+                    <Button variant="outline" className="border-orange-500 text-orange-600 hover:bg-orange-500 hover:text-white">
+                      Send Email
+                    </Button>
+                  </a>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(249, 115, 22, 0.2)" }}
+            >
+              <Card className="bg-white/90 backdrop-blur-sm border-orange-200 text-center shadow-xl h-full">
+                <CardContent className="p-6">
+                  <MapPin className="h-12 w-12 text-orange-500 mx-auto mb-4" />
+                  <h3 className="text-xl font-bold text-orange-600 mb-2">Our Office</h3>
+                  <p className="text-gray-700 mb-4">
+                    Margika Yatra, [Your Address Here]
+                  </p>
+                  <a href="https://www.google.com/maps/search/Margika+Yatra" target="_blank" rel="noopener noreferrer">
+                    <Button variant="outline" className="border-orange-500 text-orange-600 hover:bg-orange-500 hover:text-white">
+                      View on Map
+                    </Button>
+                  </a>
+                </CardContent>
+              </Card>
+            </motion.div>
           </div>
         </div>
-      </section> */}
-
-      <motion.div
-        className="fixed bottom-6 right-6 z-50"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5, delay: 1 }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-      >
-        <motion.div
-          className="fixed bottom-6 right-6 z-50"
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 1 }}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-        >
-          <button
-            onClick={handleGeneralWhatsapp}
-            className="p-0 m-0 border-none bg-transparent hover:scale-105 transition-transform"
-            aria-label="Chat on WhatsApp"
-          >
-            <Image
-              src="/WhatsApp.svg" // Ensure this path is correct from your /public folder
-              alt="WhatsApp"
-              width={50}
-              height={50}
-              className="w-15 h-15"
-            />
-          </button>
-        </motion.div>
-
-      </motion.div>
+      </section>
 
       <Footer />
     </div>
-  );
+  )
 }

@@ -140,18 +140,7 @@ export function Header() {
             ))}
 
             {/* SignIn / UserButton inline */}
-            <SignedOut>
-              <SignInButton mode="modal">
-                <button className="ml-4 text-sm font-medium text-orange-600 hover:text-orange-700 border border-orange-500 px-4 py-1.5 rounded transition">
-                  Sign In
-                </button>
-              </SignInButton>
-            </SignedOut>
-            <SignedIn>
-              <div className="ml-2">
-                <UserButton afterSignOutUrl="/" />
-              </div>
-            </SignedIn>
+            
           </nav>
 
           {/* Mobile Nav Toggle */}
@@ -182,17 +171,9 @@ export function Header() {
 
               {/* Auth Buttons (Mobile) */}
               <div className="mt-6 border-t pt-4">
-                <SignedOut>
-                  <SignInButton mode="modal">
-                    <button className="text-orange-600 font-semibold w-full text-left">
-                      Sign In
-                    </button>
-                  </SignInButton>
-                </SignedOut>
-
-                <SignedIn>
+                
                   <UserButton afterSignOutUrl="/" />
-                </SignedIn>
+                
               </div>
             </SheetContent>
           </Sheet>
