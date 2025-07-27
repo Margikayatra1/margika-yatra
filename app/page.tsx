@@ -789,8 +789,8 @@ export default function HomePage() {
                 <CardContent className="p-6">
                   <Mail className="h-12 w-12 text-orange-500 mx-auto mb-4" />
                   <h3 className="text-xl font-bold text-orange-600 mb-2">Email Us</h3>
-                  <p className="text-gray-700 mb-4">margikayatra@gmaiil.com</p>
-                  <a href="margikayatra@gmail.com">
+                  <p className="text-gray-700 mb-4">margikayatra@gmail.com</p>
+                  <a href="mailto:margikayatra@gmail.com">
                     <Button variant="outline" className="border-orange-500 text-orange-600 hover:bg-orange-500 hover:text-white">
                       Send Email
                     </Button>
