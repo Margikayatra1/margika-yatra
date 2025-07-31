@@ -25,7 +25,6 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { EnhancedLightningEffects } from "@/components/enhanced-lightning-effects"
 import { ParticleEffects } from "@/components/particle-effects"
 import Image from "next/image"
 import Link from "next/link"
@@ -41,15 +40,15 @@ export default function HomePage() {
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "200%"])
 
   const stats = [
-    { icon: Users, number: 1000, suffix: "+", label: "Happy Pilgrims" },
+    { icon: Users, number: 3000, suffix: "+", label: "Happy Pilgrims" },
     { icon: Award, number: 4.9, suffix: "", label: "Google Rating", decimals: 1 },
     { icon: Ship, number: 50, suffix: "+", label: "Sacred Destinations" },
-    { icon: Heart, number: 5, suffix: "+", label: "Years Experience" },
+    { icon: Heart, number: 3, suffix: "+", label: "Years Experience" },
   ];
 
 
   const handleGeneralWhatsapp = () => {
-    const phoneNumber = '+918433684155'; // Replace with your WhatsApp number
+    const phoneNumber = '+917208771688'; // Replace with your WhatsApp number
     const message = encodeURIComponent("Hello, I'm interested in a spiritual trip with Margika Yatra.");
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
     // Safely access window object
@@ -127,7 +126,7 @@ export default function HomePage() {
 
   const handleBookNow = (packageName: string, price: string) => {
     const message = `🙏 Namaste! I'm interested in booking the ${packageName} package (${price}). Please provide more details and availability. Thank you! 🕉️`
-    const whatsappUrl = `https://wa.me/918433684155?text=${encodeURIComponent(message)}`
+    const whatsappUrl = `https://wa.me/917208771688?text=${encodeURIComponent(message)}`
     // Safely access window object
     if (typeof window !== 'undefined') {
       window.open(whatsappUrl, "_blank")
@@ -229,7 +228,6 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-orange-50 to-orange-100 text-gray-900 overflow-x-hidden relative">
-      <EnhancedLightningEffects />
       <ParticleEffects />
       <Header />
 
@@ -278,18 +276,18 @@ export default function HomePage() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center pt-8">
+      <section className="relative min-h-screen flex items-center justify-center pt-32">
         <motion.div className="absolute inset-0 z-0" style={{ y: backgroundY }}>
           <Image
             src="/rambg.jpg"
             alt="Spiritual Journey"
             fill
-            className="object-cover opacity-80"
+            className="object-cover opacity-90"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-orange-50/60 to-orange-100/80" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-orange-50/30 to-orange-100/50" />
         </motion.div>
 
-        <div className="container mx-auto px-4 z-10 text-center">
+        <div className="container mx-auto px-4 z-10 text-center" style={{ marginTop: '360px' }}>
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -389,14 +387,14 @@ export default function HomePage() {
       </section>
 
       {/* About Us Section */}
-      <section id="about" className="py-20 relative bg-gradient-to-b from-orange-50 to-white">
+      <section id="about" className="py-12 relative bg-gradient-to-b from-orange-50 to-white">
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-10"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-600 to-orange-700 bg-clip-text text-transparent">
               About Margika Yatra
@@ -407,7 +405,7 @@ export default function HomePage() {
               and immerse you in the sacred energies of India's most mystical places.
             </p>
           </motion.div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-10">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -462,14 +460,14 @@ export default function HomePage() {
       </section>
 
       {/* Previous Trips Photo Slider */}
-      <section className="py-20 bg-gradient-to-b from-white to-orange-50 overflow-hidden">
+      <section className="py-12 bg-gradient-to-b from-white to-orange-50 overflow-hidden">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-10"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-600 to-orange-700 bg-clip-text text-transparent">
               Previous Trips Gallery
@@ -554,7 +552,7 @@ export default function HomePage() {
 
           {/* Upload Instructions */}
           <motion.div
-            className="text-center mt-12"
+            className="text-center mt-6"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
@@ -565,14 +563,14 @@ export default function HomePage() {
       </section>
 
       {/* Upcoming Events */}
-      <section id="upcoming-events" className="py-20 bg-gradient-to-b from-orange-50 to-white">
+      <section id="upcoming-events" className="py-12 bg-gradient-to-b from-orange-50 to-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-10"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-600 to-orange-700 bg-clip-text text-transparent">
               Upcoming Events
@@ -632,7 +630,7 @@ export default function HomePage() {
                               // You might want a specific handler for events or direct WhatsApp message
                               if (typeof window !== 'undefined') {
                                 const eventMessage = `Hello, I'm interested in the "${event.name}" event (${event.date}). Can you provide more details?`;
-                                window.open(`https://wa.me/918433684155?text=${encodeURIComponent(eventMessage)}`, '_blank');
+                                window.open(`https://wa.me/917208771688?text=${encodeURIComponent(eventMessage)}`, '_blank');
                               }
                             }}
                           >
@@ -660,14 +658,14 @@ export default function HomePage() {
       </section>
 
       {/* Package Section */}
-      <section id="packages" className="py-20 bg-gradient-to-b from-white to-orange-50">
+      <section id="packages" className="py-12 bg-gradient-to-b from-white to-orange-50">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-10"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-600 to-orange-700 bg-clip-text text-transparent">
               Our Spiritual Packages
@@ -737,14 +735,14 @@ export default function HomePage() {
       
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-gradient-to-b from-white to-orange-50">
+      <section id="contact" className="py-12 bg-gradient-to-b from-white to-orange-50">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-10"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-600 to-orange-700 bg-clip-text text-transparent">
               Contact Us
@@ -766,7 +764,7 @@ export default function HomePage() {
                 <CardContent className="p-6">
                   <Phone className="h-12 w-12 text-orange-500 mx-auto mb-4" />
                   <h3 className="text-xl font-bold text-orange-600 mb-2">Call Us</h3>
-                  <p className="text-gray-700 mb-4">+91 84336 84155</p>
+                  <p className="text-gray-700 mb-4">+91 72087 71688</p>
                   <Button
                     variant="outline"
                     className="border-orange-500 text-orange-600 hover:bg-orange-500 hover:text-white"

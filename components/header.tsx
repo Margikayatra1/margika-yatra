@@ -12,7 +12,7 @@ export function Header() {
 
   const navItems = [
     { name: 'Home', href: '/' },
-    { name: 'Previous Trips', href: '/previous-trips' },
+    { name: 'Reviews', href: '/previous-trips' },
     { name: 'Book a Trip', href: '/book-trip' },
     { name: 'Personalized Trip', href: '/personalized-trip' },
   ];
@@ -51,47 +51,6 @@ export function Header() {
       animate={{ y: 0 }}
       transition={{ duration: 0.8 }}
     >
-      {/* Lighting animation (same) */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-orange-300/40 to-transparent"
-          animate={{
-            opacity: [0, 1, 0],
-            scaleY: [0, 1, 0],
-            boxShadow: [
-              '0 0 0px rgba(249, 115, 22, 0)',
-              '0 0 10px rgba(249, 115, 22, 0.5)',
-              '0 0 0px rgba(249, 115, 22, 0)',
-            ],
-          }}
-          transition={{
-            duration: 0.3,
-            repeat: Infinity,
-            repeatDelay: 3,
-            ease: 'easeInOut',
-          }}
-        />
-        <motion.div
-          className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-transparent via-orange-400/30 to-transparent"
-          animate={{
-            opacity: [0, 1, 0],
-            scaleY: [0, 1, 0],
-            boxShadow: [
-              '0 0 0px rgba(251, 146, 60, 0)',
-              '0 0 8px rgba(251, 146, 60, 0.4)',
-              '0 0 0px rgba(251, 146, 60, 0)',
-            ],
-          }}
-          transition={{
-            duration: 0.2,
-            repeat: Infinity,
-            repeatDelay: 5,
-            delay: 1,
-            ease: 'easeInOut',
-          }}
-        />
-      </div>
-
       {/* Header content */}
       <div className="container mx-auto px-4 transition-all duration-300">
         <div className="flex items-center justify-between">

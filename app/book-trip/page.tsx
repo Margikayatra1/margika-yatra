@@ -11,7 +11,6 @@ import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { LightningEffects } from "@/components/lightning-effects"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -169,7 +168,7 @@ Best regards,
 ${formData.name}`
 
     // Open WhatsApp
-    const whatsappUrl = `https://wa.me/918433684155?text=${encodeURIComponent(whatsappMessage)}`
+    const whatsappUrl = `https://wa.me/917208771688?text=${encodeURIComponent(whatsappMessage)}`
     window.open(whatsappUrl, "_blank")
 
     // Open email client
@@ -184,7 +183,6 @@ ${formData.name}`
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
-      <LightningEffects />
       <Header />
 
       {/* Hero Section */}
@@ -439,12 +437,12 @@ ${formData.name}`
             <p className="text-gray-300 mb-6">Our travel experts are here to assist you</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.a
-                href="tel:+918433684155"
+                href="tel:+917208771688"
                 whileHover={{ scale: 1.05 }}
                 className="flex items-center justify-center px-6 py-3 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-colors"
               >
                 <Phone className="h-5 w-5 mr-2" />
-                Call: +91 8433684155
+                Call: +91 7208771688
               </motion.a>
               <motion.a
                 href="mailto:margikayatra@gmail.com"
@@ -469,7 +467,7 @@ ${formData.name}`
         transition={{ delay: 1, type: "spring", stiffness: 260, damping: 20 }}
       >
         <motion.a
-          href="https://wa.me/918433684155"
+          href="https://wa.me/917208771688"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-center w-14 h-14 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 transition-colors"

@@ -7,28 +7,6 @@ import Link from "next/link"
 export function Footer() {
   return (
     <footer className="bg-gradient-to-b from-orange-100 to-orange-200 border-t border-orange-300 py-12 relative">
-      {/* Enhanced Lightning Effects */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          className="absolute top-0 left-1/2 w-px h-full bg-gradient-to-b from-orange-400/30 to-transparent"
-          animate={{
-            opacity: [0, 1, 0],
-            scaleY: [0, 1, 0],
-            boxShadow: [
-              "0 0 0px rgba(249, 115, 22, 0)",
-              "0 0 10px rgba(249, 115, 22, 0.4)",
-              "0 0 0px rgba(249, 115, 22, 0)",
-            ],
-          }}
-          transition={{
-            duration: 0.3,
-            repeat: Number.POSITIVE_INFINITY,
-            repeatDelay: 4,
-            ease: "easeInOut",
-          }}
-        />
-      </div>
-
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
@@ -112,7 +90,7 @@ export function Footer() {
                   href="/previous-trips"
                   className="text-gray-700 hover:text-orange-600 transition-colors font-medium"
                 >
-                  Previous Trips
+                  Reviews
                 </Link>
               </li>
             </ul>
@@ -132,6 +110,10 @@ export function Footer() {
                 <span className="text-gray-700 text-sm font-medium">+91 8433684155</span>
               </div>
               <div className="flex items-center">
+                <Phone className="h-4 w-4 text-orange-600 mr-2" />
+                <span className="text-gray-700 text-sm font-medium">+91 9336566695</span>
+              </div>
+              <div className="flex items-center">
                 <Star className="h-4 w-4 text-orange-600 mr-2" />
                 <span className="text-gray-700 text-sm font-medium">4.9/5 Google Rating</span>
               </div>
@@ -141,7 +123,7 @@ export function Footer() {
 
         <div className="border-t border-orange-300 mt-8 pt-8 text-center">
           <p className="text-gray-700 font-medium">
-            © {new Date().getFullYear()} Margika Yatra. All rights reserved. | Created with ❤️ by Harsh Nayak for spiritual journeys
+            © {new Date().getFullYear()} Margika Yatra. All rights reserved.
           </p>
         </div>
       </div>

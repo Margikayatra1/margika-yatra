@@ -6,13 +6,16 @@ export default function TeaserSection() {
 
   useEffect(() => {
     // Only runs on client
-    const baseUrl = 'https://www.youtube.com/embed/2q_caHypTkk';
+    const videoId = 'fUz3SSOGN2U';
+    const baseUrl = `https://www.youtube.com/embed/${videoId}`;
     const params = new URLSearchParams({
       autoplay: '1',
       mute: '1',
       controls: '1',
       rel: '0',
       modestbranding: '1',
+      loop: '1',
+      playlist: videoId,
     });
     setVideoUrl(`${baseUrl}?${params.toString()}`);
   }, []);

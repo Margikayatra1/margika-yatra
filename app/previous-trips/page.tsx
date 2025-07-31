@@ -7,7 +7,6 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { EnhancedLightningEffects } from "@/components/enhanced-lightning-effects"
 import { ParticleEffects } from "@/components/particle-effects"
 import Image from "next/image"
 import Link from "next/link"
@@ -147,7 +146,7 @@ export default function PreviousTripsPage() {
 
   const handleBookSimilarTrip = (tripName: string) => {
     const message = `🙏 Namaste! I saw the previous trip "${tripName}" and would like to book a similar spiritual journey. Please provide details and availability. Thank you! 🕉️`
-    const whatsappUrl = `https://wa.me/918433684155?text=${encodeURIComponent(message)}`
+    const whatsappUrl = `https://wa.me/917208771688?text=${encodeURIComponent(message)}`
     if (typeof window !== 'undefined') {
       window.open(whatsappUrl, "_blank")
     }
@@ -155,7 +154,6 @@ export default function PreviousTripsPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-x-hidden">
-      <EnhancedLightningEffects />
       <ParticleEffects />
       <Header />
 
@@ -169,7 +167,7 @@ export default function PreviousTripsPage() {
         >
           <Image
             src="/rambg.jpg"
-            alt="Previous Trips"
+            alt="Reviews & Spiritual Journeys"
             fill
             className="object-cover opacity-30"
           />
@@ -187,17 +185,17 @@ export default function PreviousTripsPage() {
               Back to Home
             </Link>
             <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-orange-400 via-orange-300 to-orange-500 bg-clip-text text-transparent">
-              Previous Spiritual Journeys
+              Reviews & Spiritual Journeys
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
-              Relive the sacred memories and divine experiences from our past pilgrimages
+              Read testimonials and relive the sacred memories from our pilgrimages
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Previous Trips Grid */}
-      <section className="py-20 relative">
+      {/* Reviews & Spiritual Journeys Grid */}
+      <section className="py-12 relative">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {previousTrips.map((trip, index) => (
@@ -288,14 +286,14 @@ export default function PreviousTripsPage() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 bg-gradient-to-b from-slate-800 to-slate-900">
+      <section className="py-12 bg-gradient-to-b from-slate-800 to-slate-900">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-10"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent">
               What Our Pilgrims Say
@@ -357,7 +355,7 @@ export default function PreviousTripsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 relative">
+      <section className="py-12 relative">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -396,7 +394,7 @@ export default function PreviousTripsPage() {
                   className="border-2 border-orange-400 text-orange-400 hover:bg-orange-500 hover:text-white px-8 py-3 text-lg shadow-xl backdrop-blur-sm font-semibold"
                   onClick={() => {
                     if (typeof window !== 'undefined') {
-                      window.open('https://wa.me/918433684155?text=Hello! I would like to know more about your spiritual trips.', '_blank')
+                      window.open('https://wa.me/917208771688?text=Hello! I would like to know more about your spiritual trips.', '_blank')
                     }
                   }}
                 >
