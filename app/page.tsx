@@ -287,7 +287,7 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-orange-50/30 to-orange-100/50" />
         </motion.div>
 
-        <div className="container mx-auto px-4 z-10 text-center" style={{ marginTop: '360px' }}>
+        <div className="container mx-auto px-4 z-10 text-center" style={{ marginTop: '60px' }}>
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
