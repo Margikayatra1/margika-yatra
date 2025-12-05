@@ -11,11 +11,20 @@ const mono = Roboto_Mono({
   subsets: ['latin'],
 });
 
+// export const metadata: Metadata = {
+//   title: 'Margika Yatra',
+//   description: 'A journey through the world of Margika',
+//   generator: 'Next.js',
+// };
+
 export const metadata: Metadata = {
   title: 'Margika Yatra',
   description: 'A journey through the world of Margika',
-  generator: 'Next.js',
+  icons: {
+    icon: '/logo.png',
+  },
 };
+
 
 export default function RootLayout({
   children,
@@ -26,7 +35,7 @@ export default function RootLayout({
     
       <html lang="en">
         <head>
-          <link rel="icon" href="/logo.png" type="image/x-icon" />
+          {/* <link rel="icon" href="/logo.png" type="image/x-icon" /> */}
         </head>
         <body className={` ${mono.variable} antialiased`}>
           {children}
