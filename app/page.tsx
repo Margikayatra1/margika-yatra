@@ -179,13 +179,13 @@ export default function HomePage() {
       image: "/DD1.PNG",
       description: "Experience the magical festival of lights in Varanasi.",
     },
-    {
-      name: "Ziro Valley Retreat",
-      date: "23rd-29th September",
-      location: "Ziro Valley, Arunachal Pradesh",
-      image: "/z.jpg",
-      description: "Immerse yourself in the serene beauty of Ziro Valley with our exclusive retreat.",
-    },
+    // {
+    //   name: "Ziro Valley Retreat",
+    //   date: "23rd-29th September",
+    //   location: "Ziro Valley, Arunachal Pradesh",
+    //   image: "/z.jpg",
+    //   description: "Immerse yourself in the serene beauty of Ziro Valley with our exclusive retreat.",
+    // },
     {
       name: "Hornbill festival",
       date: "1st–5th December",
