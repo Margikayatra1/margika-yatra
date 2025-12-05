@@ -6,7 +6,7 @@ export default function TeaserSection() {
 
   useEffect(() => {
     // Only runs on client
-    const videoId = 'fUz3SSOGN2U';
+    const videoId = 'w0p9GQIBmm0';   // ✅ Updated video ID
     const baseUrl = `https://www.youtube.com/embed/${videoId}`;
     const params = new URLSearchParams({
       autoplay: '1',
