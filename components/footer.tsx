@@ -102,7 +102,7 @@ export function Footer() {
               <div className="flex items-start">
                 <MapPin className="h-4 w-4 text-orange-600 mr-2 mt-1 flex-shrink-0" />
                 <span className="text-gray-700 text-sm font-medium">
-                  Azadnagar, Kolshet Road, Thane West (400607), Mumbai, Maharashtra
+                  Mumbai • Thane • Bangalore
                 </span>
               </div>
               <div className="flex items-center">
@@ -123,7 +123,7 @@ export function Footer() {
 
         <div className="border-t border-orange-300 mt-8 pt-8 text-center">
           <p className="text-gray-700 font-medium">
-            © {new Date().getFullYear()} Margika Yatra. All rights reserved.
+            © {new Date().getFullYear()} Margika Yatra Pvt. Ltd. All rights reserved.
           </p>
         </div>
       </div>
