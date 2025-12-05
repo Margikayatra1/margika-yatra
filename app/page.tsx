@@ -174,7 +174,7 @@ export default function HomePage() {
   const allUpcomingEvents = [
     {
       name: "Dev Deepawali",
-      date: "3rd–6th November",
+      date: "23rd–25th November",
       location: "Varanasi (River Cruise Experience)",
       image: "/DD1.PNG",
       description: "Experience the magical festival of lights in Varanasi.",
@@ -186,13 +186,13 @@ export default function HomePage() {
     //   image: "/z.jpg",
     //   description: "Immerse yourself in the serene beauty of Ziro Valley with our exclusive retreat.",
     // },
-    {
-      name: "Hornbill festival",
-      date: "1st–5th December",
-      location: "Nagaland",
-      image: "/naga.jpg",
-      description: "Join us for the vibrant Hornbill Festival in Nagaland, celebrating the rich culture and traditions of the Naga tribes.",
-    }
+    // {
+    //   name: "Hornbill festival",
+    //   date: "1st–5th December",
+    //   location: "Nagaland",
+    //   image: "/naga.jpg",
+    //   description: "Join us for the vibrant Hornbill Festival in Nagaland, celebrating the rich culture and traditions of the Naga tribes.",
+    // }
     //add more events as needed
   ];
 
