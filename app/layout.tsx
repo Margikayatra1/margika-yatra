@@ -1,46 +1,30 @@
-import type { Metadata } from 'next';
-
-import {  Roboto_Mono } from 'next/font/google';
-import './globals.css';
-
-// Font setup
-
+import type { Metadata } from 'next'
+import { Roboto_Mono } from 'next/font/google'
+import './globals.css'
 
 const mono = Roboto_Mono({
   variable: '--font-mono',
   subsets: ['latin'],
-});
-
-// export const metadata: Metadata = {
-//   title: 'Margika Yatra',
-//   description: 'A journey through the world of Margika',
-//   generator: 'Next.js',
-// };
+})
 
 export const metadata: Metadata = {
   title: 'Margika Yatra',
   description: 'A journey through the world of Margika',
   icons: {
-    icon: '/logo.png',
+    icon: '/logo.png', // must be in /public/logo.png
   },
-};
-
+}
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
-    
-      <html lang="en">
-        <head>
-          {/* <link rel="icon" href="/logo.png" type="image/x-icon" /> */}
-        </head>
-        <body className={` ${mono.variable} antialiased`}>
-          {children}
-        </body>
-      </html>
-   
-  );
+    <html lang="en">
+      <body className={`${mono.variable} antialiased`}>
+        {children}
+      </body>
+    </html>
+  )
 }
