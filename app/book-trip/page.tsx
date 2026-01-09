@@ -97,7 +97,7 @@ export default function BookTripPage() {
     //   highlights: ["Ziro Valley", "Apatani Tribe", "Talley Valley", "Buddhist Monasteries"],
     // },
     {
-      id: "himachal",
+      id: "Himachal",
       name: "Himachal",
       price: "₹15,000",
       duration: "10N/11D",
