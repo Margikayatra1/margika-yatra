@@ -29,7 +29,7 @@ export default function BookTripPage() {
     {
       id: "char-dham",
       name: "Char Dham & Do Dham Yatra",
-      price: "₹34,999",
+      price: "₹39,999",
       duration: "10N/11D",
       image: "4dham.png",
       description: "Sacred journey to the four holy shrines",
@@ -39,7 +39,7 @@ export default function BookTripPage() {
     {
       id: "varanasi",
       name: "Varanasi",
-      price: "₹7,999",
+      price: "₹9,999",
       duration: "2N/3D",
       image: "vr.jpg",
       description: "Experience the spiritual capital of India",
@@ -49,7 +49,7 @@ export default function BookTripPage() {
     {
       id: "ujjain",
       name: "Ujjain & Omkareshwar",
-      price: "₹10,999",
+      price: "₹11,999",
       duration: "2N/3D",
       image: "uj.jpg",
       description: "Visit the sacred Jyotirlingas",
@@ -59,7 +59,7 @@ export default function BookTripPage() {
     {
       id: "maharashtra",
       name: "3 Jyotirling of Maharashtra",
-      price: "₹12,999",
+      price: "₹13,999",
       duration: "3N/4D",
       image: "mh.jpg",
       description: "Explore Maharashtra's divine temples",
@@ -79,15 +79,15 @@ export default function BookTripPage() {
     {
       id: "rameshwaram",
       name: "Rameshwaram",
-      price: "₹14,999",
-      duration: "3N/4D",
+      price: "₹7,999",
+      duration: "1N/2D",
       image: "rameshwaram.jpg",
       description: "Southern pilgrimage destination",
       location: "Tamil Nadu",
       highlights: ["Ramanathaswamy Temple", "Dhanushkodi", "Adam's Bridge", "Pamban Bridge"],
     },
     // {
-    //   id: "ziro",
+    //   id: "",
     //   name: "Arunachal Pradesh - Ziro Valley",
     //   price: "₹54,999",
     //   duration: "6N/7D",
@@ -97,14 +97,14 @@ export default function BookTripPage() {
     //   highlights: ["Ziro Valley", "Apatani Tribe", "Talley Valley", "Buddhist Monasteries"],
     // },
     {
-      id: "meghalaya",
-      name: "Meghalaya",
-      price: "₹19,999",
-      duration: "5N/6D",
+      id: "Himachal",
+      name: "Himachal",
+      price: "₹15,000",
+      duration: "10N/11D",
       image: "mg.png",
       description: "Land of clouds and natural beauty",
-      location: "Meghalaya",
-      highlights: ["Living Root Bridges", "Cherrapunji", "Mawlynnong", "Sacred Groves"],
+      location: "Himachal",
+      highlights: ["Living Root Bridges", "Kasol", "Mountains", "River"],
     },
   ]
 
