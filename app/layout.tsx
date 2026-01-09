@@ -15,16 +15,22 @@ export const metadata: Metadata = {
   },
 }
 
+export const metadata = {
+  icons: {
+    icon: "/favicon.png",
+  },
+};
+
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
-      <body className={`${mono.variable} antialiased`}>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
-  )
+  );
+}
+
 }
