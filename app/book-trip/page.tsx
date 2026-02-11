@@ -103,7 +103,7 @@ export default function BookTripPage() {
       duration: "10N/11D",
       image: "/mg.png",
       description: "Land of clouds and natural beauty",
-      location: "Himachal",
+      location: "Meghalaya",
       highlights: ["Living Root Bridges", "Kasol", "Mountains", "River"],
     },
   ]
