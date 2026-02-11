@@ -97,8 +97,8 @@ export default function BookTripPage() {
     //   highlights: ["Ziro Valley", "Apatani Tribe", "Talley Valley", "Buddhist Monasteries"],
     // },
     {
-      id: "himachal",
-      name: "Himachal",
+      id: "meghalaya",
+      name: "Meghalaya",
       price: "₹15,000",
       duration: "10N/11D",
       image: "/mg.png",
