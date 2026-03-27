@@ -34,7 +34,7 @@ export function Footer() {
             </p>
             <div className="flex space-x-4">
               <motion.a
-                href="https://www.instagram.com/margika_yatra/"
+                href="https://www.instagram.com/margika_yatra_/"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1, boxShadow: "0 0 15px rgba(249, 115, 22, 0.3)" }}
