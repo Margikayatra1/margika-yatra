@@ -8,7 +8,6 @@ import {
   MapPin,
   Phone,
   Mail,
-  Instagram,
   ChevronRight,
   Ship,
   Mountain,
@@ -19,6 +18,7 @@ import {
   Heart,
   Camera,
   Upload,
+  type LucideIcon,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -33,9 +33,18 @@ import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay';
 import { useCallback, useEffect, useState, useRef } from "react";
 
-// ✅ FIX: Extracted into its own component so useInView is called at the top level of a component, not inside .map()
-function StatCard({ stat }: { stat: { icon: React.ElementType; number: number; suffix: string; label: string; decimals?: number } }) {
+// ✅ Using LucideIcon type instead of React.ElementType — no React import needed
+interface StatItem {
+  icon: LucideIcon;
+  number: number;
+  suffix: string;
+  label: string;
+  decimals?: number;
+}
+
+function StatCard({ stat }: { stat: StatItem }) {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.3 });
+  const Icon = stat.icon;
 
   return (
     <motion.div
@@ -44,7 +53,7 @@ function StatCard({ stat }: { stat: { icon: React.ElementType; number: number; s
     >
       <Card className="bg-white/80 backdrop-blur-sm border-orange-200 text-center shadow-xl">
         <CardContent className="p-6">
-          <stat.icon className="h-12 w-12 text-orange-500 mx-auto mb-4" />
+          <Icon className="h-12 w-12 text-orange-500 mx-auto mb-4" />
           <h4 className="text-2xl font-bold text-gray-800 mb-2">
             {inView && (
               <CountUp
@@ -67,19 +76,17 @@ export default function HomePage() {
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"])
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "200%"])
 
-  const stats = [
+  const stats: StatItem[] = [
     { icon: Users, number: 3000, suffix: "+", label: "Happy Pilgrims" },
     { icon: Award, number: 4.9, suffix: "", label: "Google Rating", decimals: 1 },
     { icon: Ship, number: 50, suffix: "+", label: "Sacred Destinations" },
     { icon: Heart, number: 3, suffix: "+", label: "Years Experience" },
   ];
 
-
   const handleGeneralWhatsapp = () => {
-    const phoneNumber = '+917208771688'; // Replace with your WhatsApp number
+    const phoneNumber = '+917208771688';
     const message = encodeURIComponent("Hello, I'm interested in a spiritual trip with Margika Yatra.");
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
-    // Safely access window object
     if (typeof window !== 'undefined') {
       window.open(whatsappURL, '_blank');
     }
@@ -155,7 +162,6 @@ export default function HomePage() {
   const handleBookNow = (packageName: string, price: string) => {
     const message = `🙏 Namaste! I'm interested in booking the ${packageName} package (${price}). Please provide more details and availability. Thank you! 🕉️`
     const whatsappUrl = `https://wa.me/917208771688?text=${encodeURIComponent(message)}`
-    // Safely access window object
     if (typeof window !== 'undefined') {
       window.open(whatsappUrl, "_blank")
     }
@@ -172,33 +178,6 @@ export default function HomePage() {
     "/8.jpg",
   ];
 
-  const teamMembers = [
-    {
-      name: "Badal Yadav",
-      role: "Co-Founder",
-      description: "Visionary leader with 10+ years in spiritual tourism",
-      image: "/badal.JPG",
-    },
-    {
-      name: "Yogesh Jain",
-      role: "Co-Founder",
-      description: "Expert in pilgrimage planning and logistics",
-      image: "/yogesh.JPG"
-    },
-    {
-      name: "Ratan",
-      role: "Chief Marketing Officer",
-      description: "Marketing strategist and brand development expert",
-      image: "/ratan.JPG"
-    },
-    {
-      name: "Ganesh Dekhne",
-      role: "Operational Head",
-      description: "Operations specialist ensuring seamless journeys",
-      image: "/ganesh.JPG"
-    },
-  ]
-
   const allUpcomingEvents = [
     {
       name: "Dev Deepawali",
@@ -207,24 +186,8 @@ export default function HomePage() {
       image: "/DD1.PNG",
       description: "Experience the magical festival of lights in Varanasi.",
     },
-    // {
-    //   name: "Ziro Valley Retreat",
-    //   date: "23rd-29th September",
-    //   location: "Ziro Valley, Arunachal Pradesh",
-    //   image: "/z.jpg",
-    //   description: "Immerse yourself in the serene beauty of Ziro Valley with our exclusive retreat.",
-    // },
-    // {
-    //   name: "Hornbill festival",
-    //   date: "1st–5th December",
-    //   location: "Nagaland",
-    //   image: "/naga.jpg",
-    //   description: "Join us for the vibrant Hornbill Festival in Nagaland, celebrating the rich culture and traditions of the Naga tribes.",
-    // }
-    //add more events as needed
   ];
 
-  // Take only the first 3 upcoming events
   const upcomingEvents = allUpcomingEvents.slice(0, 3);
 
   const autoplay = useRef(Autoplay({ delay: 3000, stopOnInteraction: true }));
@@ -242,17 +205,19 @@ export default function HomePage() {
     emblaApi && emblaApi.scrollTo(index);
   }, [emblaApi]);
 
-  const onSelect = useCallback((emblaApi: any) => {
+  // ✅ Fixed: removed unused `emblaApi` parameter name, use the outer scoped one
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
     setSelectedIndex(emblaApi.selectedScrollSnap());
-  }, []);
+  }, [emblaApi]);
 
   useEffect(() => {
     if (!emblaApi) return;
-    onSelect(emblaApi);
+    onSelect();
     setScrollSnaps(emblaApi.scrollSnapList());
     emblaApi.on('select', onSelect);
     emblaApi.on('reInit', onSelect);
-  }, [emblaApi, setScrollSnaps, onSelect]);
+  }, [emblaApi, onSelect]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-orange-50 to-orange-100 text-gray-900 overflow-x-hidden relative">
@@ -342,7 +307,7 @@ export default function HomePage() {
               Spiritual Journey
             </motion.h1>
             <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-3xl mx-auto drop-shadow-sm">
-              Embark on transformative vessel-based pilgrimages that connect your soul with India's most sacred
+              Embark on transformative vessel-based pilgrimages that connect your soul with India&apos;s most sacred
               destinations
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -428,9 +393,9 @@ export default function HomePage() {
               About Margika Yatra
             </h2>
             <p className="text-gray-700 text-lg max-w-3xl mx-auto mb-12">
-              We believe travel is not just about exploring new places; it's about discovering the depths of your soul.
+              We believe travel is not just about exploring new places; it&apos;s about discovering the depths of your soul.
               Our spiritual journeys are designed to inspire inner transformation, reconnect you with your higher self,
-              and immerse you in the sacred energies of India's most mystical places.
+              and immerse you in the sacred energies of India&apos;s most mystical places.
             </p>
           </motion.div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-10">
@@ -440,8 +405,7 @@ export default function HomePage() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-
-            <TeaserSection />
+              <TeaserSection />
             </motion.div>
 
             <motion.div
@@ -450,7 +414,6 @@ export default function HomePage() {
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              {/* ✅ FIX: Now using StatCard component instead of calling useInView inside .map() */}
               <div className="grid grid-cols-2 gap-6">
                 {stats.map((stat, index) => (
                   <StatCard key={index} stat={stat} />
@@ -479,7 +442,7 @@ export default function HomePage() {
             </p>
           </motion.div>
 
-          {/* Photo Upload Slider */}
+          {/* Photo Slider */}
           <div className="relative">
             <motion.div
               className="flex gap-6 pb-6"
@@ -512,9 +475,6 @@ export default function HomePage() {
                               fill
                               className="object-cover transition-transform duration-300 group-hover:scale-105"
                             />
-                            <div className="absolute bottom-3 left-3">
-
-                            </div>
                           </div>
                         ) : (
                           <div className="h-full bg-gradient-to-br from-orange-50 to-orange-100 flex flex-col items-center justify-center border-2 border-dashed border-orange-300 group-hover:border-orange-400 transition-all duration-300">
@@ -551,16 +511,6 @@ export default function HomePage() {
             <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-orange-50 to-transparent pointer-events-none z-10" />
             <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-orange-50 to-transparent pointer-events-none z-10" />
           </div>
-
-          {/* Upload Instructions */}
-          <motion.div
-            className="text-center mt-6"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            viewport={{ once: true }}
-          >
-          </motion.div>
         </div>
       </section>
 
@@ -582,8 +532,7 @@ export default function HomePage() {
             </p>
           </motion.div>
 
-          {/* Embla Carousel for 1 visible slide at a time with dots and autoplay */}
-          <div className="relative embla max-w-3xl mx-auto"> {/* MODIFIED: Changed max-w-2xl to max-w-3xl */}
+          <div className="relative embla max-w-3xl mx-auto">
             <div className="embla__viewport overflow-hidden" ref={emblaRef}>
               <div className="embla__container flex -ml-4">
                 {upcomingEvents.map((event, index) => (
@@ -629,7 +578,6 @@ export default function HomePage() {
                             size="lg"
                             className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-3 text-lg shadow-xl border-0 font-semibold"
                             onClick={() => {
-                              // You might want a specific handler for events or direct WhatsApp message
                               if (typeof window !== 'undefined') {
                                 const eventMessage = `Hello, I'm interested in the "${event.name}" event (${event.date}). Can you provide more details?`;
                                 window.open(`https://wa.me/917208771688?text=${encodeURIComponent(eventMessage)}`, '_blank');
@@ -733,9 +681,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Team Section */}
-      
-
       {/* Contact Section */}
       <section id="contact" className="py-12 bg-gradient-to-b from-white to-orange-50">
         <div className="container mx-auto px-4">
@@ -770,7 +715,7 @@ export default function HomePage() {
                   <Button
                     variant="outline"
                     className="border-orange-500 text-orange-600 hover:bg-orange-500 hover:text-white"
-                    onClick={handleGeneralWhatsapp} // Using the safely wrapped function
+                    onClick={handleGeneralWhatsapp}
                   >
                     Message on WhatsApp
                   </Button>
