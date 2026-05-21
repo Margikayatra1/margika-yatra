@@ -172,7 +172,7 @@ export default function HomePage() {
     "/8.jpg",
   ];
 
- // const teamMembers = [
+  const teamMembers = [
     {
       name: "Badal Yadav",
       role: "Co-Founder",
