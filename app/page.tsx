@@ -33,6 +33,34 @@ import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay';
 import { useCallback, useEffect, useState, useRef } from "react";
 
+// ✅ FIX: Extracted into its own component so useInView is called at the top level of a component, not inside .map()
+function StatCard({ stat }: { stat: { icon: React.ElementType; number: number; suffix: string; label: string; decimals?: number } }) {
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.3 });
+
+  return (
+    <motion.div
+      ref={ref}
+      whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(249, 115, 22, 0.2)" }}
+    >
+      <Card className="bg-white/80 backdrop-blur-sm border-orange-200 text-center shadow-xl">
+        <CardContent className="p-6">
+          <stat.icon className="h-12 w-12 text-orange-500 mx-auto mb-4" />
+          <h4 className="text-2xl font-bold text-gray-800 mb-2">
+            {inView && (
+              <CountUp
+                end={stat.number}
+                duration={2}
+                suffix={stat.suffix}
+                decimals={stat.decimals || 0}
+              />
+            )}
+          </h4>
+          <p className="text-gray-600 font-medium">{stat.label}</p>
+        </CardContent>
+      </Card>
+    </motion.div>
+  );
+}
 
 export default function HomePage() {
   const { scrollYProgress } = useScroll()
@@ -144,7 +172,7 @@ export default function HomePage() {
     "/8.jpg",
   ];
 
-  const teamMembers = [
+ // const teamMembers = [
     {
       name: "Badal Yadav",
       role: "Co-Founder",
@@ -422,38 +450,12 @@ export default function HomePage() {
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
+              {/* ✅ FIX: Now using StatCard component instead of calling useInView inside .map() */}
               <div className="grid grid-cols-2 gap-6">
-                {stats.map((stat, index) => {
-                  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.3 });
-
-                  return (
-                    <motion.div
-                      key={index}
-                      ref={ref}
-                      whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(249, 115, 22, 0.2)" }}
-                    >
-                      <Card className="bg-white/80 backdrop-blur-sm border-orange-200 text-center shadow-xl">
-                        <CardContent className="p-6">
-                          <stat.icon className="h-12 w-12 text-orange-500 mx-auto mb-4" />
-                          <h4 className="text-2xl font-bold text-gray-800 mb-2">
-                            {inView && (
-                              <CountUp
-                                end={stat.number}
-                                duration={2}
-                                suffix={stat.suffix}
-                                decimals={stat.decimals || 0}
-                              />
-                            )}
-                          </h4>
-                          <p className="text-gray-600 font-medium">{stat.label}</p>
-                        </CardContent>
-                      </Card>
-                    </motion.div>
-                  );
-                })}
+                {stats.map((stat, index) => (
+                  <StatCard key={index} stat={stat} />
+                ))}
               </div>
-
-
             </motion.div>
           </div>
         </div>
