@@ -11,15 +11,9 @@ export const metadata: Metadata = {
   title: 'Margika Yatra',
   description: 'A journey through the world of Margika',
   icons: {
-    icon: '/logo.png', // must be in /public/logo.png
+    icon: '/favicon.png',
   },
 }
-
-export const metadata = {
-  icons: {
-    icon: "/favicon.png",
-  },
-};
 
 export default function RootLayout({
   children,
@@ -28,9 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={mono.variable}>{children}</body>
     </html>
-  );
-}
-
+  )
 }
