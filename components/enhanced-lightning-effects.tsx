@@ -80,7 +80,7 @@ const PARTICLES = [
 ]
 
 export function EnhancedLightningEffects() {
-  const styleRef = useRef(null)
+  const styleRef = useRef<HTMLStyleElement | null>(null)
 
   useEffect(() => {
     if (!styleRef.current) {
@@ -221,7 +221,7 @@ export function EnhancedLightningEffects() {
             "--ty3": `${p.ty3}px`,
             "--dur": `${p.dur}s`,
             "--delay": `${p.delay}s`,
-          }}
+          } as React.CSSProperties}
         />
       ))}
     </div>

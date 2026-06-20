@@ -12,6 +12,7 @@ export function Header() {
 
   const navItems = [
     { name: 'Home', href: '/' },
+    { name: 'Blog', href: '/blog' },
     { name: 'Reviews', href: '/previous-trips' },
     { name: 'Book a Trip', href: '/book-trip' },
     { name: 'Personalized Trip', href: '/personalized-trip' },

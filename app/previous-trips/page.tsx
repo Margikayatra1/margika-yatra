@@ -153,7 +153,7 @@ export default function PreviousTripsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-x-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-white via-orange-50 to-orange-100 text-gray-900 overflow-x-hidden">
       <ParticleEffects />
       <Header />
 
@@ -171,7 +171,7 @@ export default function PreviousTripsPage() {
             fill
             className="object-cover opacity-30"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-800/60 to-slate-900/80" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-orange-50/30 to-orange-100/50" />
         </motion.div>
 
         <div className="container mx-auto px-4 z-10 text-center">
@@ -180,14 +180,14 @@ export default function PreviousTripsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
           >
-            <Link href="/" className="inline-flex items-center text-orange-400 hover:text-orange-300 mb-6 transition-colors">
+            <Link href="/" className="inline-flex items-center text-orange-600 hover:text-orange-500 mb-6 transition-colors">
               <ArrowLeft className="mr-2 h-5 w-5" />
               Back to Home
             </Link>
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-orange-400 via-orange-300 to-orange-500 bg-clip-text text-transparent">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-orange-600 via-orange-500 to-orange-700 bg-clip-text text-transparent">
               Reviews & Spiritual Journeys
             </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-3xl mx-auto">
               Read testimonials and relive the sacred memories from our pilgrimages
             </p>
           </motion.div>
@@ -207,7 +207,7 @@ export default function PreviousTripsPage() {
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.02, boxShadow: "0 20px 40px rgba(249, 115, 22, 0.2)" }}
               >
-                <Card className="bg-slate-800/90 backdrop-blur-sm border-slate-700 overflow-hidden group hover:border-orange-400 transition-all duration-500 shadow-2xl h-full flex flex-col">
+                <Card className="bg-white/90 backdrop-blur-sm border-orange-200 overflow-hidden group hover:border-orange-400 transition-all duration-500 shadow-xl h-full flex flex-col">
                   <div className="relative h-56">
                     <Image
                       src={trip.image}
@@ -219,7 +219,7 @@ export default function PreviousTripsPage() {
                       <Badge className="bg-orange-500 text-white shadow-lg font-semibold">
                         {trip.location}
                       </Badge>
-                      <Badge className="bg-slate-900/80 text-white shadow-lg font-semibold">
+                      <Badge className="bg-white/80 text-gray-900 shadow-lg font-semibold">
                         <Star className="h-3 w-3 mr-1 fill-yellow-400 text-yellow-400" />
                         {trip.rating}
                       </Badge>
@@ -228,39 +228,39 @@ export default function PreviousTripsPage() {
 
                   <CardContent className="p-6 flex-grow flex flex-col justify-between">
                     <div>
-                      <h3 className="text-2xl font-bold text-orange-400 mb-2">{trip.name}</h3>
-                      <p className="text-gray-300 text-base mb-4 line-clamp-2">{trip.description}</p>
+                      <h3 className="text-2xl font-bold text-orange-600 mb-2">{trip.name}</h3>
+                      <p className="text-gray-600 text-base mb-4 line-clamp-2">{trip.description}</p>
                       
                       <div className="space-y-2 mb-4">
-                        <div className="flex items-center text-gray-400">
+                        <div className="flex items-center text-gray-500">
                           <Calendar className="h-4 w-4 mr-2 text-orange-400" />
                           <span className="text-sm">{trip.date}</span>
                         </div>
-                        <div className="flex items-center text-gray-400">
+                        <div className="flex items-center text-gray-500">
                           <Users className="h-4 w-4 mr-2 text-orange-400" />
                           <span className="text-sm">{trip.participants} Participants</span>
                         </div>
                       </div>
 
                       <div className="mb-4">
-                        <h4 className="text-sm font-semibold text-orange-300 mb-2">Highlights:</h4>
+                        <h4 className="text-sm font-semibold text-orange-600 mb-2">Highlights:</h4>
                         <div className="flex flex-wrap gap-1">
                           {trip.highlights.slice(0, 3).map((highlight, idx) => (
-                            <Badge key={idx} variant="secondary" className="text-xs bg-slate-700 text-gray-300">
+                            <Badge key={idx} variant="secondary" className="text-xs bg-orange-50 text-gray-700 border border-orange-200">
                               {highlight}
                             </Badge>
                           ))}
                           {trip.highlights.length > 3 && (
-                            <Badge variant="secondary" className="text-xs bg-slate-700 text-gray-300">
+                            <Badge variant="secondary" className="text-xs bg-orange-50 text-gray-700 border border-orange-200">
                               +{trip.highlights.length - 3} more
                             </Badge>
                           )}
                         </div>
                       </div>
 
-                      <div className="bg-slate-700/50 rounded-lg p-3 mb-4">
-                        <p className="text-sm text-gray-300 italic">"{trip.testimonial}"</p>
-                        <p className="text-xs text-orange-400 mt-1">- {trip.testimonialBy}</p>
+                      <div className="bg-orange-50/80 rounded-lg p-3 mb-4">
+                        <p className="text-sm text-gray-600 italic">"{trip.testimonial}"</p>
+                        <p className="text-xs text-orange-600 mt-1">- {trip.testimonialBy}</p>
                       </div>
                     </div>
 
@@ -286,7 +286,7 @@ export default function PreviousTripsPage() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-12 bg-gradient-to-b from-slate-800 to-slate-900">
+      <section className="py-12 bg-gradient-to-b from-orange-50 to-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -295,10 +295,10 @@ export default function PreviousTripsPage() {
             viewport={{ once: true }}
             className="text-center mb-10"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-600 to-orange-700 bg-clip-text text-transparent">
               What Our Pilgrims Say
             </h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
               Hear from our fellow spiritual travelers about their transformative experiences
             </p>
           </motion.div>
@@ -313,7 +313,7 @@ export default function PreviousTripsPage() {
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.03, boxShadow: "0 15px 35px rgba(249, 115, 22, 0.2)" }}
               >
-                <Card className="bg-slate-800/90 backdrop-blur-sm border-slate-700 overflow-hidden group hover:border-orange-400 transition-all duration-500 shadow-2xl h-full">
+                <Card className="bg-white/90 backdrop-blur-sm border-orange-200 overflow-hidden group hover:border-orange-400 transition-all duration-500 shadow-xl h-full">
                   <CardContent className="p-6">
                     <div className="flex items-center mb-4">
                       <div className="relative w-12 h-12 mr-4">
@@ -325,12 +325,12 @@ export default function PreviousTripsPage() {
                         />
                       </div>
                       <div>
-                        <h4 className="text-lg font-semibold text-orange-400">{testimonial.name}</h4>
-                        <p className="text-sm text-gray-400">{testimonial.location}</p>
+                        <h4 className="text-lg font-semibold text-orange-600">{testimonial.name}</h4>
+                        <p className="text-sm text-gray-500">{testimonial.location}</p>
                       </div>
                     </div>
 
-                    <p className="text-gray-300 text-sm mb-4 italic">"{testimonial.text}"</p>
+                    <p className="text-gray-600 text-sm mb-4 italic">"{testimonial.text}"</p>
 
                     <div className="flex items-center justify-between">
                       <div className="flex items-center">
@@ -339,9 +339,9 @@ export default function PreviousTripsPage() {
                             <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
                           ))}
                         </div>
-                        <span className="text-xs text-gray-400 ml-2">({testimonial.rating}/5)</span>
+                        <span className="text-xs text-gray-500 ml-2">({testimonial.rating}/5)</span>
                       </div>
-                      <div className="flex items-center text-xs text-gray-400">
+                      <div className="flex items-center text-xs text-gray-500">
                         <Award className="h-3 w-3 mr-1" />
                         {testimonial.trips} trips
                       </div>
@@ -363,10 +363,10 @@ export default function PreviousTripsPage() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-orange-600 to-orange-700 bg-clip-text text-transparent">
               Ready for Your Next Journey?
             </h2>
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
               Join our spiritual community and create your own sacred memories
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -391,7 +391,7 @@ export default function PreviousTripsPage() {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="border-2 border-orange-400 text-orange-400 hover:bg-orange-500 hover:text-white px-8 py-3 text-lg shadow-xl backdrop-blur-sm font-semibold"
+                  className="border-2 border-orange-500 text-orange-600 hover:bg-orange-500 hover:text-white px-8 py-3 text-lg shadow-xl backdrop-blur-sm font-semibold"
                   onClick={() => {
                     if (typeof window !== 'undefined') {
                       window.open('https://wa.me/917208771688?text=Hello! I would like to know more about your spiritual trips.', '_blank')

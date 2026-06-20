@@ -38,7 +38,7 @@ export default function BookTripPage() {
     },
     {
       id: "varanasi",
-      name: "Varanasi",
+      name: "Varanasi - Ayodhya - Prayagraj",
       price: "₹9,999",
       duration: "2N/3D",
       image: "/vr.jpg",
@@ -49,8 +49,8 @@ export default function BookTripPage() {
     {
       id: "ujjain",
       name: "Ujjain & Omkareshwar",
-      price: "₹11,999",
-      duration: "2N/3D",
+      price: "₹8,999",
+      duration: "3N/4D",
       image: "/uj.jpg",
       description: "Visit the sacred Jyotirlingas",
       location: "Madhya Pradesh",
@@ -182,7 +182,7 @@ ${formData.name}`
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
+    <div className="min-h-screen bg-gradient-to-br from-white via-orange-50 to-orange-100 text-gray-900">
       <Header />
 
       {/* Hero Section */}
@@ -195,15 +195,15 @@ ${formData.name}`
             className="text-center mb-8"
           >
             <Link href="/">
-              <Button variant="ghost" className="mb-4 text-orange-400 hover:text-orange-300">
+              <Button variant="ghost" className="mb-4 text-orange-600 hover:text-orange-500">
                 <ArrowLeft className="h-4 w-4 mr-2" />
                 Back to Home
               </Button>
             </Link>
-            <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-orange-600 via-orange-500 to-orange-700 bg-clip-text text-transparent">
               Book Your Spiritual Journey
             </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
               Choose from our carefully curated packages and embark on a transformative spiritual experience
             </p>
           </motion.div>
@@ -219,7 +219,7 @@ ${formData.name}`
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mb-12"
           >
-            <h2 className="text-3xl font-bold text-center mb-8 text-orange-400">Select Your Package</h2>
+            <h2 className="text-3xl font-bold text-center mb-8 text-orange-600">Select Your Package</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {packages.map((pkg, index) => (
                 <motion.div
@@ -232,11 +232,10 @@ ${formData.name}`
                   onClick={() => setSelectedPackage(pkg.id)}
                 >
                   <Card
-                    className={`bg-gradient-to-br from-slate-800 to-slate-900 border-2 overflow-hidden h-full transition-all duration-500 ${
-                      selectedPackage === pkg.id
-                        ? "border-orange-500 ring-2 ring-orange-500/20"
-                        : "border-orange-500/20 hover:border-orange-500/40"
-                    }`}
+                    className={`bg-white/90 backdrop-blur-sm border-2 overflow-hidden h-full transition-all duration-500 shadow-lg ${selectedPackage === pkg.id
+                      ? "border-orange-500 ring-2 ring-orange-500/20"
+                      : "border-orange-200 hover:border-orange-400"
+                      }`}
                   >
                     <div className="relative h-48">
                       <Image
@@ -245,7 +244,7 @@ ${formData.name}`
                         fill
                         className="object-cover group-hover:scale-110 transition-transform duration-700"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                       <Badge className="absolute top-3 right-3 bg-orange-500 text-white">{pkg.duration}</Badge>
                       <div className="absolute bottom-3 left-3">
                         <div className="flex items-center text-orange-400 text-sm">
@@ -260,28 +259,28 @@ ${formData.name}`
                       )}
                     </div>
                     <CardContent className="p-6">
-                      <h3 className="text-lg font-bold text-orange-400 mb-2">{pkg.name}</h3>
-                      <p className="text-gray-400 text-sm mb-3">{pkg.description}</p>
+                      <h3 className="text-lg font-bold text-orange-600 mb-2">{pkg.name}</h3>
+                      <p className="text-gray-600 text-sm mb-3">{pkg.description}</p>
                       <div className="flex items-center justify-between mb-4">
                         <div className="flex items-center text-xl font-bold text-orange-500">
                           <IndianRupee className="h-4 w-4" />
                           <span>{pkg.price.replace("₹", "")}</span>
                         </div>
-                        <div className="flex items-center text-gray-400">
+                        <div className="flex items-center text-gray-500">
                           <Clock className="h-3 w-3 mr-1" />
                           <span className="text-sm">{pkg.duration}</span>
                         </div>
                       </div>
                       <div className="mb-4">
-                        <h4 className="text-sm font-semibold text-white mb-2">Highlights:</h4>
+                        <h4 className="text-sm font-semibold text-gray-800 mb-2">Highlights:</h4>
                         <div className="flex flex-wrap gap-1">
                           {pkg.highlights.slice(0, 2).map((highlight, i) => (
-                            <Badge key={i} variant="outline" className="text-xs border-orange-500/30 text-orange-300">
+                            <Badge key={i} variant="outline" className="text-xs border-orange-300 text-orange-700">
                               {highlight}
                             </Badge>
                           ))}
                           {pkg.highlights.length > 2 && (
-                            <Badge variant="outline" className="text-xs border-orange-500/30 text-orange-300">
+                            <Badge variant="outline" className="text-xs border-orange-300 text-orange-700">
                               +{pkg.highlights.length - 2} more
                             </Badge>
                           )}
@@ -297,7 +296,7 @@ ${formData.name}`
       </section>
 
       {/* Booking Form */}
-      <section className="py-12 bg-slate-800/50">
+      <section className="py-12 bg-gradient-to-b from-orange-50 to-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -305,15 +304,15 @@ ${formData.name}`
             transition={{ duration: 0.8, delay: 0.4 }}
             className="max-w-2xl mx-auto"
           >
-            <h2 className="text-3xl font-bold text-center mb-8 text-orange-400">Complete Your Booking</h2>
-            <Card className="bg-gradient-to-br from-slate-800 to-slate-900 border-orange-500/20">
+            <h2 className="text-3xl font-bold text-center mb-8 text-orange-600">Complete Your Booking</h2>
+            <Card className="bg-white/95 backdrop-blur-sm border-orange-200 shadow-xl">
               <CardContent className="p-8">
                 <form onSubmit={handleSubmit} className="space-y-6">
                   {selectedPackage && (
                     <div className="mb-6 p-4 bg-orange-500/10 border border-orange-500/20 rounded-lg">
-                      <h3 className="text-lg font-semibold text-orange-400 mb-2">Selected Package</h3>
-                      <p className="text-white">{packages.find((pkg) => pkg.id === selectedPackage)?.name}</p>
-                      <p className="text-gray-300 text-sm">
+                      <h3 className="text-lg font-semibold text-orange-600 mb-2">Selected Package</h3>
+                      <p className="text-gray-900">{packages.find((pkg) => pkg.id === selectedPackage)?.name}</p>
+                      <p className="text-gray-600 text-sm">
                         {packages.find((pkg) => pkg.id === selectedPackage)?.duration} •{" "}
                         {packages.find((pkg) => pkg.id === selectedPackage)?.price}
                       </p>
@@ -322,24 +321,24 @@ ${formData.name}`
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-sm font-medium text-gray-300 mb-2">Full Name *</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
                       <Input
                         name="name"
                         value={formData.name}
                         onChange={handleInputChange}
                         placeholder="Enter your full name"
-                        className="bg-slate-700 border-orange-500/20 text-white focus:border-orange-500"
+                        className="bg-white border-orange-200 text-gray-900 focus:border-orange-500"
                         required
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-300 mb-2">Phone Number *</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number *</label>
                       <Input
                         name="phone"
                         value={formData.phone}
                         onChange={handleInputChange}
                         placeholder="+91 XXXXX XXXXX"
-                        className="bg-slate-700 border-orange-500/20 text-white focus:border-orange-500"
+                        className="bg-white border-orange-200 text-gray-900 focus:border-orange-500"
                         required
                       />
                     </div>
@@ -353,14 +352,14 @@ ${formData.name}`
                       value={formData.email}
                       onChange={handleInputChange}
                       placeholder="your.email@example.com"
-                      className="bg-slate-700 border-orange-500/20 text-white focus:border-orange-500"
+                      className="bg-white border-orange-200 text-gray-900 focus:border-orange-500"
                       required
                     />
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-sm font-medium text-gray-300 mb-2">Number of Travelers *</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Number of Travelers *</label>
                       <Input
                         name="travelers"
                         type="number"
@@ -368,18 +367,18 @@ ${formData.name}`
                         value={formData.travelers}
                         onChange={handleInputChange}
                         placeholder="Enter number of travelers"
-                        className="bg-slate-700 border-orange-500/20 text-white focus:border-orange-500"
+                        className="bg-white border-orange-200 text-gray-900 focus:border-orange-500"
                         required
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-300 mb-2">Preferred Date *</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Preferred Date *</label>
                       <Input
                         name="date"
                         type="date"
                         value={formData.date}
                         onChange={handleInputChange}
-                        className="bg-slate-700 border-orange-500/20 text-white focus:border-orange-500"
+                        className="bg-white border-orange-200 text-gray-900 focus:border-orange-500"
                         required
                       />
                     </div>
@@ -393,13 +392,13 @@ ${formData.name}`
                       onChange={handleInputChange}
                       placeholder="Any special requirements, dietary preferences, or accessibility needs..."
                       rows={4}
-                      className="w-full p-3 bg-slate-700 border border-orange-500/20 rounded-lg text-white focus:border-orange-500 focus:outline-none resize-none"
+                      className="w-full p-3 bg-white border border-orange-200 rounded-lg text-gray-900 focus:border-orange-500 focus:outline-none resize-none"
                     />
                   </div>
 
-                  <div className="bg-slate-700/50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-white mb-2">What happens next?</h4>
-                    <ul className="text-gray-300 text-sm space-y-1">
+                  <div className="bg-orange-50 p-4 rounded-lg border border-orange-100">
+                    <h4 className="font-semibold text-gray-800 mb-2">What happens next?</h4>
+                    <ul className="text-gray-600 text-sm space-y-1">
                       <li>• We'll contact you within 24 hours to confirm your booking</li>
                       <li>• Our team will discuss the itinerary and answer any questions</li>
                       <li>• Payment details and travel documents will be shared</li>
@@ -433,8 +432,8 @@ ${formData.name}`
             transition={{ duration: 0.8, delay: 0.6 }}
             className="text-center"
           >
-            <h3 className="text-2xl font-bold text-orange-400 mb-4">Need Help?</h3>
-            <p className="text-gray-300 mb-6">Our travel experts are here to assist you</p>
+            <h3 className="text-2xl font-bold text-orange-600 mb-4">Need Help?</h3>
+            <p className="text-gray-700 mb-6">Our travel experts are here to assist you</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.a
                 href="tel:+917208771688"

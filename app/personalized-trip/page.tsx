@@ -189,7 +189,7 @@ ${formData.name}`
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
+    <div className="min-h-screen bg-gradient-to-br from-white via-orange-50 to-orange-100 text-gray-900">
       <Header />
 
       {/* Hero Section */}
@@ -202,17 +202,17 @@ ${formData.name}`
             className="text-center mb-8"
           >
             <Link href="/">
-              <Button variant="ghost" className="mb-4 text-orange-400 hover:text-orange-300">
+              <Button variant="ghost" className="mb-4 text-orange-600 hover:text-orange-500">
                 <ArrowLeft className="h-4 w-4 mr-2" />
                 Back to Home
               </Button>
             </Link>
-            <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-orange-600 via-orange-500 to-orange-700 bg-clip-text text-transparent">
               Plan Your Personalized
               <br />
               Spiritual Journey
             </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
               Create a custom spiritual experience tailored to your unique preferences, goals, and spiritual aspirations
             </p>
           </motion.div>
@@ -258,8 +258,8 @@ ${formData.name}`
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold text-orange-400 mb-4">Popular Spiritual Destinations</h2>
-            <p className="text-gray-300 max-w-2xl mx-auto">
+            <h2 className="text-3xl font-bold text-orange-600 mb-4">Popular Spiritual Destinations</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
               Get inspired by these sacred places. We can include any of these or other destinations in your
               personalized journey.
             </p>
@@ -274,7 +274,7 @@ ${formData.name}`
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ y: -5 }}
               >
-                <Card className="bg-gradient-to-br from-slate-800 to-slate-900 border-orange-500/20 overflow-hidden hover:border-orange-500/40 transition-all duration-500">
+                <Card className="bg-white/90 backdrop-blur-sm border-orange-200 overflow-hidden hover:border-orange-400 transition-all duration-500 shadow-lg">
                   <div className="relative h-40">
                     <Image
                       src={destination.image || "/placeholder.svg"}
@@ -282,16 +282,16 @@ ${formData.name}`
                       fill
                       className="object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                     <div className="absolute bottom-2 left-2">
                       <h3 className="text-lg font-bold text-white">{destination.name}</h3>
                     </div>
                   </div>
                   <CardContent className="p-4">
-                    <p className="text-gray-400 text-sm mb-3">{destination.description}</p>
+                    <p className="text-gray-600 text-sm mb-3">{destination.description}</p>
                     <div className="flex flex-wrap gap-1">
                       {destination.highlights.map((highlight, i) => (
-                        <Badge key={i} variant="outline" className="text-xs border-orange-500/30 text-orange-300">
+                        <Badge key={i} variant="outline" className="text-xs border-orange-300 text-orange-700">
                           {highlight}
                         </Badge>
                       ))}
@@ -305,7 +305,7 @@ ${formData.name}`
       </section>
 
       {/* Personalized Trip Form */}
-      <section className="py-12 bg-slate-800/50">
+      <section className="py-12 bg-gradient-to-b from-orange-50 to-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -313,48 +313,48 @@ ${formData.name}`
             transition={{ duration: 0.8, delay: 0.4 }}
             className="max-w-4xl mx-auto"
           >
-            <h2 className="text-3xl font-bold text-center mb-8 text-orange-400">Tell Us About Your Dream Journey</h2>
-            <Card className="bg-gradient-to-br from-slate-800 to-slate-900 border-orange-500/20">
+            <h2 className="text-3xl font-bold text-center mb-8 text-orange-600">Tell Us About Your Dream Journey</h2>
+            <Card className="bg-white/95 backdrop-blur-sm border-orange-200 shadow-xl">
               <CardContent className="p-8">
                 <form onSubmit={handleSubmit} className="space-y-8">
                   {/* Personal Information */}
                   <div>
-                    <h3 className="text-xl font-semibold text-orange-400 mb-4 flex items-center">
+                    <h3 className="text-xl font-semibold text-orange-600 mb-4 flex items-center">
                       <Users className="h-5 w-5 mr-2" />
                       Personal Information
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
-                        <label className="block text-sm font-medium text-gray-300 mb-2">Full Name *</label>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
                         <Input
                           name="name"
                           value={formData.name}
                           onChange={handleInputChange}
                           placeholder="Enter your full name"
-                          className="bg-slate-700 border-orange-500/20 text-white focus:border-orange-500"
+                          className="bg-white border-orange-200 text-gray-900 focus:border-orange-500"
                           required
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-gray-300 mb-2">Phone Number *</label>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number *</label>
                         <Input
                           name="phone"
                           value={formData.phone}
                           onChange={handleInputChange}
                           placeholder="+91 XXXXX XXXXX"
-                          className="bg-slate-700 border-orange-500/20 text-white focus:border-orange-500"
+                          className="bg-white border-orange-200 text-gray-900 focus:border-orange-500"
                           required
                         />
                       </div>
                       <div className="md:col-span-2">
-                        <label className="block text-sm font-medium text-gray-300 mb-2">Email Address *</label>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
                         <Input
                           name="email"
                           type="email"
                           value={formData.email}
                           onChange={handleInputChange}
                           placeholder="your.email@example.com"
-                          className="bg-slate-700 border-orange-500/20 text-white focus:border-orange-500"
+                          className="bg-white border-orange-200 text-gray-900 focus:border-orange-500"
                           required
                         />
                       </div>
@@ -369,7 +369,7 @@ ${formData.name}`
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                       <div>
-                        <label className="block text-sm font-medium text-gray-300 mb-2">Number of Travelers *</label>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">Number of Travelers *</label>
                         <Input
                           name="travelers"
                           type="number"
@@ -377,17 +377,17 @@ ${formData.name}`
                           value={formData.travelers}
                           onChange={handleInputChange}
                           placeholder="Enter number"
-                          className="bg-slate-700 border-orange-500/20 text-white focus:border-orange-500"
+                          className="bg-white border-orange-200 text-gray-900 focus:border-orange-500"
                           required
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-gray-300 mb-2">Duration *</label>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">Duration *</label>
                         <select
                           name="duration"
                           value={formData.duration}
                           onChange={handleInputChange}
-                          className="w-full p-3 bg-slate-700 border border-orange-500/20 rounded-lg text-white focus:border-orange-500 focus:outline-none"
+                          className="w-full p-3 bg-white border border-orange-200 rounded-lg text-gray-900 focus:border-orange-500 focus:outline-none"
                           required
                         >
                           <option value="">Select duration</option>
@@ -400,12 +400,12 @@ ${formData.name}`
                         </select>
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-gray-300 mb-2">Budget Range</label>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">Budget Range</label>
                         <select
                           name="budget"
                           value={formData.budget}
                           onChange={handleInputChange}
-                          className="w-full p-3 bg-slate-700 border border-orange-500/20 rounded-lg text-white focus:border-orange-500 focus:outline-none"
+                          className="w-full p-3 bg-white border border-orange-200 rounded-lg text-gray-900 focus:border-orange-500 focus:outline-none"
                         >
                           <option value="">Select budget</option>
                           <option value="under-10k">Under ₹10,000</option>
@@ -417,13 +417,13 @@ ${formData.name}`
                         </select>
                       </div>
                       <div className="md:col-span-2">
-                        <label className="block text-sm font-medium text-gray-300 mb-2">Preferred Start Date</label>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">Preferred Start Date</label>
                         <Input
                           name="startDate"
                           type="date"
                           value={formData.startDate}
                           onChange={handleInputChange}
-                          className="bg-slate-700 border-orange-500/20 text-white focus:border-orange-500"
+                          className="bg-white border-orange-200 text-gray-900 focus:border-orange-500"
                         />
                       </div>
                     </div>
@@ -437,7 +437,7 @@ ${formData.name}`
                     </h3>
                     <div className="space-y-4">
                       <div>
-                        <label className="block text-sm font-medium text-gray-300 mb-2">
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
                           Desired Destinations (separate multiple with commas)
                         </label>
                         <Input
@@ -445,11 +445,11 @@ ${formData.name}`
                           value={formData.destinations}
                           onChange={handleInputChange}
                           placeholder="e.g., Varanasi, Rishikesh, Kedarnath, Ujjain..."
-                          className="bg-slate-700 border-orange-500/20 text-white focus:border-orange-500"
+                          className="bg-white border-orange-200 text-gray-900 focus:border-orange-500"
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-gray-300 mb-3">
+                        <label className="block text-sm font-medium text-gray-700 mb-3">
                           Select Your Interests (choose all that apply)
                         </label>
                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
@@ -458,11 +458,10 @@ ${formData.name}`
                               <button
                                 type="button"
                                 onClick={() => handleInterestToggle(interest)}
-                                className={`w-full p-3 text-sm rounded-lg border transition-all duration-300 ${
-                                  selectedInterests.includes(interest)
+                                className={`w-full p-3 text-sm rounded-lg border transition-all duration-300 ${selectedInterests.includes(interest)
                                     ? "bg-orange-500 border-orange-500 text-white"
-                                    : "bg-slate-700 border-orange-500/20 text-gray-300 hover:border-orange-500/40"
-                                }`}
+                                    : "bg-white border-orange-200 text-gray-700 hover:border-orange-400 hover:bg-orange-50/50"
+                                  }`}
                               >
                                 {interest}
                               </button>
@@ -481,12 +480,12 @@ ${formData.name}`
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
-                        <label className="block text-sm font-medium text-gray-300 mb-2">Accommodation Preference</label>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">Accommodation Preference</label>
                         <select
                           name="accommodation"
                           value={formData.accommodation}
                           onChange={handleInputChange}
-                          className="w-full p-3 bg-slate-700 border border-orange-500/20 rounded-lg text-white focus:border-orange-500 focus:outline-none"
+                          className="w-full p-3 bg-white border border-orange-200 rounded-lg text-gray-900 focus:border-orange-500 focus:outline-none"
                         >
                           <option value="">Select preference</option>
                           <option value="budget">Budget Hotels/Guesthouses</option>
@@ -498,14 +497,14 @@ ${formData.name}`
                         </select>
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-gray-300 mb-2">
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
                           Transportation Preference
                         </label>
                         <select
                           name="transportation"
                           value={formData.transportation}
                           onChange={handleInputChange}
-                          className="w-full p-3 bg-slate-700 border border-orange-500/20 rounded-lg text-white focus:border-orange-500 focus:outline-none"
+                          className="w-full p-3 bg-white border border-orange-200 rounded-lg text-gray-900 focus:border-orange-500 focus:outline-none"
                         >
                           <option value="">Select preference</option>
                           <option value="private-car">Private Car/Taxi</option>
@@ -527,7 +526,7 @@ ${formData.name}`
                     </h3>
                     <div className="space-y-4">
                       <div>
-                        <label className="block text-sm font-medium text-gray-300 mb-2">
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
                           What are your spiritual goals for this journey?
                         </label>
                         <Textarea
@@ -536,11 +535,11 @@ ${formData.name}`
                           onChange={handleInputChange}
                           placeholder="e.g., Inner peace, spiritual healing, connecting with divine energy, meditation practice, cultural understanding..."
                           rows={3}
-                          className="bg-slate-700 border-orange-500/20 text-white focus:border-orange-500"
+                          className="bg-white border-orange-200 text-gray-900 focus:border-orange-500"
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-gray-300 mb-2">
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
                           Special Requests & Additional Information
                         </label>
                         <Textarea
@@ -549,19 +548,19 @@ ${formData.name}`
                           onChange={handleInputChange}
                           placeholder="Dietary restrictions, accessibility needs, special occasions, group requirements, specific rituals or ceremonies you'd like to participate in..."
                           rows={4}
-                          className="bg-slate-700 border-orange-500/20 text-white focus:border-orange-500"
+                          className="bg-white border-orange-200 text-gray-900 focus:border-orange-500"
                         />
                       </div>
                     </div>
                   </div>
 
                   {/* Process Information */}
-                  <div className="bg-slate-700/50 p-6 rounded-lg">
-                    <h4 className="font-semibold text-white mb-3 flex items-center">
+                  <div className="bg-orange-50 p-6 rounded-lg border border-orange-100">
+                    <h4 className="font-semibold text-gray-800 mb-3 flex items-center">
                       <Clock className="h-5 w-5 mr-2 text-orange-500" />
                       Our Personalized Planning Process
                     </h4>
-                    <ul className="text-gray-300 text-sm space-y-2">
+                    <ul className="text-gray-600 text-sm space-y-2">
                       <li className="flex items-start">
                         <span className="text-orange-500 mr-2">1.</span>
                         We'll contact you within 24 hours to discuss your requirements in detail
@@ -610,8 +609,8 @@ ${formData.name}`
             transition={{ duration: 0.8, delay: 0.6 }}
             className="text-center"
           >
-            <h3 className="text-2xl font-bold text-orange-400 mb-4">Questions About Your Personalized Journey?</h3>
-            <p className="text-gray-300 mb-6">
+            <h3 className="text-2xl font-bold text-orange-600 mb-4">Questions About Your Personalized Journey?</h3>
+            <p className="text-gray-700 mb-6">
               Our spiritual travel consultants are here to help you create the perfect experience
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

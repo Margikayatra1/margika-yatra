@@ -1,12 +1,12 @@
 "use client"
-
+ 
 import { motion } from "framer-motion"
 import { Ship, Instagram, Phone, Mail, MapPin, Star } from "lucide-react"
 import Link from "next/link"
-
+ 
 export function Footer() {
   return (
-    <footer className="bg-gradient-to-b from-orange-100 to-orange-200 border-t border-orange-300 py-12 relative">
+    <footer className="bg-gradient-to-b from-[#FEE6C7] to-[#FEDEBD] border-t border-[#CB460C]/25 py-12 relative">
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
@@ -15,20 +15,20 @@ export function Footer() {
                 className="flex items-center space-x-2 mb-4"
                 whileHover={{
                   scale: 1.05,
-                  textShadow: "0 0 20px rgba(249, 115, 22, 0.5)",
+                  textShadow: "0 0 20px rgba(203, 70, 12, 0.4)",
                 }}
               >
                 <img
-                src="/logo.png"
-                alt="Margika Yatra Logo"
-                className="h-10 w-10 rounded-full object-contain"
-              />
-                <span className="text-2xl font-bold bg-gradient-to-r from-orange-600 to-orange-700 bg-clip-text text-transparent">
+                  src="/logo.png"
+                  alt="Margika Yatra Logo"
+                  className="h-10 w-10 rounded-full object-contain"
+                />
+                <span className="text-2xl font-bold bg-gradient-to-r from-[#CB460C] to-[#E65314] bg-clip-text text-transparent">
                   MARGIKA YATRA
                 </span>
               </motion.div>
             </Link>
-            <p className="text-gray-700 mb-4 max-w-md font-medium">
+            <p className="text-gray-900 mb-4 max-w-md font-medium">
               Transforming lives through spiritual journeys. Experience the divine with our carefully curated
               vessel-based pilgrimages.
             </p>
@@ -37,50 +37,49 @@ export function Footer() {
                 href="https://www.instagram.com/margika_yatra_/"
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.1, boxShadow: "0 0 15px rgba(249, 115, 22, 0.3)" }}
-                className="text-orange-600 hover:text-orange-700"
+                whileHover={{ scale: 1.1, boxShadow: "0 0 15px rgba(203, 70, 12, 0.3)" }}
+                className="text-[#CB460C] hover:text-[#CB460C]/85"
               >
                 <Instagram className="h-6 w-6" />
               </motion.a>
-
+ 
               <motion.a
                 href="tel:+918433684155"
-                whileHover={{ scale: 1.1, boxShadow: "0 0 15px rgba(249, 115, 22, 0.3)" }}
-                className="text-orange-600 hover:text-orange-700"
+                whileHover={{ scale: 1.1, boxShadow: "0 0 15px rgba(203, 70, 12, 0.3)" }}
+                className="text-[#CB460C] hover:text-[#CB460C]/85"
               >
                 <Phone className="h-6 w-6" />
               </motion.a>
-
+ 
               <motion.a
                 href="mailto:margikayatra@gmail.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.1, boxShadow: "0 0 15px rgba(249, 115, 22, 0.3)" }}
-                className="text-orange-600 hover:text-orange-700"
+                whileHover={{ scale: 1.1, boxShadow: "0 0 15px rgba(203, 70, 12, 0.3)" }}
+                className="text-[#CB460C] hover:text-[#CB460C]/85"
               >
                 <Mail className="h-6 w-6" />
               </motion.a>
             </div>
-
           </div>
-
+ 
           <div>
-            <h4 className="font-bold text-orange-700 mb-4 text-lg">Quick Links</h4>
+            <h4 className="font-bold text-[#CB460C] mb-4 text-lg">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/" className="text-gray-700 hover:text-orange-600 transition-colors font-medium">
+                <Link href="/" className="text-gray-900 hover:text-[#CB460C] transition-colors font-medium">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/book-trip" className="text-gray-700 hover:text-orange-600 transition-colors font-medium">
+                <Link href="/book-trip" className="text-gray-900 hover:text-[#CB460C] transition-colors font-medium">
                   Book Trip
                 </Link>
               </li>
               <li>
                 <Link
                   href="/personalized-trip"
-                  className="text-gray-700 hover:text-orange-600 transition-colors font-medium"
+                  className="text-gray-900 hover:text-[#CB460C] transition-colors font-medium"
                 >
                   Personalized Trip
                 </Link>
@@ -88,41 +87,41 @@ export function Footer() {
               <li>
                 <Link
                   href="/previous-trips"
-                  className="text-gray-700 hover:text-orange-600 transition-colors font-medium"
+                  className="text-gray-900 hover:text-[#CB460C] transition-colors font-medium"
                 >
                   Reviews
                 </Link>
               </li>
             </ul>
           </div>
-
+ 
           <div>
-            <h4 className="font-bold text-orange-700 mb-4 text-lg">Contact Info</h4>
+            <h4 className="font-bold text-[#CB460C] mb-4 text-lg">Contact Info</h4>
             <div className="space-y-3">
               <div className="flex items-start">
-                <MapPin className="h-4 w-4 text-orange-600 mr-2 mt-1 flex-shrink-0" />
-                <span className="text-gray-700 text-sm font-medium">
+                <MapPin className="h-4 w-4 text-[#CB460C] mr-2 mt-1 flex-shrink-0" />
+                <span className="text-gray-900 text-sm font-medium">
                   Mumbai • Thane 
                 </span>
               </div>
               <div className="flex items-center">
-                <Phone className="h-4 w-4 text-orange-600 mr-2" />
-                <span className="text-gray-700 text-sm font-medium">+91 8433684155</span>
+                <Phone className="h-4 w-4 text-[#CB460C] mr-2" />
+                <span className="text-gray-900 text-sm font-medium">+91 8433684155</span>
               </div>
               <div className="flex items-center">
-                <Phone className="h-4 w-4 text-orange-600 mr-2" />
-                <span className="text-gray-700 text-sm font-medium">+91 7715069696</span>
+                <Phone className="h-4 w-4 text-[#CB460C] mr-2" />
+                <span className="text-gray-900 text-sm font-medium">+91 7715069696</span>
               </div>
               <div className="flex items-center">
-                <Star className="h-4 w-4 text-orange-600 mr-2" />
-                <span className="text-gray-700 text-sm font-medium">4.9/5 Google Rating</span>
+                <Star className="h-4 w-4 text-[#CB460C] mr-2" />
+                <span className="text-gray-900 text-sm font-medium">4.9/5 Google Rating</span>
               </div>
             </div>
           </div>
         </div>
-
-        <div className="border-t border-orange-300 mt-8 pt-8 text-center">
-          <p className="text-gray-700 font-medium">
+ 
+        <div className="border-t border-[#CB460C]/25 mt-8 pt-8 text-center">
+          <p className="text-gray-900 font-medium">
             © {new Date().getFullYear()} Margika Yatra Pvt. Ltd. All rights reserved.
           </p>
         </div>

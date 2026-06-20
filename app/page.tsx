@@ -32,6 +32,7 @@ import Link from "next/link"
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay';
 import { useCallback, useEffect, useState, useRef } from "react";
+import { tripPackages } from "@/lib/trip-packages"
 
 // ✅ Using LucideIcon type instead of React.ElementType — no React import needed
 interface StatItem {
@@ -92,80 +93,7 @@ export default function HomePage() {
     }
   }
 
-  const packages = [
-    {
-      name: "Char Dham & Do Dham Yatra",
-      price: "₹34,999",
-      duration: "10N/11D",
-      image: "/4dham.png",
-      description: "Sacred journey to the four holy shrines",
-      location: "Uttarakhand",
-    },
-    {
-      name: "Varanasi",
-      price: "₹7,999",
-      duration: "2N/3D",
-      image: "/vr1.png",
-      description: "Experience the spiritual capital of India",
-      location: "Uttar Pradesh",
-    },
-    {
-      name: "Ujjain & Omkareshwar",
-      price: "₹10,999",
-      duration: "2N/3D",
-      image: "/mp.jpg",
-      description: "Visit the sacred Jyotirlingas",
-      location: "Madhya Pradesh",
-    },
-    {
-      name: "3 Jyotirling of Maharashtra",
-      price: "₹12,999",
-      duration: "3N/4D",
-      image: "/mh.jpg",
-      description: "Explore Maharashtra's divine temples",
-      location: "Maharashtra",
-    },
-    {
-      name: "Varanasi-Ayodhya-Prayagraj",
-      price: "₹15,999",
-      duration: "3N/4D",
-      image: "/up.jpg",
-      description: "Tri-city spiritual circuit",
-      location: "Uttar Pradesh",
-    },
-    {
-      name: "Rameshwaram",
-      price: "₹14,999",
-      duration: "3N/4D",
-      image: "/rameshwaram.jpg",
-      description: "Southern pilgrimage destination",
-      location: "Tamil Nadu",
-    },
-    {
-      name: "Jagannath Puri",
-      price: "₹12,999",
-      duration: "2N/3D",
-      image: "/puri.png",
-      description: "Sacred journey to the land of Lord Jagannath",
-      location: "Odisha",
-    },
-    {
-      name: "Meghalaya",
-      price: "₹19,999",
-      duration: "5N/6D",
-      image: "/mg.png",
-      description: "Land of clouds and natural beauty",
-      location: "Meghalaya",
-    },
-  ]
-
-  const handleBookNow = (packageName: string, price: string) => {
-    const message = `🙏 Namaste! I'm interested in booking the ${packageName} package (${price}). Please provide more details and availability. Thank you! 🕉️`
-    const whatsappUrl = `https://wa.me/917208771688?text=${encodeURIComponent(message)}`
-    if (typeof window !== 'undefined') {
-      window.open(whatsappUrl, "_blank")
-    }
-  }
+  const packages = tripPackages
 
   const tripImages = [
     "/1.jpg",
@@ -196,7 +124,7 @@ export default function HomePage() {
     align: 'center',
     slidesToScroll: 1,
     dragFree: false,
-  }, [autoplay.current]);
+  }, [autoplay.current as any]);
 
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
@@ -443,17 +371,17 @@ export default function HomePage() {
           </motion.div>
 
           {/* Photo Slider */}
-          <div className="relative">
+          <div className="relative overflow-hidden">
             <motion.div
               className="flex gap-6 pb-6"
-              animate={{ x: [0, -1920] }}
+              animate={{ x: [0, -2752] }}
               transition={{
-                duration: 25,
+                duration: 30,
                 repeat: Number.POSITIVE_INFINITY,
                 ease: "linear",
               }}
             >
-              {Array.from({ length: 8 }, (_, index) => {
+              {Array.from({ length: 16 }, (_, index) => {
                 const image = tripImages[index % tripImages.length];
 
                 return (
@@ -574,19 +502,15 @@ export default function HomePage() {
                           whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(249, 115, 22, 0.3)" }}
                           whileTap={{ scale: 0.95 }}
                         >
-                          <Button
-                            size="lg"
-                            className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-3 text-lg shadow-xl border-0 font-semibold"
-                            onClick={() => {
-                              if (typeof window !== 'undefined') {
-                                const eventMessage = `Hello, I'm interested in the "${event.name}" event (${event.date}). Can you provide more details?`;
-                                window.open(`https://wa.me/917208771688?text=${encodeURIComponent(eventMessage)}`, '_blank');
-                              }
-                            }}
-                          >
-                            Enquire Now
-                            <ChevronRight className="ml-2 h-5 w-5" />
-                          </Button>
+                          <Link href={event.name === "Dev Deepawali" ? "/packages/dev-deepawali" : "/#packages"}>
+                            <Button
+                              size="lg"
+                              className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-3 text-lg shadow-xl border-0 font-semibold"
+                            >
+                              View Package Details
+                              <ChevronRight className="ml-2 h-5 w-5" />
+                            </Button>
+                          </Link>
                         </motion.div>
                       </CardContent>
                     </Card>
@@ -628,7 +552,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {packages.map((pkg, index) => (
               <motion.div
-                key={index}
+                key={pkg.id}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -663,15 +587,17 @@ export default function HomePage() {
                     <motion.div
                       whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(249, 115, 22, 0.3)" }}
                       whileTap={{ scale: 0.95 }}
+                      className="space-y-3"
                     >
-                      <Button
-                        size="lg"
-                        className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-3 text-lg shadow-xl border-0 font-semibold"
-                        onClick={() => handleBookNow(pkg.name, pkg.price)}
-                      >
-                        Book Now
-                        <ChevronRight className="ml-2 h-5 w-5" />
-                      </Button>
+                      <Link href={pkg.id === "ujjain" ? "/ujjain-omkareshwar-tour-package" : pkg.id === "kerala" ? "/kerala-tour-packages-from-mumbai" : `/packages/${pkg.id}`}>
+                        <Button
+                          size="lg"
+                          className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-3 text-lg shadow-xl border-0 font-semibold"
+                        >
+                          Book Now
+                          <ChevronRight className="ml-2 h-5 w-5" />
+                        </Button>
+                      </Link>
                     </motion.div>
                   </CardContent>
                 </Card>
