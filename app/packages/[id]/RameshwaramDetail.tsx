@@ -4,6 +4,8 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/ui/newheader"
+import { CharStats } from "@/components/char-stats"
+import { GoogleReviews } from "@/components/ui/google-reviews"
 
 export function RameshwaramDetail() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
@@ -695,13 +697,7 @@ export function RameshwaramDetail() {
         </div>
       </section>
 
-      {/* STATS */}
-      <div className="r-stats-strip">
-        <div className="r-stat-item"><div className="r-stat-num">500+</div><div className="r-stat-label">Happy Yatris</div></div>
-        <div className="r-stat-item"><div className="r-stat-num">4.9★</div><div className="r-stat-label">Google Rating</div></div>
-        <div className="r-stat-item"><div className="r-stat-num">12th</div><div className="r-stat-label">Sacred Jyotirlinga</div></div>
-        <div className="r-stat-item"><div className="r-stat-num">22</div><div className="r-stat-label">Holy Theerthams</div></div>
-      </div>
+     <CharStats/>
 
       {/* INTRO */}
       <section className="r-section">
@@ -709,7 +705,7 @@ export function RameshwaramDetail() {
           <div className="r-intro-visual reveal">
             <img
               className="r-intro-img-main"
-              src="/Rammain2.jpg"
+              src="/ram.jpg"
               alt="Rameshwaram Ramanathaswamy Corridor"
               onError={(e) => { (e.target as HTMLImageElement).src = '/rambg.jpg' }}
             />
@@ -762,7 +758,7 @@ export function RameshwaramDetail() {
         <div className="r-price-card reveal">
           <div className="r-price-card-media">
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Rameswaram_temple_%282%29.jpg/1280px-Rameswaram_temple_%282%29.jpg"
+              src="/ram.jpg"
               alt="Rameshwaram Tour"
               onError={(e) => { (e.target as HTMLImageElement).src = '/rambg.jpg' }}
             />
@@ -787,9 +783,9 @@ export function RameshwaramDetail() {
             <div className="r-price-footer">
               <div className="r-price-amount-wrap">
                 <span className="r-price-from">Starting from</span>
-                <span className="r-price-amount">₹16,999</span>
+                <span className="r-price-amount">₹9,499</span>
                 <span className="r-price-per"> / person</span>
-                <span className="r-price-note">Varies with travel mode, group size & hotel category. Final quote on enquiry.</span>
+                <span className="r-price-note">Standard Package: ₹9,499 / person. Premium Package: ₹12,499 / person. Final price depends on dates, group size &amp; hotel category.</span>
               </div>
               <div className="r-price-actions">
                 <a href="tel:+917208771688" className="v-btn-book-outline">Call Us</a>
@@ -948,6 +944,8 @@ export function RameshwaramDetail() {
           </div>
         </div>
       </section>
+
+      <GoogleReviews />
 
       {/* FAQ */}
       <section className="r-section alt">

@@ -22,6 +22,7 @@ import { DwarkaSomnathDetail } from "./DwarkaSomnathDetail"
 import { UjjainOmkareshwarDetail } from "./UjjainOmkareshwarDetail"
 import { KeralaDetail } from "./KeralaDetail"
 import { Header } from "@/components/ui/newheader"
+import { CharStats } from "@/components/char-stats"
 
 
 export default function PackageDetailPage() {
@@ -381,7 +382,11 @@ function MaharashtraJyotirlingDetail() {
         }
         .mh-complete { background: linear-gradient(135deg, var(--saffron-dark) 0%, var(--saffron) 100%); color: #ffffff; }
         .mh-complete .char-section-title { color: #ffffff; }
-        .mh-complete .char-body { color: rgba(255, 255, 255, 0.85); }
+        .mh-complete .char-body {
+          color: rgba(255, 255, 255, 0.85);
+          text-align: center;
+          margin: 0 auto;
+        }
         .mh-complete .char-tag { color: #ffffff; }
         .mh-complete .char-tag::before { background: #ffffff; }
         .mh-complete .char-rule { background: #ffffff; }
@@ -474,7 +479,7 @@ function MaharashtraJyotirlingDetail() {
         .char-dham-detail { margin-top: 10px; color: rgba(255, 255, 255, 0.8); font-size: 13px; line-height: 1.6; }
         .char-light { background: linear-gradient(135deg, var(--saffron-dark) 0%, var(--saffron) 100%); color: #ffffff; }
         .char-light .char-section-title { color: #ffffff; }
-        .char-light .char-body { color: rgba(255,255,255,0.85); }
+        .char-light .char-body { color: rgba(255,255,255,0.95); }
         .char-light .char-features li { border-bottom: 1px solid rgba(255,255,255,0.15); }
         .char-light .char-features h3 { color: #ffffff; }
         .char-light .char-features p { color: rgba(255,255,255,0.8); }
@@ -595,17 +600,13 @@ function MaharashtraJyotirlingDetail() {
         </div>
       </section>
 
-      <div className="char-stats">
-        {[["3", "Jyotirlingas"], ["3D/2N", "Pune-Based Plan"], ["4.9★", "Google Rating"], ["Mumbai", "Thane Support"]].map(([num, label]) => (
-          <div className="char-stat" key={label}><strong>{num}</strong><span>{label}</span></div>
-        ))}
-      </div>
+     <CharStats/>
 
       <section className="char-section">
         <div className="char-wrap char-two">
           <div className="char-intro-visual char-reveal">
-            <img className="char-photo-main" src="/Mhmain2.png" alt="Three Jyotirlinga Maharashtra Yatra" />
-            <img className="char-photo-float" src="/3.jpg" alt="Margika Yatra travellers" />
+            <img className="char-photo-main" src="/Mah.jpeg" alt="Three Jyotirlinga Maharashtra Yatra" />
+            {/* <img className="char-photo-float" src="/3.jpg" alt="Margika Yatra travellers" /> */}
           </div>
           <div className="char-reveal">
             <div className="char-tag">A Sacred Maharashtra Circuit</div>
@@ -888,7 +889,7 @@ function CharDhamDetail() {
     {
       name: "Complete Char Dham Yatra Package",
       duration: "12 - 16 Days · Uttarakhand",
-      price: "₹31,999",
+      price: "₹26,999",
       badge: "☁ Most Complete",
       image: "/4dham.png",
       desc: "The full sacred circuit — Yamunotri, Gangotri, Kedarnath & Badrinath. All four dhams, VIP darshan at every shrine, private AC transport, vegetarian meals, and your dedicated Margika coordinator throughout. The most complete pilgrimage journey a Hindu family can undertake.",
@@ -898,21 +899,21 @@ function CharDhamDetail() {
     {
       name: "Do Dham Yatra Kedarnath & Badrinath",
       duration: "7 - 9 Days · Uttarakhand",
-      price: "₹22,999",
+      price: "₹19,999",
       badge: "☁ Most Popular",
       image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
       desc: "For those with limited time or physical constraints. A spiritually complete alternative — the Jyotirlinga at Kedarnath and the Vishnu temple at Badrinath. Gentle pace, helicopter access, ideal for seniors and families.",
       tags: ["Helicopter Option", "Senior Friendly", "VIP Darshan", "Veg Meals"],
     },
-    {
-      name: "Kedarnath Helicopter Package",
-      duration: "5 - 7 Days · Uttarakhand",
-      price: "₹29,999",
-      badge: "▾ Premium",
-      image: "/rambg.jpg",
-      desc: "The premium choice for those who cannot trek. Helicopter to Kedarnath, VIP darshan, luxury accommodation. Book early — slots are extremely limited every season.",
-      tags: ["Helicopter Included", "Luxury Hotels", "Priority Darshan"],
-    },
+    // {
+    //   name: "Kedarnath Helicopter Package",
+    //   duration: "5 - 7 Days · Uttarakhand",
+    //   price: "₹29,999",
+    //   badge: "▾ Premium",
+    //   image: "/rambg.jpg",
+    //   desc: "The premium choice for those who cannot trek. Helicopter to Kedarnath, VIP darshan, luxury accommodation. Book early — slots are extremely limited every season.",
+    //   tags: ["Helicopter Included", "Luxury Hotels", "Priority Darshan"],
+    // },
   ]
 
   const features = [
@@ -1322,17 +1323,8 @@ function CharDhamDetail() {
         </div>
       </section>
 
-      <div className="char-stats">
-        {[
-          ["500+", "Happy Yatris"],
-          ["4.9★", "Google Rating"],
-          ["15+", "Sacred Destinations"],
-          ["100%", "VIP Darshan Assured"],
-        ].map(([num, label]) => (
-          <div className="char-stat" key={label}><strong>{num}</strong><span>{label}</span></div>
-        ))}
-      </div>
-
+     <CharStats/>
+     
       <section className="char-section">
         <div className="char-wrap char-two">
           <div className="char-intro-visual char-reveal">

@@ -5,6 +5,7 @@ import Link from "next/link"
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/ui/newheader"
 import { GoogleReviews } from "@/components/ui/google-reviews"
+import { CharStats } from "@/components/char-stats"
 
 export function DwarkaSomnathDetail() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
@@ -127,28 +128,28 @@ export function DwarkaSomnathDetail() {
       desc: "Char Dham · Kingdom of Lord Krishna",
       detail:
         "The legendary city of Lord Krishna, one of the four sacred Char Dhams. Dwarkadhish Temple stands 51 meters tall, with darshan at Gomti Ghat, Rukmini Temple & Beyt Dwarka island.",
-      image: "/rambg.jpg",
+      image: "/Dw1.jpeg",
     },
     {
       name: "Nageshwar",
       desc: "1st Jyotirlinga · Lord of Snakes",
       detail:
         "The first among the 12 Jyotirlingas, 17 km from Dwarka. A colossal 25-meter idol of Lord Shiva welcomes devotees. Early morning darshan is deeply peaceful.",
-      image: "/rambg.jpg",
+      image: "/Dw2.jpeg",
     },
     {
       name: "Somnath",
       desc: "First Jyotirlinga · Eternal Shiva Temple",
       detail:
         "The most celebrated of all Jyotirlingas, standing at the confluence of three sacred rivers and the Arabian Sea. The light-and-sound show here is one of the finest in India.",
-      image: "/rambg.jpg",
+      image: "/Dw3.jpeg",
     },
     {
       name: "Gopi Talav & Gomti Ghat",
       desc: "Sacred Lakes · Sunset & Serenity",
       detail:
         "Gomti Ghat for the holy evening aarti in Dwarka; Gopi Talav — where the Gopis waited for Lord Krishna. Also includes Madhavpur Beach for a serene sunset before Somnath darshan.",
-      image: "/rambg.jpg",
+      image: "/Dw4.jpeg",
     },
   ]
 
@@ -175,7 +176,7 @@ export function DwarkaSomnathDetail() {
     ],
     [
       "What is the Gujarat tour package price from Mumbai?",
-      "Gujarat tour package prices start from ₹5,960 per person depending on the batch size, hotel category, and travel mode. Call or WhatsApp Margika Yatra at +91 72087 71688 for a personalised quote.",
+      "Gujarat tour package prices start from ₹8,999 per person for standard package (Premium package is ₹14,999 per person), depending on the batch size, hotel category, and travel mode. Call or WhatsApp Margika Yatra at +91 72087 71688 for a personalised quote.",
     ],
     [
       "Does the Gujarat package cover Nageshwar Jyotirlinga?",
@@ -200,10 +201,9 @@ export function DwarkaSomnathDetail() {
           --cream-warm: #fff7ed;
           --ink: #ffffff;
           --ink-mid: #fff7ed;
-          --ink-light: #fed7aa;
           --smoke: #4b5563;
           --white: #ffffff;
-          --section-pad: clamp(60px, 8vw, 110px);
+          --section-pad: clamp(60px, 8vw, 120px);
 
           background: linear-gradient(to bottom right, #ffffff, #fff7ed, #ffedd5);
           color: var(--cream);
@@ -215,10 +215,7 @@ export function DwarkaSomnathDetail() {
         .gujarat-page * {
           box-sizing: border-box;
         }
-        .gujarat-page *:not(header, header *, footer, footer *) {
-          margin: 0;
-          padding: 0;
-        }
+        .gujarat-page *:not(header, header *, footer, footer *, .char-stats-wrapper, .char-stats-wrapper *) { margin: 0; padding: 0; }
 
         .gujarat-page ::-webkit-scrollbar {
           width: 4px;
@@ -246,7 +243,7 @@ export function DwarkaSomnathDetail() {
         .gujarat-page .hero-img {
           position: absolute;
           inset: 0;
-          background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Dwarkadhish_temple.jpg/1280px-Dwarkadhish_temple.jpg")
+          background: url("/DwMain.jpeg")
             center/cover no-repeat;
           transform: scale(1.05);
           animation: heroZoom 12s ease-out forwards;
@@ -537,7 +534,8 @@ export function DwarkaSomnathDetail() {
         .gujarat-page .highlights-header {
           text-align: center;
           max-width: 620px;
-          margin: 0 auto 60px;
+          margin: 100px auto;
+          padding-top: 80px ;
         }
         .gujarat-page .highlights-header .gold-rule {
           margin: 24px auto;
@@ -625,10 +623,19 @@ export function DwarkaSomnathDetail() {
         /* ITINERARY */
         .gujarat-page .itinerary-section {
           max-width: 1200px;
-          margin: 0 auto;
+          margin: 100px auto;
         }
         .gujarat-page .itinerary-header {
-          margin-bottom: 50px;
+          text-align: center;
+          max-width: 600px;
+          margin: 0 auto 50px;
+        }
+        .gujarat-page .itinerary-header .section-tag {
+          justify-content: center;
+          margin: 0 auto 16px;
+        }
+        .gujarat-page .itinerary-header .gold-rule {
+          margin: 20px auto;
         }
         .gujarat-page .itinerary-day {
           background: rgba(255, 255, 255, 0.85);
@@ -728,9 +735,68 @@ export function DwarkaSomnathDetail() {
         }
         .gujarat-page .day-ctas {
           display: flex;
+          align-items: center;
           gap: 12px;
           flex-wrap: wrap;
           margin-top: 20px;
+        }
+        .gujarat-page .btn-book {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          background: var(--saffron);
+          color: white;
+          padding: 12px 24px;
+          border-radius: 2px;
+          font-family: "Jost", sans-serif;
+          font-size: 12px;
+          font-weight: 500;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          text-decoration: none;
+          transition: all 0.3s;
+          cursor: pointer;
+          border: none;
+        }
+        .gujarat-page .btn-book:hover {
+          background: var(--saffron-light);
+        }
+        .gujarat-page .btn-book-outline {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          background: transparent;
+          color: var(--saffron);
+          padding: 12px 24px;
+          border-radius: 2px;
+          border: 1px solid var(--saffron);
+          font-family: "Jost", sans-serif;
+          font-size: 12px;
+          font-weight: 500;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          text-decoration: none;
+          transition: all 0.3s;
+          cursor: pointer;
+        }
+        .gujarat-page .btn-book-outline:hover {
+          background: var(--saffron);
+          color: white;
+        }
+        .gujarat-page .day-ctas .btn-secondary {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          background: transparent;
+          color: var(--smoke);
+          border: 1px solid rgba(17, 24, 39, 0.2);
+          transition: all 0.3s;
+        }
+        .gujarat-page .day-ctas .btn-secondary:hover {
+          border-color: var(--saffron);
+          color: var(--saffron);
+          background: rgba(249, 115, 22, 0.05);
         }
 
         /* PRICING TABLE */
@@ -786,7 +852,8 @@ export function DwarkaSomnathDetail() {
           gap: 60px;
           align-items: center;
           max-width: 1200px;
-          margin: 0 auto;
+          margin: 100px auto;
+          padding-top: 80px ;
         }
         .gujarat-page .why-visual {
           position: relative;
@@ -866,7 +933,8 @@ export function DwarkaSomnathDetail() {
         }
         .gujarat-page .steps-header {
           text-align: center;
-          margin-bottom: 60px;
+          margin: 100px auto;
+          padding-top: 80px ;
         }
         .gujarat-page .steps-header .gold-rule {
           margin: 20px auto;
@@ -876,7 +944,7 @@ export function DwarkaSomnathDetail() {
           grid-template-columns: repeat(6, 1fr);
           gap: 16px;
           max-width: 1200px;
-          margin: 0 auto;
+          margin: 100px auto;
           position: relative;
         }
         .gujarat-page .steps-grid::before {
@@ -959,8 +1027,9 @@ export function DwarkaSomnathDetail() {
         .gujarat-page .testimonial-section {
           background: linear-gradient(135deg, var(--saffron-dark) 0%, var(--saffron) 50%, var(--saffron-dark) 100%);
           text-align: center;
-          padding: 80px 5%;
+          padding: var(--section-pad) 5%;
         }
+
         .gujarat-page .testimonial-icon {
           font-size: 40px;
           margin-bottom: 20px;
@@ -994,7 +1063,7 @@ export function DwarkaSomnathDetail() {
           grid-template-columns: 1fr 1fr;
           gap: 60px;
           max-width: 1200px;
-          margin: 0 auto;
+          margin: 100px auto;
         }
         .gujarat-page .faq-list {
           margin-top: 40px;
@@ -1060,98 +1129,100 @@ export function DwarkaSomnathDetail() {
           text-align: center;
           max-width: 700px;
           margin: 0 auto 50px;
+          padding-top: 80px ;
         }
         .gujarat-page .featured-pkgs-header .gold-rule {
           margin: 20px auto;
         }
+
         .gujarat-page .featured-grid {
-          display: grid;
-          grid-template-columns: 1.4fr 1fr;
-          grid-template-rows: auto auto;
-          gap: 20px;
-          max-width: 1200px;
+          max-width: 1100px;
           margin: 0 auto;
         }
         .gujarat-page .feat-card-main {
-          grid-row: span 2;
+          max-width: 1100px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: 1.05fr 1fr;
+          background: rgba(255, 255, 255, 0.85);
+          border: 1px solid rgba(249, 115, 22, 0.15);
           border-radius: 8px;
           overflow: hidden;
-          border: 1px solid rgba(249, 115, 22, 0.15);
-          background: rgba(255, 255, 255, 0.85);
-          display: flex;
-          flex-direction: column;
-          transition: transform 0.4s, border-color 0.4s, box-shadow 0.4s;
+          box-shadow: 0 12px 40px rgba(249, 115, 22, 0.06);
+          transition: transform 0.4s, box-shadow 0.4s;
         }
         .gujarat-page .feat-card-main:hover {
-          transform: translateY(-5px);
-          border-color: rgba(232, 135, 26, 0.45);
-          box-shadow: 0 12px 40px rgba(249, 115, 22, 0.08);
+          transform: translateY(-4px);
+          box-shadow: 0 16px 50px rgba(249, 115, 22, 0.1);
         }
         .gujarat-page .feat-card-main .feat-img {
-          height: 320px;
-          overflow: hidden;
           position: relative;
+          min-height: 440px;
+          overflow: hidden;
         }
+
         .gujarat-page .feat-card-main .feat-img img {
+          position: absolute;
+          inset: 0;
           width: 100%;
           height: 100%;
           object-fit: cover;
-          filter: brightness(0.82) saturate(1.15);
+          filter: brightness(0.78) saturate(1.1);
           transition: transform 0.6s;
         }
         .gujarat-page .feat-card-main:hover .feat-img img {
-          transform: scale(1.06);
+          transform: scale(1.05);
         }
         .gujarat-page .feat-badge {
           position: absolute;
-          top: 16px;
-          left: 16px;
+          top: 18px;
+          left: 18px;
           background: var(--saffron);
           color: white;
           font-size: 10px;
           font-weight: 600;
           letter-spacing: 0.12em;
           text-transform: uppercase;
-          padding: 5px 12px;
+          padding: 6px 14px;
           border-radius: 2px;
+          z-index: 2;
         }
         .gujarat-page .feat-body {
-          padding: 28px 30px 30px;
-          flex: 1;
+          padding: 40px 42px;
           display: flex;
           flex-direction: column;
+          justify-content: space-between;
         }
         .gujarat-page .feat-label {
           font-size: 11px;
-          letter-spacing: 0.15em;
+          letter-spacing: 0.13em;
           text-transform: uppercase;
           color: var(--saffron);
-          margin-bottom: 8px;
+          margin-bottom: 10px;
         }
         .gujarat-page .feat-name {
           font-family: "Cormorant Garamond", serif;
-          font-size: 26px;
+          font-size: 30px;
           font-weight: 500;
           color: var(--cream);
-          line-height: 1.25;
           margin-bottom: 14px;
+          line-height: 1.15;
         }
         .gujarat-page .feat-name em {
           color: var(--gold);
           font-style: italic;
         }
         .gujarat-page .feat-desc {
-          font-size: 13.5px;
+          font-size: 14px;
           color: var(--smoke);
           line-height: 1.75;
-          margin-bottom: 18px;
-          flex: 1;
+          margin-bottom: 22px;
         }
         .gujarat-page .feat-tags {
           display: flex;
-          gap: 8px;
           flex-wrap: wrap;
-          margin-bottom: 22px;
+          gap: 8px;
+          margin-bottom: 30px;
         }
         .gujarat-page .feat-tag {
           font-size: 11px;
@@ -1159,116 +1230,133 @@ export function DwarkaSomnathDetail() {
           border-radius: 2px;
           border: 1px solid rgba(249, 115, 22, 0.25);
           color: var(--gold);
-          letter-spacing: 0.06em;
         }
         .gujarat-page .feat-footer {
           display: flex;
-          align-items: center;
-          justify-content: space-between;
-          flex-wrap: wrap;
-          gap: 12px;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 22px;
+          margin-top: auto;
+          width: 100%;
         }
         .gujarat-page .feat-price {
-          font-family: "Cormorant Garamond", serif;
+          display: flex;
+          flex-direction: column;
+          width: 100%;
         }
         .gujarat-page .feat-price .from {
           font-size: 11px;
           color: var(--smoke);
-          display: block;
-          margin-bottom: 2px;
-          letter-spacing: 0.06em;
+          letter-spacing: 0.08em;
           text-transform: uppercase;
         }
         .gujarat-page .feat-price .amount {
-          font-size: 30px;
+          font-family: "Cormorant Garamond", serif;
+          font-size: 44px;
           color: var(--gold);
-          font-weight: 500;
-          line-height: 1;
+          line-height: 1.1;
+          font-weight: 600;
         }
         .gujarat-page .feat-price .per {
-          font-size: 12px;
+          font-size: 13px;
           color: var(--smoke);
+          margin-top: -2px;
+        }
+        .gujarat-page .feat-price-note {
+          font-size: 11.5px;
+          color: var(--smoke);
+          margin-top: 10px;
+          line-height: 1.6;
+          max-width: 420px;
         }
         .gujarat-page .feat-ctas {
           display: flex;
-          gap: 10px;
-          align-items: center;
+          flex-wrap: wrap;
+          gap: 12px;
+          width: 100%;
         }
-        .gujarat-page .btn-feat-book {
-          background: var(--saffron);
-          color: white;
-          padding: 12px 22px;
+        .gujarat-page .btn-feat-call {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          background: transparent;
+          color: var(--gold);
+          padding: 15px 30px;
           border-radius: 2px;
+          border: 1px solid rgba(194, 65, 12, 0.45);
           font-family: "Jost", sans-serif;
-          font-size: 12px;
+          font-size: 13px;
           font-weight: 500;
-          letter-spacing: 0.1em;
+          letter-spacing: 0.12em;
           text-transform: uppercase;
           text-decoration: none;
           transition: all 0.3s;
+          cursor: pointer;
+        }
+        .gujarat-page .btn-feat-call:hover {
+          border-color: var(--gold);
+          background: rgba(249, 115, 22, 0.08);
+        }
+        .gujarat-page .btn-feat-book {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          background: var(--saffron);
+          color: white;
+          padding: 15px 30px;
+          border-radius: 2px;
+          font-family: "Jost", sans-serif;
+          font-size: 13px;
+          font-weight: 500;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          text-decoration: none;
+          transition: all 0.3s;
+          cursor: pointer;
+          border: none;
         }
         .gujarat-page .btn-feat-book:hover {
           background: var(--saffron-light);
-          transform: translateY(-1px);
         }
-        .gujarat-page .btn-feat-wa {
-          background: #25d366;
-          color: white;
-          padding: 12px 18px;
+        .gujarat-page .btn-feat-download {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          background: transparent;
+          color: var(--gold);
+          padding: 15px 30px;
           border-radius: 2px;
+          border: 1px solid rgba(194, 65, 12, 0.45);
           font-family: "Jost", sans-serif;
-          font-size: 12px;
+          font-size: 13px;
           font-weight: 500;
-          letter-spacing: 0.08em;
+          letter-spacing: 0.12em;
           text-transform: uppercase;
           text-decoration: none;
           transition: all 0.3s;
+          cursor: pointer;
         }
-        .gujarat-page .btn-feat-wa:hover {
-          background: #1eb858;
+        .gujarat-page .btn-feat-download:hover {
+          border-color: var(--gold);
+          background: rgba(249, 115, 22, 0.08);
         }
-        .gujarat-page .feat-card-small {
-          border-radius: 8px;
-          overflow: hidden;
-          border: 1px solid rgba(249, 115, 22, 0.15);
-          background: rgba(255, 255, 255, 0.85);
-          transition: transform 0.4s, border-color 0.4s, box-shadow 0.4s;
-        }
-        .gujarat-page .feat-card-small:hover {
-          transform: translateY(-4px);
-          border-color: rgba(232, 135, 26, 0.4);
-          box-shadow: 0 10px 30px rgba(249, 115, 22, 0.08);
-        }
-        .gujarat-page .feat-card-small .feat-img {
-          height: 190px;
-          overflow: hidden;
-          position: relative;
-        }
-        .gujarat-page .feat-card-small .feat-img img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          filter: brightness(0.8) saturate(1.1);
-          transition: transform 0.5s;
-        }
-        .gujarat-page .feat-card-small:hover .feat-img img {
-          transform: scale(1.06);
-        }
-        .gujarat-page .feat-card-small .feat-body {
-          padding: 20px 22px 22px;
-        }
-        .gujarat-page .feat-card-small .feat-name {
-          font-size: 20px;
-        }
-        .gujarat-page .feat-card-small .feat-price .amount {
-          font-size: 24px;
-        }
+
         @media (max-width: 900px) {
-          .gujarat-page .featured-grid {
+          .gujarat-page .feat-card-main {
             grid-template-columns: 1fr;
           }
-          .gujarat-page .feat-card-main {
-            grid-row: span 1;
+          .gujarat-page .feat-card-main .feat-img {
+            min-height: 260px;
+            height: 260px;
+          }
+        }
+        @media (max-width: 600px) {
+          .gujarat-page .feat-footer {
+            flex-direction: column;
+            align-items: flex-start;
+          }
+          .gujarat-page .feat-body {
+            padding: 30px 26px;
           }
         }
 
@@ -1346,11 +1434,10 @@ export function DwarkaSomnathDetail() {
           font-size: 12px;
           color: var(--smoke);
         }
-
         /* CTA BANNER */
         .gujarat-page .cta-banner {
           position: relative;
-          padding: 100px 5%;
+          padding: var(--section-pad) 5%;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -1552,24 +1639,8 @@ export function DwarkaSomnathDetail() {
         </div>
       </section>
 
-      {/* STATS */}
-      <div className="stats-strip">
-        <div className="stat-item">
-          <div className="stat-num">3N/4D</div>
-          <div className="stat-label">Package Duration</div>
-        </div>
-        <div className="stat-item">
-          <div className="stat-num">3</div>
-          <div className="stat-label">Sacred Shrines</div>
-        </div>
-        <div className="stat-item">
-          <div className="stat-num">4.9★</div>
-          <div className="stat-label">Google Rating</div>
-        </div>
-        <div className="stat-item">
-          <div className="stat-num">500+</div>
-          <div className="stat-label">Happy Yatris</div>
-        </div>
+      <div className="char-stats-wrapper mb-20">
+        <CharStats />
       </div>
 
       {/* INTRO */}
@@ -1578,7 +1649,7 @@ export function DwarkaSomnathDetail() {
           <div className="intro-visual reveal">
             <img
               className="intro-img-main"
-              src="/rambg.jpg"
+              src="/Dw1.jpeg"
               alt="Dwarkadhish Temple Dwarka Gujarat"
               onError={(e) => {
                 ; (e.target as HTMLImageElement).src = "/rambg.jpg"
@@ -1586,7 +1657,7 @@ export function DwarkaSomnathDetail() {
             />
             <img
               className="intro-img-float"
-              src="/rambg.jpg"
+              src="/Dw1.jpeg"
               alt="Somnath Jyotirlinga Gujarat"
               onError={(e) => {
                 ; (e.target as HTMLElement).style.display = "none"
@@ -1671,9 +1742,9 @@ export function DwarkaSomnathDetail() {
             </p>
           </div>
 
-          <div className="itinerary-list">
+          <div className="itinerary-list reveal">
             {itinerary.map((day, idx) => (
-              <div className={`itinerary-day ${openDays[idx] ? "open" : ""} reveal`} key={day.day}>
+              <div className={`itinerary-day ${openDays[idx] ? "open" : ""}`} key={day.day}>
                 <div className="day-header" onClick={() => toggleDay(idx)}>
                   <div className="day-num-badge">{day.day}</div>
                   <div className="day-title-wrap">
@@ -1719,7 +1790,7 @@ export function DwarkaSomnathDetail() {
       </section>
 
       {/* PACKAGE OPTIONS & PRICING */}
-      <section style={{ background: "rgba(255,255,255,0.02)" }}>
+      {/* <section style={{ background: "rgba(255,255,255,0.02)" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <div className="reveal" style={{ marginBottom: 50, textAlign: "center" }}>
             <div className="section-tag" style={{ justifyContent: "center" }}>
@@ -1755,7 +1826,7 @@ export function DwarkaSomnathDetail() {
             </table>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* WHY MARGIKA */}
       <section className="why-section">
@@ -1843,7 +1914,7 @@ export function DwarkaSomnathDetail() {
           <div className="feat-card-main reveal">
             <div className="feat-img">
               <img
-                src="/rambg.jpg"
+                src="/Dw1.jpeg"
                 alt="Gujarat Pilgrimage Package — Dwarka Somnath Nageshwar"
                 onError={(e) => { ; (e.target as HTMLImageElement).src = "/rambg.jpg" }}
               />
@@ -1866,77 +1937,17 @@ export function DwarkaSomnathDetail() {
               <div className="feat-footer">
                 <div className="feat-price">
                   <span className="from">Starting from</span>
-                  <span className="amount">₹6,999</span>
+                  <span className="amount">₹8,999</span>
                   <span className="per"> / person</span>
+                  <span className="feat-price-note">Varies with travel mode, group size & hotel category. Final quote on enquiry.</span>
                 </div>
                 <div className="feat-ctas">
+                  <a href="tel:+917208771688" className="btn-feat-call">Call Us</a>
                   <a href={razorpayLink} className="btn-feat-book" target="_blank" rel="noopener noreferrer">
-                    Book Now
+                    Book Now →
                   </a>
-                  <a href={wa("I want to enquire about Gujarat Pilgrimage Package")} className="btn-feat-wa" target="_blank" rel="noopener noreferrer">
-                    Enquire
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Small Card 1 */}
-          <div className="feat-card-small reveal reveal-delay-1">
-            <div className="feat-img">
-              <img
-                src="/rambg.jpg"
-                alt="Gujarat Tour Package for Couples"
-                onError={(e) => { ; (e.target as HTMLImageElement).src = "/rambg.jpg" }}
-              />
-              <div className="feat-badge">Couples</div>
-            </div>
-            <div className="feat-body">
-              <div className="feat-label">Romantic Pilgrimage · 3N / 4D</div>
-              <div className="feat-name">Gujarat Tour Package<br /><em>for Couples</em></div>
-              <p className="feat-desc">
-                Tailored for couples seeking spiritual bonding — private vehicle, select hotel upgrades, and personal time at each temple. Includes all standard inclusions.
-              </p>
-              <div className="feat-footer">
-                <div className="feat-price">
-                  <span className="from">Starting from</span>
-                  <span className="amount">₹5,999</span>
-                  <span className="per"> / person</span>
-                </div>
-                <div className="feat-ctas">
-                  <a href={razorpayLink} className="btn-feat-book" target="_blank" rel="noopener noreferrer">
-                    Book Now
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Small Card 2 */}
-          <div className="feat-card-small reveal reveal-delay-2">
-            <div className="feat-img">
-              <img
-                src="/rambg.jpg"
-                alt="Gujarat Tour Package for Families"
-                onError={(e) => { ; (e.target as HTMLImageElement).src = "/rambg.jpg" }}
-              />
-              <div className="feat-badge">Family</div>
-            </div>
-            <div className="feat-body">
-              <div className="feat-label">Family Pilgrimage · 3N / 4D</div>
-              <div className="feat-name">Gujarat Tour Package<br /><em>for Families</em></div>
-              <p className="feat-desc">
-                A Gujarat package planned around family comfort — senior-friendly pacing, Ertiga or Innova transport, and pure vegetarian meals throughout. Perfect for multi-generational groups.
-              </p>
-              <div className="feat-footer">
-                <div className="feat-price">
-                  <span className="from">Starting from</span>
-                  <span className="amount">₹6,999</span>
-                  <span className="per"> / person</span>
-                </div>
-                <div className="feat-ctas">
-                  <a href={razorpayLink} className="btn-feat-book" target="_blank" rel="noopener noreferrer">
-                    Book Now
+                  <a href="/Gujarat.pdf" download="Gujarat_Itinerary.pdf" className="btn-feat-download">
+                    Download Itinerary
                   </a>
                 </div>
               </div>
@@ -1944,7 +1955,6 @@ export function DwarkaSomnathDetail() {
           </div>
         </div>
       </section>
-
       {/* HOW IT WORKS */}
       <section className="steps-section">
         <div className="steps-header reveal">

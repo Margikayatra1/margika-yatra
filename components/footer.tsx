@@ -92,6 +92,21 @@ export function Footer() {
                   Reviews
                 </Link>
               </li>
+              <li>
+                <Link href="/about" className="text-gray-900 hover:text-[#CB460C] transition-colors font-medium">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="text-gray-900 hover:text-[#CB460C] transition-colors font-medium">
+                  Contact Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacy" className="text-gray-900 hover:text-[#CB460C] transition-colors font-medium">
+                  Privacy Policy
+                </Link>
+              </li>
             </ul>
           </div>
  

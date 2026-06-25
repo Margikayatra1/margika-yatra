@@ -5,6 +5,7 @@ import Link from "next/link"
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/ui/newheader"
 import { GoogleReviews } from "@/components/ui/google-reviews"
+import { CharStats } from "@/components/char-stats"
 
 export function UjjainOmkareshwarDetail() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
@@ -172,7 +173,7 @@ export function UjjainOmkareshwarDetail() {
         }
 
         .ujjain-page * { box-sizing: border-box; }
-        .ujjain-page *:not(header, header *, footer, footer *) { margin: 0; padding: 0; }
+        .ujjain-page *:not(header, header *, footer, footer *, .char-stats-wrapper, .char-stats-wrapper *) { margin: 0; padding: 0; }
         
         .ujjain-page ::-webkit-scrollbar { width: 4px; }
         .ujjain-page ::-webkit-scrollbar-track { background: var(--ink-mid); }
@@ -270,7 +271,7 @@ export function UjjainOmkareshwarDetail() {
 
         /* HIGHLIGHTS GRID */
         .ujjain-page .highlights-section { background: rgba(249, 115, 22, 0.03); }
-        .ujjain-page .highlights-header { text-align: center; max-width: 600px; margin: 0 auto 60px; }
+        .ujjain-page .highlights-header { text-align: center; max-width: 600px; margin: 100px auto; padding-top: 80px; }
         .ujjain-page .highlights-header .gold-rule { margin: 24px auto; }
         .ujjain-page .highlights-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; max-width: 1200px; margin: 0 auto; }
         .ujjain-page .hl-card { position: relative; height: 380px; overflow: hidden; cursor: default; }
@@ -286,7 +287,7 @@ export function UjjainOmkareshwarDetail() {
 
         /* PACKAGE PRICING */
         .ujjain-page .price-section { background: rgba(249, 115, 22, 0.02); }
-        .ujjain-page .price-header { text-align: center; max-width: 660px; margin: 0 auto 50px; }
+        .ujjain-page .price-header { text-align: center; max-width: 660px; margin: 100px auto; padding-top: 80px; }
         .ujjain-page .price-header .gold-rule { margin: 24px auto; }
         .ujjain-page .price-card {
           max-width: 1100px; margin: 0 auto;
@@ -334,7 +335,7 @@ export function UjjainOmkareshwarDetail() {
 
         /* ITINERARY */
         .ujjain-page .itinerary-section { background: rgba(249, 115, 22, 0.02); }
-        .ujjain-page .itinerary-header { text-align: center; max-width: 600px; margin: 0 auto 60px; }
+        .ujjain-page .itinerary-header { text-align: center; max-width: 600px; margin: 100px auto; padding-top: 80px; }
         .ujjain-page .itinerary-header .gold-rule { margin: 20px auto; }
         .ujjain-page .itinerary-days { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1200px; margin: 0 auto; }
         .ujjain-page .day-card { border-radius: 6px; overflow: hidden; background: rgba(255, 255, 255, 0.85); border: 1px solid rgba(249, 115, 22, 0.15); transition: transform 0.4s, border-color 0.4s, box-shadow 0.4s; }
@@ -355,7 +356,7 @@ export function UjjainOmkareshwarDetail() {
         .ujjain-page .why-section { background: linear-gradient(135deg, var(--saffron-dark) 0%, var(--saffron) 100%); color: #ffffff; }
         .ujjain-page .why-section .section-title { color: #ffffff; }
         .ujjain-page .why-section .section-body { color: rgba(255, 255, 255, 0.85); }
-        .ujjain-page .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; max-width: 1200px; margin: 0 auto; }
+        .ujjain-page .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; max-width: 1200px; margin: 100px auto; padding-top: 80px; }
         .ujjain-page .why-visual { position: relative; }
         .ujjain-page .why-visual img { width: 100%; height: 520px; object-fit: cover; border-radius: 4px; }
         .ujjain-page .why-float-card { position: absolute; bottom: -20px; left: -20px; background: var(--ink-mid); color: var(--cream); padding: 24px 28px; border-radius: 4px; border-left: 3px solid var(--saffron); box-shadow: 0 20px 50px rgba(0,0,0,0.15); max-width: 300px; }
@@ -371,9 +372,9 @@ export function UjjainOmkareshwarDetail() {
 
         /* BOOKING STEPS */
         .ujjain-page .steps-section { background: rgba(249, 115, 22, 0.03); }
-        .ujjain-page .steps-header { text-align: center; margin-bottom: 60px; }
+        .ujjain-page .steps-header { text-align: center; margin-bottom: 10px; padding-top: 80px ; }
         .ujjain-page .steps-header .gold-rule { margin: 20px auto; }
-        .ujjain-page .steps-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; max-width: 1100px; margin: 0 auto; position: relative; }
+        .ujjain-page .steps-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; max-width: 1100px; margin: 0 auto; position: relative; padding-bottom: 40px; }
         .ujjain-page .steps-grid::before { content: ''; position: absolute; top: 32px; left: 10%; right: 10%; height: 1px; background: linear-gradient(90deg, transparent, var(--saffron), transparent); }
         .ujjain-page .step-item { text-align: center; padding: 0 10px; }
         .ujjain-page .step-dot { width: 64px; height: 64px; border-radius: 50%; background: rgba(232, 135, 26, 0.12); border: 1px solid rgba(232, 135, 26, 0.35); display: flex; align-items: center; justify-content: center; font-size: 22px; margin: 0 auto 16px; position: relative; z-index: 1; transition: all 0.3s; }
@@ -382,7 +383,7 @@ export function UjjainOmkareshwarDetail() {
         .ujjain-page .step-desc { font-size: 12px; color: var(--smoke); line-height: 1.5; }
 
         /* OTHER PACKAGES */
-        .ujjain-page .pkg-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1200px; margin: 40px auto 0; }
+        .ujjain-page .pkg-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1200px; margin: 100px auto;}
         .ujjain-page .pkg-card { border-radius: 6px; overflow: hidden; background: rgba(255, 255, 255, 0.85); border: 1px solid rgba(249, 115, 22, 0.15); transition: transform 0.4s, border-color 0.4s, box-shadow 0.4s; }
         .ujjain-page .pkg-card:hover { transform: translateY(-5px); border-color: rgba(232, 135, 26, 0.35); box-shadow: 0 10px 30px rgba(249, 115, 22, 0.08); }
         .ujjain-page .pkg-img { position: relative; height: 200px; overflow: hidden; }
@@ -404,7 +405,7 @@ export function UjjainOmkareshwarDetail() {
         .ujjain-page .testimonial-stars { font-size: 18px; color: var(--gold-light); margin-top: 12px; letter-spacing: 4px; }
 
         /* FAQ */
-        .ujjain-page .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; }
+        .ujjain-page .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; padding-top: 80px;}
         .ujjain-page .faq-list { margin-top: 0; }
         .ujjain-page .faq-item { border-bottom: 1px solid rgba(249, 115, 22, 0.15); overflow: hidden; }
         .ujjain-page .faq-q { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; cursor: pointer; font-size: 15px; font-weight: 400; color: var(--cream); transition: color 0.3s; gap: 12px; }
@@ -423,7 +424,7 @@ export function UjjainOmkareshwarDetail() {
         .ujjain-page .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 
         /* GALLERY */
-        .ujjain-page .gallery-strip { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; grid-template-rows: 240px 240px; gap: 4px; max-width: 1300px; margin: 40px auto 80px; }
+        .ujjain-page .gallery-strip { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; grid-template-rows: 240px 240px; gap: 4px; max-width: 1300px; margin: 120px auto 120px; }
         .ujjain-page .gallery-item { overflow: hidden; position: relative; }
         .ujjain-page .gallery-item img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.8) saturate(1.1); transition: transform 0.5s, filter 0.5s; }
         .ujjain-page .gallery-item:hover img { transform: scale(1.06); filter: brightness(0.9) saturate(1.3); }
@@ -505,24 +506,8 @@ export function UjjainOmkareshwarDetail() {
         </div>
       </section>
 
-      {/* STATS STRIP */}
-      <div className="stats-strip">
-        <div className="stat-item">
-          <div className="stat-num">500+</div>
-          <div className="stat-label">Happy Yatris</div>
-        </div>
-        <div className="stat-item">
-          <div className="stat-num">4.9★</div>
-          <div className="stat-label">Google Rating</div>
-        </div>
-        <div className="stat-item">
-          <div className="stat-num">2</div>
-          <div className="stat-label">Jyotirlingas Covered</div>
-        </div>
-        <div className="stat-item">
-          <div className="stat-num">100%</div>
-          <div className="stat-label">VIP Darshan Assured</div>
-        </div>
+      <div className="char-stats-wrapper mb-20">
+        <CharStats />
       </div>
 
       {/* INTRO / ABOUT */}
@@ -638,9 +623,9 @@ export function UjjainOmkareshwarDetail() {
             <div className="price-footer">
               <div className="price-amount-wrap">
                 <span className="price-from">Starting from</span>
-                <span className="price-amount">₹15,999</span>
+                <span className="price-amount">₹10,500</span>
                 <span className="price-per"> / person</span>
-                <span className="price-note">Final price depends on dates, group size &amp; hotel category. Airfare/train not included.</span>
+                <span className="price-note">Standard Package: ₹10,500 / person. Premium Package: ₹15,999 / person. Final price depends on dates, group size &amp; hotel category.</span>
               </div>
               <div className="price-actions">
                 <a href="tel:+917208771688" className="btn-book-outline">Call Us</a>

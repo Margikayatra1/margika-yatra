@@ -5,6 +5,7 @@ import Link from "next/link"
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/ui/newheader"
 import { GoogleReviews } from "@/components/ui/google-reviews"
+import { CharStats } from "@/components/char-stats"
 
 export function DevDeepawaliDetail() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
@@ -101,10 +102,7 @@ export function DevDeepawaliDetail() {
         .dd-page * {
           box-sizing: border-box;
         }
-        .dd-page *:not(header, header *, footer, footer *) {
-          margin: 0;
-          padding: 0;
-        }
+          .dd-page *:not(header, header *, footer, footer *, .char-stats-wrapper, .char-stats-wrapper *) { margin: 0; padding: 0; }
 
         /* SCROLLBAR */
         .dd-page ::-webkit-scrollbar {
@@ -481,7 +479,8 @@ export function DevDeepawaliDetail() {
         .dd-page .highlights-header {
           text-align: center;
           max-width: 640px;
-          margin: 0 auto 60px;
+          margin: 100px auto 60px;
+          padding-top: 80px;
         }
         .dd-page .highlights-header .gold-rule {
           margin: 24px auto;
@@ -566,13 +565,63 @@ export function DevDeepawaliDetail() {
           opacity: 1;
         }
 
+        /* PACKAGE PRICING */
+        .dd-page .price-section { background: rgba(249, 115, 22, 0.02); }
+        .dd-page .price-header { text-align: center; max-width: 660px; margin: 100px auto 50px; padding-top: 80px; }
+        .dd-page .price-header .gold-rule { margin: 24px auto; }
+        .dd-page .price-card {
+          max-width: 1100px; margin: 0 auto;
+          display: grid; grid-template-columns: 1.1fr 1fr;
+          background: rgba(255, 255, 255, 0.85);
+          border: 1px solid rgba(249, 115, 22, 0.15);
+          border-radius: 8px; overflow: hidden;
+          box-shadow: 0 12px 40px rgba(249, 115, 22, 0.06);
+          transition: transform 0.4s, box-shadow 0.4s;
+        }
+        .dd-page .price-card:hover { transform: translateY(-4px); box-shadow: 0 16px 50px rgba(249, 115, 22, 0.1); }
+        .dd-page .price-card-media { position: relative; min-height: 440px; overflow: hidden; }
+        .dd-page .price-card-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.78) saturate(1.1); transition: transform 0.6s; }
+        .dd-page .price-card:hover .price-card-media img { transform: scale(1.05); }
+        .dd-page .price-badge {
+          position: absolute; top: 18px; left: 18px;
+          background: var(--saffron); color: var(--white);
+          font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+          padding: 6px 14px; border-radius: 2px;
+        }
+        .dd-page .price-media-cities { position: absolute; left: 18px; right: 18px; bottom: 18px; display: flex; gap: 8px; flex-wrap: wrap; }
+        .dd-page .price-media-cities span {
+          font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+          color: var(--white); background: rgba(26,18,8,0.6);
+          border: 1px solid rgba(212,175,106,0.4);
+          padding: 6px 14px; border-radius: 2px; backdrop-filter: blur(4px);
+        }
+        .dd-page .price-card-body { padding: 40px 42px; display: flex; flex-direction: column; justify-content: space-between; }
+        .dd-page .price-card-body .pkg-duration { font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--saffron); margin-bottom: 10px; }
+        .dd-page .price-card-body .pkg-name { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 500; color: var(--cream); margin-bottom: 14px; line-height: 1.15; }
+        .dd-page .price-card-body .pkg-desc { font-size: 14px; color: var(--smoke); line-height: 1.75; margin-bottom: 22px; }
+        .dd-page .price-card-body .pkg-includes { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 30px; }
+        .dd-page .price-card-body .pkg-tag { font-size: 11px; padding: 5px 12px; border-radius: 20px; background: rgba(249, 115, 22, 0.08); color: var(--gold); border: 1px solid rgba(249, 115, 22, 0.2); }
+        .dd-page .price-footer { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin-top: auto; }
+        .dd-page .price-amount-wrap { display: flex; flex-direction: column; }
+        .dd-page .price-from { font-size: 11px; color: var(--smoke); letter-spacing: 0.06em; }
+        .dd-page .price-amount { font-family: 'Cormorant Garamond', serif; font-size: 44px; color: var(--gold); line-height: 1.1; }
+        .dd-page .price-per { font-size: 13px; color: var(--smoke); margin-top: -4px; }
+        .dd-page .price-note { font-size: 11px; color: var(--smoke); margin-top: 8px; max-width: 240px; line-height: 1.5; }
+        .dd-page .price-actions { display: flex; gap: 12px; align-items: center; }
+
         /* ITINERARY */
         .dd-page .itinerary-section {
           max-width: 1200px;
-          margin: 0 auto;
+          margin: 100px auto;
+          padding-top: 60px;
         }
         .dd-page .itin-header {
-          margin-bottom: 50px;
+          text-align: center;
+          max-width: 640px;
+          margin: 0 auto 50px;
+        }
+        .dd-page .itin-header .gold-rule {
+          margin: 24px auto;
         }
         .dd-page .itin-layout {
           display: grid;
@@ -740,7 +789,8 @@ export function DevDeepawaliDetail() {
           gap: 60px;
           align-items: center;
           max-width: 1200px;
-          margin: 0 auto;
+          margin: 100px auto;
+          padding-top: 80px;
         }
         .dd-page .why-visual {
           position: relative;
@@ -1017,7 +1067,7 @@ export function DevDeepawaliDetail() {
           grid-template-columns: 1fr 1fr;
           gap: 60px;
           max-width: 1200px;
-          margin: 0 auto;
+          margin: 100px auto;
         }
         .dd-page .faq-list {
           margin-top: 40px;
@@ -1225,6 +1275,12 @@ export function DevDeepawaliDetail() {
             grid-template-columns: 1fr;
           }
 
+          .dd-page .price-card {
+            grid-template-columns: 1fr;
+          }
+          .dd-page .price-card-media {
+            min-height: 260px;
+          }
           .dd-page .intro-img-float {
             display: none;
           }
@@ -1233,6 +1289,13 @@ export function DevDeepawaliDetail() {
           }
         }
         @media (max-width: 600px) {
+          .dd-page .price-footer {
+            flex-direction: column;
+            align-items: flex-start;
+          }
+          .dd-page .price-card-body {
+            padding: 30px 26px;
+          }
           .dd-page .highlights-grid {
             grid-template-columns: 1fr;
           }
@@ -1282,29 +1345,13 @@ export function DevDeepawaliDetail() {
               </svg>
               WhatsApp to Book
             </a>
-            <a href="/Gujarat.pdf" download="Gujarat.pdf" className="char-btn-outline">Download Itinerary</a>
+            <a href="/UTTAR_PRADESH_MARGIKA_YATRA.pdf" download="UTTAR_PRADESH_MARGIKA_YATRA.pdf" className="char-btn-outline">Download Itinerary</a>
           </div>
         </div>
       </section>
 
-      {/* STATS */}
-      <div className="stats-strip">
-        <div className="stat-item">
-          <div className="stat-num">500+</div>
-          <div className="stat-label">Happy Yatris</div>
-        </div>
-        <div className="stat-item">
-          <div className="stat-num">4.9★</div>
-          <div className="stat-label">Google Rating</div>
-        </div>
-        <div className="stat-item">
-          <div className="stat-num">2–3</div>
-          <div className="stat-label">Days Package</div>
-        </div>
-        <div className="stat-item">
-          <div className="stat-num">100%</div>
-          <div className="stat-label">Hassle-Free Planning</div>
-        </div>
+    <div className="char-stats-wrapper mb-20">
+        <CharStats />
       </div>
 
       {/* INTRO */}
@@ -1416,16 +1463,106 @@ export function DevDeepawaliDetail() {
         </div>
       </section>
 
+      {/* PACKAGE OPTIONS & PRICING */}
+      <section className="price-section">
+        <div className="price-header reveal">
+          <div className="section-tag" style={{ justifyContent: "center", margin: "0 auto 16px" }}>
+            Package & Pricing
+          </div>
+          <h2 className="section-title" style={{ textAlign: "center" }}>
+            Your Dev Deepawali Yatra,<br /><em>Fully Sorted</em>
+          </h2>
+          <div className="gold-rule"></div>
+          <p className="section-body" style={{ margin: "0 auto", textAlign: "center" }}>
+            One clear, all-inclusive Dev Deepawali Varanasi package — travel, comfortable stays near the ghats, AC transport, festival boat ride, guided darshans, and full coordination from Mumbai & Thane. Transparent pricing, no hidden costs.
+          </p>
+        </div>
+
+        <div className="price-card reveal">
+          <div className="price-card-media">
+            <img
+              src="/devmain2.jpg"
+              alt="Dev Deepawali Varanasi Ghats"
+              onError={(e) => { (e.target as HTMLImageElement).src = '/rambg.jpg' }}
+            />
+            <div className="price-badge">⭐ Most Loved</div>
+            <div className="price-media-cities">
+              <span>VARANASI</span><span>DEV DEEPAWALI</span><span>KASHI DARSHAN</span>
+            </div>
+          </div>
+          <div className="price-card-body">
+            <div>
+              <div className="pkg-duration">2 Nights / 3 Days · Varanasi · Departures from Mumbai / Thane</div>
+              <div className="pkg-name">Dev Deepawali Varanasi Package</div>
+              <p className="pkg-desc">
+                Experience Kashi's legendary festival of light. Witness Varanasi's 84 ghats illuminated with a million earthen diyas on Kartik Purnima. Covers Kashi Vishwanath Mangala Aarti at 2 AM, the grand Ganga Aarti from a premium boat vantage, Sarnath, and all local temples. Vegetarian meals, comfortable hotel stay, AC vehicle transfers, and a dedicated coordinator are all included.
+              </p>
+              <div className="pkg-includes">
+                <span className="pkg-tag">Dev Deepawali Boat Ride</span>
+                <span className="pkg-tag">Mangala Aarti at 2 AM</span>
+                <span className="pkg-tag">Maha Ganga Aarti View</span>
+                <span className="pkg-tag">Laser & Fire Show</span>
+                <span className="pkg-tag">Comfortable Hotel Stay</span>
+                <span className="pkg-tag">Pure Veg Meals</span>
+                <span className="pkg-tag">AC local transport</span>
+                <span className="pkg-tag">Mumbai–Thane Support</span>
+              </div>
+            </div>
+            <div className="price-footer">
+              <div className="price-amount-wrap">
+                <span className="price-from">Starting from</span>
+                <span className="price-amount">₹14,999</span>
+                <span className="price-per"> / person</span>
+                <span className="price-note">
+                  Varies with travel mode, group size & hotel category. Final quote on enquiry.
+                </span>
+              </div>
+              <div className="price-actions">
+                <a href="tel:+917208771688" className="btn-secondary" style={{ padding: "14px 24px" }}>Call Us</a>
+                <a
+                  href={razorpayLink}
+                  className="btn-primary"
+                  style={{ padding: "14px 24px" }}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Book Now →
+                </a>
+                <a
+                  href="/UTTAR_PRADESH_MARGIKA_YATRA.pdf"
+                  download="UTTAR_PRADESH_MARGIKA_YATRA.pdf"
+                  className="char-btn-outline"
+                  style={{ padding: "14px 24px" }}
+                >
+                  Download Itinerary
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p style={{ textAlign: "center", fontSize: 13, color: "var(--smoke)", maxWidth: 640, margin: "28px auto 0" }}>
+          Travelling as a family group, sangha, or corporate group?{" "}
+          <a
+            href={wa("I want a custom quote for the Dev Deepawali Varanasi tour package")}
+            style={{ color: "var(--saffron)", textDecoration: "none" }}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Message us for a personalised quote →
+          </a>
+        </p>
+      </section>
+
       {/* ITINERARY */}
       <section id="itinerary">
         <div className="itinerary-section">
           <div className="itin-header reveal">
-            <div className="section-tag">Complete Itinerary</div>
+            <div className="section-tag" style={{ justifyContent: "center" }}>Complete Itinerary</div>
             <h2 className="section-title">
               Dev Deepawali Varanasi Package<br /><em>— What Your Days Look Like</em>
             </h2>
             <div className="gold-rule"></div>
-            <p className="section-body">
+            <p className="section-body" style={{ margin: "0 auto" }}>
               A thoughtfully sequenced 2-night, 3-day plan crafted to capture the most spiritually significant moments
               without a moment of confusion or rush.
             </p>
@@ -1653,13 +1790,13 @@ export function DevDeepawaliDetail() {
             <div className="itin-img-stack">
               <img
                 className="itin-img-main"
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Dev_Deepawali_-_Varanasi_Ghats.jpg/1280px-Dev_Deepawali_-_Varanasi_Ghats.jpg"
+                src="/DevM.jpeg"
                 alt="Dev Deepawali Varanasi Ghats 2026"
                 onError={(e) => { (e.target as HTMLImageElement).src = '/rambg.jpg' }}
               />
               <img
                 className="itin-img-secondary"
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Kashi_Vishwanath_Temple.jpg/640px-Kashi_Vishwanath_Temple.jpg"
+                src="/DevM.jpeg"
                 alt="Kashi Vishwanath Temple Varanasi"
                 onError={(e) => {
                   ; (e.target as HTMLImageElement).src = "/rambg.jpg"
@@ -1869,7 +2006,7 @@ export function DevDeepawaliDetail() {
 
       {/* GALLERY */}
       <section>
-        <div className="itin-header reveal" style={{ textAlign: "center", margin: "0 auto 40px" }}>
+        <div className="itin-header reveal" style={{ textAlign: "center", margin: "140px auto 40px" }}>
           <div className="section-tag" style={{ justifyContent: "center" }}>
             Memories of Kashi
           </div>
@@ -1878,7 +2015,7 @@ export function DevDeepawaliDetail() {
           </h2>
           <div className="gold-rule" style={{ margin: "20px auto" }}></div>
         </div>
-        <div className="gallery-strip reveal">
+        <div className="gallery-strip reveal" style={{ marginBottom: "60px" }}>
           <div className="gallery-item">
             <img src="/1.jpg" alt="Margika Yatra pilgrims" />
           </div>
@@ -1905,7 +2042,7 @@ export function DevDeepawaliDetail() {
       {/* OTHER PACKAGES */}
       <section>
         <div className="itin-header reveal" style={{ textAlign: "center", margin: "0 auto 40px" }}>
-          <div className="section-tag" style={{ justifyContent: "center" }}>
+          <div className="section-tag" style={{ justifyContent: "center", marginTop: "100px" }}>
             Other Pilgrimages
           </div>
           <h2 className="section-title">

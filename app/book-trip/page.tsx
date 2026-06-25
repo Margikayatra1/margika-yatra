@@ -14,6 +14,8 @@ import { Footer } from "@/components/footer"
 import Image from "next/image"
 import Link from "next/link"
 
+import { tripPackages } from "@/lib/trip-packages"
+
 export default function BookTripPage() {
   const [selectedPackage, setSelectedPackage] = useState("")
   const [formData, setFormData] = useState({
@@ -25,88 +27,7 @@ export default function BookTripPage() {
     specialRequests: "",
   })
 
-  const packages = [
-    {
-      id: "char-dham",
-      name: "Char Dham & Do Dham Yatra",
-      price: "₹39,999",
-      duration: "10N/11D",
-      image: "/4dham.png",
-      description: "Sacred journey to the four holy shrines",
-      location: "Uttarakhand",
-      highlights: ["Kedarnath", "Badrinath", "Gangotri", "Yamunotri"],
-    },
-    {
-      id: "varanasi",
-      name: "Varanasi - Ayodhya - Prayagraj",
-      price: "₹9,999",
-      duration: "2N/3D",
-      image: "/vr.jpg",
-      description: "Experience the spiritual capital of India",
-      location: "Uttar Pradesh",
-      highlights: ["Ganga Aarti", "Kashi Vishwanath", "River Cruise", "Sarnath"],
-    },
-    {
-      id: "ujjain",
-      name: "Ujjain & Omkareshwar",
-      price: "₹8,999",
-      duration: "3N/4D",
-      image: "/uj.jpg",
-      description: "Visit the sacred Jyotirlingas",
-      location: "Madhya Pradesh",
-      highlights: ["Mahakaleshwar", "Omkareshwar", "Narmada River", "Ancient Temples"],
-    },
-    {
-      id: "maharashtra",
-      name: "3 Jyotirling of Maharashtra",
-      price: "₹13,999",
-      duration: "3N/4D",
-      image: "/mh.jpg",
-      description: "Explore Maharashtra's divine temples",
-      location: "Maharashtra",
-      highlights: ["Trimbakeshwar", "Bhimashankar", "Grishneshwar", "Shirdi"],
-    },
-    {
-      id: "tri-city",
-      name: "Varanasi-Ayodhya-Prayagraj",
-      price: "₹15,999",
-      duration: "3N/4D",
-      image: "/up.jpg",
-      description: "Tri-city spiritual circuit",
-      location: "Uttar Pradesh",
-      highlights: ["Ram Janmabhoomi", "Triveni Sangam", "Hanuman Garhi", "Ganga Aarti"],
-    },
-    {
-      id: "rameshwaram",
-      name: "Rameshwaram",
-      price: "₹7,999",
-      duration: "1N/2D",
-      image: "/rameshwaram.jpg",
-      description: "Southern pilgrimage destination",
-      location: "Tamil Nadu",
-      highlights: ["Ramanathaswamy Temple", "Dhanushkodi", "Adam's Bridge", "Pamban Bridge"],
-    },
-    // {
-    //   id: "",
-    //   name: "Arunachal Pradesh - Ziro Valley",
-    //   price: "₹54,999",
-    //   duration: "6N/7D",
-    //   image: "z.jpg",
-    //   description: "Mystical valleys and ancient wisdom",
-    //   location: "Arunachal Pradesh",
-    //   highlights: ["Ziro Valley", "Apatani Tribe", "Talley Valley", "Buddhist Monasteries"],
-    // },
-    {
-      id: "meghalaya",
-      name: "Meghalaya",
-      price: "₹15,000",
-      duration: "10N/11D",
-      image: "/mg.png",
-      description: "Land of clouds and natural beauty",
-      location: "Meghalaya",
-      highlights: ["Living Root Bridges", "Kasol", "Mountains", "River"],
-    },
-  ]
+  const packages = tripPackages
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({

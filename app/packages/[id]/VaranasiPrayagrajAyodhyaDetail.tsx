@@ -5,6 +5,7 @@ import Link from "next/link"
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/ui/newheader"
 import { GoogleReviews } from "@/components/ui/google-reviews"
+import { CharStats } from "@/components/char-stats"
 
 export function VaranasiPrayagrajAyodhyaDetail() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
@@ -517,13 +518,7 @@ export function VaranasiPrayagrajAyodhyaDetail() {
         </div>
       </section>
 
-      {/* STATS */}
-      <div className="v-stats-strip">
-        <div className="v-stat-item"><div className="v-stat-num">500+</div><div className="v-stat-label">Happy Yatris</div></div>
-        <div className="v-stat-item"><div className="v-stat-num">4.9★</div><div className="v-stat-label">Google Rating</div></div>
-        <div className="v-stat-item"><div className="v-stat-num">3</div><div className="v-stat-label">Sacred Cities</div></div>
-        <div className="v-stat-item"><div className="v-stat-num">100%</div><div className="v-stat-label">VIP Darshan Assist</div></div>
-      </div>
+      <CharStats/>
 
       {/* INTRO */}
       <section className="v-section">
@@ -603,7 +598,7 @@ export function VaranasiPrayagrajAyodhyaDetail() {
             <div className="v-price-footer">
               <div className="v-price-amount-wrap">
                 <span className="v-price-from">Starting from</span>
-                <span className="v-price-amount">₹12,999</span>
+                <span className="v-price-amount">₹13,499</span>
                 <span className="v-price-per"> / person</span>
                 <span className="v-price-note">Final price depends on dates, group size & hotel category</span>
               </div>

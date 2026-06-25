@@ -15,7 +15,7 @@ export const tripPackages: TripPackage[] = [
   {
     id: "char-dham",
     name: "Char Dham & Do Dham Yatra",
-    price: "₹34,999",
+    price: "₹26,999",
     duration: "10N/11D",
     image: "/4dham.png",
     description: "Sacred journey to the four holy shrines",
@@ -28,7 +28,7 @@ export const tripPackages: TripPackage[] = [
   {
     id: "varanasi",
     name: "Varanasi - Ayodhya - Prayagraj",
-    price: "₹7,999",
+    price: "₹13,499",
     duration: "2N/3D",
     image: "/vr1.png",
     description: "Experience the spiritual capital of India",
@@ -41,7 +41,7 @@ export const tripPackages: TripPackage[] = [
   {
     id: "ujjain",
     name: "Ujjain & Omkareshwar",
-    price: "₹8,999",
+    price: "₹10,500",
     duration: "3N/4D",
     image: "/mp.jpg",
     description: "Visit the sacred Jyotirlingas",
@@ -54,7 +54,7 @@ export const tripPackages: TripPackage[] = [
   {
     id: "maharashtra",
     name: "3 Jyotirling of Maharashtra",
-    price: "₹12,999",
+    price: "₹11,999",
     duration: "3N/4D",
     image: "/mh.jpg",
     description: "Explore Maharashtra's divine temples",
@@ -64,23 +64,23 @@ export const tripPackages: TripPackage[] = [
       "Cover three sacred Jyotirlingas along with key spiritual stops in Maharashtra through a planned and comfortable route.",
     inclusions: ["Hotel accommodation", "Local transfers", "Temple visits", "Trip assistance"],
   },
-  {
-    id: "tri-city",
-    name: "Varanasi-Ayodhya-Prayagraj",
-    price: "₹15,999",
-    duration: "3N/4D",
-    image: "/up.jpg",
-    description: "Tri-city spiritual circuit",
-    location: "Uttar Pradesh",
-    highlights: ["Ram Janmabhoomi", "Triveni Sangam", "Hanuman Garhi", "Ganga Aarti"],
-    overview:
-      "A powerful three-city pilgrimage combining the sacred energy of Kashi, Ayodhya, and Prayagraj in one guided circuit.",
-    inclusions: ["Hotel accommodation", "Intercity transfers", "Local sightseeing", "Trip coordinator support"],
-  },
+  // {
+  //   id: "tri-city",
+  //   name: "Varanasi-Ayodhya-Prayagraj",
+  //   price: "₹15,999",
+  //   duration: "3N/4D",
+  //   image: "/up.jpg",
+  //   description: "Tri-city spiritual circuit",
+  //   location: "Uttar Pradesh",
+  //   highlights: ["Ram Janmabhoomi", "Triveni Sangam", "Hanuman Garhi", "Ganga Aarti"],
+  //   overview:
+  //     "A powerful three-city pilgrimage combining the sacred energy of Kashi, Ayodhya, and Prayagraj in one guided circuit.",
+  //   inclusions: ["Hotel accommodation", "Intercity transfers", "Local sightseeing", "Trip coordinator support"],
+  // },
   {
     id: "rameshwaram",
     name: "Rameshwaram",
-    price: "₹14,999",
+    price: "₹9,499",
     duration: "3N/4D",
     image: "/rameshwaram.jpg",
     description: "Southern pilgrimage destination",
@@ -119,7 +119,7 @@ export const tripPackages: TripPackage[] = [
   {
     id: "kerala",
     name: "Kerala Tour from Mumbai",
-    price: "₹18,999",
+    price: "₹10,999",
     duration: "3N/4D",
     image: "/rambg.jpg",
     description: "God's Own Country — Munnar, Thekkady, Alleppey & Kochi",
@@ -161,7 +161,7 @@ export const tripPackages: TripPackage[] = [
   {
     id: "dwarka-somnath",
     name: "Dwarka - Somnath Yatra",
-    price: "₹6,999",
+    price: "₹8,999",
     duration: "3N/4D",
     image: "/rambg.jpg",
     description: "Sacred Gujarat pilgrimage to Dwarka, Nageshwar & Somnath",

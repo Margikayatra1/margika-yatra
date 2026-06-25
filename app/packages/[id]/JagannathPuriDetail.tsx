@@ -4,6 +4,8 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/ui/newheader"
+import { CharStats } from "@/components/char-stats"
+import { GoogleReviews } from "@/components/ui/google-reviews"
 
 export function JagannathPuriDetail() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
@@ -142,7 +144,7 @@ export function JagannathPuriDetail() {
         }
         .p-hero-img {
           position: absolute; inset: 0;
-          background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Jagannath_temple%2C_Puri.jpg/1280px-Jagannath_temple%2C_Puri.jpg') center/cover no-repeat;
+          background: url('/jagmain2.png') center/cover no-repeat;
           transform: scale(1.05);
           animation: heroZoom 12s ease-out forwards;
         }
@@ -734,13 +736,7 @@ export function JagannathPuriDetail() {
         </div>
       </section>
 
-      {/* STATS */}
-      <div className="p-stats-strip">
-        <div className="p-stat-item"><div className="p-stat-num">500+</div><div className="p-stat-label">Happy Yatris</div></div>
-        <div className="p-stat-item"><div className="p-stat-num">4.9★</div><div className="p-stat-label">Google Rating</div></div>
-        <div className="p-stat-item"><div className="p-stat-num">1 of 4</div><div className="p-stat-label">Char Dham</div></div>
-        <div className="p-stat-item"><div className="p-stat-num">3D / 2N</div><div className="p-stat-label">Well-Paced Yatra</div></div>
-      </div>
+    <CharStats/>
 
       {/* INTRO */}
       <section className="p-section">
@@ -824,7 +820,7 @@ export function JagannathPuriDetail() {
         <div className="p-price-card reveal">
           <div className="p-price-card-media">
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Konark_Sun_Temple_Konark.jpg/1280px-Konark_Sun_Temple_Konark.jpg"
+              src="/JagM.jpeg"
               alt="Konark Sun Temple"
               onError={(e) => { (e.target as HTMLImageElement).src = '/rambg.jpg' }}
             />
@@ -849,7 +845,7 @@ export function JagannathPuriDetail() {
             <div className="r-price-footer">
               <div className="r-price-amount-wrap">
                 <span className="r-price-from">Starting from</span>
-                <span className="r-price-amount">₹13,999</span>
+                <span className="r-price-amount">₹12,999</span>
                 <span className="r-price-per"> / person</span>
                 <span className="r-price-note">Varies with travel mode, group size & hotel category. Final quote on enquiry.</span>
               </div>
@@ -952,6 +948,8 @@ export function JagannathPuriDetail() {
           </div>
         </div>
       </section>
+
+      <GoogleReviews />
 
       {/* FAQ */}
       <section className="p-section alt">

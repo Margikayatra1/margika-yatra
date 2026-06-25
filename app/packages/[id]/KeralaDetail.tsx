@@ -5,6 +5,7 @@ import Link from "next/link"
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/ui/newheader"
 import { GoogleReviews } from "@/components/ui/google-reviews"
+import { CharStats } from "@/components/char-stats"
 
 export function KeralaDetail() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
@@ -69,7 +70,7 @@ export function KeralaDetail() {
         }
 
         .dd-page * { box-sizing: border-box; }
-        .dd-page *:not(header, header *, footer, footer *) { margin: 0; padding: 0; }
+        .dd-page *:not(header, header *, footer, footer *, .char-stats-wrapper, .char-stats-wrapper *) { margin: 0; padding: 0; }
 
         .dd-page ::-webkit-scrollbar { width: 4px; }
         .dd-page ::-webkit-scrollbar-track { background: var(--ink-mid); }
@@ -168,7 +169,7 @@ export function KeralaDetail() {
 
         /* SECTION SHARED */
         .dd-page section { padding: var(--section-pad) 5%; }
-        .dd-page .section-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--saffron); margin-bottom: 16px; }
+        .dd-page .section-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--saffron); margin-bottom: 16px; padding-top: 100px;}
         .dd-page .section-tag::before { content: ""; display: block; width: 24px; height: 1px; background: #fdba74; }
         .dd-page .section-title { font-family: "Cormorant Garamond", serif; font-size: clamp(32px, 4.5vw, 56px); font-weight: 400; line-height: 1.2; color: var(--cream); margin-bottom: 16px; }
         .dd-page .section-title em { color: var(--gold); font-style: italic; }
@@ -185,9 +186,9 @@ export function KeralaDetail() {
 
         /* HIGHLIGHTS */
         .dd-page .highlights-section { background: rgba(249,115,22,0.03); }
-        .dd-page .highlights-header { text-align: center; max-width: 640px; margin: 0 auto 60px; }
+        .dd-page .highlights-header { text-align: center; max-width: 640px; margin: 60px auto; padding-top: 20px; }
         .dd-page .highlights-header .gold-rule { margin: 24px auto; }
-        .dd-page .highlights-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; max-width: 1200px; margin: 0 auto; }
+        .dd-page .highlights-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; max-width: 1200px; margin: 0 auto; padding-bottom: 60px;}
         .dd-page .hl-card { position: relative; height: 420px; overflow: hidden; cursor: default; }
         .dd-page .hl-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94); filter: brightness(0.55) saturate(1.2); }
         .dd-page .hl-card:hover img { transform: scale(1.08); filter: brightness(0.72) saturate(1.3); }
@@ -200,8 +201,15 @@ export function KeralaDetail() {
         .dd-page .hl-card:hover .hl-detail { max-height: 100px; opacity: 1; }
 
         /* ITINERARY */
-        .dd-page .itinerary-section { max-width: 1200px; margin: 0 auto; }
-        .dd-page .itin-header { margin-bottom: 50px; }
+        .dd-page .itinerary-section { max-width: 1200px; margin: 40px auto; }
+        .dd-page .itin-header {
+          text-align: center;
+          max-width: 640px;
+          margin: 0 auto 50px;
+        }
+        .dd-page .itin-header .gold-rule {
+          margin: 24px auto;
+        }
         .dd-page .itin-layout { display: grid; grid-template-columns: 1.1fr 1fr; gap: 60px; align-items: start; }
         .dd-page .day-tabs { display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; }
         .dd-page .day-tab { padding: 8px 20px; border-radius: 2px; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid rgba(249,115,22,0.25); color: var(--smoke); cursor: pointer; transition: all 0.3s; background: transparent; }
@@ -234,7 +242,7 @@ export function KeralaDetail() {
         .dd-page .why-section { background: linear-gradient(135deg, var(--saffron-dark) 0%, var(--saffron) 100%); color: var(--ink); }
         .dd-page .why-section .section-title { color: var(--ink); }
         .dd-page .why-section .section-body { color: var(--ink-light); }
-        .dd-page .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; max-width: 1200px; margin: 0 auto; }
+        .dd-page .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; max-width: 1200px; margin: 100px auto 60px auto; padding-top: 20px}
         .dd-page .why-visual { position: relative; }
         .dd-page .why-visual img { width: 100%; height: 500px; object-fit: cover; border-radius: 4px; }
         .dd-page .why-float-card { position: absolute; bottom: -20px; left: -20px; background: var(--ink-mid); color: var(--cream); padding: 24px 28px; border-radius: 4px; border-left: 3px solid var(--saffron); box-shadow: 0 20px 50px rgba(0,0,0,0.15); }
@@ -255,7 +263,7 @@ export function KeralaDetail() {
         .dd-page .price-header {
           text-align: center;
           max-width: 660px;
-          margin: 0 auto 50px;
+          margin: 60px auto 50px;
         }
         .dd-page .price-header .gold-rule {
           margin: 24px auto;
@@ -265,16 +273,16 @@ export function KeralaDetail() {
           margin: 0 auto;
           display: grid;
           grid-template-columns: 1.05fr 1fr;
-          background: rgba(255,255,255,0.03);
+          background: white;
           border: 1px solid rgba(232,135,26,0.35);
           border-radius: 8px;
           overflow: hidden;
-          box-shadow: 0 24px 70px rgba(0,0,0,0.45);
-          transition: transform 0.4s, box-shadow 0.4s;
+          // box-shadow: 0 24px 70px rgba(0,0,0,0.45);
+          transition: transform 0.4s;
         }
         .dd-page .price-card:hover {
           transform: translateY(-4px);
-          box-shadow: 0 30px 80px rgba(0,0,0,0.55);
+          // box-shadow: 0 30px 80px rgba(0,0,0,0.55);
         }
         .dd-page .price-card-media {
           position: relative;
@@ -447,7 +455,7 @@ export function KeralaDetail() {
         .dd-page .steps-section { background: rgba(255,255,255,0.02); }
         .dd-page .steps-header { text-align: center; margin-bottom: 60px; }
         .dd-page .steps-header .gold-rule { margin: 20px auto; }
-        .dd-page .steps-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; max-width: 1200px; margin: 0 auto; position: relative; }
+        .dd-page .steps-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; max-width: 1200px; margin: 0 auto; position: relative; margin-bottom: 80px; }
         .dd-page .steps-grid::before { content: ""; position: absolute; top: 32px; left: 10%; right: 10%; height: 1px; background: linear-gradient(90deg, transparent, var(--saffron), transparent); }
         .dd-page .step-item { text-align: center; padding: 0 10px; }
         .dd-page .step-dot { width: 64px; height: 64px; border-radius: 50%; background: rgba(232,135,26,0.12); border: 1px solid rgba(232,135,26,0.35); display: flex; align-items: center; justify-content: center; font-size: 22px; margin: 0 auto 16px; position: relative; z-index: 1; transition: all 0.3s; }
@@ -476,7 +484,7 @@ export function KeralaDetail() {
         .dd-page .opkg-link:hover { color: var(--gold); }
 
         /* FAQ */
-        .dd-page .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; }
+        .dd-page .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1200px; margin: 100px auto; }
         .dd-page .faq-list { margin-top: 40px; }
         .dd-page .faq-item { border-bottom: 1px solid rgba(249,115,22,0.15); overflow: hidden; }
         .dd-page .faq-q { width: 100%; background: transparent; border: none; display: flex; justify-content: space-between; align-items: center; padding: 20px 0; cursor: pointer; font-size: 15px; font-weight: 400; color: var(--cream); transition: color 0.3s; gap: 12px; text-align: left; }
@@ -495,7 +503,7 @@ export function KeralaDetail() {
         .dd-page .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 
         /* COMPLETE SECTION */
-        .dd-page .complete-section { background: linear-gradient(135deg, var(--saffron) 0%, #e8871a 100%); color: #ffffff; padding: 80px 20px; }
+        .dd-page .complete-section { background: linear-gradient(135deg, var(--saffron) 0%, #e8871a 100%); color: #ffffff; padding: 20px 20px 80px; }
         .dd-page .complete-wrap { max-width: 980px; margin: 0 auto; }
         .dd-page .complete-head { text-align: center; margin-bottom: 36px; }
         .dd-page .complete-head .section-tag { color: #ffffff !important; justify-content: center; margin: 0 auto 16px; }
@@ -572,12 +580,8 @@ export function KeralaDetail() {
         </div>
       </section>
 
-      {/* STATS */}
-      <div className="stats-strip">
-        <div className="stat-item"><div className="stat-num">500+</div><div className="stat-label">Happy Travellers</div></div>
-        <div className="stat-item"><div className="stat-num">4.9★</div><div className="stat-label">Google Rating</div></div>
-        <div className="stat-item"><div className="stat-num">4D / 3N</div><div className="stat-label">Well-Paced Holiday</div></div>
-        <div className="stat-item"><div className="stat-num">100%</div><div className="stat-label">Hassle-Free Planning</div></div>
+      <div className="char-stats-wrapper mb-20">
+        <CharStats />
       </div>
 
       {/* INTRO */}
@@ -651,10 +655,10 @@ export function KeralaDetail() {
       <section id="itinerary">
         <div className="itinerary-section">
           <div className="itin-header reveal">
-            <div className="section-tag">Complete Itinerary</div>
+            <div className="section-tag" style={{ justifyContent: "center" }}>Complete Itinerary</div>
             <h2 className="section-title">Kerala Holiday Package<br /><em>— What Your Days Look Like</em></h2>
             <div className="gold-rule"></div>
-            <p className="section-body">A thoughtfully sequenced 4-day, 3-night plan — Munnar, Thekkady, Alleppey and Kochi — crafted for families and couples from Mumbai & Thane.</p>
+            <p className="section-body" style={{ margin: "0 auto" }}>A thoughtfully sequenced 4-day, 3-night plan — Munnar, Thekkady, Alleppey and Kochi — crafted for families and couples from Mumbai & Thane.</p>
           </div>
 
           <div className="itin-layout reveal reveal-delay-1">
@@ -818,9 +822,9 @@ export function KeralaDetail() {
               <div className="price-footer">
                 <div className="price-amount-wrap">
                   <span className="price-from">Starting from</span>
-                  <span className="price-amount">₹18,999</span>
+                  <span className="price-amount">₹10,999</span>
                   <span className="price-per"> / person</span>
-                  <span className="price-note">Varies with travel mode, group size &amp; hotel category. Final quote on enquiry.</span>
+                  <span className="price-note">Land package: ₹10,999 / person (minimum 4 pax required). Final price depends on dates, group size &amp; hotel category.</span>
                 </div>
                 <div className="price-actions">
                   <a href="tel:+917208771688" className="btn-book-outline">Call Us</a>
@@ -944,7 +948,7 @@ export function KeralaDetail() {
               ["What is included in the Kerala tour package from Mumbai?", "Your package includes return travel coordination (flight or train), comfortable hotel stays, an Alleppey backwater houseboat experience, private AC transport for all transfers and sightseeing, and guided visits across Munnar, Thekkady, Alleppey and Kochi with full support from our Thane team."],
               ["How do I reach Kerala from Mumbai?", "The fastest way is a direct flight from Mumbai to Cochin (around 2–2.5 hours), from where your tour begins. We arrange the best option for your budget and dates and handle the Cochin airport pickup and all onward transfers."],
               ["How many days are enough for a Kerala trip from Mumbai?", "A 4-day trip comfortably covers Munnar, Thekkady, Alleppey and Kochi at a relaxed pace. If you would like to add Kovalam, Wayanad or Guruvayur, we can extend to 6–7 days."],
-              ["What is the price of a Kerala tour package from Mumbai?", "Our Kerala packages start from around ₹18,999 per person, depending on travel mode, season, hotel category and group size. Share your dates on WhatsApp and we will send a clear, transparent quote with no hidden costs."],
+              ["What is the price of a Kerala tour package from Mumbai?", "Our Kerala land packages start from around ₹10,999 per person (minimum 4 pax required), depending on travel mode, season, hotel category and group size. Share your dates on WhatsApp and we will send a clear, transparent quote with no hidden costs."],
               ["Is this Kerala package good for couples and honeymoon?", "Yes. Kerala is one of India's most popular honeymoon destinations. We can upgrade hotels, add a candlelight dinner or a private houseboat to make your Kerala honeymoon extra special."],
               ["Is Kerala suitable for a family trip with kids and elders?", "Absolutely. The pace is gentle, drives are scenic, and experiences — tea gardens, wildlife safari, houseboat, beach — are enjoyable for all ages. We arrange family rooms, suitable meals and extra attention for elderly travellers."],
             ].map(([q, a], idx) => (
