@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { MapPin, Calendar, Users, Star, ArrowLeft, Heart, Camera, Award, Clock, Phone } from "lucide-react"
+import { MapPin, Calendar, Users, Star, ArrowLeft, Heart, Camera, Award, Clock, Phone, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -10,6 +10,7 @@ import { Footer } from "@/components/footer"
 import { ParticleEffects } from "@/components/particle-effects"
 import Image from "next/image"
 import Link from "next/link"
+import { GoogleReviews } from "@/components/ui/google-reviews"
 
 export default function PreviousTripsPage() {
   const previousTrips = [
@@ -19,12 +20,13 @@ export default function PreviousTripsPage() {
       date: "March 15-25, 2024",
       location: "Uttarakhand",
       participants: 45,
-      image: "/4dham.png",
+      image: "/CharDham.jpeg",
       description: "A transformative journey to the four sacred shrines in the Himalayas",
       highlights: ["Kedarnath Temple", "Badrinath Darshan", "Gangotri Glacier", "Yamunotri Springs"],
       rating: 4.9,
       testimonial: "Life-changing experience! The spiritual energy was incredible.",
       testimonialBy: "Priya Sharma, Mumbai",
+      link: "/packages/char-dham",
     },
     {
       id: 2,
@@ -38,6 +40,7 @@ export default function PreviousTripsPage() {
       rating: 5.0,
       testimonial: "The most beautiful spiritual experience of my life!",
       testimonialBy: "Rajesh Kumar, Delhi",
+      link: "/packages/dev-deepawali",
     },
     {
       id: 3,
@@ -51,6 +54,7 @@ export default function PreviousTripsPage() {
       rating: 4.8,
       testimonial: "Felt blessed to be part of such a divine gathering.",
       testimonialBy: "Meera Patel, Ahmedabad",
+      link: "/ujjain-omkareshwar-tour-package",
     },
     {
       id: 4,
@@ -64,19 +68,21 @@ export default function PreviousTripsPage() {
       rating: 4.7,
       testimonial: "The temple architecture and spiritual vibes were amazing.",
       testimonialBy: "Suresh Reddy, Hyderabad",
+      link: "/packages/rameshwaram",
     },
     {
       id: 5,
-      name: "Meghalaya Nature Retreat",
+      name: "Jagannath Puri",
       date: "October 15-21, 2022",
-      location: "Meghalaya",
+      location: "Odisa",
       participants: 25,
-      image: "/meghalaya.jpg",
-      description: "Explored the pristine beauty of Northeast India",
-      highlights: ["Cherrapunji Falls", "Living Root Bridges", "Mawlynnong Village", "Crystal Clear Lakes"],
+      image: "/jagmain2.png",
+      description: "Sacred journey to the land of Lord Jagannath",
+      highlights: ["Jagannath Temple", "Konark Sun Temple", "Lingaraj Temple", "Crystal Clear Lakes"],
       rating: 4.9,
-      testimonial: "Nature at its finest! Refreshed my soul completely.",
+      testimonial: "A deeply meaningful experience that filled me with positivity, hope, and inner peace.",
       testimonialBy: "Anita Singh, Kolkata",
+      link: "/packages/jagannath-puri",
     },
     {
       id: 6,
@@ -90,6 +96,7 @@ export default function PreviousTripsPage() {
       rating: 4.6,
       testimonial: "Well organized trip covering all major temples.",
       testimonialBy: "Ganesh Kulkarni, Pune",
+      link: "/packages/maharashtra",
     }
   ];
 
@@ -169,6 +176,8 @@ export default function PreviousTripsPage() {
             src="/rambg.jpg"
             alt="Reviews & Spiritual Journeys"
             fill
+            priority
+            sizes="100vw"
             className="object-cover opacity-30"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-orange-50/30 to-orange-100/50" />
@@ -226,17 +235,17 @@ export default function PreviousTripsPage() {
                     </div>
                   </div>
 
-                  <CardContent className="p-6 flex-grow flex flex-col justify-between">
+                  <CardContent className="p-6 flex-grow flex flex-col justify-between text-center lg:text-left">
                     <div>
                       <h3 className="text-2xl font-bold text-orange-600 mb-2">{trip.name}</h3>
                       <p className="text-gray-600 text-base mb-4 line-clamp-2">{trip.description}</p>
                       
                       <div className="space-y-2 mb-4">
-                        <div className="flex items-center text-gray-500">
+                        <div className="flex items-center justify-center lg:justify-start text-gray-500">
                           <Calendar className="h-4 w-4 mr-2 text-orange-400" />
                           <span className="text-sm">{trip.date}</span>
                         </div>
-                        <div className="flex items-center text-gray-500">
+                        <div className="flex items-center justify-center lg:justify-start text-gray-500">
                           <Users className="h-4 w-4 mr-2 text-orange-400" />
                           <span className="text-sm">{trip.participants} Participants</span>
                         </div>
@@ -244,7 +253,7 @@ export default function PreviousTripsPage() {
 
                       <div className="mb-4">
                         <h4 className="text-sm font-semibold text-orange-600 mb-2">Highlights:</h4>
-                        <div className="flex flex-wrap gap-1">
+                        <div className="flex flex-wrap gap-1 justify-center lg:justify-start">
                           {trip.highlights.slice(0, 3).map((highlight, idx) => (
                             <Badge key={idx} variant="secondary" className="text-xs bg-orange-50 text-gray-700 border border-orange-200">
                               {highlight}
@@ -264,19 +273,22 @@ export default function PreviousTripsPage() {
                       </div>
                     </div>
 
-                    <motion.div
-                      whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(249, 115, 22, 0.3)" }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <Button
-                        size="lg"
-                        className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-6 py-3 text-base shadow-xl border-0 font-semibold"
-                        onClick={() => handleBookSimilarTrip(trip.name)}
+                    <div className="flex flex-col gap-2">
+                      <motion.div
+                        whileHover={{ scale: 1.03, boxShadow: "0 10px 30px rgba(249, 115, 22, 0.3)" }}
+                        whileTap={{ scale: 0.95 }}
                       >
-                        <Heart className="mr-2 h-4 w-4" />
-                        Book Similar Trip
-                      </Button>
-                    </motion.div>
+                        <Link href={trip.link}>
+                          <Button
+                            size="lg"
+                            className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-6 py-3 text-base shadow-xl border-0 font-semibold"
+                          >
+                            Book Trip
+                            <ChevronRight className="ml-1 h-4 w-4" />
+                          </Button>
+                        </Link>
+                      </motion.div>
+                    </div>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -286,7 +298,7 @@ export default function PreviousTripsPage() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-12 bg-gradient-to-b from-orange-50 to-white">
+      {/* <section className="py-12 bg-gradient-to-b from-orange-50 to-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -351,11 +363,13 @@ export default function PreviousTripsPage() {
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
+        </div> */}
+      {/* </section> */}
+
+      <GoogleReviews/>
 
       {/* CTA Section */}
-      <section className="py-12 relative">
+      <section className="py-20 relative">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -373,11 +387,12 @@ export default function PreviousTripsPage() {
               <motion.div
                 whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(249, 115, 22, 0.3)" }}
                 whileTap={{ scale: 0.95 }}
+                className="w-full sm:w-auto"
               >
-                <Link href="/book-trip">
+                <Link href="/book-trip" className="w-full sm:w-auto block">
                   <Button
                     size="lg"
-                    className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-3 text-lg shadow-xl border-0 font-semibold"
+                    className="w-full sm:w-auto bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-3 text-lg shadow-xl border-0 font-semibold"
                   >
                     Book Your Trip Now
                     <Camera className="ml-2 h-5 w-5" />
@@ -387,11 +402,12 @@ export default function PreviousTripsPage() {
               <motion.div
                 whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(249, 115, 22, 0.2)" }}
                 whileTap={{ scale: 0.95 }}
+                className="w-full sm:w-auto"
               >
                 <Button
                   variant="outline"
                   size="lg"
-                  className="border-2 border-orange-500 text-orange-600 hover:bg-orange-500 hover:text-white px-8 py-3 text-lg shadow-xl backdrop-blur-sm font-semibold"
+                  className="w-full sm:w-auto border-2 border-orange-500 text-orange-600 hover:bg-orange-500 hover:text-white px-8 py-3 text-lg shadow-xl backdrop-blur-sm font-semibold"
                   onClick={() => {
                     if (typeof window !== 'undefined') {
                       window.open('https://wa.me/917208771688?text=Hello! I would like to know more about your spiritual trips.', '_blank')

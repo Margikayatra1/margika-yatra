@@ -45,7 +45,7 @@ export function Header() {
         isScrolled
           ? 'bg-white/80 shadow-md backdrop-blur-md border-b border-orange-200'
           : 'bg-white/95 backdrop-blur-md border-b border-orange-100'
-      } py-2`}  // ✅ Consistent compact padding (8px) – matches screenshot
+      } py-1.5 sm:py-2`}
       style={{ animation: 'slideDown 0.5s ease-out forwards' }}
     >
       <style>{`
@@ -132,34 +132,33 @@ export function Header() {
         }
 
         .nav-cta {
-          display: flex !important;
           align-items: center !important;
           gap: 12px !important;
         }
       `}</style>
 
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between">
+      <div className="container mx-auto px-3 sm:px-4">
+        <div className="flex items-center justify-between gap-2">
 
           {/* Logo */}
           <Link href="/">
-            <div className="logo-wrap flex items-center space-x-2">
+            <div className="logo-wrap flex items-center space-x-1.5 sm:space-x-2">
               <Image
                 src="/logo.png"
                 alt="Margika Yatra Logo"
                 width={36}
                 height={36}
-                className="rounded-full object-contain"
+                className="rounded-full object-contain w-7 h-7 sm:w-9 sm:h-9"
                 priority
               />
-              <span className="text-2xl font-bold bg-gradient-to-r from-orange-600 to-orange-700 bg-clip-text text-transparent">
+              <span className="text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-orange-600 to-orange-700 bg-clip-text text-transparent whitespace-nowrap">
                 MARGIKA YATRA
               </span>
             </div>
           </Link>
 
           {/* Right side container for nav menu and actions */}
-          <div className="flex items-center space-x-8">
+          <div className="flex items-center space-x-4 lg:space-x-8">
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-6">
               {navItems.map((item) => (
@@ -200,13 +199,13 @@ export function Header() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="text-orange-600 hover:text-orange-700 hover:bg-orange-50"
+                className="text-orange-600 hover:text-orange-700 hover:bg-orange-50 h-9 w-9 sm:h-10 sm:w-10 flex-shrink-0"
                 aria-label="Open menu"
               >
                 {isMenuOpen ? (
-                  <X className="h-6 w-6" />
+                  <X className="h-5 w-5 sm:h-6 sm:w-6" />
                 ) : (
-                  <Menu className="h-6 w-6" />
+                  <Menu className="h-5 w-5 sm:h-6 sm:w-6" />
                 )}
               </Button>
             </SheetTrigger>

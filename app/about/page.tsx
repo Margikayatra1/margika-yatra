@@ -72,6 +72,8 @@ export default function AboutPage() {
             src="/rambg.jpg"
             alt="About Margika Yatra"
             fill
+            priority
+            sizes="100vw"
             className="object-cover opacity-20"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-orange-50/20 to-orange-100/40" />
@@ -109,9 +111,9 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="space-y-6"
+                className="space-y-6 text-center lg:text-left"
               >
-                <h2 className="text-3xl font-bold text-orange-600 border-b-2 border-orange-200 pb-3">Our Story</h2>
+                <h2 className="text-3xl font-bold text-orange-600 border-b-2 border-orange-200 pb-3 text-center lg:text-left">Our Story</h2>
                 <p className="text-gray-700 text-lg leading-relaxed">
                   At <strong>Margika Yatra</strong>, we believe that a pilgrimage is much more than a journey—it is a path to self-discovery, devotion, and inner transformation. Founded with the vision of making sacred travel meaningful, comfortable, and accessible, we specialize in carefully curated spiritual tour packages that connect travelers with India's most revered temples, holy rivers, Jyotirlingas, and pilgrimage destinations.
                 </p>
@@ -125,18 +127,18 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="space-y-4"
+                className="space-y-4 text-center lg:text-left"
               >
-                <h2 className="text-3xl font-bold text-orange-600 border-b-2 border-orange-200 pb-3">Our Mission & Vision</h2>
-                <div className="bg-white/80 border border-orange-200/60 rounded-xl p-6 shadow-md space-y-4">
+                <h2 className="text-3xl font-bold text-orange-600 border-b-2 border-orange-200 pb-3 text-center lg:text-left">Our Mission & Vision</h2>
+                <div className="bg-white/80 border border-orange-200/60 rounded-xl p-6 shadow-md space-y-4 text-center lg:text-left">
                   <div className="space-y-2">
-                    <h3 className="text-xl font-bold text-gray-800">Our Mission</h3>
+                    <h3 className="text-xl font-bold text-gray-800 text-center lg:text-left">Our Mission</h3>
                     <p className="text-gray-700">
                       Our mission is to help devotees experience the spiritual richness of India through well-planned, hassle-free, and spiritually enriching journeys. We strive to create travel experiences that bring people closer to their faith while ensuring comfort, safety, and personalized service throughout their yatra.
                     </p>
                   </div>
                   <div className="space-y-2">
-                    <h3 className="text-xl font-bold text-gray-800">Our Vision</h3>
+                    <h3 className="text-xl font-bold text-gray-800 text-center lg:text-left">Our Vision</h3>
                     <p className="text-gray-700">
                       To become India's most trusted spiritual travel company by creating transformative pilgrimage experiences that inspire faith, foster cultural connections, and leave lasting memories for every traveler.
                     </p>
@@ -152,13 +154,13 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="bg-gradient-to-b from-[#FEE6C7] to-[#FEDEBD] border border-orange-200 rounded-2xl p-8 shadow-lg"
+                className="bg-gradient-to-b from-[#FEE6C7] to-[#FEDEBD] border border-orange-200 rounded-2xl p-8 shadow-lg text-center lg:text-left"
               >
-                <h2 className="text-2xl font-bold text-orange-700 mb-6 flex items-center">
+                <h2 className="text-2xl font-bold text-orange-700 mb-6 flex items-center justify-center lg:justify-start">
                   <TempleIcon className="mr-2 h-6 w-6 text-orange-700" />
                   What We Offer
                 </h2>
-                <ul className="space-y-3">
+                <ul className="space-y-3 flex flex-col items-center lg:items-start text-left">
                   {offerings.map((offering, idx) => (
                     <li key={idx} className="flex items-start text-gray-900 font-medium">
                       <CheckCircle className="h-5 w-5 text-orange-600 mr-3 mt-0.5 flex-shrink-0" />
@@ -197,8 +199,8 @@ export default function AboutPage() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <Card className="bg-white/90 border border-orange-100 hover:border-orange-300 transition-all duration-300 shadow-md h-full flex flex-col">
-                  <CardContent className="p-6 space-y-4">
-                    <div className="p-3 bg-orange-50 rounded-lg w-fit">
+                  <CardContent className="p-6 space-y-4 flex flex-col items-center text-center lg:items-start lg:text-left">
+                    <div className="p-3 bg-orange-50 rounded-lg w-fit lg:self-start">
                       {item.icon}
                     </div>
                     <h3 className="text-xl font-bold text-gray-900">{item.title}</h3>
@@ -255,7 +257,7 @@ export default function AboutPage() {
               }}
             >
               <Phone className="mr-2 h-5 w-5" />
-              Call / WhatsApp Us
+              Join Margika Family
             </Button>
           </div>
         </div>

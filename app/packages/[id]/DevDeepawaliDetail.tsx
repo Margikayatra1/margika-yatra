@@ -1,11 +1,13 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { motion } from "framer-motion"
 import Link from "next/link"
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/ui/newheader"
 import { GoogleReviews } from "@/components/ui/google-reviews"
 import { CharStats } from "@/components/char-stats"
+import { FAQ } from "@/components/faq"
 
 export function DevDeepawaliDetail() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
@@ -72,7 +74,8 @@ export function DevDeepawaliDetail() {
   const wa = (text: string) => `https://wa.me/917208771688?text=${encodeURIComponent(text)}`
 
   return (
-    <div className="dd-page">
+    <>
+      <div className="dd-page">
       <style jsx global>{`
         @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap");
 
@@ -127,6 +130,7 @@ export function DevDeepawaliDetail() {
           justify-content: flex-end;
           overflow: hidden;
           background: url('/rambg.jpg') center/cover no-repeat;
+          padding-top: 130px;
         }
         .dd-page .hero-img {
           position: absolute;
@@ -252,10 +256,56 @@ export function DevDeepawaliDetail() {
           max-width: 560px;
           line-height: 1.75;
         }
-        .dd-page .hero-ctas {
-          display: flex;
-          gap: 14px;
-          flex-wrap: wrap;
+        .dd-page .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+
+        /* Global uniform button sizing */
+        .dd-page .btn-primary,
+        .dd-page .btn-secondary,
+        .dd-page .btn-wa,
+        .dd-page .btn-book,
+        .dd-page .btn-book-outline,
+        .dd-page .char-btn-outline {
+          min-height: 50px !important;
+          padding: 12px 24px !important;
+          border-radius: 4px !important;
+          font-size: 12px !important;
+          font-weight: 500 !important;
+          letter-spacing: 0.08em !important;
+          text-transform: uppercase !important;
+          box-sizing: border-box !important;
+          white-space: nowrap !important;
+          display: inline-flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+        }
+
+        .dd-page .hero-ctas,
+        .dd-page .cta-buttons {
+          display: flex !important;
+          align-items: center !important;
+          gap: 16px !important;
+          flex-wrap: wrap !important;
+        }
+        .dd-page .price-actions {
+          display: flex !important;
+          align-items: center !important;
+          gap: 16px !important;
+          flex-wrap: nowrap !important;
+        }
+        .dd-page .hero-ctas .btn-primary,
+        .dd-page .hero-ctas .btn-wa,
+        .dd-page .hero-ctas .btn-secondary,
+        .dd-page .hero-ctas .char-btn-outline,
+        .dd-page .price-actions .btn-primary,
+        .dd-page .price-actions .btn-secondary,
+        .dd-page .price-actions .char-btn-outline,
+        .dd-page .cta-buttons .btn-primary,
+        .dd-page .cta-buttons .btn-wa,
+        .dd-page .cta-buttons .btn-secondary,
+        .dd-page .cta-buttons .char-btn-outline {
+          flex: 1 !important;
+          max-width: 320px !important;
+          text-align: center !important;
         }
         .dd-page .btn-primary {
           display: inline-flex;
@@ -299,10 +349,10 @@ export function DevDeepawaliDetail() {
           justify-content: center;
           gap: 10px;
           background: transparent;
-          color: var(--cream);
+          color: var(--saffron);
           padding: 16px 32px;
-          border-radius: 2px;
-          border: 1px solid rgba(17, 24, 39, 0.3);
+         border-radius: 2px;
+          border: 1px solid var(--saffron);
           font-family: "Jost", sans-serif;
           font-size: 13px;
           font-weight: 400;
@@ -604,7 +654,7 @@ export function DevDeepawaliDetail() {
         .dd-page .price-footer { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin-top: auto; }
         .dd-page .price-amount-wrap { display: flex; flex-direction: column; }
         .dd-page .price-from { font-size: 11px; color: var(--smoke); letter-spacing: 0.06em; }
-        .dd-page .price-amount { font-family: 'Cormorant Garamond', serif; font-size: 44px; color: var(--gold); line-height: 1.1; }
+        .dd-page .price-amount { font-family: serif; font-size: 44px; color: var(--gold); line-height: 1.1; }
         .dd-page .price-per { font-size: 13px; color: var(--smoke); margin-top: -4px; }
         .dd-page .price-note { font-size: 11px; color: var(--smoke); margin-top: 8px; max-width: 240px; line-height: 1.5; }
         .dd-page .price-actions { display: flex; gap: 12px; align-items: center; }
@@ -716,7 +766,7 @@ export function DevDeepawaliDetail() {
         }
         .dd-page .itin-img-main {
           width: 100%;
-          height: 440px;
+          height: 740px;
           object-fit: cover;
           border-radius: 4px;
           filter: brightness(0.82) saturate(1.2);
@@ -1133,8 +1183,8 @@ export function DevDeepawaliDetail() {
           padding: 13px 24px;
           border-radius: 3px;
           border: 1px solid rgba(249, 115, 22, 0.55);
-          background: transparent;
-          color: var(--gold);
+           background: var(--saffron); color: var(--white);
+          color: var(--white);
           font-family: 'Jost', sans-serif;
           font-size: 12px;
           font-weight: 500;
@@ -1183,6 +1233,10 @@ export function DevDeepawaliDetail() {
           gap: 16px;
           justify-content: center;
           flex-wrap: wrap;
+        }
+        .dd-page .cta-banner .cta-buttons .btn-primary {
+          background: #f97316 !important;
+          color: var(--white);
         }
 
 
@@ -1237,6 +1291,41 @@ export function DevDeepawaliDetail() {
 
         /* RESPONSIVE */
         @media (max-width: 900px) {
+          .dd-page .hero-ctas,
+          .dd-page .price-actions,
+          .dd-page .complete-ctas,
+          .dd-page .cta-buttons,
+          .dd-page .itin-ctas {
+            flex-direction: column !important;
+            align-items: center !important;
+            width: 100% !important;
+            gap: 10px !important;
+            padding: 0 20px !important;
+            box-sizing: border-box !important;
+          }
+          .dd-page .hero-ctas .btn-primary,
+          .dd-page .hero-ctas .btn-wa,
+          .dd-page .hero-ctas .btn-secondary,
+          .dd-page .hero-ctas .char-btn-outline,
+          .dd-page .price-actions .btn-primary,
+          .dd-page .price-actions .btn-secondary,
+          .dd-page .price-actions .char-btn-outline,
+          .dd-page .complete-ctas .btn-dark,
+          .dd-page .cta-buttons .btn-primary,
+          .dd-page .cta-buttons .btn-wa,
+          .dd-page .cta-buttons .btn-secondary,
+          .dd-page .cta-buttons .char-btn-outline,
+          .dd-page .itin-ctas .btn-primary,
+          .dd-page .itin-ctas .btn-wa,
+          .dd-page .itin-ctas .btn-secondary {
+            width: 100% !important;
+            max-width: 420px !important;
+            flex: none !important;
+            display: inline-flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+          }
+
           .dd-page .intro-grid,
           .dd-page .why-grid,
           .dd-page .faq-grid,
@@ -1248,8 +1337,8 @@ export function DevDeepawaliDetail() {
             grid-template-columns: 1fr 1fr;
           }
           .dd-page .steps-grid {
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
+            grid-template-columns: 1fr;
+            gap: 20px;
           }
           .dd-page .steps-grid::before {
             display: none;
@@ -1262,14 +1351,18 @@ export function DevDeepawaliDetail() {
             grid-template-columns: 1fr;
           }
           .dd-page .gallery-strip {
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
             grid-template-rows: auto;
+            gap: 8px;
           }
           .dd-page .gallery-item:nth-child(1) {
             grid-row: auto;
           }
           .dd-page .gallery-item:nth-child(5) {
             grid-column: auto;
+          }
+          .dd-page .gallery-item {
+            height: 240px;
           }
           .dd-page .inclusions-grid {
             grid-template-columns: 1fr;
@@ -1287,6 +1380,91 @@ export function DevDeepawaliDetail() {
           .dd-page .why-float-card {
             display: none;
           }
+
+          /* Mobile Center Alignment for headings */
+          .dd-page .hero-content { text-align: center; }
+          .dd-page .hero-tag, .dd-page .hero-event-badge { display: flex; width: 100%; justify-content: center; }
+          .dd-page .hero-subtitle { margin-left: auto; margin-right: auto; }
+          .dd-page .hero-ctas { justify-content: center; }
+
+          .dd-page .intro-grid .reveal:last-child { text-align: center; }
+          .dd-page .intro-grid .section-tag { display: flex; width: 100%; justify-content: center; }
+          .dd-page .intro-grid .gold-rule { margin-left: auto; margin-right: auto; }
+          .dd-page .intro-grid .section-body { margin-left: auto; margin-right: auto; }
+          .dd-page .intro-grid .intro-quote { text-align: center; border-left: none; border-top: 2px solid var(--saffron); border-bottom: 2px solid var(--saffron); padding: 16px 0; }
+
+          .dd-page .highlights-header,
+          .dd-page .price-header,
+          .dd-page .complete-head,
+          .dd-page .itin-header {
+            text-align: center !important;
+          }
+          .dd-page .highlights-header .gold-rule,
+          .dd-page .price-header .gold-rule,
+          .dd-page .complete-head .gold-rule,
+          .dd-page .itin-header .gold-rule {
+            margin-left: auto !important;
+            margin-right: auto !important;
+          }
+
+          .dd-page .complete-body {
+            text-align: center !important;
+          }
+          .dd-page .complete-ctas {
+            justify-content: center !important;
+          }
+
+          .dd-page .why-grid .reveal:first-child {
+            text-align: center;
+          }
+          .dd-page .why-grid .section-tag {
+            display: flex; width: 100%; justify-content: center;
+          }
+          .dd-page .why-grid .gold-rule {
+            margin-left: auto; margin-right: auto;
+          }
+          .dd-page .why-grid .section-body {
+            margin-left: auto; margin-right: auto;
+          }
+          .dd-page .features-list {
+            text-align: left;
+          }
+
+          .dd-page .day-tabs {
+            justify-content: center !important;
+          }
+          .dd-page .day-panel {
+            text-align: center !important;
+          }
+          .dd-page .activity-list {
+            text-align: left !important;
+          }
+
+          /* FAQ section center alignment */
+          .dd-page .faq-grid .reveal:first-child {
+            text-align: center !important;
+          }
+          .dd-page .faq-grid .section-tag {
+            display: flex !important;
+            width: 100% !important;
+            justify-content: center !important;
+          }
+          .dd-page .faq-grid .gold-rule {
+            margin-left: auto !important;
+            margin-right: auto !important;
+          }
+          .dd-page .faq-grid .section-body {
+            margin-left: auto !important;
+            margin-right: auto !important;
+            text-align: center !important;
+          }
+          .dd-page .faq-grid .itin-ctas {
+            align-items: center !important;
+          }
+
+          .dd-page .itin-img-main {
+            height: 320px !important;
+          }
         }
         @media (max-width: 600px) {
           .dd-page .price-footer {
@@ -1300,7 +1478,7 @@ export function DevDeepawaliDetail() {
             grid-template-columns: 1fr;
           }
           .dd-page .steps-grid {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: 1fr;
           }
           .dd-page .hero-title {
             font-size: 40px;
@@ -1320,12 +1498,12 @@ export function DevDeepawaliDetail() {
         <div className="hero-particles" id="heroParticles"></div>
 
         <div className="hero-content">
-          <div className="hero-event-badge">🪔 Dev Deepawali 2026 · Varanasi</div>
-          <div className="hero-tag">Margika Yatra · Spiritual Travel</div>
+          <div className="hero-event-badge" style={{ color: "#f5a94e", fontWeight: 900 }}>🪔 Dev Deepawali 2026 · Varanasi</div>
+          <div className="hero-tag" style={{ color: "#f5a94e", fontWeight: 900 }}>Margika Yatra · Spiritual Travel</div>
           <h1 className="hero-title">
             Dev Deepawali<br />Tour Package from<br /><em>Mumbai & Thane</em>
           </h1>
-          <p className="hero-subtitle">
+          <p className="hero-subtitle" style={{ color: 'var(--black)', fontWeight: 500 }}>
             When the gods celebrate Diwali — the 84 ghats of Varanasi light up with a million earthen lamps. Be there
             for one of the most spiritually charged nights in the Hindu calendar. A 2-night, 3-day experience you
             will carry for a lifetime.
@@ -1350,7 +1528,7 @@ export function DevDeepawaliDetail() {
         </div>
       </section>
 
-    <div className="char-stats-wrapper mb-20">
+      <div className="char-stats-wrapper mb-20">
         <CharStats />
       </div>
 
@@ -1511,10 +1689,13 @@ export function DevDeepawaliDetail() {
             <div className="price-footer">
               <div className="price-amount-wrap">
                 <span className="price-from">Starting from</span>
-                <span className="price-amount">₹14,999</span>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
+                  <span className="price-amount" style={{ textDecoration: 'line-through', color: '#9ca3af', fontSize: '24px' }}>₹19,999</span>
+                  <span className="price-amount">₹14,999</span>
+                </div>
                 <span className="price-per"> / person</span>
                 <span className="price-note">
-                  Varies with travel mode, group size & hotel category. Final quote on enquiry.
+                  Varies with travel mode, group size & hotel category. Was <span style={{ textDecoration: 'line-through' }}>₹19,999</span>. Final quote on enquiry.
                 </span>
               </div>
               <div className="price-actions">
@@ -1526,7 +1707,7 @@ export function DevDeepawaliDetail() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Book Now →
+                  Book Now 
                 </a>
                 <a
                   href="/UTTAR_PRADESH_MARGIKA_YATRA.pdf"
@@ -1794,14 +1975,6 @@ export function DevDeepawaliDetail() {
                 alt="Dev Deepawali Varanasi Ghats 2026"
                 onError={(e) => { (e.target as HTMLImageElement).src = '/rambg.jpg' }}
               />
-              <img
-                className="itin-img-secondary"
-                src="/DevM.jpeg"
-                alt="Kashi Vishwanath Temple Varanasi"
-                onError={(e) => {
-                  ; (e.target as HTMLImageElement).src = "/rambg.jpg"
-                }}
-              />
             </div>
           </div>
         </div>
@@ -1879,10 +2052,10 @@ export function DevDeepawaliDetail() {
               Why Choose Us
             </div>
             <h2 className="section-title">
-              Why Mumbai & Thane<br /><em>Yatris Choose Margika</em>
+              Why Mumbai & Thane<br /><em style={{ color: "#ffffff" }}>Yatris Choose Margika</em>
             </h2>
             <div className="gold-rule" style={{ background: "#ffffff" }}></div>
-            <p className="section-body">
+            <p className="section-body" style={{ fontWeight: 700, color: "#ffffff" }}>
               We are based in Brahmand, Thane. When you call us, you speak to someone from your community who
               understands your expectations, your schedule, and the kind of service you deserve. That local trust is
               something no large national portal can offer.
@@ -1892,7 +2065,7 @@ export function DevDeepawaliDetail() {
                 <div className="feature-icon">🙏</div>
                 <div className="feature-text">
                   <h4>Spiritual Tourism Specialists</h4>
-                  <p>
+                  <p style={{ color: "#ffffff" }}>
                     Not a generic tour operator. We plan exclusively for pilgrimage and spiritual travel — temples,
                     aartis, and festival timings are our expertise.
                   </p>
@@ -1902,7 +2075,7 @@ export function DevDeepawaliDetail() {
                 <div className="feature-icon">📍</div>
                 <div className="feature-text">
                   <h4>Local Office in Thane</h4>
-                  <p>
+                  <p style={{ color: "#ffffff" }}>
                     Walk in to our Brahmand, Thane office before booking. Meet us in person, ask every question. That
                     transparency builds the trust that online operators can't.
                   </p>
@@ -1912,7 +2085,7 @@ export function DevDeepawaliDetail() {
                 <div className="feature-icon">👨‍👩‍👧</div>
                 <div className="feature-text">
                   <h4>Family & Senior-Friendly</h4>
-                  <p>
+                  <p style={{ color: "#ffffff" }}>
                     Dev Deepawali includes a 2 AM darshan — we plan every timing, transport, and support around the
                     comfort of all age groups in your family.
                   </p>
@@ -1922,7 +2095,7 @@ export function DevDeepawaliDetail() {
                 <div className="feature-icon">💰</div>
                 <div className="feature-text">
                   <h4>Transparent Pricing</h4>
-                  <p>
+                  <p style={{ color: "#ffffff" }}>
                     The price you see is the price you pay. No hidden extras, no surprise charges at the destination.
                     What we quote is complete.
                   </p>
@@ -1932,7 +2105,7 @@ export function DevDeepawaliDetail() {
                 <div className="feature-icon">📞</div>
                 <div className="feature-text">
                   <h4>24×7 Support on Tour</h4>
-                  <p>
+                  <p style={{ color: "#ffffff" }}>
                     Our coordinator is with your group throughout. And our Thane office remains reachable on WhatsApp
                     for any support needed by family back home.
                   </p>
@@ -2022,18 +2195,23 @@ export function DevDeepawaliDetail() {
           <div className="gallery-item">
             <img src="/2.jpg" alt="Margika Yatra pilgrims" />
           </div>
-          {/* <div className="gallery-item">
-            <img src="/3.jpg" alt="Margika Yatra pilgrims" />
+          <div className="gallery-item">
+            <img src="/Home1.jpeg" alt="Margika Yatra pilgrims" />
           </div>
           <div className="gallery-item">
-            <img src="/4.jpg" alt="Margika Yatra pilgrims" />
-          </div> */}
+            <img src="/Home2.jpeg" alt="Margika Yatra pilgrims" />
+          </div>
           <div className="gallery-item">
             <img src="/5.jpg" alt="Margika Yatra pilgrims" />
           </div>
           <div className="gallery-item">
             <img src="/6.jpg" alt="Margika Yatra pilgrims" />
           </div>
+          <div className="gallery-item"><img src="/Home3.jpeg" alt="Margika Yatra pilgrims" /></div>
+          <div className="gallery-item"><img src="/Home4.jpeg" alt="Margika Yatra pilgrims" /></div>
+          <div className="gallery-item"><img src="/Home5.jpeg" alt="Margika Yatra pilgrims" /></div>
+          <div className="gallery-item"><img src="/Home6.jpg" alt="Margika Yatra pilgrims" /></div>
+          <div className="gallery-item"><img src="/Home7.jpg" alt="Margika Yatra pilgrims" /></div>
         </div>
       </section>
 
@@ -2058,7 +2236,7 @@ export function DevDeepawaliDetail() {
               <p className="opkg-desc">
                 Cover the ultimate Uttar Pradesh tri-city circuit. Visit Ram Mandir, Triveni Sangam, and Kashi Vishwanath.
               </p>
-              <Link href="/packages/tri-city" className="opkg-link">
+              <Link href="/packages/varanasi" className="opkg-link">
                 View Package →
               </Link>
             </div>
@@ -2090,74 +2268,19 @@ export function DevDeepawaliDetail() {
         </div>
       </section>
 
-      {/* FAQ */}
-      <section id="faq">
-        <div className="faq-grid">
-          <div className="reveal">
-            <div className="section-tag">Common Questions</div>
-            <h2 className="section-title">
-              Frequently<br /><em>Asked Questions</em>
-            </h2>
-            <div className="gold-rule"></div>
-            <p className="section-body">
-              Everything you need to know before booking your Dev Deepawali Varanasi package from Mumbai or Thane.
-            </p>
-            <div className="itin-ctas" style={{ marginTop: 24 }}>
-              <a href="tel:+917208771688" className="btn-primary">
-                📞 Speak to an Expert
-              </a>
-              <a
-                href={wa("I have a question about Dev Deepawali tour")}
-                className="btn-wa"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                WhatsApp a Question
-              </a>
-            </div>
-          </div>
-          <div className="faq-list reveal">
-            {[
-              [
-                "When is Dev Deepawali in Varanasi 2026?",
-                "Dev Deepawali is celebrated on Kartik Purnima, which falls 15 days after Diwali. In 2026, it is in November. Dates fill up extremely quickly.",
-              ],
-              [
-                "What is the price of the Dev Deepawali tour package?",
-                "Pricing depends on group size, hotel category (premium/luxury), and transport type. Please click Call or WhatsApp to get a customized quote for your family.",
-              ],
-              [
-                "Is Kashi Vishwanath Mangala Aarti included in the package?",
-                "Yes, Kashi Vishwanath Mangala Aarti at 2 AM is included. This aarti is highly sacred and includes Sparsh Darshan where you touch the Jyotirlinga. Passes are limited and require advance booking.",
-              ],
-              [
-                "How do we travel from Mumbai or Thane to Varanasi?",
-                "We assist you with direct flight bookings from Mumbai airport or train bookings (like LTT-Varanasi trains) from Thane/Kalyan. Local pickups and drop-offs are fully handled by us.",
-              ],
-              [
-                "Is this package senior citizen friendly?",
-                "Yes. Dev Deepawali is a crowded event, so we arrange private boats, hotels with minimum stairs, and dedicated coordinators to support senior citizens through every step of the yatra.",
-              ],
-            ].map(([q, a], idx) => (
-              <div className={`faq-item ${openFaq === idx ? "open" : ""}`} key={idx}>
-                <button className="faq-q" onClick={() => setOpenFaq(openFaq === idx ? null : idx)}>
-                  {q}
-                  <span className="faq-icon">+</span>
-                </button>
-                <div className="faq-a">{a}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      </div>{/* end dd-page */}
 
+      {/* FAQ — outside dd-page to avoid CSS conflicts */}
+      <FAQ />
+
+      <div className="dd-page">{/* re-enter dd-page for CTA vars */}
       {/* CTA BANNER */}
       <section className="cta-banner">
         <div className="cta-banner-content reveal">
           <h2 className="section-title" style={{ color: "var(--white)", marginBottom: 16 }}>
             Witness the River of Light
           </h2>
-          <p className="section-body" style={{ color: "rgba(255,255,255,0.8)", margin: "0 auto 32px" }}>
+          <p className="section-body" style={{ color: "rgba(255,255,255,0.8)", margin: "0 auto 32px", fontWeight: "900", fontSize: "18px" }}>
             Varanasi's Dev Deepawali 2026 slots are extremely limited due to boat and hotel availability. Plan your
             yatra today.
           </p>
@@ -2177,20 +2300,37 @@ export function DevDeepawaliDetail() {
         </div>
       </section>
 
+      </div>{/* end dd-page for CTA */}
+
       <Footer />
 
       {/* STICKY WA */}
       <a
         href={wa("Hi Margika Yatra! I want to enquire about Dev Deepawali package")}
-        className="sticky-wa"
         aria-label="Chat on WhatsApp"
         target="_blank"
         rel="noopener noreferrer"
+        style={{
+          position: "fixed",
+          bottom: "28px",
+          right: "28px",
+          zIndex: 200,
+          width: "58px",
+          height: "58px",
+          borderRadius: "50%",
+          background: "#25D366",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          boxShadow: "0 4px 20px rgba(37,211,102,0.5)",
+          textDecoration: "none",
+          transition: "transform 0.3s, box-shadow 0.3s",
+        }}
       >
-        <svg viewBox="0 0 24 24">
+        <svg viewBox="0 0 24 24" style={{ width: "30px", height: "30px", fill: "white" }}>
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
         </svg>
       </a>
-    </div>
+    </>
   )
 }

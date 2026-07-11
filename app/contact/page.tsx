@@ -37,6 +37,8 @@ export default function ContactPage() {
             src="/rambg.jpg"
             alt="Contact Margika Yatra"
             fill
+            priority
+            sizes="100vw"
             className="object-cover opacity-15"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-orange-50/20 to-orange-100/40" />

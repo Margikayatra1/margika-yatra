@@ -6,6 +6,7 @@ import { Footer } from "@/components/footer"
 import { Header } from "@/components/ui/newheader"
 import { GoogleReviews } from "@/components/ui/google-reviews"
 import { CharStats } from "@/components/char-stats"
+import { FAQ } from "@/components/faq"
 
 export function DwarkaSomnathDetail() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
@@ -189,7 +190,8 @@ export function DwarkaSomnathDetail() {
   ]
 
   return (
-    <div className="gujarat-page">
+    <>
+      <div className="gujarat-page">
       <style jsx global>{`
         .gujarat-page {
           --saffron: #f97316;
@@ -239,6 +241,7 @@ export function DwarkaSomnathDetail() {
           justify-content: flex-end;
           overflow: hidden;
           background: url('/rambg.jpg') center/cover no-repeat;
+          padding: 130px 5% 80px;
         }
         .gujarat-page .hero-img {
           position: absolute;
@@ -258,16 +261,16 @@ export function DwarkaSomnathDetail() {
           inset: 0;
           background: linear-gradient(
             to bottom,
-            rgba(0, 0, 0, 0.2) 0%,
+            rgba(0, 0, 0, 0.25) 0%,
             rgba(0, 0, 0, 0.15) 30%,
-            rgba(0, 0, 0, 0.6) 65%,
-            rgba(0, 0, 0, 0.85) 100%
+            rgba(0, 0, 0, 0.5) 60%,
+            rgba(0, 0, 0, 0.8) 100%
           );
         }
         .gujarat-page .hero-content {
           position: relative;
           z-index: 2;
-          padding: 0 5% 80px;
+          padding: 0;
           max-width: 860px;
           opacity: 0;
           transform: translateY(30px);
@@ -283,11 +286,11 @@ export function DwarkaSomnathDetail() {
           display: inline-flex;
           align-items: center;
           gap: 8px;
-          font-size: 11px;
-          font-weight: 500;
+          font-size: 14px;
+          font-weight: 900;
           letter-spacing: 0.18em;
           text-transform: uppercase;
-          color: var(--saffron);
+          color: var(--saffron-light);
           margin-bottom: 20px;
         }
         .gujarat-page .hero-tag::before {
@@ -295,7 +298,7 @@ export function DwarkaSomnathDetail() {
           display: block;
           width: 30px;
           height: 1px;
-          background: var(--saffron);
+          background: var(--saffron-light);
         }
         .gujarat-page .hero-title {
           font-family: "Cormorant Garamond", serif;
@@ -317,6 +320,54 @@ export function DwarkaSomnathDetail() {
           max-width: 520px;
           line-height: 1.75;
         }
+        /* Global uniform button sizing */
+        .gujarat-page .btn-primary,
+        .gujarat-page .btn-secondary,
+        .gujarat-page .btn-wa,
+        .gujarat-page .btn-book,
+        .gujarat-page .btn-book-outline,
+        .gujarat-page .char-btn-outline {
+          min-height: 50px !important;
+          padding: 12px 24px !important;
+          border-radius: 4px !important;
+          font-size: 12px !important;
+          font-weight: 500 !important;
+          letter-spacing: 0.08em !important;
+          text-transform: uppercase !important;
+          box-sizing: border-box !important;
+          white-space: nowrap !important;
+          display: inline-flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+        }
+
+        .gujarat-page .hero-ctas,
+        .gujarat-page .price-actions,
+        .gujarat-page .cta-buttons,
+        .gujarat-page .day-ctas {
+          display: flex !important;
+          align-items: center !important;
+          gap: 16px !important;
+          flex-wrap: wrap !important;
+        }
+        .gujarat-page .hero-ctas .btn-primary,
+        .gujarat-page .hero-ctas .btn-wa,
+        .gujarat-page .hero-ctas .btn-secondary,
+        .gujarat-page .hero-ctas .char-btn-outline,
+        .gujarat-page .price-actions .btn-book,
+        .gujarat-page .price-actions .btn-book-outline,
+        .gujarat-page .cta-buttons .btn-primary,
+        .gujarat-page .cta-buttons .btn-wa,
+        .gujarat-page .cta-buttons .btn-secondary,
+        .gujarat-page .cta-buttons .char-btn-outline,
+        .gujarat-page .day-ctas .btn-book,
+        .gujarat-page .day-ctas .btn-book-outline,
+        .gujarat-page .day-ctas .btn-secondary {
+          flex: 1 !important;
+          max-width: 320px !important;
+          text-align: center !important;
+        }
+
         .gujarat-page .hero-ctas {
           display: flex;
           gap: 14px;
@@ -1270,10 +1321,19 @@ export function DwarkaSomnathDetail() {
           max-width: 420px;
         }
         .gujarat-page .feat-ctas {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 12px;
-          width: 100%;
+          display: flex !important;
+          align-items: center !important;
+          gap: 12px !important;
+          flex-wrap: nowrap !important;
+          width: 100% !important;
+        }
+        .gujarat-page .feat-ctas .btn-feat-call,
+        .gujarat-page .feat-ctas .btn-feat-book,
+        .gujarat-page .feat-ctas .btn-feat-download {
+          flex: 1 !important;
+          max-width: 320px !important;
+          text-align: center !important;
+          white-space: nowrap !important;
         }
         .gujarat-page .btn-feat-call {
           display: inline-flex;
@@ -1545,8 +1605,8 @@ export function DwarkaSomnathDetail() {
           padding: 13px 24px;
           border-radius: 3px;
           border: 1px solid rgba(249, 115, 22, 0.55);
-          background: transparent;
-          color: var(--gold);
+           background: var(--saffron); color: var(--white);
+          color: var(--white);
           font-family: 'Jost', sans-serif;
           font-size: 12px;
           font-weight: 500;
@@ -1561,19 +1621,59 @@ export function DwarkaSomnathDetail() {
 
         /* RESPONSIVE */
         @media (max-width: 900px) {
+          .gujarat-page .hero-ctas,
+          .gujarat-page .price-actions,
+          .gujarat-page .cta-buttons,
+          .gujarat-page .day-ctas,
+          .gujarat-page .feat-ctas {
+            flex-direction: column !important;
+            align-items: center !important;
+            width: 100% !important;
+            gap: 10px !important;
+            padding: 0 20px !important;
+            box-sizing: border-box !important;
+          }
+          .gujarat-page .hero-ctas .btn-primary,
+          .gujarat-page .hero-ctas .btn-wa,
+          .gujarat-page .hero-ctas .btn-secondary,
+          .gujarat-page .hero-ctas .char-btn-outline,
+          .gujarat-page .price-actions .btn-book,
+          .gujarat-page .price-actions .btn-book-outline,
+          .gujarat-page .cta-buttons .btn-primary,
+          .gujarat-page .cta-buttons .btn-wa,
+          .gujarat-page .cta-buttons .btn-secondary,
+          .gujarat-page .cta-buttons .char-btn-outline,
+          .gujarat-page .day-ctas .btn-book,
+          .gujarat-page .day-ctas .btn-book-outline,
+          .gujarat-page .day-ctas .btn-secondary,
+          .gujarat-page .feat-ctas .btn-feat-call,
+          .gujarat-page .feat-ctas .btn-feat-book,
+          .gujarat-page .feat-ctas .btn-feat-download {
+            width: 100% !important;
+            max-width: 420px !important;
+            flex: none !important;
+            display: inline-flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+          }
+
           .gujarat-page .intro-grid,
           .gujarat-page .why-grid,
           .gujarat-page .faq-grid {
             grid-template-columns: 1fr;
           }
           .gujarat-page .dhams-grid {
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
           }
           .gujarat-page .other-pkgs-grid {
             grid-template-columns: 1fr;
           }
           .gujarat-page .steps-grid {
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 1fr;
+            gap: 24px;
+          }
+          .gujarat-page .steps-grid::before {
+            display: none;
           }
           .gujarat-page .gallery-strip {
             grid-template-columns: 1fr 1fr;
@@ -1600,6 +1700,68 @@ export function DwarkaSomnathDetail() {
             position: static;
             margin-top: 16px;
           }
+
+          /* Mobile Center Alignment for headings */
+          .gujarat-page .hero-content {
+            text-align: center !important;
+          }
+          .gujarat-page .hero-tag, .gujarat-page .hero-event-badge {
+            display: flex !important; width: 100% !important; justify-content: center !important;
+          }
+          .gujarat-page .hero-subtitle {
+            margin-left: auto !important; margin-right: auto !important;
+          }
+          .gujarat-page .intro-grid .reveal:nth-child(2) {
+            text-align: center !important;
+          }
+          .gujarat-page .intro-grid .section-tag {
+            display: flex !important; width: 100% !important; justify-content: center !important;
+          }
+          .gujarat-page .intro-grid .gold-rule {
+            margin-left: auto !important; margin-right: auto !important;
+          }
+          .gujarat-page .intro-grid .section-body {
+            margin-left: auto !important; margin-right: auto !important;
+          }
+          .gujarat-page .itinerary-header {
+            text-align: center !important;
+          }
+          .gujarat-page .itinerary-header .section-tag {
+            display: flex !important; width: 100% !important; justify-content: center !important;
+          }
+          .gujarat-page .itinerary-header .gold-rule {
+            margin-left: auto !important; margin-right: auto !important;
+          }
+          .gujarat-page .itinerary-header .section-body {
+            margin-left: auto !important; margin-right: auto !important;
+          }
+          .gujarat-page .why-grid .reveal:first-child {
+            text-align: center !important;
+          }
+          .gujarat-page .why-grid .section-tag {
+            display: flex !important; width: 100% !important; justify-content: center !important;
+          }
+          .gujarat-page .why-grid .gold-rule {
+            margin-left: auto !important; margin-right: auto !important;
+          }
+          .gujarat-page .why-grid .section-body {
+            margin-left: auto !important; margin-right: auto !important;
+          }
+          .gujarat-page .features-list {
+            text-align: left !important;
+          }
+          .gujarat-page .faq-grid .reveal:first-child {
+            text-align: center !important;
+          }
+          .gujarat-page .faq-grid .section-tag {
+            display: flex !important; width: 100% !important; justify-content: center !important;
+          }
+          .gujarat-page .faq-grid .gold-rule {
+            margin-left: auto !important; margin-right: auto !important;
+          }
+          .gujarat-page .faq-grid .section-body {
+            margin-left: auto !important; margin-right: auto !important;
+          }
         }
       `}</style>
 
@@ -1607,11 +1769,11 @@ export function DwarkaSomnathDetail() {
       <Header />
 
       {/* HERO */}
-      <section className="hero" style={{ padding: 0 }}>
+      <section className="hero">
         <div className="hero-img"></div>
         <div className="hero-overlay"></div>
         <div className="hero-content">
-          <div className="hero-tag">Sacred Gujarat Pilgrimage</div>
+          <div className="hero-tag" style={{ color: "var(--saffron-light)", fontWeight: 900, fontSize: 14 }}>Sacred Gujarat Pilgrimage</div>
           <h1 className="hero-title">
             Gujarat Tour Package<br />from <em>Mumbai & Thane</em>
           </h1>
@@ -1836,10 +1998,10 @@ export function DwarkaSomnathDetail() {
               Why Choose Us
             </div>
             <h2 className="section-title">
-              Why Mumbai & Thane<br /><em>Yatris Choose Margika</em>
+              Why Mumbai & Thane<br /><em style={{ color: "#ffffff" }}>Yatris Choose Margika</em>
             </h2>
             <div className="gold-rule" style={{ background: "#ffffff" }}></div>
-            <p className="section-body">
+            <p className="section-body" style={{ fontWeight: 700, color: "#ffffff" }}>
               We are based in Brahmand, Thane. When you call us, you speak to someone from your community who
               understands your expectations, your schedule, and the kind of service you deserve. That local trust is
               something no large national portal can offer.
@@ -1849,7 +2011,7 @@ export function DwarkaSomnathDetail() {
                 <div className="feature-icon">🙏</div>
                 <div className="feature-text">
                   <h4>Spiritual Tourism Specialists</h4>
-                  <p>
+                  <p style={{ color: "#ffffff" }}>
                     Not a generic tour operator. We plan exclusively for pilgrimage and spiritual travel — temples,
                     aartis, and festival timings are our expertise.
                   </p>
@@ -1859,7 +2021,7 @@ export function DwarkaSomnathDetail() {
                 <div className="feature-icon">📍</div>
                 <div className="feature-text">
                   <h4>Local Office in Thane</h4>
-                  <p>
+                  <p style={{ color: "#ffffff" }}>
                     Walk in to our Brahmand, Thane office before booking. Meet us in person, ask every question. That
                     transparency builds the trust that online operators can't.
                   </p>
@@ -1869,7 +2031,7 @@ export function DwarkaSomnathDetail() {
                 <div className="feature-icon">👴</div>
                 <div className="feature-text">
                   <h4>Family & Senior-Friendly</h4>
-                  <p>
+                  <p style={{ color: "#ffffff" }}>
                     We plan every timing, transport, and support around the comfort of all age groups in your family
                     with minimal commutes.
                   </p>
@@ -1880,7 +2042,7 @@ export function DwarkaSomnathDetail() {
           <div className="reveal reveal-delay-2">
             <div className="why-visual">
               <img
-                src="/rambg.jpg"
+                src="/Dw3.jpeg"
                 alt="Margika Yatra group Gujarat"
                 onError={(e) => {
                   ; (e.target as HTMLImageElement).src = "/rambg.jpg"
@@ -1937,14 +2099,17 @@ export function DwarkaSomnathDetail() {
               <div className="feat-footer">
                 <div className="feat-price">
                   <span className="from">Starting from</span>
-                  <span className="amount">₹8,999</span>
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
+                    <span className="amount" style={{ textDecoration: 'line-through', color: '#9ca3af', fontSize: '24px' }}>₹13,999</span>
+                    <span className="amount">₹8,999</span>
+                  </div>
                   <span className="per"> / person</span>
-                  <span className="feat-price-note">Varies with travel mode, group size & hotel category. Final quote on enquiry.</span>
+                  <span className="feat-price-note">Varies with travel mode, group size & hotel category. Was <span style={{ textDecoration: 'line-through' }}>₹13,999</span>. Final quote on enquiry.</span>
                 </div>
                 <div className="feat-ctas">
                   <a href="tel:+917208771688" className="btn-feat-call">Call Us</a>
                   <a href={razorpayLink} className="btn-feat-book" target="_blank" rel="noopener noreferrer">
-                    Book Now →
+                    Book Now 
                   </a>
                   <a href="/Gujarat.pdf" download="Gujarat_Itinerary.pdf" className="btn-feat-download">
                     Download Itinerary
@@ -2002,46 +2167,12 @@ export function DwarkaSomnathDetail() {
 
       <GoogleReviews />
 
-      {/* FAQ */}
-      <section id="faq">
-        <div className="faq-grid">
-          <div className="reveal">
-            <div className="section-tag">Common Questions</div>
-            <h2 className="section-title">
-              Frequently<br /><em>Asked Questions</em>
-            </h2>
-            <div className="gold-rule"></div>
-            <p className="section-body">
-              Everything you need to know before booking your Gujarat Dwarka-Somnath tour package from Mumbai or Thane.
-            </p>
-            <div className="day-ctas" style={{ marginTop: 24 }}>
-              <a href="tel:+917208771688" className="btn-book">
-                📞 Speak to an Expert
-              </a>
-              <a
-                href={wa("I have a question about Gujarat tour")}
-                className="btn-book-outline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                WhatsApp Us
-              </a>
+      </div>{/* end gujarat-page */}
 
-            </div>
-          </div>
-          <div className="faq-list reveal">
-            {faqs.map(([q, a], idx) => (
-              <div className={`faq-item ${openFaq === idx ? "open" : ""}`} key={idx}>
-                <button className="faq-q" onClick={() => setOpenFaq(openFaq === idx ? null : idx)}>
-                  {q}
-                  <span className="faq-icon">+</span>
-                </button>
-                <div className="faq-a">{a}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* FAQ — outside gujarat-page to avoid CSS conflicts */}
+      <FAQ />
+
+      <div className="gujarat-page">{/* re-enter gujarat-page for CTA vars */}
 
       {/* CTA BANNER */}
       <section className="cta-banner">
@@ -2049,7 +2180,7 @@ export function DwarkaSomnathDetail() {
           <h2 className="section-title" style={{ color: "var(--white)", marginBottom: 16 }}>
             Experience the Divine Land of Gujarat
           </h2>
-          <p className="section-body" style={{ color: "rgba(255,255,255,0.8)", margin: "0 auto 32px" }}>
+          <p className="section-body" style={{ color: "rgba(255,255,255,0.8)", margin: "0 auto 32px", fontWeight: "900", fontSize: "16px" }}>
             Book your sacred Dwarka, Nageshwar, and Somnath yatra batch today. Stays and transfers are fully arranged.
           </p>
           <div className="cta-buttons">
@@ -2071,20 +2202,37 @@ export function DwarkaSomnathDetail() {
         </div>
       </section>
 
+      </div>{/* end gujarat-page for CTA */}
+
       <Footer />
 
       {/* STICKY WA */}
       <a
         href={wa("Hi Margika Yatra! I want to enquire about Gujarat tour package")}
-        className="sticky-wa"
         aria-label="Chat on WhatsApp"
         target="_blank"
         rel="noopener noreferrer"
+        style={{
+          position: "fixed",
+          bottom: "28px",
+          right: "28px",
+          zIndex: 200,
+          width: "58px",
+          height: "58px",
+          borderRadius: "50%",
+          background: "#25D366",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          boxShadow: "0 4px 20px rgba(37,211,102,0.5)",
+          textDecoration: "none",
+          transition: "transform 0.3s, box-shadow 0.3s",
+        }}
       >
-        <svg viewBox="0 0 24 24">
+        <svg viewBox="0 0 24 24" style={{ width: "30px", height: "30px", fill: "white" }}>
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
         </svg>
       </a>
-    </div>
+    </>
   )
 }

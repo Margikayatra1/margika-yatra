@@ -246,13 +246,13 @@ export default function PrivacyPage() {
                     transition={{ duration: 0.5, delay: index * 0.05 }}
                     className="bg-white border border-orange-100/70 hover:border-orange-200/90 transition-all duration-300 rounded-2xl p-6 md:p-8 shadow-md hover:shadow-lg space-y-4"
                   >
-                    <div className="flex items-center space-x-3 pb-3 border-b border-orange-100/50">
+                    <div className="flex items-center space-x-3 pb-3 border-b border-orange-100/50 justify-center lg:justify-start text-center lg:text-left">
                       <div className="p-2 bg-orange-50 rounded-xl">
                         {sec.icon}
                       </div>
-                      <h2 className="text-xl font-extrabold text-gray-900">{sec.title}</h2>
+                      <h2 className="text-xl font-extrabold text-gray-900 text-center lg:text-left">{sec.title}</h2>
                     </div>
-                    <div className="text-gray-700 leading-relaxed whitespace-pre-line text-base">
+                    <div className="text-gray-700 leading-relaxed whitespace-pre-line text-base text-center lg:text-left">
                       {sec.content}
                     </div>
                   </motion.div>
@@ -266,13 +266,13 @@ export default function PrivacyPage() {
                 viewport={{ once: true }}
                 className="bg-gradient-to-br from-white to-orange-50/50 border-2 border-orange-200/60 rounded-2xl p-6 md:p-8 shadow-xl space-y-6"
               >
-                <div className="flex items-center space-x-3 pb-3 border-b border-orange-200/50">
+                <div className="flex items-center space-x-3 pb-3 border-b border-orange-200/50 justify-center lg:justify-start">
                   <div className="p-2 bg-orange-100 rounded-xl">
                     <Shield className="h-6 w-6 text-orange-700" />
                   </div>
-                  <h2 className="text-xl font-extrabold text-gray-950">15. Contact Us</h2>
+                  <h2 className="text-xl font-extrabold text-gray-950 text-center lg:text-left">15. Contact Us</h2>
                 </div>
-                <p className="text-gray-700 text-base">
+                <p className="text-gray-700 text-base text-center lg:text-left">
                   If you have any questions, feedback, or concerns regarding this Privacy Policy, our data practices, or your personal information, please reach out to our team:
                 </p>
                 
@@ -311,8 +311,8 @@ export default function PrivacyPage() {
                 viewport={{ once: true }}
                 className="bg-orange-500/10 border border-orange-500/25 rounded-2xl p-6 text-sm text-gray-700 leading-relaxed shadow-inner"
               >
-                <span className="font-extrabold text-orange-800 uppercase tracking-widest block mb-2">Consent & Agreement</span>
-                By using the Margika Yatra website, submitting inquiry forms, booking tour packages, or interacting with our services, you acknowledge that you have read, understood, and agreed to this Privacy Policy and the collection and use of information as described herein.
+                <span className="font-extrabold text-orange-800 uppercase tracking-widest block mb-2 text-center lg:text-left">Consent & Agreement</span>
+                <p className="text-center lg:text-left">By using the Margika Yatra website, submitting inquiry forms, booking tour packages, or interacting with our services, you acknowledge that you have read, understood, and agreed to this Privacy Policy and the collection and use of information as described herein.</p>
               </motion.div>
 
             </main>

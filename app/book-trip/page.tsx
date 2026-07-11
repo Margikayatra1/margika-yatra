@@ -163,6 +163,7 @@ ${formData.name}`
                         src={pkg.image || "/placeholder.svg"}
                         alt={pkg.name}
                         fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         className="object-cover group-hover:scale-110 transition-transform duration-700"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -179,7 +180,7 @@ ${formData.name}`
                         </div>
                       )}
                     </div>
-                    <CardContent className="p-6">
+                    <CardContent className="p-6 text-center lg:text-left">
                       <h3 className="text-lg font-bold text-orange-600 mb-2">{pkg.name}</h3>
                       <p className="text-gray-600 text-sm mb-3">{pkg.description}</p>
                       <div className="flex items-center justify-between mb-4">
@@ -194,7 +195,7 @@ ${formData.name}`
                       </div>
                       <div className="mb-4">
                         <h4 className="text-sm font-semibold text-gray-800 mb-2">Highlights:</h4>
-                        <div className="flex flex-wrap gap-1">
+                        <div className="flex flex-wrap gap-1 justify-center lg:justify-start">
                           {pkg.highlights.slice(0, 2).map((highlight, i) => (
                             <Badge key={i} variant="outline" className="text-xs border-orange-300 text-orange-700">
                               {highlight}
@@ -317,9 +318,9 @@ ${formData.name}`
                     />
                   </div>
 
-                  <div className="bg-orange-50 p-4 rounded-lg border border-orange-100">
+                  <div className="bg-orange-50 p-4 rounded-lg border border-orange-100 text-center lg:text-left">
                     <h4 className="font-semibold text-gray-800 mb-2">What happens next?</h4>
-                    <ul className="text-gray-600 text-sm space-y-1">
+                    <ul className="text-gray-600 text-sm space-y-1 text-left">
                       <li>• We'll contact you within 24 hours to confirm your booking</li>
                       <li>• Our team will discuss the itinerary and answer any questions</li>
                       <li>• Payment details and travel documents will be shared</li>

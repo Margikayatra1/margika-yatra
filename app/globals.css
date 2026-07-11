@@ -94,3 +94,71 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* ─────────────────────────────────────────────────────────────
+   MOBILE PERFORMANCE OPTIMIZATIONS
+   Disables GPU-heavy effects on screens < 768px to prevent lag
+──────────────────────────────────────────────────────────────── */
+@media (max-width: 767px) {
+  /* 1. Kill backdrop-blur — single biggest GPU drain on mobile */
+  *,
+  *::before,
+  *::after {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* 2. Replace semi-transparent whites with solid equivalents */
+  [class*="bg-white/80"],
+  [class*="bg-white/90"],
+  [class*="bg-white/95"] {
+    background-color: #fff !important;
+  }
+
+  /* 3. Reduce transition durations — snappier feel, less composite cost */
+  * {
+    transition-duration: 150ms !important;
+  }
+
+  /* 4. Disable hover transforms (no hover on touch anyway) */
+  [class*="hover:scale-"],
+  [class*="hover:-translate-"],
+  [class*="group-hover:scale-"] {
+    transform: none !important;
+  }
+
+  /* 5. Limit complex box-shadows to avoid paint cost */
+  [class*="shadow-2xl"] {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1) !important;
+  }
+  [class*="shadow-xl"] {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  /* 6. Promote scroll-critical elements to their own compositor layer */
+  nav,
+  header {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  /* 7. Prevent layout shifts from image loading */
+  img {
+    content-visibility: auto;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   RESPECT REDUCED MOTION (accessibility + older phones)
+──────────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+

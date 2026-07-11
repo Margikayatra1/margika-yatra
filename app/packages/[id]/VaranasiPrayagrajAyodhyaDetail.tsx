@@ -6,6 +6,7 @@ import { Footer } from "@/components/footer"
 import { Header } from "@/components/ui/newheader"
 import { GoogleReviews } from "@/components/ui/google-reviews"
 import { CharStats } from "@/components/char-stats"
+import { FAQ } from "@/components/faq"
 
 export function VaranasiPrayagrajAyodhyaDetail() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
@@ -157,6 +158,7 @@ export function VaranasiPrayagrajAyodhyaDetail() {
           display: flex; flex-direction: column; justify-content: flex-end;
           overflow: hidden;
           background: url('/rambg.jpg') center/cover no-repeat;
+          padding-top: 130px;
         }
         .v-hero-img {
           position: absolute; inset: 0;
@@ -243,6 +245,50 @@ export function VaranasiPrayagrajAyodhyaDetail() {
           border-color: var(--gold);
           background: rgba(249, 115, 22, 0.12);
           color: var(--gold);
+        }
+
+        /* Global uniform button sizing */
+        .v-btn-primary,
+        .v-btn-secondary,
+        .v-btn-wa,
+        .v-btn-book-outline,
+        .char-btn-outline {
+          min-height: 50px !important;
+          padding: 12px 24px !important;
+          border-radius: 4px !important;
+          font-size: 12px !important;
+          font-weight: 500 !important;
+          letter-spacing: 0.08em !important;
+          text-transform: uppercase !important;
+          box-sizing: border-box !important;
+          white-space: nowrap !important;
+          display: inline-flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+        }
+
+        .v-hero-ctas,
+        .v-price-actions,
+        .v-cta-buttons {
+          display: flex !important;
+          align-items: center !important;
+          gap: 16px !important;
+          flex-wrap: wrap !important;
+        }
+        .v-hero-ctas .v-btn-primary,
+        .v-hero-ctas .v-btn-wa,
+        .v-hero-ctas .v-btn-secondary,
+        .v-hero-ctas .char-btn-outline,
+        .v-price-actions .v-btn-primary,
+        .v-price-actions .v-btn-wa,
+        .v-price-actions .v-btn-book-outline,
+        .v-price-actions .char-btn-outline,
+        .v-cta-buttons .v-btn-primary,
+        .v-cta-buttons .v-btn-wa,
+        .v-cta-buttons .char-btn-outline {
+          flex: 1 !important;
+          max-width: 320px !important;
+          text-align: center !important;
         }
         .v-btn-wa {
           display: inline-flex; align-items: center; justify-content: center; gap: 10px;
@@ -341,13 +387,29 @@ export function VaranasiPrayagrajAyodhyaDetail() {
         .v-pkg-desc { font-size: 14px; color: var(--smoke); line-height: 1.75; margin-bottom: 22px; }
         .v-pkg-includes { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 30px; }
         .v-pkg-tag { font-size: 11px; padding: 5px 12px; border-radius: 20px; background: rgba(249, 115, 22, 0.08); color: var(--gold); border: 1px solid rgba(249, 115, 22, 0.15); }
-        .v-price-footer { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin-top: auto; }
-        .v-price-amount-wrap { display: flex; flex-direction: column; }
+        .v-price-footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin-top: auto; width: 100%; }
+        .v-price-amount-wrap { display: flex; flex-direction: column; min-width: 200px; }
         .v-price-from { font-size: 11px; color: var(--smoke); letter-spacing: 0.06em; }
         .v-price-amount { font-family: 'Cormorant Garamond', serif; font-size: 44px; color: var(--gold); line-height: 1.1; }
         .v-price-per { font-size: 13px; color: var(--smoke); margin-top: -4px; }
         .v-price-note { font-size: 11px; color: var(--smoke); margin-top: 8px; max-width: 220px; line-height: 1.5; }
-        .v-price-actions { display: flex; gap: 12px; align-items: center; }
+        .v-price-actions { display: flex; gap: 12px; align-items: center; flex: 1; justify-content: flex-end; }
+        .v-price-actions .v-btn-book-outline,
+        .v-price-actions .v-btn-primary,
+        .v-price-actions .char-btn-outline {
+          min-height: 50px !important;
+          padding: 12px 24px !important;
+          border-radius: 4px !important;
+          font-size: 12px !important;
+          letter-spacing: 0.08em !important;
+          text-transform: uppercase !important;
+          box-sizing: border-box !important;
+          white-space: nowrap !important;
+          flex: 1 !important;
+          display: inline-flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+        }
         .v-btn-book-outline { background: transparent; color: var(--saffron); padding: 13px 26px; border-radius: 2px; border: 1px solid var(--saffron); font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: all 0.3s; cursor: pointer; }
         .v-btn-book-outline:hover { background: var(--saffron); color: white; }
 
@@ -405,7 +467,7 @@ export function VaranasiPrayagrajAyodhyaDetail() {
         .v-feature-item:last-child { border-bottom: none; }
         .v-feature-icon { width: 40px; height: 40px; min-width: 40px; background: rgba(255, 255, 255, 0.08); border-radius: 2px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
         .v-feature-text h4 { font-size: 15px; font-weight: 500; color: var(--white); margin-bottom: 3px; }
-        .v-feature-text p { font-size: 13px; color: rgba(255, 255, 255, 0.7); line-height: 1.5; }
+        .v-feature-text p { font-size: 13px; color: #ffffff; line-height: 1.5; }
 
         /* STEPS */
         .v-steps-header { text-align: center; margin-bottom: 60px; }
@@ -419,7 +481,7 @@ export function VaranasiPrayagrajAyodhyaDetail() {
         .v-step-desc { font-size: 12px; color: var(--smoke); line-height: 1.5; }
 
         /* GALLERY */
-        .v-gallery-strip { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; grid-template-rows: 260px 260px; gap: 4px; max-width: 1300px; margin: 40px auto 0; }
+        .v-gallery-strip { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; grid-template-rows: 260px 260px; grid-auto-rows: 260px; gap: 4px; max-width: 1300px; margin: 40px auto 0; }
         .v-gallery-item { overflow: hidden; position: relative; }
         .v-gallery-item img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.85) saturate(1.1); transition: transform 0.5s, filter 0.5s; }
         .v-gallery-item:hover img { transform: scale(1.06); filter: brightness(0.95) saturate(1.3); }
@@ -450,7 +512,20 @@ export function VaranasiPrayagrajAyodhyaDetail() {
         .v-cta-banner-content { position: relative; z-index: 1; max-width: 700px; }
         .v-cta-banner .v-section-title { text-align: center; color: var(--white) !important; }
         .v-cta-banner .v-section-body { margin: 0 auto 40px; text-align: center; color: rgba(255, 255, 255, 0.8) !important; }
-        .v-cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .v-cta-buttons { display: flex; gap: 16px; justify-content: center; align-items: center; }
+        .v-cta-buttons a {
+          min-height: 50px !important;
+          padding: 12px 24px !important;
+          border-radius: 4px !important;
+          font-size: 13px !important;
+          box-sizing: border-box !important;
+          white-space: nowrap !important;
+          display: inline-flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          flex: 1;
+          max-width: 320px;
+        }
 
 
 
@@ -468,6 +543,51 @@ export function VaranasiPrayagrajAyodhyaDetail() {
         .reveal-delay-3 { transition-delay: 0.3s; }
         .reveal-delay-4 { transition-delay: 0.4s; }
 
+        .v-faq-grid > div:first-child > div[style*="marginTop"] {
+          display: flex !important;
+          flex-direction: column !important;
+          gap: 12px !important;
+          align-items: flex-start !important;
+          margin-top: 24px !important;
+        }
+        .v-faq-grid > div:first-child br {
+          display: none;
+        }
+        .v-faq-grid .v-btn-primary,
+        .v-faq-grid .v-btn-wa {
+          display: inline-flex !important;
+          align-items: center !important;
+          gap: 10px !important;
+          min-height: unset !important;
+          height: auto !important;
+          padding: 15px 26px !important;
+          border-radius: 8px !important;
+          font-size: 13.5px !important;
+          font-weight: 700 !important;
+          letter-spacing: 0.5px !important;
+          text-transform: uppercase !important;
+          width: fit-content !important;
+          margin: 0 !important;
+        }
+        .v-faq-grid .v-btn-primary {
+          background: #E8631C !important;
+          color: white !important;
+        }
+        .v-faq-grid .v-btn-primary:hover {
+          background: #d15313 !important;
+          transform: translateY(-2px);
+          box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+        }
+        .v-faq-grid .v-btn-wa {
+          background: #3CBE5E !important;
+          color: white !important;
+        }
+        .v-faq-grid .v-btn-wa:hover {
+          background: #32a850 !important;
+          transform: translateY(-2px);
+          box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+        }
+
         @media (max-width: 900px) {
           .v-intro-grid, .v-why-grid, .v-faq-grid { grid-template-columns: 1fr; }
           .v-dhams-grid { grid-template-columns: 1fr; }
@@ -475,23 +595,153 @@ export function VaranasiPrayagrajAyodhyaDetail() {
           .v-price-card-media { min-height: 260px; }
           .v-steps-grid { grid-template-columns: repeat(3, 1fr); row-gap: 36px; }
           .v-steps-grid::before { display: none; }
-          .v-gallery-strip { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+          .v-gallery-strip { grid-template-columns: 1fr 1fr; grid-auto-rows: 220px; }
           .v-gallery-item:nth-child(1) { grid-row: span 1; }
           .v-gallery-item:nth-child(5) { grid-column: span 1; }
           .v-stats-strip { grid-template-columns: 1fr 1fr; gap: 20px; }
           .v-stat-item { border-right: none; }
 
           .v-intro-img-float { display: none; }
-          .v-why-float-card { position: static; margin-top: 16px; max-width: none; }
+          .v-why-float-card { position: static; margin-top: 16px; max-width: none; text-align: center; border-left: none; border-top: 2px solid var(--gold); border-bottom: 2px solid var(--gold); padding: 16px 0; }
           .v-itin-day { grid-template-columns: 1fr; gap: 14px; }
           .v-itin-day::before { display: none; }
+          .v-itin-daybadge { display: flex; flex-direction: column; align-items: center; text-align: center; }
           .v-nav { padding: 16px 4%; }
           .v-nav-cta .v-btn-ghost { display: none; }
+          
+          /* Mobile Center Alignment for headings */
+          .v-hero-content { text-align: center; }
+          .v-hero-tag { display: flex; width: 100%; justify-content: center; }
+          .v-hero-subtitle { margin-left: auto; margin-right: auto; }
+          .v-hero-ctas { justify-content: center; }
+
+          .v-hero-ctas,
+          .v-price-actions,
+          .v-cta-buttons {
+            flex-direction: column !important;
+            align-items: stretch !important;
+            width: 100% !important;
+            gap: 10px !important;
+          }
+          .v-hero-ctas .v-btn-primary,
+          .v-hero-ctas .v-btn-wa,
+          .v-hero-ctas .v-btn-secondary,
+          .v-hero-ctas .char-btn-outline,
+          .v-price-actions .v-btn-primary,
+          .v-price-actions .v-btn-wa,
+          .v-price-actions .v-btn-book-outline,
+          .v-price-actions .char-btn-outline,
+          .v-cta-buttons .v-btn-primary,
+          .v-cta-buttons .v-btn-wa,
+          .v-cta-buttons .char-btn-outline {
+            width: 100% !important;
+            max-width: none !important;
+            flex: none !important;
+            display: inline-flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+          }
+
+          .v-intro-grid .reveal:last-child { text-align: center; }
+          .v-intro-grid .v-section-tag { display: flex; width: 100%; justify-content: center; }
+          .v-intro-grid .v-gold-rule { margin-left: auto; margin-right: auto; }
+          .v-intro-grid .v-section-body { margin-left: auto; margin-right: auto; }
+          .v-intro-grid .v-intro-quote { text-align: center; border-left: none; border-top: 2px solid var(--gold); border-bottom: 2px solid var(--gold); padding: 16px 0; }
+
+          .v-why-grid .reveal:first-child { text-align: center; }
+          .v-why-grid .v-section-tag { display: flex; width: 100%; justify-content: center; }
+          .v-why-grid .v-gold-rule { margin-left: auto; margin-right: auto; }
+          .v-why-grid .v-section-body { margin-left: auto; margin-right: auto; }
+          .v-features-list { text-align: left; }
+
+          .v-dhams-header, .v-price-header, .v-itin-header { text-align: center; }
+          .v-dhams-header .v-section-title, .v-price-header .v-section-title, .v-itin-header .v-section-title { text-align: center; }
+          .v-dhams-header .v-gold-rule, .v-price-header .v-gold-rule, .v-itin-header .v-gold-rule { margin-left: auto; margin-right: auto; }
+
+          .v-faq-grid > div:first-child {
+            text-align: center;
+          }
+          .v-faq-grid > div:first-child .v-section-tag {
+            justify-content: center;
+          }
+          .v-faq-grid > div:first-child .v-gold-rule {
+            margin-left: auto;
+            margin-right: auto;
+          }
+          .v-faq-grid > div:first-child .v-section-body {
+            margin-left: auto;
+            margin-right: auto;
+          }
+          .v-faq-grid > div:first-child div[style*="marginTop"] {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            gap: 12px !important;
+          }
         }
         @media (max-width: 560px) {
-          .v-steps-grid { grid-template-columns: 1fr 1fr; }
-          .v-price-footer { flex-direction: column; align-items: flex-start; }
+          .v-steps-grid { grid-template-columns: 1fr; gap: 36px; }
+          .v-price-footer { flex-direction: column; align-items: stretch; gap: 24px; }
           .v-price-card-body { padding: 30px 26px; }
+          .v-gallery-strip { grid-template-columns: 1fr; }
+          .v-price-actions {
+            flex-direction: column;
+            width: 100%;
+            align-items: stretch;
+            gap: 10px;
+          }
+          .v-price-actions .v-btn-book-outline,
+          .v-price-actions .v-btn-primary,
+          .v-price-actions .char-btn-outline {
+            width: 100% !important;
+            text-align: center;
+            box-sizing: border-box;
+            display: inline-flex !important;
+            justify-content: center;
+            align-items: center;
+            min-height: 48px;
+            padding: 12px 20px !important;
+            border-radius: 4px !important;
+            font-size: 13px !important;
+          }
+          .v-hero-ctas {
+            flex-direction: column;
+            width: 100%;
+            align-items: stretch;
+            gap: 10px;
+          }
+          .v-hero-ctas .v-btn-primary,
+          .v-hero-ctas .v-btn-wa {
+            width: 100% !important;
+            text-align: center;
+            box-sizing: border-box;
+            display: inline-flex !important;
+            justify-content: center;
+            align-items: center;
+            min-height: 48px;
+            padding: 12px 20px !important;
+            border-radius: 4px !important;
+            font-size: 13px !important;
+          }
+          .v-cta-buttons {
+            flex-direction: column;
+            width: 100%;
+            align-items: stretch;
+            gap: 10px;
+          }
+          .v-cta-buttons a {
+            width: 100% !important;
+            max-width: none !important;
+            text-align: center;
+            box-sizing: border-box;
+            display: inline-flex !important;
+            justify-content: center;
+            align-items: center;
+            min-height: 48px;
+            padding: 12px 20px !important;
+            border-radius: 4px !important;
+            font-size: 13px !important;
+          }
         }
       `}</style>
 
@@ -502,7 +752,7 @@ export function VaranasiPrayagrajAyodhyaDetail() {
         <div className="v-hero-img"></div>
         <div className="v-hero-overlay"></div>
         <div className="v-hero-content">
-          <div className="v-hero-tag">Kashi · Prayagraj · Ayodhya</div>
+          <div className="v-hero-tag" style={{ fontWeight: 700, fontSize: 14 }}>Kashi · Prayagraj · Ayodhya</div>
           <h1 className="v-hero-title">Varanasi Prayagraj Ayodhya<br /><em>Tour Package</em></h1>
           <p className="v-hero-subtitle">A guided spiritual journey through three of India's holiest cities — from the ghats of Kashi to the Sangam at Prayagraj to Lord Ram's Ayodhya. Departures and full coordination from Mumbai & Thane.</p>
           <div className="v-hero-ctas">
@@ -511,14 +761,14 @@ export function VaranasiPrayagrajAyodhyaDetail() {
               <svg viewBox="0 0 24 24" width="18" height="18" fill="white" className="mr-2" style={{ display: "inline-block", verticalAlign: "middle" }}><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg>
               WhatsApp Us
             </a>
-            <a href="/UTTAR_PRADESH_MARGIKA_YATRA.pdf" download="UTTAR PRADESH. MARGIKA YATRA_20260528_190003_0000_ CM.pdf" className="char-btn-outline">
+            <a href="/UTTAR_PRADESH_MARGIKA_YATRA.pdf" download="UTTAR PRADESH. MARGIKA YATRA_20260528_190003_0000_ CM.pdf" className="v-btn-primary">
               Download Itinerary
             </a>
           </div>
         </div>
       </section>
 
-      <CharStats/>
+      <CharStats />
 
       {/* INTRO */}
       <section className="v-section">
@@ -531,8 +781,8 @@ export function VaranasiPrayagrajAyodhyaDetail() {
             <div className="v-section-tag">Three Cities · One Sacred Circuit</div>
             <h2 className="v-section-title">The Kashi–Prayagraj–<br /><em>Ayodhya Yatra</em></h2>
             <div className="v-gold-rule"></div>
-            <p className="v-section-body">The Varanasi, Prayagraj and Ayodhya tour package connects three of Hinduism's most revered cities into one well-paced pilgrimage. You begin in Kashi — Lord Shiva's eternal city on the Ganga — move to the holy Triveni Sangam at Prayagraj, and complete the journey at Shri Ram Janmabhoomi in Ayodhya.</p>
-            <p className="v-section-body" style={{ marginTop: 16 }}>Long-distance temple travel, hotel timing, darshan queues and inter-city drives can quickly tire a family. That is exactly why travellers from Mumbai, Thane and across India let Margika Yatra plan and coordinate every detail — so you can give your full attention to the darshan, not the logistics.</p>
+            <p className="v-section-body">The Varanasi, Prayagraj and Ayodhya tour package connects three of Hinduism's most revered cities into one well-paced pilgrimage. You begin in Kashi, Lord Shiva's eternal city on the Ganga, move to the holy Triveni Sangam at Prayagraj, and complete the journey at Shri Ram Janmabhoomi in Ayodhya.</p>
+            <p className="v-section-body" style={{ marginTop: 16 }}>Long distance temple travel, hotel timing, darshan queues and inter-city drives can quickly tire a family. That is exactly why travellers from Mumbai, Thane and across India let Margika Yatra plan and coordinate every detail, so you can give your full attention to the darshan, not the logistics.</p>
             <div className="v-intro-quote">
               <p>"We handle every detail. You carry only your devotion."</p>
             </div>
@@ -598,13 +848,16 @@ export function VaranasiPrayagrajAyodhyaDetail() {
             <div className="v-price-footer">
               <div className="v-price-amount-wrap">
                 <span className="v-price-from">Starting from</span>
-                <span className="v-price-amount">₹13,499</span>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
+                  <span className="v-price-amount" style={{ textDecoration: 'line-through', color: '#9ca3af', fontSize: '24px' }}>₹18,499</span>
+                  <span className="v-price-amount">₹13,499</span>
+                </div>
                 <span className="v-price-per"> / person</span>
-                <span className="v-price-note">Final price depends on dates, group size & hotel category</span>
+                <span className="v-price-note">Final price depends on dates, group size & hotel category. Was <span style={{ textDecoration: 'line-through' }}>₹18,499</span>.</span>
               </div>
               <div className="v-price-actions">
                 <a href="tel:+917208771688" className="v-btn-book-outline">Call Us</a>
-                <a href={razorpayLink} target="_blank" rel="noopener noreferrer" className="v-btn-primary">Book Now →</a>
+                <a href={razorpayLink} target="_blank" rel="noopener noreferrer" className="v-btn-primary">Book Now </a>
                 <a href="/UTTAR_PRADESH_MARGIKA_YATRA.pdf" download="UTTAR_PRADESH_MARGIKA_YATRA.pdf" className="char-btn-outline">Download Itinerary</a>
 
               </div>
@@ -720,9 +973,9 @@ export function VaranasiPrayagrajAyodhyaDetail() {
         <div className="v-why-grid">
           <div className="reveal">
             <div className="v-section-tag" style={{ color: "#ffffff", "--saffron": "#ffffff" } as React.CSSProperties}>Why Choose Us</div>
-            <h2 className="v-section-title">Why Mumbai & Thane<br /><em>Yatris Choose Margika</em></h2>
+            <h2 className="v-section-title">Why Mumbai & Thane<br /><em style={{ color: "#ffffff" }}>Yatris Choose Margika</em></h2>
             <div className="v-gold-rule" style={{ background: "#ffffff" }}></div>
-            <p className="v-section-body">We are based in Brahmand, Thane. When you call us, you speak to a local team that understands your community, your travel concerns and your schedule — a level of trust no distant online operator can match. We specialise in spiritual journeys, so the planning is in experienced hands.</p>
+            <p className="v-section-body" style={{ fontWeight: 700, color: "#ffffff" }}>We are based in Brahmand, Thane. When you call us, you speak to a local team that understands your community, your travel concerns and your schedule — a level of trust no distant online operator can match. We specialise in spiritual journeys, so the planning is in experienced hands.</p>
             <ul className="v-features-list">
               <li className="v-feature-item"><div className="v-feature-icon">🛕</div><div className="v-feature-text"><h4>Specialists in Pilgrimage Travel</h4><p>Spiritual tourism is our focus — Char Dham, Kashi, Ayodhya, Jyotirlingas and more.</p></div></li>
               <li className="v-feature-item"><div className="v-feature-icon">📋</div><div className="v-feature-text"><h4>Personalised Planning</h4><p>Dates, pace, temple order and group size — your itinerary is shaped around you.</p></div></li>
@@ -768,46 +1021,22 @@ export function VaranasiPrayagrajAyodhyaDetail() {
         <div className="v-gallery-strip">
           <div className="v-gallery-item"><img src="/1.jpg" alt="Varanasi Ganga Aarti" /></div>
           <div className="v-gallery-item"><img src="/2.jpg" alt="Kashi Vishwanath" /></div>
-          {/* <div className="v-gallery-item"><img src="/3.jpg" alt="Prayagraj Triveni Sangam" /></div>
-          <div className="v-gallery-item"><img src="/4.jpg" alt="Ayodhya Ram Mandir" /></div> */}
+          <div className="v-gallery-item"><img src="/Home1.jpeg" alt="Prayagraj Triveni Sangam" /></div>
+          <div className="v-gallery-item"><img src="/Home2.jpeg" alt="Ayodhya Ram Mandir" /></div>
           <div className="v-gallery-item"><img src="/5.jpg" alt="Spiritual tour" /></div>
           <div className="v-gallery-item"><img src="/6.jpg" alt="Saryu Aarti" /></div>
+          <div className="v-gallery-item"><img src="/Home3.jpeg" alt="Saryu Aarti" /></div>
+          <div className="v-gallery-item"><img src="/Home4.jpeg" alt="Saryu Aarti" /></div>
+          <div className="v-gallery-item"><img src="/Home5.jpeg" alt="Saryu Aarti" /></div>
+          <div className="v-gallery-item"><img src="/Home6.jpg" alt="Saryu Aarti" /></div>
+          <div className="v-gallery-item"><img src="/Home7.jpg" alt="Saryu Aarti" /></div>
         </div>
       </section>
 
       <GoogleReviews />
 
       {/* FAQ */}
-      <section className="v-section alt">
-        <div className="v-faq-grid">
-          <div className="reveal">
-            <div className="v-section-tag">Common Questions</div>
-            <h2 className="v-section-title">Frequently<br /><em>Asked Questions</em></h2>
-            <div className="v-gold-rule"></div>
-            <p className="v-section-body">Everything you may want to know before booking your Varanasi, Prayagraj and Ayodhya tour from Mumbai or Thane.</p>
-            <div style={{ marginTop: 32 }}>
-              <a href="tel:+917208771688" className="v-btn-primary" style={{ display: "inline-flex", marginBottom: 12 }}>📞 Speak to an Expert</a>
-              <br />
-              <a href={wa("I have a question about Varanasi Prayagraj Ayodhya tour package")} className="v-btn-wa" style={{ display: "inline-flex", marginTop: 4 }} target="_blank" rel="noopener noreferrer">
-                WhatsApp a Question
-              </a>
-            </div>
-          </div>
-          <div className="reveal reveal-delay-2">
-            <div className="v-faq-list">
-              {faqs.map(([question, answer], index) => (
-                <div className={`v-faq-item ${openFaq === index ? "open" : ""}`} key={question}>
-                  <button className="v-faq-q" onClick={() => setOpenFaq(openFaq === index ? null : index)}>
-                    {question}
-                    <span className="v-faq-icon">+</span>
-                  </button>
-                  <div className="v-faq-a">{answer}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <FAQ/>
 
       {/* CTA BANNER */}
       <div className="v-cta-banner">
@@ -818,9 +1047,8 @@ export function VaranasiPrayagrajAyodhyaDetail() {
           <div className="v-cta-buttons">
             <a href="tel:+917208771688" className="v-btn-primary">📞 Call Now — +91 72087 71688</a>
             <a href={wa("I want to plan the Varanasi Prayagraj Ayodhya tour package")} className="v-btn-wa" target="_blank" rel="noopener noreferrer">
-              WhatsApp to Plan
+              WhatsApp to Check Availability
             </a>
-
           </div>
         </div>
       </div>

@@ -1,229 +1,190 @@
+"use client"
+
+import React from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, CalendarDays, Clock, MapPin, Sparkles } from "lucide-react"
+import { CalendarDays, Clock, MapPin, ArrowRight, Sparkles, Phone, MessageSquare } from "lucide-react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 
-const featuredPost = {
-  title: "Char Dham Yatra Guide: Route, Best Time, Packing and Darshan Tips",
-  excerpt:
-    "A practical guide for first-time yatris planning Yamunotri, Gangotri, Kedarnath and Badrinath with confidence.",
-  image: "/4dham.png",
-  category: "Char Dham",
-  date: "May 28, 2026",
-  readTime: "7 min read",
-  location: "Uttarakhand",
-}
-
-const posts = [
+const blogs = [
   {
-    title: "How to Prepare Elderly Parents for Kedarnath Yatra",
-    excerpt:
-      "Fitness, palki options, medicine checklist and route planning for a safer mountain journey.",
-    image: "/ke.jpg",
-    category: "Travel Tips",
-    date: "May 20, 2026",
-    readTime: "5 min read",
+    slug: "first-time-pilgrim-guide",
+    title: "Travel Tips for First-Time Pilgrims in India",
+    excerpt: "Planning your first pilgrimage? These essential travel tips will help you enjoy a smooth and spiritually fulfilling journey. Here's what you need to know before you go.",
+    coverImage: "/HomeMain.png",
+    date: "July 3, 2026",
+    readTime: "8 min read",
+    category: "Pilgrimage Guide",
+    location: "India"
   },
   {
-    title: "Varanasi Ganga Aarti: Where to Sit and What to Expect",
-    excerpt:
-      "A simple guide to timings, ghats, river cruise views and temple visits around Kashi.",
-    image: "/vr.jpg",
-    category: "Varanasi",
-    date: "May 12, 2026",
-    readTime: "4 min read",
+    slug: "top-25-pilgrimage-places-in-india",
+    title: "Top 25 Best Pilgrimage Places in India | Travel Guide",
+    excerpt: "Explore the best pilgrimage places in India, from Char Dham to Rameshwaram. Get practical tips, tour package ideas, and planning advice for every traveler.",
+    coverImage: "/dev1.png",
+    date: "June 28, 2026",
+    readTime: "7 min read",
+    category: "Travel Guide",
+    location: "India"
   },
   {
-    title: "Ujjain and Omkareshwar: Two Jyotirlingas in One Trip",
-    excerpt:
-      "Plan a short spiritual circuit with Mahakaleshwar Bhasma Aarti, Omkareshwar and local transfers.",
-    image: "/uj.jpg",
-    category: "Jyotirlinga",
-    date: "April 30, 2026",
+    slug: "best-religious-places-to-visit-in-india",
+    title: "Best Religious Places to Visit in India | Full Guide",
+    excerpt: "Discover the best religious places to visit in India, from Kedarnath to Kerala. Practical tips, tour package insights, and planning advice for every pilgrim.",
+    coverImage: "/rambg.jpg",
+    date: "June 15, 2026",
     readTime: "6 min read",
-  },
-  {
-    title: "What to Pack for a Monsoon Pilgrimage in India",
-    excerpt:
-      "Rainwear, footwear, documents and small comfort items that make group yatras easier.",
-    image: "/up.jpg",
-    category: "Checklist",
-    date: "April 18, 2026",
-    readTime: "3 min read",
-  },
+    category: "Travel Guide",
+    location: "India"
+  }
 ]
 
-const categories = ["Char Dham", "Jyotirlinga", "Varanasi", "Senior Friendly", "Packing Guides"]
+export default function BlogListingPage() {
+  const wa = (text: string) => `https://wa.me/917208771688?text=${encodeURIComponent(text)}`
 
-export const metadata = {
-  title: "Blog | Margika Yatra",
-  description: "Pilgrimage guides, travel tips and spiritual yatra planning by Margika Yatra.",
-}
-
-export default function BlogPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-white via-orange-50 to-amber-50 text-gray-900">
+    <main className="min-h-screen bg-[#fffcf8] text-gray-900 font-sans selection:bg-orange-100 selection:text-orange-900">
       <Header />
 
-      <section className="relative overflow-hidden pt-32 pb-16 md:pt-40 md:pb-24">
-        <div className="absolute inset-0">
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 bg-[#181009] overflow-hidden">
+        <div className="absolute inset-0 z-0">
           <Image
-            src="/rambg.jpg"
-            alt="Spiritual yatra background"
+            src="/HomeMain.png"
+            alt="Spiritual pilgrimage in India"
             fill
-            className="object-cover opacity-20"
+            className="object-cover opacity-60 scale-105"
             priority
+            sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-orange-50/85 to-amber-50" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#1a1005]/40 via-[#0a0600]/55 to-[#0a0600]/85" />
         </div>
 
-        <div className="container relative mx-auto px-4">
-          <div className="max-w-3xl">
-            <Badge className="mb-5 bg-orange-100 text-orange-700 hover:bg-orange-100">
+        <div className="container relative z-10 mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <Badge className="mb-4 bg-orange-500/10 border border-orange-400/30 text-orange-400 px-3 py-1 hover:bg-orange-500/20 text-sm tracking-wider uppercase font-semibold">
               Margika Yatra Blog
             </Badge>
-            <h1 className="mb-6 text-4xl font-bold leading-tight text-gray-900 md:text-6xl">
-              Guides for peaceful, well-planned spiritual journeys
+            <h1 className="mb-6 font-serif text-4xl md:text-6xl font-light leading-tight text-white tracking-wide">
+              Spiritual <span className="text-orange-300 italic font-normal">Insights & Guides</span>
             </h1>
-            <p className="max-w-2xl text-lg leading-8 text-gray-700">
-              Read practical yatra tips, destination guides, packing checklists and darshan planning notes from our travel team.
+            <p className="text-gray-300 md:text-lg max-w-2xl mx-auto font-light leading-relaxed">
+              Explore useful guides, festival dates, physical preparation tips, and cultural insights to help you prepare for a safe and spiritually fulfilling pilgrimage.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="container mx-auto px-4 pb-16">
-        <Link href="/packages/char-dham" className="group block">
-          <Card className="overflow-hidden border-orange-200 bg-white shadow-xl transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-2xl">
-            <div className="grid gap-0 lg:grid-cols-[1.15fr_0.85fr]">
-              <div className="relative min-h-[320px]">
-                <Image
-                  src={featuredPost.image}
-                  alt={featuredPost.title}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute left-5 top-5">
-                  <Badge className="bg-orange-600 text-white hover:bg-orange-600">
-                    Featured Guide
-                  </Badge>
+      {/* Blog Cards Grid */}
+      <section className="container mx-auto px-4 py-16 md:py-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+          {blogs.map((blog) => (
+            <Card key={blog.slug} className="group border border-orange-100/60 bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden rounded-xl shadow-md">
+              <div>
+                {/* Cover Image Wrapper */}
+                <div className="relative aspect-[16/10] overflow-hidden">
+                  <Image
+                    src={blog.coverImage}
+                    alt={blog.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                  <div className="absolute top-4 left-4 z-10">
+                    <Badge className="bg-orange-600 hover:bg-orange-700 text-white font-medium px-2.5 py-0.5 text-xs rounded-md shadow-md uppercase tracking-wider">
+                      {blog.category}
+                    </Badge>
+                  </div>
                 </div>
+
+                {/* Card Body */}
+                <CardContent className="p-6 md:p-8">
+                  <div className="flex items-center gap-4 text-xs text-gray-500 mb-3">
+                    <span className="flex items-center gap-1.5">
+                      <CalendarDays className="h-3.5 w-3.5 text-orange-500" />
+                      {blog.date}
+                    </span>
+                    <span className="h-1 w-1 rounded-full bg-gray-300" />
+                    <span className="flex items-center gap-1.5">
+                      <Clock className="h-3.5 w-3.5 text-orange-500" />
+                      {blog.readTime}
+                    </span>
+                  </div>
+                  <h3 className="font-serif text-xl md:text-2xl font-semibold text-gray-900 leading-snug mb-3 group-hover:text-orange-600 transition-colors">
+                    {blog.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">
+                    {blog.excerpt}
+                  </p>
+                </CardContent>
               </div>
-              <CardContent className="flex flex-col justify-center p-7 md:p-10">
-                <div className="mb-4 flex flex-wrap gap-3 text-sm text-gray-600">
-                  <span className="inline-flex items-center gap-2">
-                    <CalendarDays className="h-4 w-4 text-orange-600" />
-                    {featuredPost.date}
-                  </span>
-                  <span className="inline-flex items-center gap-2">
-                    <Clock className="h-4 w-4 text-orange-600" />
-                    {featuredPost.readTime}
-                  </span>
-                  <span className="inline-flex items-center gap-2">
-                    <MapPin className="h-4 w-4 text-orange-600" />
-                    {featuredPost.location}
-                  </span>
-                </div>
-                <Badge className="mb-4 w-fit bg-orange-50 text-orange-700 hover:bg-orange-50">
-                  {featuredPost.category}
-                </Badge>
-                <h2 className="mb-4 text-3xl font-bold leading-tight text-gray-900">
-                  {featuredPost.title}
-                </h2>
-                <p className="mb-6 text-gray-700 leading-7">{featuredPost.excerpt}</p>
-                <span className="inline-flex items-center gap-2 font-semibold text-orange-700">
-                  Read guide <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+
+              {/* Card Footer */}
+              <div className="p-6 pt-0 border-t border-orange-50/60 mt-auto flex items-center justify-between">
+                <span className="flex items-center gap-1.5 text-xs text-gray-500">
+                  <MapPin className="h-3.5 w-3.5 text-orange-500" />
+                  {blog.location}
                 </span>
-              </CardContent>
-            </div>
-          </Card>
-        </Link>
+                <Link href={`/blog/${blog.slug}`} className="inline-flex items-center gap-1 text-sm font-semibold text-orange-600 hover:text-orange-700 transition-colors group-hover:underline">
+                  Read Article
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </div>
+            </Card>
+          ))}
+        </div>
       </section>
 
-      <section className="container mx-auto grid gap-8 px-4 pb-20 lg:grid-cols-[1fr_320px]">
-        <div>
-          <div className="mb-7 flex items-end justify-between gap-4">
+      {/* Thane Office / CTA Section */}
+      <section className="bg-gradient-to-br from-amber-50/50 to-orange-50/50 border-t border-orange-100/50 py-16 md:py-20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-white p-8 md:p-12 rounded-2xl border border-orange-100 shadow-lg">
             <div>
-              <p className="mb-2 text-sm font-semibold uppercase tracking-wider text-orange-600">
-                Latest Articles
+              <Sparkles className="h-8 w-8 text-orange-500 mb-4" />
+              <h2 className="font-serif text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+                Want to Plan a Custom Yatra?
+              </h2>
+              <p className="text-gray-600 text-sm md:text-base leading-relaxed mb-6">
+                Our specialists at Margika Yatra arrange complete customized tours from Thane & Mumbai. Let us handle hotels, meals, transport, and vip darshans so you can focus on devotion.
               </p>
-              <h2 className="text-3xl font-bold text-gray-900">Yatra planning notes</h2>
+              <div className="flex gap-4">
+                <a 
+                  href="tel:+917208771688"
+                  className="inline-flex items-center justify-center gap-2 bg-orange-600 hover:bg-orange-700 text-white font-medium py-3 px-5 rounded-lg shadow-md transition-colors"
+                >
+                  <Phone className="h-4 w-4" /> Call Expert
+                </a>
+                <a 
+                  href={wa("I want to discuss customized trip planning")}
+                  className="inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-medium py-3 px-5 rounded-lg shadow-md transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MessageSquare className="h-4 w-4" /> WhatsApp
+                </a>
+              </div>
             </div>
-          </div>
 
-          <div className="grid gap-6 md:grid-cols-2">
-            {posts.map((post) => (
-              <article key={post.title}>
-                <Card className="h-full overflow-hidden border-orange-200 bg-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-                  <div className="relative h-56">
-                    <Image src={post.image} alt={post.title} fill className="object-cover" />
-                  </div>
-                  <CardContent className="p-6">
-                    <div className="mb-4 flex flex-wrap gap-3 text-xs font-medium text-gray-600">
-                      <span className="inline-flex items-center gap-1.5">
-                        <CalendarDays className="h-3.5 w-3.5 text-orange-600" />
-                        {post.date}
-                      </span>
-                      <span className="inline-flex items-center gap-1.5">
-                        <Clock className="h-3.5 w-3.5 text-orange-600" />
-                        {post.readTime}
-                      </span>
-                    </div>
-                    <Badge className="mb-3 bg-orange-50 text-orange-700 hover:bg-orange-50">
-                      {post.category}
-                    </Badge>
-                    <h3 className="mb-3 text-xl font-bold leading-snug text-gray-900">
-                      {post.title}
-                    </h3>
-                    <p className="text-sm leading-6 text-gray-700">{post.excerpt}</p>
-                  </CardContent>
-                </Card>
-              </article>
-            ))}
+            <div className="border-t md:border-t-0 md:border-l border-orange-100 pt-8 md:pt-0 md:pl-10 space-y-4">
+              <h3 className="font-serif font-bold text-gray-900 text-lg">Visit Our Thane Office</h3>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                We are a local agency built on trust. Feel free to visit our Brahmand office to plan your spiritual journey face-to-face.
+              </p>
+              <div className="text-sm text-gray-700 space-y-1 bg-orange-50/40 p-4 rounded-lg border border-orange-100/50">
+                <p className="font-bold text-orange-950">Margika Yatra Office</p>
+                <p>Brahmand, Thane West,</p>
+                <p>Maharashtra, India</p>
+              </div>
+            </div>
           </div>
         </div>
-
-        <aside className="space-y-6">
-          <Card className="border-orange-200 bg-white shadow-lg">
-            <CardContent className="p-6">
-              <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-full bg-orange-100 text-orange-700">
-                <Sparkles className="h-5 w-5" />
-              </div>
-              <h3 className="mb-3 text-xl font-bold text-gray-900">Plan your next yatra</h3>
-              <p className="mb-5 text-sm leading-6 text-gray-700">
-                Tell us your destination, travel month and group size. Our team will help with routes, stay, darshan and transport.
-              </p>
-              <Link href="/book-trip">
-                <Button className="w-full bg-orange-600 text-white hover:bg-orange-700">
-                  Request Free Quote
-                </Button>
-              </Link>
-            </CardContent>
-          </Card>
-
-          <Card className="border-orange-200 bg-white shadow-lg">
-            <CardContent className="p-6">
-              <h3 className="mb-4 text-xl font-bold text-gray-900">Categories</h3>
-              <div className="flex flex-wrap gap-2">
-                {categories.map((category) => (
-                  <Badge
-                    key={category}
-                    variant="outline"
-                    className="border-orange-200 bg-orange-50 px-3 py-1.5 text-orange-700"
-                  >
-                    {category}
-                  </Badge>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        </aside>
       </section>
 
+      {/* Footer */}
       <Footer />
     </main>
   )

@@ -6,6 +6,7 @@ import { Footer } from "@/components/footer"
 import { Header } from "@/components/ui/newheader"
 import { GoogleReviews } from "@/components/ui/google-reviews"
 import { CharStats } from "@/components/char-stats"
+import { FAQ } from "@/components/faq"
 
 export function UjjainOmkareshwarDetail() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
@@ -91,7 +92,8 @@ export function UjjainOmkareshwarDetail() {
   ]
 
   return (
-    <div className="ujjain-page">
+    <>
+      <div className="ujjain-page">
       {/* FAQ Schema */}
       <script
         type="application/ld+json"
@@ -182,7 +184,7 @@ export function UjjainOmkareshwarDetail() {
 
 
         /* HERO */
-        .ujjain-page .hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; background: url('/rambg.jpg') center/cover no-repeat; }
+        .ujjain-page .hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; background: url('/rambg.jpg') center/cover no-repeat; padding-top: 130px; }
         .ujjain-page .hero-img {
           position: absolute; inset: 0;
           background: url('Ujjainmain.png') center/cover no-repeat;
@@ -201,7 +203,7 @@ export function UjjainOmkareshwarDetail() {
           animation: fadeUp 1.2s 0.6s ease forwards;
         }
         @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
-        .ujjain-page .hero-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--saffron); margin-bottom: 20px; }
+        .ujjain-page .hero-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--saffron-dark); margin-bottom: 20px; padding-top: 20px; }
         .ujjain-page .hero-tag::before { content: ''; display: block; width: 30px; height: 1px; background: var(--saffron); }
         .ujjain-page .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(42px, 7vw, 84px); font-weight: 300; line-height: 1.1; color: var(--white); margin-bottom: 12px; }
         .ujjain-page .hero-title em { color: #f5a94e; font-style: italic; }
@@ -243,6 +245,57 @@ export function UjjainOmkareshwarDetail() {
           border-color: var(--gold);
           background: rgba(249, 115, 22, 0.12);
           color: var(--gold);
+        }
+
+        /* Global uniform button sizing */
+        .ujjain-page .btn-primary,
+        .ujjain-page .btn-secondary,
+        .ujjain-page .btn-wa,
+        .ujjain-page .btn-book,
+        .ujjain-page .btn-book-outline,
+        .ujjain-page .char-btn-outline {
+          min-height: 50px !important;
+          padding: 12px 24px !important;
+          border-radius: 4px !important;
+          font-size: 12px !important;
+          font-weight: 500 !important;
+          letter-spacing: 0.08em !important;
+          text-transform: uppercase !important;
+          box-sizing: border-box !important;
+          white-space: nowrap !important;
+          display: inline-flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+        }
+
+        .ujjain-page .hero-ctas,
+        .ujjain-page .price-actions,
+        .ujjain-page .cta-buttons {
+          display: flex !important;
+          align-items: center !important;
+          gap: 16px !important;
+          flex-wrap: wrap !important;
+        }
+        .ujjain-page .hero-ctas .btn-primary,
+        .ujjain-page .hero-ctas .btn-wa,
+        .ujjain-page .hero-ctas .btn-secondary,
+        .ujjain-page .hero-ctas .char-btn-outline,
+        .ujjain-page .price-actions .btn-book,
+        .ujjain-page .price-actions .btn-book-outline,
+        .ujjain-page .price-actions .char-btn-outline,
+        .ujjain-page .cta-buttons .btn-primary,
+        .ujjain-page .cta-buttons .btn-wa,
+        .ujjain-page .cta-buttons .btn-secondary,
+        .ujjain-page .cta-buttons .char-btn-outline {
+          flex: 1 !important;
+          max-width: 320px !important;
+          text-align: center !important;
+        }
+
+        @media (min-width: 901px) {
+          .ujjain-page .price-actions {
+            flex-wrap: nowrap !important;
+          }
         }
 
         /* STATS STRIP */
@@ -343,7 +396,7 @@ export function UjjainOmkareshwarDetail() {
         .ujjain-page .day-img { position: relative; height: 200px; overflow: hidden; }
         .ujjain-page .day-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; filter: brightness(0.75) saturate(1.1); }
         .ujjain-page .day-card:hover .day-img img { transform: scale(1.05); }
-        .ujjain-page .day-badge { position: absolute; top: 16px; left: 16px; background: var(--saffron); color: white; font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 5px 12px; border-radius: 2px; }
+        .ujjain-page .day-badge { display: inline-block; background: var(--saffron); color: white; font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 5px 12px; border-radius: 2px; margin-bottom: 12px; }
         .ujjain-page .day-body { padding: 24px 26px 28px; }
         .ujjain-page .day-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 500; color: var(--cream); margin-bottom: 16px; }
         .ujjain-page .day-stops { list-style: none; }
@@ -417,14 +470,14 @@ export function UjjainOmkareshwarDetail() {
 
         /* CTA BANNER */
         .ujjain-page .cta-banner { position: relative; padding: 100px 5%; display: flex; flex-direction: column; align-items: center; text-align: center; overflow: hidden; background: url('/rambg.jpg') center/cover no-repeat; }
-        .ujjain-page .cta-banner::before { content: ''; position: absolute; inset: 0; background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Omkareshwar_temple.jpg/1280px-Omkareshwar_temple.jpg') center/cover no-repeat; filter: brightness(0.22) saturate(0.7); }
+        .ujjain-page .cta-banner::before { content: ''; position: absolute; inset: 0; background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Omkareshwar_temple.jpg/1280px-Omkareshwar_temple.jpg') center/cover no-repeat; filter: brightness(0.1) saturate(0.8); }
         .ujjain-page .cta-banner-content { position: relative; z-index: 1; max-width: 700px; }
         .ujjain-page .cta-banner .section-title { text-align: center; color: #ffffff; }
-        .ujjain-page .cta-banner .section-body { margin: 0 auto 40px; text-align: center; color: rgba(255, 255, 255, 0.85); }
+        .ujjain-page .cta-banner .section-body { margin: 0 auto 40px; text-align: center; color: rgba(255, 255, 255, 0.8) !important; }
         .ujjain-page .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 
         /* GALLERY */
-        .ujjain-page .gallery-strip { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; grid-template-rows: 240px 240px; gap: 4px; max-width: 1300px; margin: 120px auto 120px; }
+        .ujjain-page .gallery-strip { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; grid-template-rows: 240px 240px; grid-auto-rows: 240px; gap: 4px; max-width: 1300px; margin: 120px auto 120px; }
         .ujjain-page .gallery-item { overflow: hidden; position: relative; }
         .ujjain-page .gallery-item img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.8) saturate(1.1); transition: transform 0.5s, filter 0.5s; }
         .ujjain-page .gallery-item:hover img { transform: scale(1.06); filter: brightness(0.9) saturate(1.3); }
@@ -452,7 +505,6 @@ export function UjjainOmkareshwarDetail() {
         .ujjain-page .note-box p { font-size: 13px; color: var(--smoke); line-height: 1.7; }
         .ujjain-page .note-box strong { color: var(--saffron); }
 
-        /* RESPONSIVE */
         @media (max-width: 900px) {
           .ujjain-page .intro-grid, .ujjain-page .why-grid, .ujjain-page .faq-grid { grid-template-columns: 1fr; }
           .ujjain-page .price-card { grid-template-columns: 1fr; }
@@ -460,7 +512,7 @@ export function UjjainOmkareshwarDetail() {
           .ujjain-page .highlights-grid { grid-template-columns: 1fr 1fr; }
           .ujjain-page .itinerary-days { grid-template-columns: 1fr; }
           .ujjain-page .steps-grid { grid-template-columns: repeat(3, 1fr); }
-          .ujjain-page .gallery-strip { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+          .ujjain-page .gallery-strip { grid-template-columns: 1fr 1fr; grid-auto-rows: 220px; }
           .ujjain-page .gallery-item:nth-child(1) { grid-row: span 1; }
           .ujjain-page .gallery-item:nth-child(5) { grid-column: span 1; }
           .ujjain-page .stats-strip { grid-template-columns: 1fr 1fr; gap: 20px; }
@@ -468,11 +520,115 @@ export function UjjainOmkareshwarDetail() {
 
           .ujjain-page .intro-img-float { display: none; }
           .ujjain-page .pkg-grid { grid-template-columns: 1fr; }
+
+          /* Mobile Center Alignment */
+          .ujjain-page .hero-content { text-align: center; }
+          .ujjain-page .hero-tag { display: flex; width: 100%; justify-content: center; }
+          .ujjain-page .hero-subtitle { margin-left: auto; margin-right: auto; }
+          .ujjain-page .hero-ctas { justify-content: center; }
+          .ujjain-page .hero-badges { justify-content: center; }
+
+          .ujjain-page .hero-ctas,
+          .ujjain-page .price-actions,
+          .ujjain-page .cta-buttons {
+            flex-direction: column !important;
+            align-items: stretch !important;
+            width: 100% !important;
+            gap: 10px !important;
+          }
+          .ujjain-page .hero-ctas .btn-primary,
+          .ujjain-page .hero-ctas .btn-wa,
+          .ujjain-page .hero-ctas .btn-secondary,
+          .ujjain-page .hero-ctas .char-btn-outline,
+          .ujjain-page .price-actions .btn-book,
+          .ujjain-page .price-actions .btn-book-outline,
+          .ujjain-page .price-actions .char-btn-outline,
+          .ujjain-page .cta-buttons .btn-primary,
+          .ujjain-page .cta-buttons .btn-wa,
+          .ujjain-page .cta-buttons .btn-secondary,
+          .ujjain-page .cta-buttons .char-btn-outline {
+            width: 100% !important;
+            max-width: none !important;
+            flex: none !important;
+            display: inline-flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+          }
+
+          .ujjain-page .intro-grid .reveal:last-child { text-align: center; }
+          .ujjain-page .intro-grid .section-tag { display: flex; width: 100%; justify-content: center; }
+          .ujjain-page .intro-grid .gold-rule { margin-left: auto; margin-right: auto; }
+          .ujjain-page .intro-grid .section-body { margin-left: auto; margin-right: auto; }
+          .ujjain-page .intro-grid .intro-quote { text-align: center; border-left: none; border-top: 2px solid var(--saffron); border-bottom: 2px solid var(--saffron); padding: 16px 0; }
+
+          .ujjain-page .highlights-header,
+          .ujjain-page .price-header,
+          .ujjain-page .itinerary-header,
+          .ujjain-page .steps-header {
+            text-align: center !important;
+          }
+          .ujjain-page .highlights-header .section-tag,
+          .ujjain-page .price-header .section-tag,
+          .ujjain-page .itinerary-header .section-tag,
+          .ujjain-page .steps-header .section-tag {
+            justify-content: center !important;
+            display: inline-flex !important;
+          }
+          .ujjain-page .highlights-header .gold-rule,
+          .ujjain-page .price-header .gold-rule,
+          .ujjain-page .itinerary-header .gold-rule,
+          .ujjain-page .steps-header .gold-rule {
+            margin-left: auto !important;
+            margin-right: auto !important;
+          }
+          .ujjain-page .highlights-header .section-body,
+          .ujjain-page .price-header .section-body,
+          .ujjain-page .itinerary-header .section-body,
+          .ujjain-page .steps-header p {
+            margin-left: auto !important;
+            margin-right: auto !important;
+            text-align: center !important;
+          }
+
+          .ujjain-page .why-grid .reveal:first-child { text-align: center; }
+          .ujjain-page .why-grid .section-tag { display: flex; width: 100%; justify-content: center; }
+          .ujjain-page .why-grid .gold-rule { margin-left: auto; margin-right: auto; }
+          .ujjain-page .why-grid .section-body { margin-left: auto; margin-right: auto; }
+          .ujjain-page .why-float-card { position: static; margin-top: 16px; max-width: none; text-align: center; border-left: none; border-top: 2px solid var(--saffron); border-bottom: 2px solid var(--saffron); padding: 16px 0; }
+          .ujjain-page .features-list { text-align: left; }
+
+          .ujjain-page .faq-grid > div:first-child { text-align: center; }
+          .ujjain-page .faq-grid > div:first-child .section-tag { display: flex; width: 100%; justify-content: center; }
+          .ujjain-page .faq-grid > div:first-child .gold-rule { margin-left: auto; margin-right: auto; }
+          .ujjain-page .faq-grid > div:first-child .section-body { margin-left: auto; margin-right: auto; }
+          .ujjain-page .faq-grid > div:first-child div[style*="margin-top"],
+          .ujjain-page .faq-grid > div:first-child > div:last-child {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            gap: 16px !important;
+          }
+          .ujjain-page .faq-grid > div:first-child br {
+            display: none !important;
+          }
+          .ujjain-page .faq-grid .btn-primary,
+          .ujjain-page .faq-grid .btn-wa {
+            width: 100% !important;
+            max-width: 320px !important;
+            margin: 0 !important;
+            display: inline-flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+          }
         }
         @media (max-width: 560px) {
+          .ujjain-page .gallery-strip { grid-template-columns: 1fr !important; grid-auto-rows: 280px !important; grid-template-rows: auto !important; }
+          .ujjain-page .gallery-item:nth-child(1) { grid-row: span 1 !important; }
+          .ujjain-page .gallery-item:nth-child(5) { grid-column: span 1 !important; }
           .ujjain-page .price-footer { flex-direction: column; align-items: flex-start; }
           .ujjain-page .price-card-body { padding: 30px 26px; }
           .ujjain-page .highlights-grid { grid-template-columns: 1fr; }
+          .ujjain-page .steps-grid { grid-template-columns: 1fr; gap: 36px; }
         }
       `}</style>
 
@@ -484,7 +640,7 @@ export function UjjainOmkareshwarDetail() {
         <div className="hero-img"></div>
         <div className="hero-overlay"></div>
         <div className="hero-content">
-          <div className="hero-tag">2 Sacred Jyotirlingas · 3 Nights 4 Days</div>
+          <div className="hero-tag" style={{ fontWeight: 900, fontSize: 14 }}>2 Sacred Jyotirlingas · 3 Nights 4 Days</div>
           <h1 className="hero-title">Ujjain Omkareshwar<br /><em>Tour Package</em></h1>
           <p className="hero-subtitle">Mahakal Bhasma Aarti at dawn. VIP darshan at two Jyotirlingas. The sacred Narmada at Omkareshwar. Departing from Mumbai &amp; Thane — fully planned, nothing to worry about.</p>
           <div className="hero-ctas">
@@ -493,7 +649,7 @@ export function UjjainOmkareshwarDetail() {
               <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg>
               WhatsApp Us
             </a>
-            <a href="/Ujjain.pdf" download="Ujjain.pdf" className="char-btn-outline">
+            <a href="/Ujjain.pdf" download="Ujjain.pdf" className="btn-primary">
               Download Itinerary
             </a>
           </div>
@@ -623,13 +779,16 @@ export function UjjainOmkareshwarDetail() {
             <div className="price-footer">
               <div className="price-amount-wrap">
                 <span className="price-from">Starting from</span>
-                <span className="price-amount">₹10,500</span>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
+                  <span className="price-amount" style={{ textDecoration: 'line-through', color: '#9ca3af', fontSize: '24px' }}>₹15,500</span>
+                  <span className="price-amount">₹10,500</span>
+                </div>
                 <span className="price-per"> / person</span>
-                <span className="price-note">Standard Package: ₹10,500 / person. Premium Package: ₹15,999 / person. Final price depends on dates, group size &amp; hotel category.</span>
+                <span className="price-note">Standard Package: ₹10,500 / person (was <span style={{ textDecoration: 'line-through' }}>₹15,500</span>). Premium Package: ₹15,999 / person (was <span style={{ textDecoration: 'line-through' }}>₹20,999</span>). Final price depends on dates, group size &amp; hotel category.</span>
               </div>
               <div className="price-actions">
                 <a href="tel:+917208771688" className="btn-book-outline">Call Us</a>
-                <a href={razorpayLink} className="btn-book" target="_blank" rel="noopener noreferrer">Book Now →</a>
+                <a href={razorpayLink} className="btn-book" target="_blank" rel="noopener noreferrer">Book Now </a>
                 <a href="/Ujjain.pdf" download="Ujjain.pdf" className="char-btn-outline">
                   Download Itinerary
                 </a>
@@ -652,15 +811,17 @@ export function UjjainOmkareshwarDetail() {
         <div className="itinerary-days">
           {/* DAY 1 */}
           <div className="day-card reveal">
-            <div className="day-img">
+            {/* <div className="day-img">
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Ram_Ghat%2C_Ujjain.jpg/1280px-Ram_Ghat%2C_Ujjain.jpg"
                 alt="Ujjain Day 1 — Temple Circuit"
                 onError={(e) => { (e.target as HTMLImageElement).src = '/rambg.jpg' }}
               />
-              <div className="day-badge">Day 1 — Ujjain</div>
-            </div>
+                   </div> */}
+
+
             <div className="day-body">
+              <div className="day-badge">Day 1 — Ujjain</div>
               <div className="day-title">Ujjain Temple Circuit</div>
               <ul className="day-stops">
                 <li>Check-in at hotel near Mahakal</li>
@@ -677,15 +838,16 @@ export function UjjainOmkareshwarDetail() {
           </div>
           {/* DAY 2 */}
           <div className="day-card reveal reveal-delay-1">
-            <div className="day-img">
+            {/* <div className="day-img">
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Mahakaleshwar_Jyotirlinga%2C_Ujjain.jpg/1280px-Mahakaleshwar_Jyotirlinga%2C_Ujjain.jpg"
                 alt="Bhasma Aarti Ujjain — Mahakaleshwar"
                 onError={(e) => { (e.target as HTMLImageElement).src = '/rambg.jpg' }}
               />
               <div className="day-badge">Day 2 — Bhasma Aarti + Omkareshwar</div>
-            </div>
+            </div> */}
             <div className="day-body">
+              <div className="day-badge">Day 2 — Bhasma Aarti + Omkareshwar</div>
               <div className="day-title">Bhasma Aarti & Omkareshwar</div>
               <ul className="day-stops">
                 <li>~12:30 AM — depart for Mahakal Bhasma Aarti</li>
@@ -703,15 +865,16 @@ export function UjjainOmkareshwarDetail() {
           </div>
           {/* DAY 3 */}
           <div className="day-card reveal reveal-delay-2">
-            <div className="day-img">
+            {/* <div className="day-img">
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Omkareshwar_temple.jpg/1280px-Omkareshwar_temple.jpg"
                 alt="Day 3 — Departure from Ujjain"
                 onError={(e) => { (e.target as HTMLImageElement).src = '/rambg.jpg' }}
               />
               <div className="day-badge">Day 3 / 4 — Departure</div>
-            </div>
+            </div> */}
             <div className="day-body">
+              <div className="day-badge">Day 3 / 4 — Departure</div>
               <div className="day-title">Morning & Check-Out</div>
               <ul className="day-stops">
                 <li>Morning breakfast at hotel</li>
@@ -732,29 +895,29 @@ export function UjjainOmkareshwarDetail() {
         <div className="why-grid">
           <div className="reveal">
             <div className="section-tag" style={{ color: '#ffffff', '--saffron': '#ffffff' } as React.CSSProperties}>Why Choose Us</div>
-            <h2 className="section-title">Why Mumbai &amp; Thane<br /><em>Yatris Choose Margika</em></h2>
+            <h2 className="section-title">Why Mumbai &amp; Thane<br /><em style={{ color: "#ffffff" }}>Yatris Choose Margika</em></h2>
             <div className="gold-rule" style={{ background: '#ffffff' }}></div>
-            <p className="section-body">We are based in Brahmand, Thane. When you call us, you speak to someone from your community — not a national call centre. That personal understanding shapes how we plan every trip.</p>
+            <p className="section-body" style={{ color: "#ffffff", fontWeight: 700 }}>We are based in Brahmand, Thane. When you call us, you speak to someone from your community — not a national call centre. That personal understanding shapes how we plan every trip.</p>
             <ul className="features-list">
               <li className="feature-item">
                 <div className="feature-icon">🙏</div>
-                <div className="feature-text"><h4>Bhasma Aarti Passes — Secured in Advance</h4><p>Passes are limited and go fast. We book them well before your travel date so there is no last-minute uncertainty.</p></div>
+                <div className="feature-text"><h4>Bhasma Aarti Passes — Secured in Advance</h4><p style={{ color: "#ffffff" }}>Passes are limited and go fast. We book them well before your travel date so there is no last-minute uncertainty.</p></div>
               </li>
               <li className="feature-item">
                 <div className="feature-icon">⚡</div>
-                <div className="feature-text"><h4>VIP Darshan at Both Jyotirlingas</h4><p>Shorter queues, more time in the sanctum, no scrambling — we arrange priority darshan at Mahakaleshwar and Omkareshwar both.</p></div>
+                <div className="feature-text"><h4>VIP Darshan at Both Jyotirlingas</h4><p style={{ color: "#ffffff" }}>Shorter queues, more time in the sanctum, no scrambling — we arrange priority darshan at Mahakaleshwar and Omkareshwar both.</p></div>
               </li>
               <li className="feature-item">
                 <div className="feature-icon">👴</div>
-                <div className="feature-text"><h4>Senior Citizen &amp; Family Friendly</h4><p>Gentle itinerary pacing, ground-floor room requests, and extra care for elderly travellers. Many Mumbai families travel with grandparents on this trip.</p></div>
+                <div className="feature-text"><h4>Senior Citizen &amp; Family Friendly</h4><p style={{ color: "#ffffff" }}>Gentle itinerary pacing, ground-floor room requests, and extra care for elderly travellers. Many Mumbai families travel with grandparents on this trip.</p></div>
               </li>
               <li className="feature-item">
                 <div className="feature-icon">💰</div>
-                <div className="feature-text"><h4>Transparent Pricing — No Surprises</h4><p>You get a clear, itemised quote before confirming. What is in the package is in the package. No hidden charges after departure.</p></div>
+                <div className="feature-text"><h4>Transparent Pricing — No Surprises</h4><p style={{ color: "#ffffff" }}>You get a clear, itemised quote before confirming. What is in the package is in the package. No hidden charges after departure.</p></div>
               </li>
               <li className="feature-item">
                 <div className="feature-icon">📍</div>
-                <div className="feature-text"><h4>Departures from Thane &amp; Mumbai</h4><p>We coordinate from Thane railway station and CSMT / Dadar. No need to travel to a central office — we come to your convenience.</p></div>
+                <div className="feature-text"><h4>Departures from Thane &amp; Mumbai</h4><p style={{ color: "#ffffff" }}>We coordinate from Thane railway station and CSMT / Dadar. No need to travel to a central office — we come to your convenience.</p></div>
               </li>
             </ul>
           </div>
@@ -844,7 +1007,7 @@ export function UjjainOmkareshwarDetail() {
           {/* Package 3 */}
           <div className="pkg-card reveal reveal-delay-2">
             <div className="pkg-img">
-              <img src="/rambg.jpg" alt="Dwarka Somnath Gujarat Yatra" />
+              <img src="/DwMain.jpeg" alt="Dwarka Somnath Gujarat Yatra" />
               <div className="pkg-badge">Popular</div>
             </div>
             <div className="pkg-body">
@@ -857,73 +1020,48 @@ export function UjjainOmkareshwarDetail() {
         </div>
       </section>
 
+      </div>{/* end ujjain-page */}
+
       <GoogleReviews />
 
-      {/* FAQ */}
-      <section style={{ background: 'rgba(255,255,255,0.02)' }}>
-        <div className="faq-grid">
-          <div className="reveal">
-            <div className="section-tag">Common Questions</div>
-            <h2 className="section-title">Frequently<br /><em>Asked Questions</em></h2>
-            <div className="gold-rule"></div>
-            <p className="section-body">Every question a traveller from Mumbai or Thane might have before booking this trip — answered honestly.</p>
-            <div style={{ marginTop: '32px' }}>
-              <a href="tel:+917208771688" className="btn-primary" style={{ display: 'inline-flex', marginBottom: '12px' }}>📞 Speak to an Expert</a>
-              <br />
-              <a href={wa("I have a question about Ujjain Omkareshwar tour package")} className="btn-wa" style={{ display: 'inline-flex', marginTop: '10px' }} target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg>
-                WhatsApp a Question
-              </a>
+      {/* FAQ — outside ujjain-page to avoid CSS conflicts */}
+      <FAQ />
+
+      <div className="ujjain-page">{/* re-enter ujjain-page for Gallery & CTA vars */}
+        {/* GALLERY */}
+        <div className="gallery-strip">
+          <div className="gallery-item"><img src="/1.jpg" alt="Pilgrim group photo 1" /></div>
+          <div className="gallery-item"><img src="/2.jpg" alt="Pilgrim group photo 2" /></div>
+          <div className="gallery-item"><img src="/Home1.jpeg" alt="Pilgrim group photo 3" /></div>
+          <div className="gallery-item"><img src="/Home2.jpeg" alt="Pilgrim group photo 4" /></div>
+          <div className="gallery-item"><img src="/5.jpg" alt="Pilgrim group photo 5" /></div>
+          <div className="gallery-item"><img src="/6.jpg" alt="Pilgrim group photo 6" /></div>
+          <div className="gallery-item"><img src="/Home3.jpeg" alt="Pilgrim group photo 7" /></div>
+          <div className="gallery-item"><img src="/Home4.jpeg" alt="Pilgrim group photo 8" /></div>
+          <div className="gallery-item"><img src="/Home5.jpeg" alt="Pilgrim group photo 9" /></div>
+          <div className="gallery-item"><img src="/Home6.jpg" alt="Pilgrim group photo 10" /></div>
+          <div className="gallery-item"><img src="/Home7.jpg" alt="Pilgrim group photo 11" /></div>
+        </div>
+
+        {/* CTA BANNER */}
+        <section className="cta-banner">
+          <div className="cta-banner-content reveal">
+            <h2 className="section-title" style={{ color: 'var(--white)' }}>Plan Your Sacred Yatra</h2>
+            <p className="section-body" style={{ color: 'rgba(255,255,255,0.8)', margin: '0 auto 40px', fontWeight: 700 }}>Secure your Bhasma Aarti VIP passes and comfortable hotel stay close to the temple. Speak to our Thane office today.</p>
+            <div className="cta-buttons">
+              <a href="tel:+917208771688" className="btn-primary">📞 Call Now: +91 72087 71688</a>
+              <a href={wa("I want to book Ujjain Omkareshwar tour package")} className="btn-wa" target="_blank" rel="noopener noreferrer">WhatsApp to Book</a>
             </div>
           </div>
-          <div className="faq-list reveal">
-            {faqs.map(([q, a], idx) => (
-              <div className={`faq-item ${openFaq === idx ? "open" : ""}`} key={idx}>
-                <div className="faq-q" onClick={() => setOpenFaq(openFaq === idx ? null : idx)}>
-                  {q}
-                  <div className="faq-icon">+</div>
-                </div>
-                <div className="faq-a">{a}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+        </section>
 
-
-      {/* GALLERY */}
-      <div className="gallery-strip">
-        <div className="gallery-item"><img src="/1.jpg" alt="Pilgrim group photo 1" /></div>
-        <div className="gallery-item"><img src="/2.jpg" alt="Pilgrim group photo 2" /></div>
-        {/* <div className="gallery-item"><img src="/3.jpg" alt="Pilgrim group photo 3" /></div>
-        <div className="gallery-item"><img src="/4.jpg" alt="Pilgrim group photo 4" /></div> */}
-        <div className="gallery-item"><img src="/5.jpg" alt="Pilgrim group photo 5" /></div>
-        <div className="gallery-item"><img src="/6.jpg" alt="Pilgrim group photo 6" /></div>
-      </div>
-
-
-      {/* CTA BANNER */}
-      <section className="cta-banner">
-        <div className="cta-banner-content reveal">
-          <h2 className="section-title" style={{ color: 'var(--white)' }}>Plan Your Sacred Yatra</h2>
-          <p className="section-body" style={{ color: 'rgba(255,255,255,0.8)', margin: '0 auto 40px' }}>Secure your Bhasma Aarti VIP passes and comfortable hotel stay close to the temple. Speak to our Thane office today.</p>
-          <div className="cta-buttons">
-            <a href="tel:+917208771688" className="btn-primary">📞 Call Now: +91 72087 71688</a>
-            <a href={wa("I want to book Ujjain Omkareshwar tour package")} className="btn-wa" target="_blank" rel="noopener noreferrer">WhatsApp to Book</a>
-            <a href="/Ujjain.pdf" download="Ujjain.pdf" className="char-btn-outline">
-              Download Itinerary
-            </a>
-          </div>
-        </div>
-      </section>
-
+        {/* STICKY WA */}
+        <a href={wa("Hi Margika Yatra! I want to enquire about the Ujjain Omkareshwar tour package")} className="sticky-wa" aria-label="Chat on WhatsApp" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg>
+        </a>
+      </div>{/* end ujjain-page for CTA */}
 
       <Footer />
-
-      {/* STICKY WA */}
-      <a href={wa("Hi Margika Yatra! I want to enquire about the Ujjain Omkareshwar tour package")} className="sticky-wa" aria-label="Chat on WhatsApp" target="_blank" rel="noopener noreferrer">
-        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg>
-      </a>
-    </div>
+    </>
   )
 }

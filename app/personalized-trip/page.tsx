@@ -68,24 +68,28 @@ export default function PersonalizedTripPage() {
       image: "vr.jpg",
       description: "The spiritual capital of India",
       highlights: ["Ganga Aarti", "Ancient Temples", "River Ghats"],
+      link: "/packages/varanasi",
     },
     {
-      name: "Rishikesh",
-      image: "ri.jpg",
-      description: "Yoga capital of the world",
-      highlights: ["Yoga Ashrams", "Ganga River", "Adventure Sports"],
+      name: "Rameshwaram",
+      image: "Rammain.png",
+      description: "Southern pilgrimage destination",
+      highlights: ["Ramanathaswamy Temple", "Dhanushkodi", "Pamban Bridge"],
+      link: "/packages/rameshwaram",
     },
     {
-      name: "Kedarnath",
+      name: "Char Dham & Do Dham Yatra",
       image: "ke.jpg",
       description: "Sacred Himalayan shrine",
       highlights: ["Ancient Temple", "Mountain Trek", "Spiritual Energy"],
+      link: "/packages/char-dham",
     },
     {
       name: "Ujjain",
       image: "uj.jpg",
       description: "City of Mahakal",
       highlights: ["Mahakaleshwar", "Kumbh Mela", "Ancient History"],
+      link: "/ujjain-omkareshwar-tour-package",
     },
   ]
 
@@ -274,28 +278,38 @@ ${formData.name}`
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ y: -5 }}
               >
-                <Card className="bg-white/90 backdrop-blur-sm border-orange-200 overflow-hidden hover:border-orange-400 transition-all duration-500 shadow-lg">
+                <Card className="bg-white/90 backdrop-blur-sm border-orange-200 overflow-hidden hover:border-orange-400 transition-all duration-500 shadow-lg h-full flex flex-col">
                   <div className="relative h-40">
                     <Image
                       src={destination.image || "/placeholder.svg"}
                       alt={destination.name}
                       fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       className="object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                    <div className="absolute bottom-2 left-2">
+                    <div className="absolute bottom-2 left-2 right-2 text-center lg:text-left">
                       <h3 className="text-lg font-bold text-white">{destination.name}</h3>
                     </div>
                   </div>
-                  <CardContent className="p-4">
+                  <CardContent className="p-4 flex flex-col flex-1 items-center text-center lg:items-start lg:text-left">
                     <p className="text-gray-600 text-sm mb-3">{destination.description}</p>
-                    <div className="flex flex-wrap gap-1">
+                    <div className="flex flex-wrap gap-1 mb-4 justify-center lg:justify-start">
                       {destination.highlights.map((highlight, i) => (
                         <Badge key={i} variant="outline" className="text-xs border-orange-300 text-orange-700">
                           {highlight}
                         </Badge>
                       ))}
                     </div>
+                    <Link href={destination.link} className="mt-auto w-full">
+                      <Button
+                        size="sm"
+                        className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold"
+                      >
+                        Book Trip
+                        <ChevronRight className="ml-1 h-4 w-4" />
+                      </Button>
+                    </Link>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -319,7 +333,7 @@ ${formData.name}`
                 <form onSubmit={handleSubmit} className="space-y-8">
                   {/* Personal Information */}
                   <div>
-                    <h3 className="text-xl font-semibold text-orange-600 mb-4 flex items-center">
+                    <h3 className="text-xl font-semibold text-orange-600 mb-4 flex items-center justify-center lg:justify-start text-center lg:text-left">
                       <Users className="h-5 w-5 mr-2" />
                       Personal Information
                     </h3>
@@ -363,7 +377,7 @@ ${formData.name}`
 
                   {/* Trip Details */}
                   <div>
-                    <h3 className="text-xl font-semibold text-orange-400 mb-4 flex items-center">
+                    <h3 className="text-xl font-semibold text-orange-400 mb-4 flex items-center justify-center lg:justify-start text-center lg:text-left">
                       <Calendar className="h-5 w-5 mr-2" />
                       Trip Details
                     </h3>
@@ -431,7 +445,7 @@ ${formData.name}`
 
                   {/* Destinations */}
                   <div>
-                    <h3 className="text-xl font-semibold text-orange-400 mb-4 flex items-center">
+                    <h3 className="text-xl font-semibold text-orange-400 mb-4 flex items-center justify-center lg:justify-start text-center lg:text-left">
                       <MapPin className="h-5 w-5 mr-2" />
                       Destinations & Preferences
                     </h3>
@@ -474,7 +488,7 @@ ${formData.name}`
 
                   {/* Accommodation & Transportation */}
                   <div>
-                    <h3 className="text-xl font-semibold text-orange-400 mb-4 flex items-center">
+                    <h3 className="text-xl font-semibold text-orange-400 mb-4 flex items-center justify-center lg:justify-start text-center lg:text-left">
                       <Star className="h-5 w-5 mr-2" />
                       Accommodation & Transportation
                     </h3>
@@ -520,7 +534,7 @@ ${formData.name}`
 
                   {/* Spiritual Goals */}
                   <div>
-                    <h3 className="text-xl font-semibold text-orange-400 mb-4 flex items-center">
+                    <h3 className="text-xl font-semibold text-orange-400 mb-4 flex items-center justify-center lg:justify-start text-center lg:text-left">
                       <Heart className="h-5 w-5 mr-2" />
                       Spiritual Goals & Special Requests
                     </h3>
@@ -556,7 +570,7 @@ ${formData.name}`
 
                   {/* Process Information */}
                   <div className="bg-orange-50 p-6 rounded-lg border border-orange-100">
-                    <h4 className="font-semibold text-gray-800 mb-3 flex items-center">
+                    <h4 className="font-semibold text-gray-800 mb-3 flex items-center justify-center lg:justify-start text-center lg:text-left">
                       <Clock className="h-5 w-5 mr-2 text-orange-500" />
                       Our Personalized Planning Process
                     </h4>
@@ -587,7 +601,7 @@ ${formData.name}`
                   <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                     <Button
                       type="submit"
-                      className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white py-4 text-lg"
+                      className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white py-4 px-8 text-lg"
                     >
                       Submit Personalized Trip Request
                       <ChevronRight className="ml-2 h-5 w-5" />

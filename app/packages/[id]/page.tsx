@@ -23,6 +23,7 @@ import { UjjainOmkareshwarDetail } from "./UjjainOmkareshwarDetail"
 import { KeralaDetail } from "./KeralaDetail"
 import { Header } from "@/components/ui/newheader"
 import { CharStats } from "@/components/char-stats"
+import { FAQ } from "@/components/faq"
 
 
 export default function PackageDetailPage() {
@@ -106,7 +107,7 @@ export default function PackageDetailPage() {
             <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
               <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
                 <div className="relative min-h-[320px] overflow-hidden rounded-lg shadow-2xl md:min-h-[520px]">
-                  <Image src={pkg.image} alt={pkg.name} fill className="object-cover" priority />
+                  <Image src={pkg.image} alt={pkg.name} fill className="object-cover" priority sizes="100vw" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
                   <div className="absolute bottom-5 left-5 right-5">
                     <Badge className="mb-3 bg-orange-500 text-white">{pkg.location}</Badge>
@@ -418,7 +419,7 @@ function MaharashtraJyotirlingDetail() {
         .mh-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 30px; }
         .mh-tags span { border: 1px solid rgba(232,135,26,0.2); border-radius: 99px; background: rgba(232,135,26,0.1); color: var(--saffron-dark); padding: 5px 12px; font-size: 11px; }
         .mh-price-footer { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
-        .mh-amount { display: block; color: var(--gold); font-family: "Cormorant Garamond", serif; font-size: 44px; line-height: 1.1; }
+        .mh-amount { display: block; color: var(--gold); font-family: serif; font-size: 44px; line-height: 1.1; }
         .mh-note { display: block; max-width: 240px; margin-top: 8px; color: var(--smoke); font-size: 11px; line-height: 1.5; }
         .mh-price-actions { display: flex; gap: 16px; align-items: center; }
         .mh-table-wrap { max-width: 900px; margin: 0 auto; overflow-x: auto; }
@@ -431,11 +432,48 @@ function MaharashtraJyotirlingDetail() {
         .char-logo { display: flex; align-items: center; gap: 12px; color: var(--gold); text-decoration: none; }
         .char-logo span { font-family: "Cormorant Garamond", serif; font-size: 22px; font-weight: 600; letter-spacing: 0.08em; }
         .char-nav-actions, .char-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-        .char-btn, .char-btn-outline, .char-btn-wa { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 46px; padding: 13px 24px; border: 1px solid transparent; border-radius: 3px; color: white; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-decoration: none; text-transform: uppercase; transition: transform 0.25s, background 0.25s, border-color 0.25s, color 0.25s, box-shadow 0.25s; }
+
+        /* Global uniform button sizing */
+        .char-btn, .char-btn-outline, .char-btn-wa {
+          display: inline-flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          gap: 10px !important;
+          min-height: 50px !important;
+          padding: 12px 24px !important;
+          border-radius: 4px !important;
+          border: 1px solid transparent;
+          color: white;
+          font-size: 12px !important;
+          font-weight: 500 !important;
+          letter-spacing: 0.1em !important;
+          text-decoration: none !important;
+          text-transform: uppercase !important;
+          box-sizing: border-box !important;
+          white-space: nowrap !important;
+          transition: transform 0.25s, background 0.25s, border-color 0.25s, color 0.25s, box-shadow 0.25s;
+        }
+
+        .char-actions,
+        .mh-price-actions {
+          display: flex !important;
+          align-items: center !important;
+          gap: 16px !important;
+          flex-wrap: wrap !important;
+        }
+        .char-actions .char-btn,
+        .char-actions .char-btn-outline,
+        .char-actions .char-btn-wa,
+        .mh-price-actions .char-btn,
+        .mh-price-actions .char-btn-outline {
+          flex: 1 !important;
+          max-width: 320px !important;
+          text-align: center !important;
+        }
         .char-btn { background: var(--saffron); }
         .char-btn:hover { background: var(--saffron-light); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(232,135,26,0.4); }
-        .char-btn-outline { border-color: rgba(249,115,22,0.55); background: transparent; color: var(--gold); }
-        .char-btn-outline:hover { border-color: var(--gold); background: rgba(249,115,22,0.12); }
+        .char-btn-outline { border-color: rgba(249,115,22,0.55); background: var(--saffron); }
+        .char-btn-outline:hover { border-color: var(--gold); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(232,135,26,0.4); }
         .char-btn-wa { background: #25d366; }
         .char-btn-wa:hover { background: #1eb858; transform: translateY(-2px); }
         .char-hero { position: relative; min-height: 100vh; display: flex; align-items: flex-end; padding: 130px 5% 80px; overflow: hidden; }
@@ -444,11 +482,11 @@ function MaharashtraJyotirlingDetail() {
         @keyframes charZoom { from { transform: scale(1.05); } to { transform: scale(1); } }
         .char-hero-content { position: relative; z-index: 1; max-width: 860px; animation: charFadeUp 1s 0.2s ease both; }
         @keyframes charFadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
-        .char-tag { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 18px; color: var(--saffron); font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; }
+        .char-tag { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 18px; color: var(--saffron-dark); font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; }
         .char-tag::before { content: ""; width: 30px; height: 1px; background: var(--saffron); }
         .char-title { margin: 0 0 14px; color: var(--cream); font-family: "Cormorant Garamond", serif; font-size: clamp(42px, 7vw, 88px); font-weight: 300; line-height: 1.05; }
         .char-title em, .char-section-title em { color: var(--gold); font-style: italic; }
-        .char-subtitle { max-width: 600px; margin: 0 0 36px; color: rgba(17,24,39,0.8); font-size: 15px; font-weight: 300; line-height: 1.75; }
+        .char-subtitle { max-width: 600px; margin: 0 0 36px; color: black; font-size: 15px; font-weight: 300; line-height: 1.75; }
         .char-stats { display: grid; grid-template-columns: repeat(4, 1fr); background: linear-gradient(90deg, var(--saffron-dark), var(--saffron)); padding: 28px 5%; }
         .char-stat { text-align: center; border-right: 1px solid rgba(255,255,255,0.2); }
         .char-stat:last-child { border-right: 0; }
@@ -495,7 +533,7 @@ function MaharashtraJyotirlingDetail() {
         .char-step:hover .char-step-dot { transform: translateY(-6px); background: var(--saffron); color: white; }
         .char-step h3 { margin: 0 0 6px; color: var(--cream); font-size: 13px; font-weight: 500; }
         .char-step p { margin: 0; color: var(--smoke); font-size: 12px; line-height: 1.5; }
-        .char-gallery { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; grid-template-rows: 260px 260px; gap: 4px; }
+        .char-gallery { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; grid-template-rows: 260px 260px; grid-auto-rows: 260px; gap: 4px; }
         .char-gallery div { overflow: hidden; }
         .char-gallery div:first-child { grid-row: span 2; }
         .char-gallery div:nth-child(5) { grid-column: span 2; }
@@ -532,7 +570,7 @@ function MaharashtraJyotirlingDetail() {
           .char-two, .char-faq, .mh-price-card { grid-template-columns: 1fr; }
           .char-dhams, .char-stats { grid-template-columns: 1fr 1fr; }
           .char-steps { grid-template-columns: repeat(3, 1fr); }
-          .char-gallery { grid-template-columns: 1fr 1fr; grid-template-rows: 220px; }
+          .char-gallery { grid-template-columns: 1fr 1fr; grid-auto-rows: 220px; }
           .char-gallery div:first-child, .char-gallery div:nth-child(5) { grid-row: auto; grid-column: auto; }
           .char-footer-grid { grid-template-columns: 1fr; }
           .char-photo-float { display: none; }
@@ -541,7 +579,25 @@ function MaharashtraJyotirlingDetail() {
           .char-nav { padding: 14px 4%; }
           .char-logo span { font-size: 17px; }
           .char-nav-actions .char-btn-outline { display: none; }
-          .char-btn, .char-btn-outline, .char-btn-wa { width: 100%; padding: 13px 16px; font-size: 11px; }
+          .char-actions,
+          .mh-price-actions {
+            flex-direction: column !important;
+            align-items: stretch !important;
+            width: 100% !important;
+            gap: 10px !important;
+          }
+          .char-actions .char-btn,
+          .char-actions .char-btn-outline,
+          .char-actions .char-btn-wa,
+          .mh-price-actions .char-btn,
+          .mh-price-actions .char-btn-outline {
+            width: 100% !important;
+            max-width: none !important;
+            flex: none !important;
+            display: inline-flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+          }
           .char-nav-actions .char-btn { width: auto; min-height: 40px; padding: 12px 14px; }
           .char-hero { min-height: 92vh; padding: 115px 5% 56px; }
           .char-actions, .mh-price-footer, .mh-price-actions, .char-footer-bottom { flex-direction: column; align-items: stretch; }
@@ -551,9 +607,21 @@ function MaharashtraJyotirlingDetail() {
           .char-dham-card { min-height: 390px; }
           .mh-day { grid-template-columns: 1fr; gap: 14px; }
           .mh-day::before { display: none; }
+          .mh-day > div:first-child { display: flex; flex-direction: column; align-items: center; text-align: center; }
           .mh-price-media { min-height: 260px; }
           .mh-price-body { padding: 30px 26px; }
           .char-sticky-wa { right: 18px; bottom: 18px; }
+          .char-title { text-align: center; }
+          .char-section-title { text-align: center; }
+          .char-subtitle { text-align: center; }
+          .char-tag { display: flex; width: 100%; justify-content: center; }
+          .char-rule { margin-left: auto; margin-right: auto; }
+          .char-light .char-section-title { text-align: center; }
+          .char-light .char-tag { display: flex; width: 100%; justify-content: center; }
+          .char-light .char-body { text-align: center; margin-left: auto; margin-right: auto; }
+          .char-two { text-align: center; }
+          .char-two .char-body { text-align: center; margin-left: auto; margin-right: auto; }
+          .char-two .char-quote { text-align: center; border-left: none; border-top: 2px solid var(--saffron); border-bottom: 2px solid var(--saffron); padding: 16px 0; }
         }
 
         /* MAHARASHTRA HERO IMAGE */
@@ -588,9 +656,9 @@ function MaharashtraJyotirlingDetail() {
         <div className="hero-img"></div>
         <div className="hero-overlay"></div>
         <div className="char-hero-content">
-          <div className="char-tag">Bhimashankar · Trimbakeshwar · Grishneshwar</div>
+          <div className="char-tag" style={{ fontWeight: 900, fontSize: 14 }}>Bhimashankar · Trimbakeshwar · Grishneshwar</div>
           <h1 className="char-title">Three Jyotirlinga Maharashtra<br /><em>Tour Package</em></h1>
-          <p className="char-subtitle">A guided pilgrimage to the 3 Jyotirlinga of Maharashtra with Shani Shingnapur, Ellora Caves, and Pune heritage. Planned and coordinated for travellers from Mumbai and Thane.</p>
+          <p className="char-subtitle" style={{ color: 'var(--black)', fontWeight: 500 }}>A guided pilgrimage to the 3 Jyotirlinga of Maharashtra with Shani Shingnapur, Ellora Caves, and Pune heritage. Planned and coordinated for travellers from Mumbai and Thane.</p>
           <div className="char-actions">
             {/* <a href={razorpayLink} target="_blank" rel="noopener noreferrer" className="char-btn">Book Now →</a> */}
             <a href="tel:+917208771688" className="char-btn-outline">📞 Call to Book</a>
@@ -600,12 +668,12 @@ function MaharashtraJyotirlingDetail() {
         </div>
       </section>
 
-     <CharStats/>
+      <CharStats />
 
       <section className="char-section">
         <div className="char-wrap char-two">
           <div className="char-intro-visual char-reveal">
-            <img className="char-photo-main" src="/Mah.jpeg" alt="Three Jyotirlinga Maharashtra Yatra" />
+            <img className="char-photo-main" src="/jyoti.jpeg" alt="Three Jyotirlinga Maharashtra Yatra" />
             {/* <img className="char-photo-float" src="/3.jpg" alt="Margika Yatra travellers" /> */}
           </div>
           <div className="char-reveal">
@@ -647,7 +715,7 @@ function MaharashtraJyotirlingDetail() {
         <div className="char-wrap char-reveal" style={{ maxWidth: 980 }}>
           <div className="char-center" style={{ marginBottom: 36 }}>
             <div className="char-tag">Complete Package</div>
-            <h2 className="char-section-title">Maharashtra Three Jyotirlinga<br /><em>Tour from Mumbai & Thane</em></h2>
+            <h2 className="char-section-title">Maharashtra Three Jyotirlinga<br /><em style={{ color: "#ffffff" }}>Tour from Mumbai & Thane</em></h2>
             <div className="char-rule" />
           </div>
           <p className="char-body">This 3 days / 2 nights journey is designed for families, senior citizens, groups, and Shiva devotees who want all three Jyotirlingas covered without rushing. The route is Pune-based, with support for Mumbai and Thane travellers joining by train, bus, flight, or private plan.</p>
@@ -713,9 +781,12 @@ function MaharashtraJyotirlingDetail() {
             <div className="mh-price-footer">
               <div>
                 <small>Starting from</small>
-                <span className="mh-amount">₹11,999</span>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
+                  <span className="mh-amount" style={{ textDecoration: 'line-through', color: '#9ca3af', fontSize: '24px' }}>₹16,999</span>
+                  <span className="mh-amount">₹11,999</span>
+                </div>
                 <small>/ person</small>
-                <span className="mh-note">Per-head cost varies with group size and vehicle. Airfare/train not included.</span>
+                <span className="mh-note">Per-head cost varies with group size and vehicle. Was <span style={{ textDecoration: 'line-through' }}>₹16,999</span>. Airfare/train not included.</span>
               </div>
               <div className="mh-price-actions">
                 <a href="tel:+917208771688" className="char-btn-outline">Call Us</a>
@@ -736,15 +807,15 @@ function MaharashtraJyotirlingDetail() {
       <section className="char-section char-light">
         <div className="char-wrap char-two">
           <div className="char-reveal">
-            <div className="char-tag">Why Margika</div>
-            <h2 className="char-section-title">Why Mumbai & Thane<br /><em>Travellers Choose Us</em></h2>
+            <div className="char-tag" style={{ color: "#ffffff" }}>Why Margika</div>
+            <h2 className="char-section-title">Why Mumbai & Thane<br /><em style={{ color: "#ffffff" }}>Travellers Choose Us</em></h2>
             <div className="char-rule" style={{ background: "#ffffff" }} />
-            <p className="char-body">We are based in Thane, so your booking conversation stays local, practical, and personal. You get honest planning, route clarity, and responsive coordination before and during the journey.</p>
+            <p className="char-body" style={{ color: "#ffffff", fontWeight: 700 }}>We are based in Thane, so your booking conversation stays local, practical, and personal. You get honest planning, route clarity, and responsive coordination before and during the journey.</p>
             <ul className="char-features">
               {features.map(([icon, title, text]) => (
                 <li key={title}>
                   <span className="char-feature-icon">{icon}</span>
-                  <div><h3>{title}</h3><p>{text}</p></div>
+                  <div><h3>{title}</h3><p style={{ color: "#ffffff" }}>{text}</p></div>
                 </li>
               ))}
             </ul>
@@ -781,7 +852,7 @@ function MaharashtraJyotirlingDetail() {
             <h2 className="char-section-title">Yatris Who <em>Travelled Before You</em></h2>
           </div>
           <div className="char-gallery">
-            {["/1.jpg", "/2.jpg", "/5.jpg", "/6.jpg"].map((image) => (
+            {["/1.jpg", "/2.jpg", "/Home1.jpeg", "/Home2.jpeg", "/5.jpg", "/6.jpg", "/Home3.jpeg", "/Home4.jpeg", "/Home5.jpeg", "/Home6.jpg", "/Home7.jpg"].map((image) => (
               <div key={image}><img src={image} alt="Margika Yatra travellers" /></div>
             ))}
           </div>
@@ -789,37 +860,13 @@ function MaharashtraJyotirlingDetail() {
       </section>
       <GoogleReviews />
 
-      <section className="char-section">
-        <div className="char-wrap char-faq">
-          <div className="char-reveal">
-            <div className="char-tag">Common Questions</div>
-            <h2 className="char-section-title">Frequently<br /><em>Asked Questions</em></h2>
-            <div className="char-rule" />
-            <p className="char-body">Everything you may want to know before booking your three Jyotirling Maharashtra tour package from Mumbai or Thane.</p>
-            <div className="char-actions" style={{ marginTop: 30 }}>
-              <a href="tel:+917208771688" className="char-btn">📞 Speak to an Expert</a>
-              <a href={wa("I have a question about the Three Jyotirlinga Maharashtra tour package")} className="char-btn-wa">WhatsApp a Question</a>
-            </div>
-          </div>
-          <div className="char-reveal">
-            {faqs.map(([question, answer], index) => (
-              <div className={`char-faq-item ${openFaq === index ? "open" : ""}`} key={question}>
-                <button className="char-faq-q" onClick={() => setOpenFaq(openFaq === index ? null : index)}>
-                  {question}
-                  <span>+</span>
-                </button>
-                <div className="char-faq-a">{answer}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
+   <FAQ/>
+   
       <section className="char-cta">
         <div className="char-cta-content char-reveal">
           <div className="char-tag">Plan Your Maharashtra Jyotirlinga Yatra</div>
           <h2 className="char-section-title">Book Your Three Jyotirlinga<br /><em>Maharashtra Tour Today</em></h2>
-          <p className="char-body" style={{ margin: "0 auto 34px", textAlign: "center" }}>Tell us your dates, group size, and pickup point. Our Mumbai-Thane team will put together a clear itinerary with an honest per-person quote.</p>
+          <p className="char-body" style={{ margin: "0 auto 34px", textAlign: "center", fontWeight: 700 }}>Tell us your dates, group size, and pickup point. Our Mumbai-Thane team will put together a clear itinerary with an honest per-person quote.</p>
           <div className="char-actions" style={{ justifyContent: "center" }}>
             <a href={razorpayLink} target="_blank" rel="noopener noreferrer" className="char-btn">Book Now →</a>
             <a href={wa("I want to plan the Three Jyotirlinga Maharashtra tour package")} className="char-btn-wa">WhatsApp to Plan</a>
@@ -890,8 +937,9 @@ function CharDhamDetail() {
       name: "Complete Char Dham Yatra Package",
       duration: "12 - 16 Days · Uttarakhand",
       price: "₹26,999",
+      originalPrice: "₹31,999",
       badge: "☁ Most Complete",
-      image: "/4dham.png",
+      image: "/CharDham.jpeg",
       desc: "The full sacred circuit — Yamunotri, Gangotri, Kedarnath & Badrinath. All four dhams, VIP darshan at every shrine, private AC transport, vegetarian meals, and your dedicated Margika coordinator throughout. The most complete pilgrimage journey a Hindu family can undertake.",
       tags: ["VIP Darshan", "AC Transport", "Veg Meals", "Helicopter Option", "All Permits", "Palki & Pony", "Tour Coordinator"],
       featured: true,
@@ -900,8 +948,9 @@ function CharDhamDetail() {
       name: "Do Dham Yatra Kedarnath & Badrinath",
       duration: "7 - 9 Days · Uttarakhand",
       price: "₹19,999",
+      originalPrice: "₹24,999",
       badge: "☁ Most Popular",
-      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
+      image: "/Dodham.jpeg",
       desc: "For those with limited time or physical constraints. A spiritually complete alternative — the Jyotirlinga at Kedarnath and the Vishnu temple at Badrinath. Gentle pace, helicopter access, ideal for seniors and families.",
       tags: ["Helicopter Option", "Senior Friendly", "VIP Darshan", "Veg Meals"],
     },
@@ -971,21 +1020,40 @@ function CharDhamDetail() {
         .char-logo span { font-family: "Cormorant Garamond", serif; font-size: 22px; font-weight: 600; letter-spacing: 0.08em; }
         .char-nav-actions { display: flex; gap: 12px; align-items: center; }
         .char-btn, .char-btn-outline, .char-btn-wa {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
-          min-height: 46px;
-          padding: 13px 24px;
-          border-radius: 3px;
+          display: inline-flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          gap: 10px !important;
+          min-height: 50px !important;
+          padding: 12px 24px !important;
+          border-radius: 4px !important;
           border: 1px solid transparent;
           color: white;
-          font-size: 12px;
-          font-weight: 500;
-          letter-spacing: 0.1em;
-          text-decoration: none;
-          text-transform: uppercase;
+          font-size: 12px !important;
+          font-weight: 500 !important;
+          letter-spacing: 0.1em !important;
+          text-decoration: none !important;
+          text-transform: uppercase !important;
+          box-sizing: border-box !important;
+          white-space: nowrap !important;
           transition: transform 0.25s, background 0.25s, border-color 0.25s, color 0.25s;
+        }
+
+        .char-actions,
+        .char-package-foot > div {
+          display: flex !important;
+          align-items: center !important;
+          gap: 16px !important;
+          flex-wrap: wrap !important;
+        }
+        .char-actions .char-btn,
+        .char-actions .char-btn-outline,
+        .char-actions .char-btn-wa,
+        .char-package-foot > div .char-btn,
+        .char-package-foot > div .char-btn-outline {
+          flex: 1 !important;
+          max-width: 320px !important;
+          text-align: center !important;
         }
         .char-btn { background: var(--saffron); }
         .char-btn:hover { background: var(--saffron-light); transform: translateY(-2px); }
@@ -1005,7 +1073,7 @@ function CharDhamDetail() {
           content: "";
           position: absolute;
           inset: 0;
-          background: url("/4dham.png") center/cover no-repeat;
+          background: url("/CharDham.jpeg") center/cover no-repeat;
           animation: charZoom 12s ease-out forwards;
         }
         .char-hero::after {
@@ -1046,7 +1114,7 @@ function CharDhamDetail() {
         .char-subtitle {
           max-width: 560px;
           margin: 0 0 36px;
-          color: rgba(17,24,39,0.8);
+          color: black;
           font-size: 15px;
           font-weight: 300;
           line-height: 1.75;
@@ -1146,7 +1214,7 @@ function CharDhamDetail() {
         .char-package:hover { transform: translateY(-6px); border-color: rgba(249,115,22,0.42); box-shadow: 0 20px 60px rgba(249,115,22,0.1); }
         .char-package.featured { grid-column: span 2; display: grid; grid-template-columns: 1.12fr 0.88fr; border-color: rgba(249,115,22,0.55); }
         .char-package-img { position: relative; height: 268px; overflow: hidden; }
-        .char-package.featured .char-package-img { height: 390px; }
+        .char-package.featured .char-package-img { height: 480px; }
         .char-package-img img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.86) saturate(1.08); transition: transform 0.6s ease; }
         .char-package:hover .char-package-img img { transform: scale(1.04); }
         .char-badge {
@@ -1172,7 +1240,7 @@ function CharDhamDetail() {
         .char-tags span { border: 1px solid rgba(232,135,26,0.45); border-radius: 99px; background: rgba(232,135,26,0.08); color: var(--saffron-dark); padding: 5px 11px; font-size: 10px; }
         .char-package-foot { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
         .char-price small { display: block; color: var(--smoke); font-size: 10px; }
-        .char-price strong { color: var(--gold); font-family: "Cormorant Garamond", serif; font-size: 30px; font-weight: 400; }
+        .char-price strong { color: var(--gold); font-family: serif; font-size: 30px; font-weight: 400; }
         .char-light { background: linear-gradient(135deg, var(--saffron-dark) 0%, var(--saffron) 100%); color: #ffffff; }
         .char-light .char-section-title { color: #ffffff; }
         .char-light .char-body { color: rgba(255,255,255,0.85); }
@@ -1232,7 +1300,7 @@ function CharDhamDetail() {
         }
         .char-step h3 { margin: 0 0 6px; color: var(--cream); font-size: 13px; font-weight: 500; }
         .char-step p { margin: 0; color: var(--smoke); font-size: 12px; line-height: 1.5; }
-        .char-gallery { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; grid-template-rows: 260px 260px; gap: 4px; }
+        .char-gallery { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; grid-template-rows: 260px 260px; grid-auto-rows: 260px; gap: 4px; }
         .char-gallery div { overflow: hidden; }
         .char-gallery div:first-child { grid-row: span 2; }
         .char-gallery div:nth-child(5) { grid-column: span 2; }
@@ -1282,7 +1350,7 @@ function CharDhamDetail() {
           .char-package.featured .char-package-body { min-height: auto; }
           .char-steps { grid-template-columns: repeat(3, 1fr); }
           .char-steps::before { display: none; }
-          .char-gallery { grid-template-columns: 1fr 1fr; grid-template-rows: 220px; }
+          .char-gallery { grid-template-columns: 1fr 1fr; grid-auto-rows: 220px; }
           .char-gallery div:first-child, .char-gallery div:nth-child(5) { grid-row: auto; grid-column: auto; }
           .char-footer-grid { grid-template-columns: 1fr; }
           .char-photo-float { display: none; }
@@ -1292,7 +1360,25 @@ function CharDhamDetail() {
           .char-nav { padding: 14px 4%; }
           .char-logo span { font-size: 17px; }
           .char-nav-actions .char-btn-outline { display: none; }
-          .char-btn, .char-btn-outline, .char-btn-wa { width: 100%; padding: 13px 16px; font-size: 11px; }
+          .char-actions,
+          .char-package-foot > div {
+            flex-direction: column !important;
+            align-items: stretch !important;
+            width: 100% !important;
+            gap: 10px !important;
+          }
+          .char-actions .char-btn,
+          .char-actions .char-btn-outline,
+          .char-actions .char-btn-wa,
+          .char-package-foot > div .char-btn,
+          .char-package-foot > div .char-btn-outline {
+            width: 100% !important;
+            max-width: none !important;
+            flex: none !important;
+            display: inline-flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+          }
           .char-nav-actions { gap: 8px; }
           .char-nav-actions .char-btn, .char-nav-actions .char-btn-outline { width: auto; min-height: 40px; padding: 12px 14px; }
           .char-hero { min-height: 92vh; padding: 115px 5% 56px; }
@@ -1302,6 +1388,19 @@ function CharDhamDetail() {
           .char-photo-main { height: 360px; }
           .char-dham-card { min-height: 390px; }
           .char-sticky-wa { right: 18px; bottom: 18px; }
+          .char-title { text-align: center; }
+          .char-section-title { text-align: center; }
+          .char-subtitle { text-align: center; }
+          .char-tag { display: flex; width: 100%; justify-content: center; }
+          .char-rule { margin-left: auto; margin-right: auto; }
+          .char-light .char-section-title { text-align: center; }
+          .char-light .char-tag { display: flex; width: 100%; justify-content: center; }
+          .char-light .char-body { text-align: center; margin-left: auto; margin-right: auto; }
+          .char-two { text-align: center; }
+          .char-two .char-body { text-align: center; margin-left: auto; margin-right: auto; }
+          .char-two .char-quote { text-align: center; border-left: none; border-top: 2px solid var(--saffron); border-bottom: 2px solid var(--saffron); padding: 16px 0; }
+          .char-packages-head { text-align: center; }
+          .char-packages-head p { margin: 0 auto; }
         }
       `}</style>
 
@@ -1311,20 +1410,20 @@ function CharDhamDetail() {
       <section className="char-hero">
 
         <div className="char-hero-content">
-          <div className="char-tag">Sacred Himalayan Pilgrimage</div>
+          <div className="char-tag" style={{ fontWeight: 700, fontSize: 14 }}>Sacred Himalayan Pilgrimage</div>
           <h1 className="char-title">Char Dham &<br /><em>Do Dham Yatra</em></h1>
-          <p className="char-subtitle">Plan your sacred Himalayan pilgrimage with confidence — departing from Mumbai & Thane. VIP darshan, expert coordinators, senior-friendly packages.</p>
+          <p className="char-subtitle" style={{ color: 'var(--black)', fontWeight: 400 }}>Plan your sacred Himalayan pilgrimage with confidence — departing from Mumbai & Thane. VIP darshan, expert coordinators, senior-friendly packages.</p>
           <div className="char-actions">
             <a href="tel:+917208771688" className="char-btn">📞 Call to Book</a>
             <a href={wa("I want to enquire about Char Dham Yatra")} className="char-btn-wa">WhatsApp Us</a>
             {/* <Link href="/book-trip" className="char-btn-outline">Request a Free Quote</Link> */}
-            <a href="/Margika_yatra_Chardham_Yatra_2026.pdf" download="Margika_yatra_Chardham_Yatra_2026.pdf" className="char-btn-outline">Download Itinerary</a>
+            <a href="/Margika_yatra_Chardham_Yatra_2026.pdf" download="Margika_yatra_Chardham_Yatra_2026.pdf" className="char-btn">Download Itinerary</a>
           </div>
         </div>
       </section>
 
-     <CharStats/>
-     
+      <CharStats />
+
       <section className="char-section">
         <div className="char-wrap char-two">
           <div className="char-intro-visual char-reveal">
@@ -1390,7 +1489,14 @@ function CharDhamDetail() {
                     <div className="char-tags">{item.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
                   </div>
                   <div className="char-package-foot">
-                    <div className="char-price"><small>Starting from</small><strong>{item.price}</strong> <small style={{ display: "inline" }}>/ person</small></div>
+                    <div className="char-price">
+                      <small>Starting from</small>
+                      <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
+                        <span style={{ textDecoration: 'line-through', color: '#9ca3af', fontSize: '20px', fontWeight: 500 }}>{item.originalPrice}</span>
+                        <strong>{item.price}</strong>
+                      </div>
+                      <small style={{ display: "inline" }}>/ person</small>
+                    </div>
                     {item.featured ? (
                       <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
                         <a href="tel:+917208771688" className="char-btn-outline">Call Us</a>
@@ -1416,15 +1522,15 @@ function CharDhamDetail() {
       <section className="char-section char-light">
         <div className="char-wrap char-two">
           <div className="char-reveal">
-            <div className="char-tag">Why Choose Us</div>
-            <h2 className="char-section-title">Why Mumbai & Thane<br /><em>Yatris Choose Margika</em></h2>
+            <div className="char-tag" style={{ color: "#ffffff" }}>Why Choose Us</div>
+            <h2 className="char-section-title">Why Mumbai & Thane<br /><em style={{ color: "#ffffff" }}>Yatris Choose Margika</em></h2>
             <div className="char-rule" style={{ background: "#ffffff" }} />
-            <p className="char-body">We are based in Brahmand, Thane — when you call us, you speak to a local who understands your community, your expectations, and your schedule. That local trust is something no national online operator can replicate.</p>
+            <p className="char-body" style={{ fontWeight: 700, color: "#ffffff" }}>We are based in Brahmand, Thane — when you call us, you speak to a local who understands your community, your expectations, and your schedule. That local trust is something no national online operator can replicate.</p>
             <ul className="char-features">
               {features.map(([icon, title, text]) => (
                 <li key={title}>
                   <span className="char-feature-icon">{icon}</span>
-                  <div><h3>{title}</h3><p>{text}</p></div>
+                  <div><h3>{title}</h3><p style={{ color: "#ffffff" }}>{text}</p></div>
                 </li>
               ))}
             </ul>
@@ -1474,46 +1580,21 @@ function CharDhamDetail() {
             <h2 className="char-section-title">Yatris Who <em>Walked Before You</em></h2>
           </div>
           <div className="char-gallery">
-            {["/1.jpg", "/2.jpg", "/5.jpg", "/6.jpg"].map
-              ((image) => (
-                <div key={image}><img src={image} alt="Margika Yatra pilgrims" /></div>
-              ))}
+            {["/1.jpg", "/2.jpg", "/Home1.jpeg", "/Home2.jpeg", "/5.jpg", "/6.jpg", "/Home3.jpeg", "/Home4.jpeg", "/Home5.jpeg", "/Home6.jpg", "/Home7.jpg"].map((image) => (
+              <div key={image}><img src={image} alt="Margika Yatra pilgrims" /></div>
+            ))}
           </div>
         </div>
       </section>
       <GoogleReviews />
 
-      <section className="char-section">
-        <div className="char-wrap char-faq">
-          <div className="char-reveal">
-            <div className="char-tag">Common Questions</div>
-            <h2 className="char-section-title">Frequently<br /><em>Asked Questions</em></h2>
-            <div className="char-rule" />
-            <p className="char-body">Everything you need to know before booking your Char Dham Yatra from Mumbai or Thane.</p>
-            <div className="char-actions" style={{ marginTop: 30 }}>
-              <a href="tel:+917208771688" className="char-btn">📞 Speak to an Expert</a><br />
-              <a href={wa("I have a question about Char Dham Yatra")} className="char-btn-wa">WhatsApp a Question</a>
-            </div>
-          </div>
-          <div className="char-reveal">
-            {faqs.map(([question, answer], index) => (
-              <div className={`char-faq-item ${openFaq === index ? "open" : ""}`} key={question}>
-                <button className="char-faq-q" onClick={() => setOpenFaq(openFaq === index ? null : index)}>
-                  {question}
-                  <span>+</span>
-                </button>
-                <div className="char-faq-a">{answer}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+     <FAQ/>
 
       <section className="char-cta">
         <div className="char-cta-content char-reveal">
           <div className="char-tag">Yatra Season Fills Up Fast</div>
           <h2 className="char-section-title">Secure Your Sacred<br /><em>Spot Today</em></h2>
-          <p className="char-body" style={{ margin: "0 auto 34px", textAlign: "center" }}>Char Dham 2026 slots — especially helicopters — are extremely limited. Reach out today to check availability for your dates and group size.</p>
+          <p className="char-body" style={{ margin: "0 auto 34px", textAlign: "center", fontWeight: 700 }}>Char Dham 2026 slots — especially helicopters — are extremely limited. Reach out today to check availability for your dates and group size.</p>
           <div className="char-actions" style={{ justifyContent: "center" }}>
             <a href="tel:+917208771688" className="char-btn">📞 Call Now — +91 72087 71688</a>
             <a href={wa("I want to check Char Dham availability for 2026")} className="char-btn-wa">WhatsApp to Check Availability</a>

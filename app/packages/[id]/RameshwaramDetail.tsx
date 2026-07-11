@@ -6,6 +6,7 @@ import { Footer } from "@/components/footer"
 import { Header } from "@/components/ui/newheader"
 import { CharStats } from "@/components/char-stats"
 import { GoogleReviews } from "@/components/ui/google-reviews"
+import { FAQ } from "@/components/faq"
 
 export function RameshwaramDetail() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
@@ -142,6 +143,7 @@ export function RameshwaramDetail() {
           display: flex; flex-direction: column; justify-content: flex-end;
           overflow: hidden;
           background: url('/rambg.jpg') center/cover no-repeat;
+          padding-top: 130px;
         }
         .r-hero-img {
           position: absolute; inset: 0;
@@ -165,7 +167,7 @@ export function RameshwaramDetail() {
         .r-hero-tag {
           display: inline-flex; align-items: center; gap: 8px;
           font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
-          color: var(--saffron); margin-bottom: 20px;
+          color: var(--saffron-dark); margin-bottom: 20px;
         }
         .r-hero-tag::before { content: ''; display: block; width: 30px; height: 1px; background: var(--saffron); }
         .r-hero-title {
@@ -181,6 +183,52 @@ export function RameshwaramDetail() {
           margin-bottom: 36px; max-width: 580px; line-height: 1.7;
         }
         .r-hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+
+        /* Global uniform button sizing */
+        .rameshwaram-page-wrapper .r-btn-primary,
+        .rameshwaram-page-wrapper .v-btn-primary,
+        .rameshwaram-page-wrapper .r-btn-secondary,
+        .rameshwaram-page-wrapper .r-btn-wa,
+        .rameshwaram-page-wrapper .v-btn-wa,
+        .rameshwaram-page-wrapper .v-btn-book-outline,
+        .rameshwaram-page-wrapper .char-btn-outline {
+          min-height: 50px !important;
+          padding: 12px 24px !important;
+          border-radius: 4px !important;
+          font-size: 12px !important;
+          font-weight: 500 !important;
+          letter-spacing: 0.08em !important;
+          text-transform: uppercase !important;
+          box-sizing: border-box !important;
+          white-space: nowrap !important;
+          display: inline-flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+        }
+
+        .rameshwaram-page-wrapper .r-hero-ctas,
+        .rameshwaram-page-wrapper .r-price-actions,
+        .rameshwaram-page-wrapper .v-cta-buttons {
+          display: flex !important;
+          align-items: center !important;
+          gap: 16px !important;
+          flex-wrap: wrap !important;
+        }
+        .rameshwaram-page-wrapper .r-hero-ctas .r-btn-primary,
+        .rameshwaram-page-wrapper .r-hero-ctas .r-btn-wa,
+        .rameshwaram-page-wrapper .r-hero-ctas .r-btn-secondary,
+        .rameshwaram-page-wrapper .r-hero-ctas .char-btn-outline,
+        .rameshwaram-page-wrapper .r-price-actions .r-btn-primary,
+        .rameshwaram-page-wrapper .r-price-actions .r-btn-wa,
+        .rameshwaram-page-wrapper .r-price-actions .v-btn-book-outline,
+        .rameshwaram-page-wrapper .r-price-actions .char-btn-outline,
+        .rameshwaram-page-wrapper .v-cta-buttons .v-btn-primary,
+        .rameshwaram-page-wrapper .v-cta-buttons .v-btn-wa,
+        .rameshwaram-page-wrapper .v-cta-buttons .char-btn-outline {
+          flex: 1 !important;
+          max-width: 320px !important;
+          text-align: center !important;
+        }
         .r-btn-primary {
           display: inline-flex; align-items: center; justify-content: center; gap: 10px;
           background: var(--saffron); color: var(--white);
@@ -377,7 +425,7 @@ export function RameshwaramDetail() {
           color: #ffffff !important;
         }
         .v-why-section .v-section-body {
-          color: rgba(255, 255, 255, 0.85) !important;
+          color: #ffffff !important;
         }
         .v-why-grid {
           display: grid;
@@ -476,7 +524,7 @@ export function RameshwaramDetail() {
         }
         .v-feature-text p {
           font-size: 13px;
-          color: rgba(255, 255, 255, 0.7) !important;
+          color: #ffffff !important;
           line-height: 1.55;
         }
 
@@ -585,6 +633,7 @@ export function RameshwaramDetail() {
           text-align: center;
           overflow: hidden;
           background: url('/rambg.jpg') center/cover no-repeat;
+     
         }
         .v-cta-banner::before {
           content: "";
@@ -592,7 +641,7 @@ export function RameshwaramDetail() {
           inset: 0;
           background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Rameswaram_temple_%282%29.jpg/1280px-Rameswaram_temple_%282%29.jpg")
             center/cover no-repeat;
-          filter: brightness(0.22) saturate(0.8);
+          filter: brightness(0.2) saturate(0.4);
         }
         .v-cta-banner-content {
           position: relative;
@@ -607,6 +656,8 @@ export function RameshwaramDetail() {
           margin: 0 auto 40px;
           text-align: center;
           color: rgba(255, 255, 255, 0.85);
+          
+          
         }
         .v-cta-buttons {
           display: flex;
@@ -657,6 +708,35 @@ export function RameshwaramDetail() {
         .r-price-actions { display: flex; gap: 12px; align-items: center; }
 
         @media (max-width: 900px) {
+          .rameshwaram-page-wrapper .r-hero-ctas,
+          .rameshwaram-page-wrapper .r-price-actions,
+          .rameshwaram-page-wrapper .r-complete-ctas,
+          .rameshwaram-page-wrapper .v-cta-buttons {
+            flex-direction: column !important;
+            align-items: stretch !important;
+            width: 100% !important;
+            gap: 10px !important;
+          }
+          .rameshwaram-page-wrapper .r-hero-ctas .r-btn-primary,
+          .rameshwaram-page-wrapper .r-hero-ctas .r-btn-wa,
+          .rameshwaram-page-wrapper .r-hero-ctas .r-btn-secondary,
+          .rameshwaram-page-wrapper .r-hero-ctas .char-btn-outline,
+          .rameshwaram-page-wrapper .r-price-actions .r-btn-primary,
+          .rameshwaram-page-wrapper .r-price-actions .r-btn-wa,
+          .rameshwaram-page-wrapper .r-price-actions .v-btn-book-outline,
+          .rameshwaram-page-wrapper .r-price-actions .char-btn-outline,
+          .rameshwaram-page-wrapper .r-complete-ctas .r-btn-dark,
+          .rameshwaram-page-wrapper .v-cta-buttons .v-btn-primary,
+          .rameshwaram-page-wrapper .v-cta-buttons .v-btn-wa,
+          .rameshwaram-page-wrapper .v-cta-buttons .char-btn-outline {
+            width: 100% !important;
+            max-width: none !important;
+            flex: none !important;
+            display: inline-flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+          }
+
           .r-intro-grid, .v-why-grid, .v-faq-grid { grid-template-columns: 1fr; }
           .r-dhams-grid { grid-template-columns: 1fr; }
           .r-price-card { grid-template-columns: 1fr; }
@@ -670,6 +750,46 @@ export function RameshwaramDetail() {
           .r-itin-day::before { display: none; }
           .r-nav { padding: 16px 4%; }
           .r-nav-cta .r-btn-ghost { display: none; }
+
+          /* Mobile Center Alignment for headings */
+          .rameshwaram-page-wrapper .r-hero-content { text-align: center; }
+          .rameshwaram-page-wrapper .r-hero-tag { display: flex; width: 100%; justify-content: center; }
+          .rameshwaram-page-wrapper .r-hero-subtitle { margin-left: auto; margin-right: auto; }
+          .rameshwaram-page-wrapper .r-hero-ctas { justify-content: center; }
+
+          .rameshwaram-page-wrapper .r-intro-grid .reveal:last-child { text-align: center; }
+          .rameshwaram-page-wrapper .r-intro-grid .r-section-tag { display: flex; width: 100%; justify-content: center; }
+          .rameshwaram-page-wrapper .r-intro-grid .r-gold-rule { margin-left: auto; margin-right: auto; }
+          .rameshwaram-page-wrapper .r-intro-grid .r-section-body { margin-left: auto; margin-right: auto; }
+          .rameshwaram-page-wrapper .r-intro-grid .r-intro-quote { text-align: center; border-left: none; border-top: 2px solid var(--saffron); border-bottom: 2px solid var(--saffron); padding: 16px 0; }
+
+          .rameshwaram-page-wrapper .r-dhams-header,
+          .rameshwaram-page-wrapper .r-price-header,
+          .rameshwaram-page-wrapper .r-complete-head,
+          .rameshwaram-page-wrapper .r-itin-header {
+            text-align: center !important;
+          }
+          .rameshwaram-page-wrapper .r-dhams-header .v-gold-rule,
+          .rameshwaram-page-wrapper .r-price-header .v-gold-rule,
+          .rameshwaram-page-wrapper .r-complete-head .v-gold-rule,
+          .rameshwaram-page-wrapper .r-itin-header .v-gold-rule {
+            margin-left: auto !important;
+            margin-right: auto !important;
+          }
+
+          .rameshwaram-page-wrapper .r-complete-body {
+            text-align: center !important;
+          }
+          .rameshwaram-page-wrapper .r-complete-ctas {
+            justify-content: center !important;
+          }
+
+          .rameshwaram-page-wrapper .v-why-grid .reveal:first-child { text-align: center; }
+          .rameshwaram-page-wrapper .v-why-grid .v-section-tag { display: flex; width: 100%; justify-content: center; }
+          .rameshwaram-page-wrapper .v-why-grid .v-gold-rule { margin-left: auto; margin-right: auto; }
+          .rameshwaram-page-wrapper .v-why-grid .v-section-body { margin-left: auto; margin-right: auto; }
+          .rameshwaram-page-wrapper .v-why-float-card { position: static; margin-top: 16px; max-width: none; text-align: center; border-left: none; border-top: 2px solid var(--gold); border-bottom: 2px solid var(--gold); padding: 16px 0; }
+          .rameshwaram-page-wrapper .v-features-list { text-align: left; }
         }
         @media (max-width: 560px) {
           .r-price-footer { flex-direction: column; align-items: flex-start; }
@@ -684,7 +804,7 @@ export function RameshwaramDetail() {
         <div className="r-hero-img"></div>
         <div className="r-hero-overlay"></div>
         <div className="r-hero-content">
-          <div className="r-hero-tag">Ramanathaswamy · Dhanushkodi · Madurai</div>
+          {/* <div className="r-hero-tag" style={{ color: "var(--saffron-dark)", fontWeight: 900, fontSize: 14 }}>Ramanathaswamy · Dhanushkodi · Madurai</div> */}
           <h1 className="r-hero-title">Rameshwaram<br /><em>Tour Package</em></h1>
           <p className="r-hero-subtitle">A guided spiritual journey to Rameshwaram — Ramanathaswamy Jyotirlinga darshan, the holy Agni Theertham, Dhanushkodi, Pamban Bridge and Madurai's Meenakshi temple. Flights, hotels and darshan fully coordinated for travellers from Mumbai & Thane.</p>
           <div className="r-hero-ctas">
@@ -692,12 +812,12 @@ export function RameshwaramDetail() {
             <a href={wa("I want to enquire about the Rameshwaram tour package")} className="r-btn-wa" target="_blank" rel="noopener noreferrer">
               WhatsApp Us
             </a>
-            <a href="/Rameshwaram.pdf" download="Rameshwaram.pdf" className="char-btn-outline">Download Itinerary</a>
+            <a href="/Rameshwaram.pdf" download="Rameshwaram.pdf" className="r-btn-primary">Download Itinerary</a>
           </div>
         </div>
       </section>
 
-     <CharStats/>
+      <CharStats />
 
       {/* INTRO */}
       <section className="r-section">
@@ -783,13 +903,16 @@ export function RameshwaramDetail() {
             <div className="r-price-footer">
               <div className="r-price-amount-wrap">
                 <span className="r-price-from">Starting from</span>
-                <span className="r-price-amount">₹9,499</span>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
+                  <span className="r-price-amount" style={{ textDecoration: 'line-through', color: '#9ca3af', fontSize: '24px' }}>₹14,499</span>
+                  <span className="r-price-amount">₹9,499</span>
+                </div>
                 <span className="r-price-per"> / person</span>
-                <span className="r-price-note">Standard Package: ₹9,499 / person. Premium Package: ₹12,499 / person. Final price depends on dates, group size &amp; hotel category.</span>
+                <span className="r-price-note">Standard Package: ₹9,499 / person (was <span style={{ textDecoration: 'line-through' }}>₹14,499</span>). Premium Package: ₹12,499 / person (was <span style={{ textDecoration: 'line-through' }}>₹17,499</span>). Final price depends on dates, group size &amp; hotel category.</span>
               </div>
               <div className="r-price-actions">
                 <a href="tel:+917208771688" className="v-btn-book-outline">Call Us</a>
-                <a href={razorpayLink} target="_blank" rel="noopener noreferrer" className="r-btn-primary">Book Now →</a>
+                <a href={razorpayLink} target="_blank" rel="noopener noreferrer" className="r-btn-primary">Book Now </a>
                 <a href="/Rameshwaram.pdf" download="Rameshwaram.pdf" className="char-btn-outline">Download Itinerary</a>
               </div>
             </div>
@@ -819,7 +942,7 @@ export function RameshwaramDetail() {
             <p>Every departure includes return flights or trains, comfortable hotel stays near the temple, a private AC vehicle, guided darshan and a dedicated coordinator. For families and senior citizens from Mumbai and Thane, this is one of the easiest and most peaceful ways to complete the Rameshwaram yatra without any of the travel stress.</p>
             <div className="r-complete-ctas">
               <a href="tel:+917208771688" className="r-btn-dark" style={{ background: "transparent", color: "#ffffff", border: "1px solid #ffffff" }}>📞 Call Now</a>
-              <a href={razorpayLink} target="_blank" rel="noopener noreferrer" className="r-btn-dark" style={{ background: "transparent", color: "#ffffff", border: "1px solid #ffffff" }}>Book Now →</a>
+              <a href={razorpayLink} target="_blank" rel="noopener noreferrer" className="r-btn-dark" style={{ background: "transparent", color: "#ffffff", border: "1px solid #ffffff" }}>Book Now </a>
               <a href="/Rameshwaram.pdf" download="Rameshwaram.pdf" className="r-btn-dark" style={{ background: "transparent", color: "#ffffff", border: "1px solid #ffffff" }}>Download Itinerary</a>
             </div>
           </div>
@@ -922,9 +1045,9 @@ export function RameshwaramDetail() {
         <div className="v-why-grid">
           <div className="reveal">
             <div className="v-section-tag" style={{ color: "#ffffff", "--saffron": "#ffffff" } as React.CSSProperties}>Why Choose Us</div>
-            <h2 className="v-section-title">Why Mumbai & Thane<br /><em>Yatris Choose Margika</em></h2>
+            <h2 className="v-section-title">Why Mumbai & Thane<br /><em style={{ color: "#ffffff" }}>Yatris Choose Margika</em></h2>
             <div className="v-gold-rule" style={{ background: "#ffffff" }}></div>
-            <p className="v-section-body">We are based in Brahmand, Thane. When you call us, you speak to a local team that understands your community, your travel concerns and your schedule — a level of trust no distant online operator can match. We specialise in spiritual journeys, so the planning is in experienced hands.</p>
+            <p className="v-section-body" style={{ fontWeight: 700 }}>We are based in Brahmand, Thane. When you call us, you speak to a local team that understands your community, your travel concerns and your schedule — a level of trust no distant online operator can match. We specialise in spiritual journeys, so the planning is in experienced hands.</p>
             <ul className="v-features-list">
               <li className="v-feature-item"><div className="v-feature-icon">🛕</div><div className="v-feature-text"><h4>Specialists in Pilgrimage Travel</h4><p>Spiritual tourism is our focus — Char Dham, Kashi, Ayodhya, Jyotirlingas and more.</p></div></li>
               <li className="v-feature-item"><div className="v-feature-icon">📋</div><div className="v-feature-text"><h4>Personalised Planning</h4><p>Dates, pace, temple order and group size — your itinerary is shaped around you.</p></div></li>
@@ -948,43 +1071,14 @@ export function RameshwaramDetail() {
       <GoogleReviews />
 
       {/* FAQ */}
-      <section className="r-section alt">
-        <div className="v-faq-grid">
-          <div className="reveal">
-            <div className="v-section-tag">Common Questions</div>
-            <h2 className="v-section-title">Frequently<br /><em>Asked Questions</em></h2>
-            <div className="v-gold-rule"></div>
-            <p className="v-section-body">Everything you may want to know before booking your Rameshwaram tour from Mumbai or Thane.</p>
-            <div style={{ marginTop: 32 }}>
-              <a href="tel:+917208771688" className="v-btn-primary" style={{ display: "inline-flex", marginBottom: 12 }}>📞 Speak to an Expert</a>
-              <br />
-              <a href={wa("I have a question about Rameshwaram tour package")} className="v-btn-wa" style={{ display: "inline-flex", marginTop: 4 }} target="_blank" rel="noopener noreferrer">
-                WhatsApp a Question
-              </a>
-            </div>
-          </div>
-          <div className="reveal reveal-delay-2">
-            <div className="v-faq-list">
-              {faqs.map(([question, answer], index) => (
-                <div className={`v-faq-item ${openFaq === index ? "open" : ""}`} key={question}>
-                  <button className="v-faq-q" onClick={() => setOpenFaq(openFaq === index ? null : index)}>
-                    {question}
-                    <span className="v-faq-icon">+</span>
-                  </button>
-                  <div className="v-faq-a">{answer}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+    <FAQ/>
 
       {/* CTA BANNER */}
       <div className="v-cta-banner">
         <div className="v-cta-banner-content reveal">
           <div className="v-section-tag" style={{ justifyContent: "center", margin: "0 auto 16px" }}>Plan Your Yatra with Confidence</div>
           <h2 className="v-section-title">Book Your Rameshwaram<br /><em>Tour Today</em></h2>
-          <p className="v-section-body">Tell us your dates and group size, and our Mumbai–Thane team will put together a clear, personalised plan with honest pricing. No pressure — just guidance and support every step of the way.</p>
+          <p className="v-section-body" style={{ fontWeight: "900" }}>Tell us your dates and group size, and our Mumbai–Thane team will put together a clear, personalised plan with honest pricing. No pressure — just guidance and support every step of the way.</p>
           <div className="v-cta-buttons">
             <a href="tel:+917208771688" className="v-btn-primary">📞 Call Now — +91 72087 71688</a>
             <a href={wa("I want to plan the Rameshwaram tour package")} className="v-btn-wa" target="_blank" rel="noopener noreferrer">

@@ -6,6 +6,7 @@ import { Footer } from "@/components/footer"
 import { Header } from "@/components/ui/newheader"
 import { CharStats } from "@/components/char-stats"
 import { GoogleReviews } from "@/components/ui/google-reviews"
+import { FAQ } from "@/components/faq"
 
 export function JagannathPuriDetail() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
@@ -141,6 +142,7 @@ export function JagannathPuriDetail() {
           display: flex; flex-direction: column; justify-content: flex-end;
           overflow: hidden;
           background: url('/rambg.jpg') center/cover no-repeat;
+          padding-top: 130px;
         }
         .p-hero-img {
           position: absolute; inset: 0;
@@ -180,6 +182,58 @@ export function JagannathPuriDetail() {
           margin-bottom: 36px; max-width: 580px; line-height: 1.7;
         }
         .p-hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+
+        /* Global uniform button sizing */
+        .puri-page-wrapper .p-btn-primary,
+        .puri-page-wrapper .v-btn-primary,
+        .puri-page-wrapper .p-btn-secondary,
+        .puri-page-wrapper .p-btn-wa,
+        .puri-page-wrapper .v-btn-wa,
+        .puri-page-wrapper .v-btn-book-outline,
+        .puri-page-wrapper .char-btn-outline {
+          min-height: 50px !important;
+          padding: 12px 24px !important;
+          border-radius: 4px !important;
+          font-size: 12px !important;
+          font-weight: 500 !important;
+          letter-spacing: 0.08em !important;
+          text-transform: uppercase !important;
+          box-sizing: border-box !important;
+          white-space: nowrap !important;
+          display: inline-flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+        }
+
+        .puri-page-wrapper .p-hero-ctas,
+        .puri-page-wrapper .v-cta-buttons {
+          display: flex !important;
+          align-items: center !important;
+          gap: 16px !important;
+          flex-wrap: wrap !important;
+        }
+        .puri-page-wrapper .r-price-actions {
+         margin-top: 15px;
+          display: flex !important;
+          align-items: center !important;
+          gap: 16px !important;
+          flex-wrap: nowrap !important;
+        }
+        .puri-page-wrapper .p-hero-ctas .p-btn-primary,
+        .puri-page-wrapper .p-hero-ctas .p-btn-wa,
+        .puri-page-wrapper .p-hero-ctas .p-btn-secondary,
+        .puri-page-wrapper .p-hero-ctas .char-btn-outline,
+        .puri-page-wrapper .r-price-actions .p-btn-primary,
+        .puri-page-wrapper .r-price-actions .p-btn-wa,
+        .puri-page-wrapper .r-price-actions .v-btn-book-outline,
+        .puri-page-wrapper .r-price-actions .char-btn-outline,
+        .puri-page-wrapper .v-cta-buttons .v-btn-primary,
+        .puri-page-wrapper .v-cta-buttons .v-btn-wa,
+        .puri-page-wrapper .v-cta-buttons .char-btn-outline {
+          flex: 1 !important;
+          max-width: 320px !important;
+          text-align: center !important;
+        }
         .p-btn-primary {
           display: inline-flex; align-items: center; justify-content: center; gap: 10px;
           background: var(--saffron); color: var(--white);
@@ -389,7 +443,7 @@ export function JagannathPuriDetail() {
           color: #ffffff !important;
         }
         .v-why-section .v-section-body, .p-why-section .p-section-body {
-          color: rgba(255, 255, 255, 0.85) !important;
+          color: #ffffff !important;
         }
         .v-why-grid, .p-why-grid {
           display: grid;
@@ -465,9 +519,9 @@ export function JagannathPuriDetail() {
           color: #ffffff !important;
           margin-bottom: 3px;
         }
-        .v-feature-text p, .p-feature-text p {
+         .v-feature-text p, .p-feature-text p {
           font-size: 13px;
-          color: rgba(255, 255, 255, 0.7) !important;
+          color: #ffffff !important;
           line-height: 1.55;
         }
 
@@ -653,6 +707,7 @@ export function JagannathPuriDetail() {
           height: 30px;
           fill: white;
         }
+        .r-price-actions { display: flex; gap: 12px; align-items: center; }
 
         /* V-PREFIX SHARED STYLES (FAQ, complete-journey, etc.) */
         .v-section-tag {
@@ -697,6 +752,35 @@ export function JagannathPuriDetail() {
         .v-faq-item.open .v-faq-a { max-height: 200px; padding-bottom: 20px; }
 
         @media (max-width: 900px) {
+          .puri-page-wrapper .p-hero-ctas,
+          .puri-page-wrapper .r-price-actions,
+          .puri-page-wrapper .p-complete-ctas,
+          .puri-page-wrapper .v-cta-buttons {
+            flex-direction: column !important;
+            align-items: stretch !important;
+            width: 100% !important;
+            gap: 10px !important;
+          }
+          .puri-page-wrapper .p-hero-ctas .p-btn-primary,
+          .puri-page-wrapper .p-hero-ctas .p-btn-wa,
+          .puri-page-wrapper .p-hero-ctas .p-btn-secondary,
+          .puri-page-wrapper .p-hero-ctas .char-btn-outline,
+          .puri-page-wrapper .r-price-actions .p-btn-primary,
+          .puri-page-wrapper .r-price-actions .p-btn-wa,
+          .puri-page-wrapper .r-price-actions .v-btn-book-outline,
+          .puri-page-wrapper .r-price-actions .char-btn-outline,
+          .puri-page-wrapper .p-complete-ctas .p-btn-dark,
+          .puri-page-wrapper .v-cta-buttons .v-btn-primary,
+          .puri-page-wrapper .v-cta-buttons .v-btn-wa,
+          .puri-page-wrapper .v-cta-buttons .char-btn-outline {
+            width: 100% !important;
+            max-width: none !important;
+            flex: none !important;
+            display: inline-flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+          }
+
           .p-intro-grid, .v-why-grid, .p-why-grid, .v-faq-grid { grid-template-columns: 1fr; }
           .p-dhams-grid { grid-template-columns: 1fr; }
           .p-price-card { grid-template-columns: 1fr; }
@@ -709,6 +793,71 @@ export function JagannathPuriDetail() {
           .r-itin-day::before, .p-itin-day::before { display: none; }
           .p-nav { padding: 16px 4%; }
           .p-nav-cta .p-btn-ghost { display: none; }
+
+          /* Mobile Center Alignment for headings */
+          .puri-page-wrapper .p-hero-content { text-align: center; }
+          .puri-page-wrapper .p-hero-tag { display: flex; width: 100%; justify-content: center; }
+          .puri-page-wrapper .p-hero-subtitle { margin-left: auto; margin-right: auto; }
+          .puri-page-wrapper .p-hero-ctas { justify-content: center; }
+
+          .puri-page-wrapper .p-intro-grid .reveal:last-child { text-align: center; }
+          .puri-page-wrapper .p-intro-grid .p-section-tag { display: flex; width: 100%; justify-content: center; }
+          .puri-page-wrapper .p-intro-grid .p-gold-rule { margin-left: auto; margin-right: auto; }
+          .puri-page-wrapper .p-intro-grid .p-section-body { margin-left: auto; margin-right: auto; }
+          .puri-page-wrapper .p-intro-grid .p-intro-quote { text-align: center; border-left: none; border-top: 2px solid var(--saffron); border-bottom: 2px solid var(--saffron); padding: 16px 0; }
+
+          .puri-page-wrapper .p-dhams-header,
+          .puri-page-wrapper .p-price-header,
+          .puri-page-wrapper .p-complete-head,
+          .puri-page-wrapper .r-itin-header {
+            text-align: center !important;
+          }
+          .puri-page-wrapper .p-dhams-header .v-gold-rule,
+          .puri-page-wrapper .p-price-header .v-gold-rule,
+          .puri-page-wrapper .p-complete-head .v-gold-rule,
+          .puri-page-wrapper .r-itin-header .v-gold-rule {
+            margin-left: auto !important;
+            margin-right: auto !important;
+          }
+
+          .puri-page-wrapper .p-complete-body {
+            text-align: center !important;
+          }
+          .puri-page-wrapper .p-complete-ctas {
+            justify-content: center !important;
+          }
+
+          .puri-page-wrapper .v-why-grid .reveal:first-child,
+          .puri-page-wrapper .p-why-grid .reveal:first-child {
+            text-align: center;
+          }
+          .puri-page-wrapper .v-why-grid .v-section-tag,
+          .puri-page-wrapper .p-why-grid .v-section-tag {
+            display: flex; width: 100%; justify-content: center;
+          }
+          .puri-page-wrapper .v-why-grid .v-gold-rule,
+          .puri-page-wrapper .p-why-grid .v-gold-rule {
+            margin-left: auto; margin-right: auto;
+          }
+          .puri-page-wrapper .v-why-grid .v-section-body,
+          .puri-page-wrapper .p-why-grid .v-section-body {
+            margin-left: auto; margin-right: auto;
+          }
+          .puri-page-wrapper .v-why-float-card,
+          .puri-page-wrapper .p-why-float-card {
+            position: static; margin-top: 16px; max-width: none; text-align: center; border-left: none; border-top: 2px solid var(--gold); border-bottom: 2px solid var(--gold); padding: 16px 0;
+          }
+          .puri-page-wrapper .v-features-list,
+          .puri-page-wrapper .p-features-list {
+            text-align: left;
+          }
+
+          .puri-page-wrapper .r-itin-daybadge {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            text-align: center !important;
+          }
         }
         @media (max-width: 560px) {
           .p-price-footer { flex-direction: column; align-items: flex-start; }
@@ -723,7 +872,7 @@ export function JagannathPuriDetail() {
         <div className="p-hero-img"></div>
         <div className="p-hero-overlay"></div>
         <div className="p-hero-content">
-          <div className="p-hero-tag">Jagannath Puri · Konark · Lingaraj</div>
+          <div className="p-hero-tag" style={{ color: "var(--saffron-dark)", fontWeight: 900, fontSize: 14 }}>Jagannath Puri · Konark · Lingaraj</div>
           <h1 className="p-hero-title">Jagannath Puri<br /><em>Tour Package</em></h1>
           <p className="p-hero-subtitle">A guided spiritual journey to Puri — Jagannath temple darshan, the Konark Sun Temple, Lingaraj, Vimala Shaktipeeth and the Golden Beach. Flights, hotels and darshan fully coordinated for travellers from Mumbai & Thane.</p>
           <div className="p-hero-ctas">
@@ -731,12 +880,12 @@ export function JagannathPuriDetail() {
             <a href={wa("I want to enquire about the Jagannath Puri tour package")} className="p-btn-wa" target="_blank" rel="noopener noreferrer">
               WhatsApp Us
             </a>
-            <a href="/Gujarat.pdf" download="Gujarat.pdf" className="char-btn-outline">Download Itinerary</a>
+            <a href="/Gujarat.pdf" download="Gujarat.pdf" className="p-btn-primary">Download Itinerary</a>
           </div>
         </div>
       </section>
 
-    <CharStats/>
+      <CharStats />
 
       {/* INTRO */}
       <section className="p-section">
@@ -802,7 +951,7 @@ export function JagannathPuriDetail() {
             <p>Every departure includes return travel coordination, comfortable hotel stays, a private AC vehicle, guided darshan and a dedicated coordinator. For families and senior citizens from Mumbai and Thane, this is one of the easiest and most peaceful ways to complete the Jagannath Puri yatra without any travel stress.</p>
             <div className="p-complete-ctas">
               <a href="tel:+917208771688" className="p-btn-dark" style={{ background: "transparent", color: "#ffffff", border: "1px solid #ffffff" }}>📞 Call Now</a>
-              <a href={razorpayLink} target="_blank" rel="noopener noreferrer" className="p-btn-dark" style={{ background: "transparent", color: "#ffffff", border: "1px solid #ffffff" }}>Book Now →</a>
+              <a href={razorpayLink} target="_blank" rel="noopener noreferrer" className="p-btn-dark" style={{ background: "transparent", color: "#ffffff", border: "1px solid #ffffff" }}>Book Now </a>
               <a href="/Gujarat.pdf" download="Gujarat.pdf" className="p-btn-dark" style={{ background: "transparent", color: "#ffffff", border: "1px solid #ffffff" }}>Download Itinerary</a>
             </div>
           </div>
@@ -845,13 +994,16 @@ export function JagannathPuriDetail() {
             <div className="r-price-footer">
               <div className="r-price-amount-wrap">
                 <span className="r-price-from">Starting from</span>
-                <span className="r-price-amount">₹12,999</span>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
+                  <span className="r-price-amount" style={{ textDecoration: 'line-through', color: '#9ca3af', fontSize: '24px' }}>₹17,999</span>
+                  <span className="r-price-amount">₹12,999</span>
+                </div>
                 <span className="r-price-per"> / person</span>
-                <span className="r-price-note">Varies with travel mode, group size & hotel category. Final quote on enquiry.</span>
+                <span className="r-price-note">Varies with travel mode, group size & hotel category. Was <span style={{ textDecoration: 'line-through' }}>₹17,999</span>. Final quote on enquiry.</span>
               </div>
               <div className="r-price-actions">
                 <a href="tel:+917208771688" className="v-btn-book-outline">Call Us</a>
-                <a href={razorpayLink} target="_blank" rel="noopener noreferrer" className="p-btn-primary">Book Now →</a>
+                <a href={razorpayLink} target="_blank" rel="noopener noreferrer" className="p-btn-primary">Book Now </a>
                 <a href="/Gujarat.pdf" download="Gujarat.pdf" className="char-btn-outline">Download Itinerary</a>
               </div>
             </div>
@@ -926,9 +1078,9 @@ export function JagannathPuriDetail() {
         <div className="v-why-grid">
           <div className="reveal">
             <div className="v-section-tag" style={{ color: "#ffffff", "--saffron": "#ffffff" } as React.CSSProperties}>Why Choose Us</div>
-            <h2 className="v-section-title">Why Mumbai & Thane<br /><em>Yatris Choose Margika</em></h2>
+            <h2 className="v-section-title">Why Mumbai & Thane<br /><em style={{ color: "#ffffff" }}>Yatris Choose Margika</em></h2>
             <div className="v-gold-rule" style={{ background: "#ffffff" }}></div>
-            <p className="v-section-body">We are based in Brahmand, Thane. When you call us, you speak to a local team that understands your community, your travel concerns and your schedule — a level of trust no distant online operator can match. We specialise in spiritual journeys, so the planning is in experienced hands.</p>
+            <p className="v-section-body" style={{ fontWeight: 700 }}>We are based in Brahmand, Thane. When you call us, you speak to a local team that understands your community, your travel concerns and your schedule — a level of trust no distant online operator can match. We specialise in spiritual journeys, so the planning is in experienced hands.</p>
             <ul className="v-features-list">
               <li className="v-feature-item"><div className="v-feature-icon">🛕</div><div className="v-feature-text"><h4>Specialists in Pilgrimage Travel</h4><p>Spiritual tourism is our focus — Char Dham, Kashi, Ayodhya, Jyotirlingas and more.</p></div></li>
               <li className="v-feature-item"><div className="v-feature-icon">📋</div><div className="v-feature-text"><h4>Personalised Planning</h4><p>Dates, pace, temple order and group size — your itinerary is shaped around you.</p></div></li>
@@ -952,43 +1104,14 @@ export function JagannathPuriDetail() {
       <GoogleReviews />
 
       {/* FAQ */}
-      <section className="p-section alt">
-        <div className="v-faq-grid">
-          <div className="reveal">
-            <div className="v-section-tag">Common Questions</div>
-            <h2 className="v-section-title">Frequently<br /><em>Asked Questions</em></h2>
-            <div className="v-gold-rule"></div>
-            <p className="v-section-body">Everything you may want to know before booking your Jagannath Puri tour from Mumbai or Thane.</p>
-            <div style={{ marginTop: 32 }}>
-              <a href="tel:+917208771688" className="v-btn-primary" style={{ display: "inline-flex", marginBottom: 12 }}>📞 Speak to an Expert</a>
-              <br />
-              <a href={wa("I have a question about Jagannath Puri tour package")} className="v-btn-wa" style={{ display: "inline-flex", marginTop: 4 }} target="_blank" rel="noopener noreferrer">
-                WhatsApp a Question
-              </a>
-            </div>
-          </div>
-          <div className="reveal reveal-delay-2">
-            <div className="v-faq-list">
-              {faqs.map(([question, answer], index) => (
-                <div className={`v-faq-item ${openFaq === index ? "open" : ""}`} key={question}>
-                  <button className="v-faq-q" onClick={() => setOpenFaq(openFaq === index ? null : index)}>
-                    {question}
-                    <span className="v-faq-icon">+</span>
-                  </button>
-                  <div className="v-faq-a">{answer}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <FAQ/>
 
       {/* CTA BANNER */}
       <div className="v-cta-banner">
         <div className="v-cta-banner-content reveal">
           <div className="v-section-tag" style={{ justifyContent: "center", margin: "0 auto 16px" }}>Plan Your Yatra with Confidence</div>
           <h2 className="v-section-title">Book Your Jagannath Puri<br /><em>Tour Today</em></h2>
-          <p className="v-section-body">Tell us your dates and group size, and our Mumbai–Thane team will put together a clear, personalised plan with honest pricing. No pressure — just guidance and support every step of the way.</p>
+          <p className="v-section-body" style={{ fontWeight: "900" }}>Tell us your dates and group size, and our Mumbai–Thane team will put together a clear, personalised plan with honest pricing. No pressure — just guidance and support every step of the way.</p>
           <div className="v-cta-buttons">
             <a href="tel:+917208771688" className="v-btn-primary">📞 Call Now — +91 72087 71688</a>
             <a href={wa("I want to plan the Jagannath Puri tour package")} className="v-btn-wa" target="_blank" rel="noopener noreferrer">

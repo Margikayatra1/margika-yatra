@@ -6,6 +6,7 @@ import { Footer } from "@/components/footer"
 import { Header } from "@/components/ui/newheader"
 import { GoogleReviews } from "@/components/ui/google-reviews"
 import { CharStats } from "@/components/char-stats"
+import { FAQ } from "@/components/faq"
 
 export function KeralaDetail() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
@@ -42,7 +43,8 @@ export function KeralaDetail() {
   const wa = (text: string) => `https://wa.me/917208771688?text=${encodeURIComponent(text)}`
 
   return (
-    <div className="dd-page">
+    <>
+      <div className="dd-page">
       <style jsx global>{`
         @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap");
 
@@ -89,8 +91,8 @@ export function KeralaDetail() {
           padding: 13px 24px;
           border-radius: 3px;
           border: 1px solid rgba(249, 115, 22, 0.55);
-          background: transparent;
-          color: var(--gold);
+           background: var(--saffron); color: var(--white);
+          color: var(--white);
           font-family: 'Jost', sans-serif;
           font-size: 12px;
           font-weight: 500;
@@ -108,6 +110,7 @@ export function KeralaDetail() {
           position: relative; min-height: 100vh;
           display: flex; flex-direction: column; justify-content: flex-end;
           overflow: hidden;
+          padding-top: 130px;
         }
         .dd-page .hero-img {
           position: absolute; inset: 0;
@@ -140,6 +143,59 @@ export function KeralaDetail() {
         .dd-page .hero-title em { color: #f5a94e; font-style: italic; }
         .dd-page .hero-subtitle { font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.85); margin-bottom: 40px; max-width: 560px; line-height: 1.75; }
         .dd-page .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+
+        /* Global uniform button sizing */
+        .dd-page .btn-primary,
+        .dd-page .btn-secondary,
+        .dd-page .btn-wa,
+        .dd-page .btn-book,
+        .dd-page .btn-book-outline,
+        .dd-page .char-btn-outline {
+          min-height: 50px !important;
+          padding: 12px 24px !important;
+          border-radius: 4px !important;
+          font-size: 12px !important;
+          font-weight: 500 !important;
+          letter-spacing: 0.08em !important;
+          text-transform: uppercase !important;
+          box-sizing: border-box !important;
+          white-space: nowrap !important;
+          display: inline-flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+        }
+
+        .dd-page .hero-ctas,
+        .dd-page .cta-buttons,
+        .dd-page .itin-ctas {
+          display: flex !important;
+          align-items: center !important;
+          gap: 16px !important;
+          flex-wrap: wrap !important;
+        }
+        .dd-page .price-actions {
+          display: flex !important;
+          align-items: center !important;
+          gap: 16px !important;
+          flex-wrap: nowrap !important;
+        }
+        .dd-page .hero-ctas .btn-primary,
+        .dd-page .hero-ctas .btn-wa,
+        .dd-page .hero-ctas .btn-secondary,
+        .dd-page .hero-ctas .char-btn-outline,
+        .dd-page .price-actions .btn-book,
+        .dd-page .price-actions .btn-book-outline,
+        .dd-page .cta-buttons .btn-primary,
+        .dd-page .cta-buttons .btn-wa,
+        .dd-page .cta-buttons .btn-secondary,
+        .dd-page .cta-buttons .char-btn-outline,
+        .dd-page .itin-ctas .btn-primary,
+        .dd-page .itin-ctas .btn-wa,
+        .dd-page .itin-ctas .btn-secondary {
+          flex: 1 !important;
+          max-width: 320px !important;
+          text-align: center !important;
+        }
 
         /* BUTTONS */
         .dd-page .btn-primary {
@@ -393,7 +449,7 @@ export function KeralaDetail() {
           letter-spacing: 0.06em;
         }
         .dd-page .price-amount {
-          font-family: 'Cormorant Garamond', serif;
+          font-family: serif;
           font-size: 44px;
           color: var(--gold);
           line-height: 1.1;
@@ -532,9 +588,43 @@ export function KeralaDetail() {
 
         /* RESPONSIVE */
         @media (max-width: 900px) {
+          .dd-page .hero-ctas,
+          .dd-page .price-actions,
+          .dd-page .complete-ctas,
+          .dd-page .cta-buttons,
+          .dd-page .itin-ctas {
+            flex-direction: column !important;
+            align-items: center !important;
+            width: 100% !important;
+            gap: 10px !important;
+            padding: 0 20px !important;
+            box-sizing: border-box !important;
+          }
+          .dd-page .hero-ctas .btn-primary,
+          .dd-page .hero-ctas .btn-wa,
+          .dd-page .hero-ctas .btn-secondary,
+          .dd-page .hero-ctas .char-btn-outline,
+          .dd-page .price-actions .btn-book,
+          .dd-page .price-actions .btn-book-outline,
+          .dd-page .complete-ctas .btn-dark,
+          .dd-page .cta-buttons .btn-primary,
+          .dd-page .cta-buttons .btn-wa,
+          .dd-page .cta-buttons .btn-secondary,
+          .dd-page .cta-buttons .char-btn-outline,
+          .dd-page .itin-ctas .btn-primary,
+          .dd-page .itin-ctas .btn-wa,
+          .dd-page .itin-ctas .btn-secondary {
+            width: 100% !important;
+            max-width: 420px !important;
+            flex: none !important;
+            display: inline-flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+          }
+
           .dd-page .intro-grid, .dd-page .why-grid, .dd-page .faq-grid, .dd-page .itin-layout { grid-template-columns: 1fr; gap: 40px; }
           .dd-page .highlights-grid { grid-template-columns: 1fr 1fr; }
-          .dd-page .steps-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+          .dd-page .steps-grid { grid-template-columns: 1fr; gap: 20px; }
           .dd-page .steps-grid::before { display: none; }
           .dd-page .stats-strip { grid-template-columns: repeat(2, 1fr); gap: 2px; }
           .dd-page .other-pkgs { grid-template-columns: 1fr; }
@@ -542,10 +632,94 @@ export function KeralaDetail() {
           .dd-page .intro-img-float { display: none; }
           .dd-page .price-card { grid-template-columns: 1fr; }
           .dd-page .price-card-media { min-height: 260px; }
+
+          /* Mobile Center Alignment for headings */
+          .dd-page .hero-content { text-align: center; }
+          .dd-page .hero-tag { display: flex; width: 100%; justify-content: center; }
+          .dd-page .hero-subtitle { margin-left: auto; margin-right: auto; }
+          .dd-page .hero-ctas { justify-content: center; }
+
+          .dd-page .intro-grid .reveal:last-child { text-align: center; }
+          .dd-page .intro-grid .section-tag { display: flex; width: 100%; justify-content: center; }
+          .dd-page .intro-grid .gold-rule { margin-left: auto; margin-right: auto; }
+          .dd-page .intro-grid .section-body { margin-left: auto; margin-right: auto; }
+          .dd-page .intro-grid .intro-quote { text-align: center; border-left: none; border-top: 2px solid var(--saffron); border-bottom: 2px solid var(--saffron); padding: 16px 0; }
+
+          .dd-page .highlights-header,
+          .dd-page .price-header,
+          .dd-page .complete-head,
+          .dd-page .itin-header {
+            text-align: center !important;
+          }
+          .dd-page .highlights-header .gold-rule,
+          .dd-page .price-header .gold-rule,
+          .dd-page .complete-head .gold-rule,
+          .dd-page .itin-header .gold-rule {
+            margin-left: auto !important;
+            margin-right: auto !important;
+          }
+
+          .dd-page .complete-body {
+            text-align: center !important;
+          }
+          .dd-page .complete-ctas {
+            justify-content: center !important;
+          }
+
+          .dd-page .why-grid .reveal:first-child {
+            text-align: center;
+          }
+          .dd-page .why-grid .section-tag {
+            display: flex; width: 100%; justify-content: center;
+          }
+          .dd-page .why-grid .gold-rule {
+            margin-left: auto; margin-right: auto;
+          }
+          .dd-page .why-grid .section-body {
+            margin-left: auto; margin-right: auto;
+          }
+          .dd-page .why-float-card {
+            position: static; margin-top: 16px; max-width: none; text-align: center; border-left: none; border-top: 2px solid var(--gold); border-bottom: 2px solid var(--gold); padding: 16px 0;
+          }
+          .dd-page .features-list {
+            text-align: left;
+          }
+
+          .dd-page .day-tabs {
+            justify-content: center !important;
+          }
+          .dd-page .day-panel {
+            text-align: center !important;
+          }
+          .dd-page .activity-list {
+            text-align: left !important;
+          }
+
+          /* FAQ section center alignment */
+          .dd-page .faq-grid .reveal:first-child {
+            text-align: center !important;
+          }
+          .dd-page .faq-grid .section-tag {
+            display: flex !important;
+            width: 100% !important;
+            justify-content: center !important;
+          }
+          .dd-page .faq-grid .gold-rule {
+            margin-left: auto !important;
+            margin-right: auto !important;
+          }
+          .dd-page .faq-grid .section-body {
+            margin-left: auto !important;
+            margin-right: auto !important;
+            text-align: center !important;
+          }
+          .dd-page .faq-grid .itin-ctas {
+            align-items: center !important;
+          }
         }
         @media (max-width: 600px) {
           .dd-page .highlights-grid { grid-template-columns: 1fr; }
-          .dd-page .steps-grid { grid-template-columns: repeat(2, 1fr); }
+          .dd-page .steps-grid { grid-template-columns: 1fr; }
           .dd-page .hero-title { font-size: 40px; }
           .dd-page .price-footer { flex-direction: column; align-items: flex-start; gap: 16px; }
         }
@@ -560,8 +734,8 @@ export function KeralaDetail() {
         <div className="hero-img"></div>
         <div className="hero-overlay"></div>
         <div className="hero-content">
-          <div className="hero-event-badge">🌴 Kerala · God's Own Country</div>
-          <div className="hero-tag">Margika Yatra · Holiday Travel</div>
+          <div className="hero-tag" style={{ color: "var(--saffron-light)", fontWeight: 900, fontSize: 14 }}> Kerala · God's Own Country</div>
+          <div className="hero-tag" style={{ color: "var(--saffron-light)", fontWeight: 900, fontSize: 14 }}>Margika Yatra · Holiday Travel</div>
           <h1 className="hero-title">
             Kerala Tour Package<br />from<br /><em>Mumbai & Thane</em>
           </h1>
@@ -776,7 +950,7 @@ export function KeralaDetail() {
             <p>Every package includes return flights or train coordination, comfortable hotel stays, the houseboat experience, a private AC vehicle, sightseeing and a dedicated coordinator. For families and couples from Mumbai and Thane, this is one of the easiest and most rewarding ways to experience God's Own Country without any planning stress.</p>
             <div className="complete-ctas">
               <a href="tel:+917208771688" className="btn-dark">📞 Call Now</a>
-              <a href={wa("I want to book the Kerala tour package from Mumbai")} className="btn-dark" target="_blank" rel="noopener noreferrer">Book Now →</a>
+              <a href={wa("I want to book the Kerala tour package from Mumbai")} className="btn-dark" target="_blank" rel="noopener noreferrer">Book Now </a>
               <a href="/Kerala_Itinerary.pdf" download="Kerala_Itinerary.pdf" className="btn-dark">Download Itinerary</a>
             </div>
           </div>
@@ -822,13 +996,16 @@ export function KeralaDetail() {
               <div className="price-footer">
                 <div className="price-amount-wrap">
                   <span className="price-from">Starting from</span>
-                  <span className="price-amount">₹10,999</span>
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
+                    <span className="price-amount" style={{ textDecoration: 'line-through', color: '#9ca3af', fontSize: '24px' }}>₹15,999</span>
+                    <span className="price-amount">₹10,999</span>
+                  </div>
                   <span className="price-per"> / person</span>
-                  <span className="price-note">Land package: ₹10,999 / person (minimum 4 pax required). Final price depends on dates, group size &amp; hotel category.</span>
+                  <span className="price-note">Land package: ₹10,999 / person (was <span style={{ textDecoration: 'line-through' }}>₹15,999</span>) (minimum 4 pax required). Final price depends on dates, group size &amp; hotel category.</span>
                 </div>
                 <div className="price-actions">
                   <a href="tel:+917208771688" className="btn-book-outline">Call Us</a>
-                  <a href={wa("I want to book the Kerala tour package from Mumbai")} className="btn-book" target="_blank" rel="noopener noreferrer">Book Now →</a>
+                  <a href={wa("I want to book the Kerala tour package from Mumbai")} className="btn-book" target="_blank" rel="noopener noreferrer">Book Now </a>
                   <a href="/Kerala_Itinerary.pdf" download="Kerala_Itinerary.pdf" className="btn-book-outline">Download Itinerary</a>
                 </div>
               </div>
@@ -849,15 +1026,15 @@ export function KeralaDetail() {
         <div className="why-grid">
           <div className="reveal">
             <div className="section-tag" style={{ color: "#ffffff", "--saffron": "#ffffff" } as React.CSSProperties}>Why Choose Us</div>
-            <h2 className="section-title">Why Mumbai & Thane<br /><em>Travellers Choose Margika</em></h2>
+            <h2 className="section-title">Why Mumbai & Thane<br /><em style={{ color: "#ffffff" }}>Travellers Choose Margika</em></h2>
             <div className="gold-rule" style={{ background: "#ffffff" }}></div>
-            <p className="section-body">We are based in Brahmand, Thane. When you call us, you speak to someone from your community who understands your expectations and schedule. That local trust is something no large national portal can offer.</p>
+            <p className="section-body" style={{ fontWeight: 700, color: "#ffffff" }}>We are based in Brahmand, Thane. When you call us, you speak to someone from your community who understands your expectations and schedule. That local trust is something no large national portal can offer.</p>
             <ul className="features-list">
-              <li className="feature-item"><div className="feature-icon">🌴</div><div className="feature-text"><h4>Tailored for Families & Couples</h4><p>Honeymoon, family or senior-friendly Kerala trips — the pace and stays are shaped around you.</p></div></li>
-              <li className="feature-item"><div className="feature-icon">✈️</div><div className="feature-text"><h4>End-to-End from Mumbai</h4><p>Flights, Cochin transfers, hotels, the houseboat and all sightseeing — handled entirely by us.</p></div></li>
-              <li className="feature-item"><div className="feature-icon">📍</div><div className="feature-text"><h4>Local Office in Thane</h4><p>Visit our Brahmand, Thane office before booking. Meet us in person and ask every question you have.</p></div></li>
-              <li className="feature-item"><div className="feature-icon">💰</div><div className="feature-text"><h4>Transparent Pricing</h4><p>The price you see is the price you pay. No hidden extras or surprise charges at destination.</p></div></li>
-              <li className="feature-item"><div className="feature-icon">📞</div><div className="feature-text"><h4>24×7 Support on Tour</h4><p>Our coordinator is with your group throughout the trip and our Thane office is reachable on WhatsApp.</p></div></li>
+              <li className="feature-item"><div className="feature-icon">🌴</div><div className="feature-text"><h4>Tailored for Families & Couples</h4><p style={{ color: "#ffffff" }}>Honeymoon, family or senior-friendly Kerala trips — the pace and stays are shaped around you.</p></div></li>
+              <li className="feature-item"><div className="feature-icon">✈️</div><div className="feature-text"><h4>End-to-End from Mumbai</h4><p style={{ color: "#ffffff" }}>Flights, Cochin transfers, hotels, the houseboat and all sightseeing — handled entirely by us.</p></div></li>
+              <li className="feature-item"><div className="feature-icon">📍</div><div className="feature-text"><h4>Local Office in Thane</h4><p style={{ color: "#ffffff" }}>Visit our Brahmand, Thane office before booking. Meet us in person and ask every question you have.</p></div></li>
+              <li className="feature-item"><div className="feature-icon">💰</div><div className="feature-text"><h4>Transparent Pricing</h4><p style={{ color: "#ffffff" }}>The price you see is the price you pay. No hidden extras or surprise charges at destination.</p></div></li>
+              <li className="feature-item"><div className="feature-icon">📞</div><div className="feature-text"><h4>24×7 Support on Tour</h4><p style={{ color: "#ffffff" }}>Our coordinator is with your group throughout the trip and our Thane office is reachable on WhatsApp.</p></div></li>
             </ul>
           </div>
           <div className="reveal reveal-delay-2">
@@ -908,7 +1085,7 @@ export function KeralaDetail() {
             <div className="opkg-body">
               <h3 className="opkg-name">Varanasi–Ayodhya–Prayagraj</h3>
               <p className="opkg-desc">Cover the ultimate Uttar Pradesh tri-city circuit. Visit Ram Mandir, Triveni Sangam, and Kashi Vishwanath.</p>
-              <Link href="/packages/tri-city" className="opkg-link">View Package →</Link>
+              <Link href="/packages/varanasi" className="opkg-link">View Package →</Link>
             </div>
           </div>
           <div className="opkg-card">
@@ -930,44 +1107,17 @@ export function KeralaDetail() {
         </div>
       </section>
 
-      {/* FAQ */}
-      <section id="faq">
-        <div className="faq-grid">
-          <div className="reveal">
-            <div className="section-tag">Common Questions</div>
-            <h2 className="section-title">Frequently<br /><em>Asked Questions</em></h2>
-            <div className="gold-rule"></div>
-            <p className="section-body">Everything you need to know before booking your Kerala tour package from Mumbai or Thane.</p>
-            <div className="itin-ctas" style={{ marginTop: 24 }}>
-              <a href="tel:+917208771688" className="btn-primary">📞 Speak to an Expert</a>
-              <a href={wa("I have a question about the Kerala tour package")} className="btn-wa" target="_blank" rel="noopener noreferrer">WhatsApp a Question</a>
-            </div>
-          </div>
-          <div className="faq-list reveal">
-            {[
-              ["What is included in the Kerala tour package from Mumbai?", "Your package includes return travel coordination (flight or train), comfortable hotel stays, an Alleppey backwater houseboat experience, private AC transport for all transfers and sightseeing, and guided visits across Munnar, Thekkady, Alleppey and Kochi with full support from our Thane team."],
-              ["How do I reach Kerala from Mumbai?", "The fastest way is a direct flight from Mumbai to Cochin (around 2–2.5 hours), from where your tour begins. We arrange the best option for your budget and dates and handle the Cochin airport pickup and all onward transfers."],
-              ["How many days are enough for a Kerala trip from Mumbai?", "A 4-day trip comfortably covers Munnar, Thekkady, Alleppey and Kochi at a relaxed pace. If you would like to add Kovalam, Wayanad or Guruvayur, we can extend to 6–7 days."],
-              ["What is the price of a Kerala tour package from Mumbai?", "Our Kerala land packages start from around ₹10,999 per person (minimum 4 pax required), depending on travel mode, season, hotel category and group size. Share your dates on WhatsApp and we will send a clear, transparent quote with no hidden costs."],
-              ["Is this Kerala package good for couples and honeymoon?", "Yes. Kerala is one of India's most popular honeymoon destinations. We can upgrade hotels, add a candlelight dinner or a private houseboat to make your Kerala honeymoon extra special."],
-              ["Is Kerala suitable for a family trip with kids and elders?", "Absolutely. The pace is gentle, drives are scenic, and experiences — tea gardens, wildlife safari, houseboat, beach — are enjoyable for all ages. We arrange family rooms, suitable meals and extra attention for elderly travellers."],
-            ].map(([q, a], idx) => (
-              <div className={`faq-item ${openFaq === idx ? "open" : ""}`} key={idx}>
-                <button className="faq-q" onClick={() => setOpenFaq(openFaq === idx ? null : idx)}>
-                  {q}<span className="faq-icon">+</span>
-                </button>
-                <div className="faq-a">{a}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      </div>{/* end dd-page */}
 
+      {/* FAQ — outside dd-page to avoid CSS conflicts */}
+      <FAQ/>
+
+      <div className="dd-page">{/* re-enter dd-page for CTA vars */}
       {/* CTA BANNER */}
       <section className="cta-banner">
         <div className="cta-banner-content reveal">
           <h2 className="section-title" style={{ color: "var(--white)", marginBottom: 16 }}>Book Your Kerala Holiday Today</h2>
-          <p className="section-body" style={{ color: "rgba(255,255,255,0.8)", margin: "0 auto 32px" }}>
+          <p className="section-body" style={{ color: "rgba(255,255,255,0.8)", margin: "0 auto 32px", fontWeight: "700", fontSize: "16px" }}>
             Kerala houseboat slots and hill-station hotels fill up fast, especially for peak season. Plan your Mumbai–Kerala holiday today.
           </p>
           <div className="cta-buttons">
@@ -977,12 +1127,35 @@ export function KeralaDetail() {
         </div>
       </section>
 
+      </div>{/* end dd-page for CTA */}
+
       <Footer />
 
       {/* STICKY WA */}
-      <a href={wa("Hi Margika Yatra! I want to enquire about Kerala tour package")} className="sticky-wa" aria-label="Chat on WhatsApp" target="_blank" rel="noopener noreferrer">
-        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg>
+      <a
+        href={wa("Hi Margika Yatra! I want to enquire about Kerala tour package")}
+        aria-label="Chat on WhatsApp"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          position: "fixed",
+          bottom: "28px",
+          right: "28px",
+          zIndex: 200,
+          width: "58px",
+          height: "58px",
+          borderRadius: "50%",
+          background: "#25D366",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          boxShadow: "0 4px 20px rgba(37,211,102,0.5)",
+          textDecoration: "none",
+          transition: "transform 0.3s, box-shadow 0.3s",
+        }}
+      >
+        <svg viewBox="0 0 24 24" style={{ width: "30px", height: "30px", fill: "white" }}><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg>
       </a>
-    </div>
+    </>
   )
 }
