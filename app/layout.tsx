@@ -3,14 +3,13 @@ import { Inter } from 'next/font/google'
 import Script from 'next/script'
 import './globals.css'
 
-// display:'optional' prevents font-swap from re-triggering LCP repaint
-// preload:true lets next/font add high-priority link hints for the 2 weights we use
+// Disable preload to eliminate the 370ms render-blocking request
 const inter = Inter({
   variable: '--font-inter',
   subsets: ['latin'],
-  display: 'optional',
+  display: 'swap',
   weight: ['400', '700'],
-  preload: true,
+  preload: false,
 })
 
 export const metadata: Metadata = {
