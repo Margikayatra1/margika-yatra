@@ -115,7 +115,7 @@ export default function AboutPage() {
               >
                 <h2 className="text-3xl font-bold text-orange-600 border-b-2 border-orange-200 pb-3 text-center lg:text-left">Our Story</h2>
                 <p className="text-gray-700 text-lg leading-relaxed">
-                  At <strong>Margika Yatra</strong>, we believe that a pilgrimage is much more than a journey—it is a path to self-discovery, devotion, and inner transformation. Founded with the vision of making sacred travel meaningful, comfortable, and accessible, we specialize in carefully curated spiritual tour packages that connect travelers with India's most revered temples, holy rivers, Jyotirlingas, and pilgrimage destinations.
+                  At <strong>Margika Yatra</strong>, we believe that a pilgrimage is much more than a journey, it is a path to self-discovery, devotion, and inner transformation. Founded with the vision of making sacred travel meaningful, comfortable, and accessible, we specialize in carefully curated spiritual tour packages that connect travelers with India's most revered temples, holy rivers, Jyotirlingas, and pilgrimage destinations.
                 </p>
                 <p className="text-gray-700 text-lg leading-relaxed">
                   Based in Thane, Mumbai, Margika Yatra serves pilgrims and spiritual seekers from across India, offering guided yatras, customized pilgrimage tours, family spiritual vacations, senior citizen-friendly packages, and group tours designed to create unforgettable divine experiences.
