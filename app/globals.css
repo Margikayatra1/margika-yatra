@@ -63,8 +63,8 @@ body {
   display: flex;
   width: max-content;
   animation: gallery-scroll 45s linear infinite;
-  animation-delay: 2.5s; /* Bot-friendly: allows Lighthouse to complete initial FCP/LCP trace */
-  will-change: transform;
+  animation-delay: 0.3s;
+  /* will-change removed — wastes GPU memory on mobile */
 }
 
 .photo-gallery-track:hover {
@@ -212,10 +212,13 @@ body {
     will-change: transform;
   }
 
-  /* 7. Prevent layout shifts from image loading */
-  img {
-    content-visibility: auto;
-  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   FONT
+──────────────────────────────────────────────────────────────── */
+body {
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
 }
 
 /* ─────────────────────────────────────────────────────────────

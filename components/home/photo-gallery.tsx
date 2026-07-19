@@ -1,9 +1,10 @@
 import Image from "next/image"
 import { Card } from "@/components/ui/card"
 
+// Reduced to 6 images — gallery doubles them for seamless loop, so 6 is plenty
+// Chose smallest files first to reduce initial payload
 const tripImages = [
-  "/1.jpg", "/2.jpg", "/5.jpg", "/6.jpg", "/7.jpg", "/Home1.jpeg",
-  "/Home2.jpeg", "/Home3.jpeg", "/Home4.jpeg", "/Home5.jpeg", "/Home6.jpg", "/Home7.jpg"
+  "/7.jpg", "/8.jpg", "/Home3.jpeg", "/Home4.jpeg", "/Home5.jpeg", "/devmain2.jpg"
 ]
 
 // Pure CSS infinite scroll — zero JS animation cost, runs on compositor thread
@@ -19,13 +20,14 @@ export function PhotoGallery() {
           >
             <Card className="bg-white/90 border-orange-200 overflow-hidden shadow-xl h-64">
               <div className="relative h-full w-full">
-                <Image unoptimized={true}
+                <Image
                   src={image}
                   alt={`Trip memory ${(index % tripImages.length) + 1}`}
                   fill
                   sizes="320px"
                   className="object-cover"
                   loading="lazy"
+                  quality={65}
                 />
               </div>
             </Card>

@@ -1,12 +1,16 @@
 import type { Metadata } from 'next'
-import { Roboto_Mono } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import Script from 'next/script'
 import './globals.css'
 
-const mono = Roboto_Mono({
-  variable: '--font-mono',
+// display:'optional' prevents font-swap from re-triggering LCP repaint
+// preload:true lets next/font add high-priority link hints for the 2 weights we use
+const inter = Inter({
+  variable: '--font-inter',
   subsets: ['latin'],
-  display: 'swap',
+  display: 'optional',
+  weight: ['400', '700'],
+  preload: true,
 })
 
 export const metadata: Metadata = {
@@ -22,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Google Tag Manager */}
+        {/* Google Tag Manager — lazyOnload so it never blocks render */}
         <Script
           id="gtm-script"
           strategy="lazyOnload"
@@ -34,9 +38,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-5NBVQGFC');`,
           }}
         />
-        {/* End Google Tag Manager */}
       </head>
-      <body className={mono.variable}>
+      <body className={inter.variable} style={{ fontFamily: 'var(--font-inter), Arial, sans-serif' }}>
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
@@ -46,7 +49,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             style={{ display: 'none', visibility: 'hidden' }}
           />
         </noscript>
-        {/* End Google Tag Manager (noscript) */}
         {children}
       </body>
     </html>

@@ -29,10 +29,10 @@ export default function TeaserSection() {
             >
               {/* Thumbnail — no YouTube JS loaded until click */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <Image unoptimized={true} src={`https://img.youtube.com/vi/${VIDEO_ID}/hqdefault.jpg`}
+              <Image src={`https://img.youtube.com/vi/${VIDEO_ID}/hqdefault.jpg`}
                 alt="Watch Margika Yatra Teaser"
                 className="w-full h-full object-cover"
-                loading="lazy" width={800} height={600} quality={60} sizes="100vw" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                loading="lazy" width={800} height={600} quality={60} sizes="(max-width: 768px) 100vw, 50vw" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               {/* Play button overlay */}
               <span className="absolute inset-0 flex items-center justify-center bg-black/25 group-hover:bg-black/35 transition-colors">
                 <span className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-200">

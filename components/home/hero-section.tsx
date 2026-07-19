@@ -8,13 +8,13 @@ export function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-32">
       <div className="absolute inset-0 z-0">
-        <Image unoptimized={true}
+        <Image
           src="/HomeMain.png"
           alt="Spiritual Journey"
           fill
           priority
-          sizes="100vw"
-          quality={75}
+          sizes="(max-width: 768px) 100vw, 100vw"
+          quality={50}
           className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-orange-50/40 to-orange-100/60" />
