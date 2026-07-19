@@ -205,7 +205,7 @@ ${formData.name}`
             transition={{ duration: 0.8 }}
             className="text-center mb-8"
           >
-            <Link href="/">
+            <Link prefetch={true} href="/">
               <Button variant="ghost" className="mb-4 text-orange-600 hover:text-orange-500">
                 <ArrowLeft className="h-4 w-4 mr-2" />
                 Back to Home
@@ -280,7 +280,7 @@ ${formData.name}`
               >
                 <Card className="bg-white/90 backdrop-blur-sm border-orange-200 overflow-hidden hover:border-orange-400 transition-all duration-500 shadow-lg h-full flex flex-col">
                   <div className="relative h-40">
-                    <Image
+                    <Image unoptimized={true}
                       src={destination.image || "/placeholder.svg"}
                       alt={destination.name}
                       fill
@@ -301,7 +301,7 @@ ${formData.name}`
                         </Badge>
                       ))}
                     </div>
-                    <Link href={destination.link} className="mt-auto w-full">
+                    <Link prefetch={true} href={destination.link} className="mt-auto w-full">
                       <Button
                         size="sm"
                         className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold"

@@ -149,7 +149,7 @@ export default function PrivacyPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <Link href="/" className="inline-flex items-center text-orange-600 hover:text-orange-500 mb-6 transition-colors font-semibold group">
+            <Link prefetch={true} href="/" className="inline-flex items-center text-orange-600 hover:text-orange-500 mb-6 transition-colors font-semibold group">
               <ArrowLeft className="mr-2 h-5 w-5 group-hover:-translate-x-1 transition-transform" />
               Back to Home
             </Link>

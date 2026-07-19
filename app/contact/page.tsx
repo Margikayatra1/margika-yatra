@@ -33,7 +33,7 @@ export default function ContactPage() {
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
         >
-          <Image
+          <Image unoptimized={true}
             src="/rambg.jpg"
             alt="Contact Margika Yatra"
             fill
@@ -50,7 +50,7 @@ export default function ContactPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <Link href="/" className="inline-flex items-center text-orange-600 hover:text-orange-500 mb-6 transition-colors font-medium">
+            <Link prefetch={true} href="/" className="inline-flex items-center text-orange-600 hover:text-orange-500 mb-6 transition-colors font-medium">
               <ArrowLeft className="mr-2 h-5 w-5" />
               Back to Home
             </Link>

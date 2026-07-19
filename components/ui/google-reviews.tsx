@@ -127,7 +127,7 @@ export function GoogleReviews() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6 p-4 rounded-2xl bg-white/80 border border-orange-100/80 shadow-md max-w-xl mx-auto backdrop-blur-sm">
             <div className="flex items-center space-x-3 border-r border-orange-100 pr-4 last:border-none">
-              <Image 
+              <Image unoptimized={true} quality={60} 
                 src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" 
                 alt="Google Logo" 
                 width={28} 
@@ -169,7 +169,7 @@ export function GoogleReviews() {
             >
               {/* Google Verified Reviewer Icon Watermark */}
               <div className="absolute top-6 right-6 opacity-10 group-hover:opacity-15 transition-opacity pointer-events-none">
-                <Image 
+                <Image unoptimized={true} quality={60} 
                   src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" 
                   alt="Google Logo" 
                   width={40} 
@@ -196,7 +196,7 @@ export function GoogleReviews() {
               {/* Author profile block */}
               <div className="flex items-center border-t border-orange-50/80 pt-4 mt-auto">
                 <div className="relative w-10 h-10 mr-3 border border-orange-100 rounded-full overflow-hidden shadow-sm">
-                  <Image 
+                  <Image unoptimized={true} quality={60} 
                     src={review.profile_photo_url} 
                     alt={review.author_name}
                     fill
@@ -219,7 +219,7 @@ export function GoogleReviews() {
         <div className="md:hidden max-w-sm mx-auto">
           <div className="bg-white border border-orange-100 p-6 rounded-2xl shadow-xl relative min-h-[220px] flex flex-col justify-between">
             <div className="absolute top-4 right-4 opacity-10">
-              <Image 
+              <Image unoptimized={true} quality={60} 
                 src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" 
                 alt="Google" 
                 width={36} 
@@ -244,7 +244,7 @@ export function GoogleReviews() {
 
             <div className="flex items-center border-t border-orange-50 pt-4 mt-auto">
               <div className="relative w-10 h-10 mr-3 rounded-full overflow-hidden shadow-sm">
-                <Image 
+                <Image unoptimized={true} quality={60} 
                   src={reviews[currentIndex].profile_photo_url} 
                   alt={reviews[currentIndex].author_name}
                   fill

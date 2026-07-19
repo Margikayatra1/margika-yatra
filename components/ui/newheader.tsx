@@ -48,7 +48,7 @@ export function Header() {
       } py-1.5 sm:py-2`}
       style={{ animation: 'slideDown 0.5s ease-out forwards' }}
     >
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         @keyframes slideDown {
           from { transform: translateY(-100%); opacity: 0; }
           to   { transform: translateY(0);    opacity: 1; }
@@ -135,15 +135,15 @@ export function Header() {
           align-items: center !important;
           gap: 12px !important;
         }
-      `}</style>
+      `}} />
 
       <div className="container mx-auto px-3 sm:px-4">
         <div className="flex items-center justify-between gap-2">
 
           {/* Logo */}
-          <Link href="/">
+          <Link prefetch={true} href="/">
             <div className="logo-wrap flex items-center space-x-1.5 sm:space-x-2">
-              <Image
+              <Image unoptimized={true}
                 src="/logo.png"
                 alt="Margika Yatra Logo"
                 width={36}
@@ -164,7 +164,7 @@ export function Header() {
               {navItems.map((item) => (
                 <div key={item.name} className="nav-item">
                   {item.href.startsWith('/') && !item.href.startsWith('/#') ? (
-                    <Link
+                    <Link prefetch={true}
                       href={item.href}
                       className="nav-link relative text-gray-700 hover:text-orange-600 transition-colors duration-200 font-semibold text-sm"
                     >
@@ -212,7 +212,7 @@ export function Header() {
             <SheetContent side="right" className="bg-white border-orange-200 w-72">
               {/* Logo inside drawer */}
               <div className="flex items-center space-x-2 mb-8 pt-2">
-                <Image
+                <Image unoptimized={true}
                   src="/logo.png"
                   alt="Margika Yatra Logo"
                   width={36}
@@ -226,7 +226,7 @@ export function Header() {
 
               <div className="flex flex-col space-y-1">
                 {navItems.map((item) => (
-                  <Link
+                  <Link prefetch={true}
                     key={item.name}
                     href={item.href}
                     className="text-gray-700 hover:text-orange-600 hover:bg-orange-50 transition-colors duration-200 py-3 px-3 rounded-lg block font-semibold text-base"

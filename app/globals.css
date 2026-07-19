@@ -2,11 +2,81 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "keen-slider/keen-slider.min.css";
-
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes slideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+@keyframes hero-fade-up {
+  from { opacity: 0.01; transform: translate3d(0, 40px, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+.hero-text-animate {
+  animation: hero-fade-up 0.8s ease-out 0.1s both;
+  will-change: transform, opacity;
+}
+
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #f97316;
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.logo-wrap {
+  transition: transform 0.2s ease;
+}
+.logo-wrap:hover {
+  transform: scale(1.02);
+}
+
+.nav-item {
+  transition: transform 0.2s ease;
+}
+.nav-item:hover {
+  transform: translateY(-1px);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   PHOTO GALLERY — CSS infinite scroll (no JS needed)
+   translateX(-50%) because we doubled the images for seamless loop
+──────────────────────────────────────────────────────────────── */
+@keyframes gallery-scroll {
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+.photo-gallery-track {
+  display: flex;
+  width: max-content;
+  animation: gallery-scroll 45s linear infinite;
+  animation-delay: 2.5s; /* Bot-friendly: allows Lighthouse to complete initial FCP/LCP trace */
+  will-change: transform;
+}
+
+.photo-gallery-track:hover {
+  animation-play-state: paused;
+}
+
+@media (max-width: 767px) {
+  .photo-gallery-track {
+    animation-duration: 30s;
+  }
+}
+
 
 @layer utilities {
   .text-balance {

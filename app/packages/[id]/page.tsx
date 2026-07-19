@@ -37,7 +37,7 @@ export default function PackageDetailPage() {
         <main className="container mx-auto px-4 pt-32 pb-20 text-center">
           <h1 className="mb-4 text-4xl font-bold text-orange-600">Package not found</h1>
           <p className="mb-8 text-gray-700">Please choose a package from our spiritual packages section.</p>
-          <Link href="/#packages">
+          <Link prefetch={true} href="/#packages">
             <Button className="bg-orange-500 text-white hover:bg-orange-600">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Packages
@@ -97,7 +97,7 @@ export default function PackageDetailPage() {
       <main>
         <section className="relative pt-28">
           <div className="container mx-auto px-4">
-            <Link href="/#packages">
+            <Link prefetch={true} href="/#packages">
               <Button variant="ghost" className="mb-5 text-orange-700 hover:bg-orange-100 hover:text-orange-800">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Back to Packages
@@ -673,7 +673,7 @@ function MaharashtraJyotirlingDetail() {
       <section className="char-section">
         <div className="char-wrap char-two">
           <div className="char-intro-visual char-reveal">
-            <img className="char-photo-main" src="/jyoti.jpeg" alt="Three Jyotirlinga Maharashtra Yatra" />
+            <Image unoptimized={true} width={800} height={520} className="char-photo-main" src="/jyoti.jpeg" alt="Three Jyotirlinga Maharashtra Yatra" />
             {/* <img className="char-photo-float" src="/3.jpg" alt="Margika Yatra travellers" /> */}
           </div>
           <div className="char-reveal">
@@ -698,7 +698,7 @@ function MaharashtraJyotirlingDetail() {
           <div className="char-dhams">
             {jyotirlingas.map((dham, index) => (
               <article className="char-dham-card char-reveal" key={dham.name}>
-                <img src={dham.image} alt={dham.name} />
+                <Image unoptimized={true} fill src={dham.image} alt={dham.name} style={{ objectFit: 'cover' }} />
                 <div className="char-dham-copy">
                   <div className="char-dham-num">{String(index + 1).padStart(2, "0")}</div>
                   <div className="char-dham-name">{dham.name}</div>
@@ -761,10 +761,13 @@ function MaharashtraJyotirlingDetail() {
         </div>
         <div className="mh-price-card char-reveal">
           <div className="mh-price-media">
-            <img
+            <Image
+              unoptimized={true}
+              fill
               src="/mh2.png"
               alt="Maharashtra 3 Jyotirlinga tour package"
-              onError={(e) => { (e.target as HTMLImageElement).src = '/rambg.jpg' }}
+              style={{ objectFit: 'cover' }}
+              onError={(e) => { (e.currentTarget as HTMLImageElement).src = '/rambg.jpg' }}
             />
             <div className="mh-badge">Most Loved</div>
             <div className="mh-cities"><span>BHIMASHANKAR</span><span>TRIMBAKESHWAR</span><span>GRISHNESHWAR</span></div>
@@ -821,7 +824,7 @@ function MaharashtraJyotirlingDetail() {
             </ul>
           </div>
           <div className="char-reveal">
-            <img className="char-photo-main" src="/2.jpg" alt="Margika Yatra group trip" />
+            <Image unoptimized={true} width={800} height={520} className="char-photo-main" src="/2.jpg" alt="Margika Yatra group trip" />
           </div>
         </div>
       </section>
@@ -853,7 +856,7 @@ function MaharashtraJyotirlingDetail() {
           </div>
           <div className="char-gallery">
             {["/1.jpg", "/2.jpg", "/Home1.jpeg", "/Home2.jpeg", "/5.jpg", "/6.jpg", "/Home3.jpeg", "/Home4.jpeg", "/Home5.jpeg", "/Home6.jpg", "/Home7.jpg"].map((image) => (
-              <div key={image}><img src={image} alt="Margika Yatra travellers" /></div>
+              <div key={image} style={{ position: 'relative' }}><Image unoptimized={true} fill src={image} alt="Margika Yatra travellers" style={{ objectFit: 'cover' }} /></div>
             ))}
           </div>
         </div>
@@ -1068,12 +1071,9 @@ function CharDhamDetail() {
           align-items: flex-end;
           padding: 130px 5% 80px;
           overflow: hidden;
-        }
-        .char-hero::before {
-          content: "";
-          position: absolute;
-          inset: 0;
-          background: url("/CharDham.jpeg") center/cover no-repeat;
+          background-image: url('/CharDham.jpeg');
+          background-size: cover;
+          background-position: center;
           animation: charZoom 12s ease-out forwards;
         }
         .char-hero::after {
@@ -1081,11 +1081,12 @@ function CharDhamDetail() {
           position: absolute;
           inset: 0;
           background: linear-gradient(to bottom, rgba(255,255,255,0.2), rgba(255,247,237,0.62) 62%, rgba(255,247,237,0.98));
+          z-index: 1;
         }
         @keyframes charZoom { from { transform: scale(1.05); } to { transform: scale(1); } }
         .char-hero-content {
           position: relative;
-          z-index: 1;
+          z-index: 2;
           max-width: 840px;
           animation: charFadeUp 1s 0.2s ease both;
         }
@@ -1150,18 +1151,19 @@ function CharDhamDetail() {
         }
         .char-rule { width: 60px; height: 1px; margin: 24px 0; background: var(--gold); }
         .char-body { max-width: 650px; color: rgba(17,24,39,0.75); font-size: 15px; font-weight: 300; line-height: 1.82; }
-        .char-photo-main { width: 100%; height: 520px; border-radius: 4px; object-fit: cover; filter: brightness(0.86) saturate(1.08); }
-        .char-intro-visual { position: relative; }
+        .char-photo-main { width: 100%; height: 520px; border-radius: 4px; object-fit: cover; filter: brightness(0.86) saturate(1.08); position: relative; z-index: 1; display: block; }
+        .char-intro-visual { position: relative; min-height: 520px; padding-bottom: 30px; padding-right: 30px; box-sizing: content-box; }
         .char-photo-float {
           position: absolute;
-          right: -30px;
-          bottom: -30px;
+          right: 0;
+          bottom: 0;
           width: 200px;
           height: 200px;
           border: 4px solid #ffffff;
           border-radius: 4px;
           object-fit: cover;
           filter: brightness(0.9) saturate(1.2);
+          z-index: 2;
         }
         .char-quote {
           margin-top: 34px;
@@ -1325,9 +1327,12 @@ function CharDhamDetail() {
           padding: 100px 5%;
           text-align: center;
           overflow: hidden;
+          background-image: url('/rambg.jpg');
+          background-size: cover;
+          background-position: center;
         }
-        .char-cta::before { content: ""; position: absolute; inset: 0; background: url("/rambg.jpg") center/cover no-repeat; filter: brightness(0.24) saturate(0.85); }
-        .char-cta-content { position: relative; max-width: 760px; margin: 0 auto; }
+        .char-cta::before { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(26,18,8,0.9), rgba(26,18,8,0.7)); z-index: 1; }
+        .char-cta-content { position: relative; max-width: 760px; margin: 0 auto; z-index: 2; }
         .char-cta .char-section-title { color: #ffffff; }
         .char-cta .char-body { color: rgba(255, 255, 255, 0.9); }
         .char-footer { padding: 50px 5% 30px; border-top: 1px solid rgba(249,115,22,0.15); background: var(--ink-mid); }
@@ -1385,6 +1390,7 @@ function CharDhamDetail() {
           .char-actions, .char-package-foot, .char-packages-head, .char-footer-bottom { flex-direction: column; align-items: stretch; }
           .char-dhams, .char-packages, .char-stats, .char-steps, .char-gallery { grid-template-columns: 1fr; }
           .char-stat { border-right: 0; padding: 12px 0; }
+          .char-intro-visual { min-height: auto; padding: 0; box-sizing: border-box; }
           .char-photo-main { height: 360px; }
           .char-dham-card { min-height: 390px; }
           .char-sticky-wa { right: 18px; bottom: 18px; }
@@ -1427,8 +1433,8 @@ function CharDhamDetail() {
       <section className="char-section">
         <div className="char-wrap char-two">
           <div className="char-intro-visual char-reveal">
-            <img className="char-photo-main" src="/4dham.png" alt="Char Dham Yatra" />
-            <img className="char-photo-float" src="/1.jpg" alt="Margika Yatra pilgrims" />
+            <Image unoptimized={true} width={800} height={520} className="char-photo-main" src="/4dham.png" alt="Char Dham Yatra" />
+            <Image unoptimized={true} width={200} height={200} className="char-photo-float" src="/1.jpg" alt="Margika Yatra pilgrims" />
           </div>
           <div className="char-reveal">
             <div className="char-tag">A Once-in-a-Lifetime Journey</div>
@@ -1452,7 +1458,7 @@ function CharDhamDetail() {
           <div className="char-dhams">
             {dhams.map((dham, index) => (
               <article className="char-dham-card" key={dham.name}>
-                <img src={dham.image} alt={dham.name} />
+                <Image unoptimized={true} fill src={dham.image} alt={dham.name} style={{ objectFit: 'cover' }} />
                 <div className="char-dham-copy">
                   <div className="char-dham-num">{String(index + 1).padStart(2, "0")}</div>
                   <div className="char-dham-name">{dham.name}</div>
@@ -1478,7 +1484,7 @@ function CharDhamDetail() {
             {packages.map((item) => (
               <article className={`char-package char-reveal ${item.featured ? "featured" : ""}`} key={item.name}>
                 <div className="char-package-img">
-                  <img src={item.image} alt={item.name} />
+                  <Image unoptimized={true} fill src={item.image} alt={item.name} style={{ objectFit: 'cover' }} />
                   <div className="char-badge">{item.badge}</div>
                 </div>
                 <div className="char-package-body">
@@ -1514,7 +1520,7 @@ function CharDhamDetail() {
           </div>
           <div className="char-reveal" style={{ marginTop: 40, textAlign: "center" }}>
             <p className="char-body" style={{ margin: "0 auto 16px" }}>Need a custom package for your family, group, or temple sangat?</p>
-            <Link href="/personalized-trip" className="char-btn-outline">Customise My Yatra</Link>
+            <Link prefetch={true} href="/personalized-trip" className="char-btn-outline">Customise My Yatra</Link>
           </div>
         </div>
       </section>
@@ -1537,7 +1543,7 @@ function CharDhamDetail() {
           </div>
           <div className="char-reveal">
             <div className="char-why-visual">
-              <img className="char-photo-main" src="/2.jpg" alt="Margika Yatra group pilgrimage" />
+              <Image unoptimized={true} width={800} height={520} className="char-photo-main" src="/2.jpg" alt="Margika Yatra group pilgrimage" />
               <div className="char-why-float">
                 <p>"Many yatris return telling us this felt like the most complete journey of their lives."</p>
                 <span>— Margika Yatra Team</span>
@@ -1581,7 +1587,7 @@ function CharDhamDetail() {
           </div>
           <div className="char-gallery">
             {["/1.jpg", "/2.jpg", "/Home1.jpeg", "/Home2.jpeg", "/5.jpg", "/6.jpg", "/Home3.jpeg", "/Home4.jpeg", "/Home5.jpeg", "/Home6.jpg", "/Home7.jpg"].map((image) => (
-              <div key={image}><img src={image} alt="Margika Yatra pilgrims" /></div>
+              <div key={image} style={{ position: 'relative' }}><Image unoptimized={true} fill src={image} alt="Margika Yatra pilgrims" style={{ objectFit: 'cover' }} /></div>
             ))}
           </div>
         </div>

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
+import Image from "next/image"
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/ui/newheader"
 import { GoogleReviews } from "@/components/ui/google-reviews"
@@ -76,7 +77,7 @@ export function DevDeepawaliDetail() {
   return (
     <>
       <div className="dd-page">
-      <style jsx global>{`
+        <style jsx global>{`
         @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap");
 
         .dd-page {
@@ -98,7 +99,7 @@ export function DevDeepawaliDetail() {
           background: linear-gradient(to bottom right, #ffffff, #fff7ed, #ffedd5);
           color: var(--cream);
           font-family: "Jost", sans-serif;
-          overflow-x: hidden;
+          overflow: hidden;
           min-height: 100vh;
         }
 
@@ -129,14 +130,13 @@ export function DevDeepawaliDetail() {
           flex-direction: column;
           justify-content: flex-end;
           overflow: hidden;
-          background: url('/rambg.jpg') center/cover no-repeat;
+          background: #0d1b3e;
           padding-top: 130px;
         }
         .dd-page .hero-img {
           position: absolute;
           inset: 0;
-          background: url("/devmain.png")
-            center/cover no-repeat;
+          
           transform: scale(1.05);
           animation: heroZoom 12s ease-out forwards;
         }
@@ -1206,14 +1206,13 @@ export function DevDeepawaliDetail() {
           align-items: center;
           text-align: center;
           overflow: hidden;
-          background: url('/rambg.jpg') center/cover no-repeat;
+          background: #0d1b3e;
         }
         .dd-page .cta-banner::before {
           content: "";
           position: absolute;
           inset: 0;
-          background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Dev_Deepawali_-_Varanasi_Ghats.jpg/1280px-Dev_Deepawali_-_Varanasi_Ghats.jpg")
-            center/cover no-repeat;
+          
           filter: brightness(0.2) saturate(0.7);
         }
         .dd-page .cta-banner-content {
@@ -1289,8 +1288,15 @@ export function DevDeepawaliDetail() {
           transition-delay: 0.6s;
         }
 
+        .dd-page .intro-visual { position: relative; min-height: 520px; padding-bottom: 30px; padding-right: 30px; box-sizing: content-box; }
+        .dd-page .intro-img-main { display: block; width: 100%; height: 520px; object-fit: cover; border-radius: 4px; filter: brightness(0.95) saturate(1.1); position: relative; z-index: 1; }
+        .dd-page .intro-img-float { position: absolute; bottom: 0; right: 0; width: 200px; height: 200px; object-fit: cover; border-radius: 4px; border: 4px solid #ffffff; filter: brightness(0.95) saturate(1.2); z-index: 2; }
+
         /* RESPONSIVE */
         @media (max-width: 900px) {
+          .dd-page .intro-visual { min-height: auto; padding: 0; box-sizing: border-box; }
+          .dd-page .intro-img-main { height: 360px; }
+          .dd-page .intro-img-float { display: none; }
           .dd-page .hero-ctas,
           .dd-page .price-actions,
           .dd-page .complete-ctas,
@@ -1486,787 +1492,760 @@ export function DevDeepawaliDetail() {
         }
       `}</style>
 
-      {/* NAV */}
-      <Header />
+        {/* NAV */}
+        <Header />
 
-      {/* HERO */}
-      <section className="hero">
-        <div className="hero-img"></div>
-        <div className="hero-overlay"></div>
+        {/* HERO */}
+        <section className="hero">
+          <div className="hero-img"><Image unoptimized={true} src="/devmain.png" alt="Hero" fill priority sizes="100vw" quality={60} style={{ objectFit: 'cover' }} /></div>
+          <div className="hero-overlay"></div>
 
-        {/* Floating diya particles */}
-        <div className="hero-particles" id="heroParticles"></div>
+          {/* Floating diya particles */}
+          <div className="hero-particles" id="heroParticles"></div>
 
-        <div className="hero-content">
-          <div className="hero-event-badge" style={{ color: "#f5a94e", fontWeight: 900 }}>🪔 Dev Deepawali 2026 · Varanasi</div>
-          <div className="hero-tag" style={{ color: "#f5a94e", fontWeight: 900 }}>Margika Yatra · Spiritual Travel</div>
-          <h1 className="hero-title">
-            Dev Deepawali<br />Tour Package from<br /><em>Mumbai & Thane</em>
-          </h1>
-          <p className="hero-subtitle" style={{ color: 'var(--black)', fontWeight: 500 }}>
-            When the gods celebrate Diwali — the 84 ghats of Varanasi light up with a million earthen lamps. Be there
-            for one of the most spiritually charged nights in the Hindu calendar. A 2-night, 3-day experience you
-            will carry for a lifetime.
-          </p>
-          <div className="hero-ctas">
-            <a href="tel:+917208771688" className="btn-primary">
-              📞 Call Now to Book
-            </a>
+          <div className="hero-content">
+            <div className="hero-event-badge" style={{ color: "#f5a94e", fontWeight: 900 }}>🪔 Dev Deepawali 2026 · Varanasi</div>
+            <div className="hero-tag" style={{ color: "#f5a94e", fontWeight: 900 }}>Margika Yatra · Spiritual Travel</div>
+            <h1 className="hero-title">
+              Dev Deepawali<br />Tour Package from<br /><em>Mumbai & Thane</em>
+            </h1>
+            <p className="hero-subtitle" style={{ color: 'var(--black)', fontWeight: 500 }}>
+              When the gods celebrate Diwali — the 84 ghats of Varanasi light up with a million earthen lamps. Be there
+              for one of the most spiritually charged nights in the Hindu calendar. A 2-night, 3-day experience you
+              will carry for a lifetime.
+            </p>
+            <div className="hero-ctas">
+              <a href="tel:+917208771688" className="btn-primary">
+                📞 Call Now to Book
+              </a>
+              <a
+                href={wa("I want to book the Dev Deepawali Varanasi package")}
+                className="btn-wa"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg viewBox="0 0 24 24">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg>
+                WhatsApp to Book
+              </a>
+              <a href="/UTTAR_PRADESH_MARGIKA_YATRA.pdf" download="UTTAR_PRADESH_MARGIKA_YATRA.pdf" className="char-btn-outline">Download Itinerary</a>
+            </div>
+          </div>
+        </section>
+
+        <div className="char-stats-wrapper mb-20">
+          <CharStats />
+        </div>
+
+        {/* INTRO */}
+        <section>
+          <div className="intro-grid">
+            <div className="intro-visual reveal">
+              <img className="intro-img-main" src="/devmain2.jpg" alt="Dev Deepawali Varanasi Ghats lit with lamps" />
+              <img className="intro-img-float" src="/1.jpg" alt="Ganga Aarti Varanasi" />
+            </div>
+            <div className="reveal reveal-delay-2">
+              <div className="section-tag">Dev Deepawali 2026 · Kashi</div>
+              <h2 className="section-title">
+                Dev Deepawali<br /><em>— The Night the Gods Celebrate</em>
+              </h2>
+              <div className="gold-rule"></div>
+              <p className="section-body">
+                Dev Deepawali falls on Kartik Purnima — the full moon night fifteen days after Diwali. On this night,
+                legend holds that all the gods descend to bathe in the Ganga at Varanasi. Every one of Kashi's 84
+                ghats is lined with hundreds of thousands of earthen diyas, turning the river into a river of light.
+              </p>
+              <p className="section-body" style={{ marginTop: 16 }}>
+                This is not just a festival — it is a spiritual event that draws devotees and visitors from across
+                India and abroad. Securing the right vantage point, the correct darshan timings at Kashi Vishwanath,
+                and peaceful ghat access requires local knowledge and advance planning. That is what Margika Yatra
+                provides for travelers from Mumbai and Thane.
+              </p>
+              <div className="intro-quote">
+                <p>"We handle every arrangement. You carry only your devotion and your camera."</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* HIGHLIGHT MOMENTS */}
+        <section className="highlights-section">
+          <div className="highlights-header reveal">
+            <div className="section-tag" style={{ justifyContent: "center", margin: "0 auto 16px" }}>
+              What You Will Experience
+            </div>
+            <h2 className="section-title" style={{ textAlign: "center" }}>
+              Three Moments<br /><em>You Will Never Forget</em>
+            </h2>
+            <div className="gold-rule" style={{ margin: "24px auto" }}></div>
+            <p className="section-body" style={{ margin: "0 auto", textAlign: "center" }}>
+              Every element of this package is built around these rare, once-a-year spiritual experiences in Kashi.
+            </p>
+          </div>
+          <div className="highlights-grid">
+            <div className="hl-card">
+              <Image unoptimized={true} src="/devmain2.jpg"
+                alt="Dev Deepawali lamp-lit ghats Varanasi"
+                width={800} height={600} quality={60} sizes="100vw" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <div className="hl-overlay">
+                <div className="hl-num">01</div>
+                <div className="hl-name">Dev Deepawali Ghats</div>
+                <div className="hl-tag">Kartik Purnima Festival</div>
+                <div className="hl-detail">
+                  All 84 ghats illuminated with lakhs of earthen diyas. The reflection of light on the Ganga on this
+                  full moon night is an image that stays with you permanently.
+                </div>
+              </div>
+            </div>
+            <div className="hl-card">
+              <Image unoptimized={true} src="/dev1.png"
+                alt="Kashi Vishwanath Temple Mangala Aarti"
+                width={800} height={600} quality={60} sizes="100vw" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <div className="hl-overlay">
+                <div className="hl-num">02</div>
+                <div className="hl-name">Mangala Aarti at 2 AM</div>
+                <div className="hl-tag">Kashi Vishwanath · Sparsh Darshan</div>
+                <div className="hl-detail">
+                  The earliest and most sacred aarti of the day. Sparsh Darshan — touching the Jyotirlinga — is offered
+                  only at this hour. A profoundly rare blessing.
+                </div>
+              </div>
+            </div>
+            <div className="hl-card">
+              <Image unoptimized={true} src="/dev2.png"
+                alt="Maha Ganga Aarti Dashashwamedh Ghat Varanasi"
+                width={800} height={600} quality={60} sizes="100vw" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <div className="hl-overlay">
+                <div className="hl-num">03</div>
+                <div className="hl-name">Maha Ganga Aarti</div>
+                <div className="hl-tag">Dashashwamedh Ghat</div>
+                <div className="hl-detail">
+                  The grand evening aarti at Dashashwamedh Ghat — priests in ceremonial attire, large brass lamps,
+                  synchronized chanting. On Dev Deepawali, it is magnified tenfold.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* PACKAGE OPTIONS & PRICING */}
+        <section className="price-section">
+          <div className="price-header reveal">
+            <div className="section-tag" style={{ justifyContent: "center", margin: "0 auto 16px" }}>
+              Package & Pricing
+            </div>
+            <h2 className="section-title" style={{ textAlign: "center" }}>
+              Your Dev Deepawali Yatra,<br /><em>Fully Sorted</em>
+            </h2>
+            <div className="gold-rule"></div>
+            <p className="section-body" style={{ margin: "0 auto", textAlign: "center" }}>
+              One clear, all-inclusive Dev Deepawali Varanasi package — travel, comfortable stays near the ghats, AC transport, festival boat ride, guided darshans, and full coordination from Mumbai & Thane. Transparent pricing, no hidden costs.
+            </p>
+          </div>
+
+          <div className="price-card reveal">
+            <div className="price-card-media">
+              <Image unoptimized={true} src="/devmain2.jpg"
+                alt="Dev Deepawali Varanasi Ghats"
+                width={800} height={600} quality={60} sizes="100vw" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <div className="price-badge">⭐ Most Loved</div>
+              <div className="price-media-cities">
+                <span>VARANASI</span><span>DEV DEEPAWALI</span><span>KASHI DARSHAN</span>
+              </div>
+            </div>
+            <div className="price-card-body">
+              <div>
+                <div className="pkg-duration">2 Nights / 3 Days · Varanasi · Departures from Mumbai / Thane</div>
+                <div className="pkg-name">Dev Deepawali Varanasi Package</div>
+                <p className="pkg-desc">
+                  Experience Kashi's legendary festival of light. Witness Varanasi's 84 ghats illuminated with a million earthen diyas on Kartik Purnima. Covers Kashi Vishwanath Mangala Aarti at 2 AM, the grand Ganga Aarti from a premium boat vantage, Sarnath, and all local temples. Vegetarian meals, comfortable hotel stay, AC vehicle transfers, and a dedicated coordinator are all included.
+                </p>
+                <div className="pkg-includes">
+                  <span className="pkg-tag">Dev Deepawali Boat Ride</span>
+                  <span className="pkg-tag">Mangala Aarti at 2 AM</span>
+                  <span className="pkg-tag">Maha Ganga Aarti View</span>
+                  <span className="pkg-tag">Laser & Fire Show</span>
+                  <span className="pkg-tag">Comfortable Hotel Stay</span>
+                  <span className="pkg-tag">Pure Veg Meals</span>
+                  <span className="pkg-tag">AC local transport</span>
+                  <span className="pkg-tag">Mumbai–Thane Support</span>
+                </div>
+              </div>
+              <div className="price-footer">
+                <div className="price-amount-wrap">
+                  <span className="price-from">Starting from</span>
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
+                    <span className="price-amount" style={{ textDecoration: 'line-through', color: '#9ca3af', fontSize: '24px' }}>₹19,999</span>
+                    <span className="price-amount">₹14,999</span>
+                  </div>
+                  <span className="price-per"> / person</span>
+                  <span className="price-note">
+                    Varies with travel mode, group size & hotel category. Was <span style={{ textDecoration: 'line-through' }}>₹19,999</span>. Final quote on enquiry.
+                  </span>
+                </div>
+                <div className="price-actions">
+                  <a href="tel:+917208771688" className="btn-secondary" style={{ padding: "14px 24px" }}>Call Us</a>
+                  <a
+                    href={razorpayLink}
+                    className="btn-primary"
+                    style={{ padding: "14px 24px" }}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Book Now
+                  </a>
+                  <a
+                    href="/UTTAR_PRADESH_MARGIKA_YATRA.pdf"
+                    download="UTTAR_PRADESH_MARGIKA_YATRA.pdf"
+                    className="char-btn-outline"
+                    style={{ padding: "14px 24px" }}
+                  >
+                    Download Itinerary
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p style={{ textAlign: "center", fontSize: 13, color: "var(--smoke)", maxWidth: 640, margin: "28px auto 0" }}>
+            Travelling as a family group, sangha, or corporate group?{" "}
             <a
-              href={wa("I want to book the Dev Deepawali Varanasi package")}
-              className="btn-wa"
+              href={wa("I want a custom quote for the Dev Deepawali Varanasi tour package")}
+              style={{ color: "var(--saffron)", textDecoration: "none" }}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <svg viewBox="0 0 24 24">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-              </svg>
-              WhatsApp to Book
+              Message us for a personalised quote →
             </a>
-            <a href="/UTTAR_PRADESH_MARGIKA_YATRA.pdf" download="UTTAR_PRADESH_MARGIKA_YATRA.pdf" className="char-btn-outline">Download Itinerary</a>
-          </div>
-        </div>
-      </section>
-
-      <div className="char-stats-wrapper mb-20">
-        <CharStats />
-      </div>
-
-      {/* INTRO */}
-      <section>
-        <div className="intro-grid">
-          <div className="intro-visual reveal">
-            <img
-              className="intro-img-main"
-              src="/devmain2.jpg"
-              alt="Dev Deepawali Varanasi Ghats lit with lamps"
-              onError={(e) => { (e.target as HTMLImageElement).src = '/rambg.jpg' }}
-            />
-            <img
-              className="intro-img-float"
-              src="/devmain2.jpg"
-              alt="Ganga Aarti Varanasi"
-              onError={(e) => {
-                ; (e.target as HTMLElement).style.display = "none"
-              }}
-            />
-          </div>
-          <div className="reveal reveal-delay-2">
-            <div className="section-tag">Dev Deepawali 2026 · Kashi</div>
-            <h2 className="section-title">
-              Dev Deepawali<br /><em>— The Night the Gods Celebrate</em>
-            </h2>
-            <div className="gold-rule"></div>
-            <p className="section-body">
-              Dev Deepawali falls on Kartik Purnima — the full moon night fifteen days after Diwali. On this night,
-              legend holds that all the gods descend to bathe in the Ganga at Varanasi. Every one of Kashi's 84
-              ghats is lined with hundreds of thousands of earthen diyas, turning the river into a river of light.
-            </p>
-            <p className="section-body" style={{ marginTop: 16 }}>
-              This is not just a festival — it is a spiritual event that draws devotees and visitors from across
-              India and abroad. Securing the right vantage point, the correct darshan timings at Kashi Vishwanath,
-              and peaceful ghat access requires local knowledge and advance planning. That is what Margika Yatra
-              provides for travelers from Mumbai and Thane.
-            </p>
-            <div className="intro-quote">
-              <p>"We handle every arrangement. You carry only your devotion and your camera."</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* HIGHLIGHT MOMENTS */}
-      <section className="highlights-section">
-        <div className="highlights-header reveal">
-          <div className="section-tag" style={{ justifyContent: "center", margin: "0 auto 16px" }}>
-            What You Will Experience
-          </div>
-          <h2 className="section-title" style={{ textAlign: "center" }}>
-            Three Moments<br /><em>You Will Never Forget</em>
-          </h2>
-          <div className="gold-rule" style={{ margin: "24px auto" }}></div>
-          <p className="section-body" style={{ margin: "0 auto", textAlign: "center" }}>
-            Every element of this package is built around these rare, once-a-year spiritual experiences in Kashi.
           </p>
-        </div>
-        <div className="highlights-grid">
-          <div className="hl-card">
-            <img
-              src="/devmain2.jpg"
-              alt="Dev Deepawali lamp-lit ghats Varanasi"
-              onError={(e) => { (e.target as HTMLImageElement).src = '/rambg.jpg' }}
-            />
-            <div className="hl-overlay">
-              <div className="hl-num">01</div>
-              <div className="hl-name">Dev Deepawali Ghats</div>
-              <div className="hl-tag">Kartik Purnima Festival</div>
-              <div className="hl-detail">
-                All 84 ghats illuminated with lakhs of earthen diyas. The reflection of light on the Ganga on this
-                full moon night is an image that stays with you permanently.
-              </div>
-            </div>
-          </div>
-          <div className="hl-card">
-            <img
-              src="/dev1.png"
-              alt="Kashi Vishwanath Temple Mangala Aarti"
-              onError={(e) => { (e.target as HTMLImageElement).src = '/rambg.jpg' }}
-            />
-            <div className="hl-overlay">
-              <div className="hl-num">02</div>
-              <div className="hl-name">Mangala Aarti at 2 AM</div>
-              <div className="hl-tag">Kashi Vishwanath · Sparsh Darshan</div>
-              <div className="hl-detail">
-                The earliest and most sacred aarti of the day. Sparsh Darshan — touching the Jyotirlinga — is offered
-                only at this hour. A profoundly rare blessing.
-              </div>
-            </div>
-          </div>
-          <div className="hl-card">
-            <img
-              src="/dev2.png"
-              alt="Maha Ganga Aarti Dashashwamedh Ghat Varanasi"
-              onError={(e) => { (e.target as HTMLImageElement).src = '/rambg.jpg' }}
-            />
-            <div className="hl-overlay">
-              <div className="hl-num">03</div>
-              <div className="hl-name">Maha Ganga Aarti</div>
-              <div className="hl-tag">Dashashwamedh Ghat</div>
-              <div className="hl-detail">
-                The grand evening aarti at Dashashwamedh Ghat — priests in ceremonial attire, large brass lamps,
-                synchronized chanting. On Dev Deepawali, it is magnified tenfold.
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      {/* PACKAGE OPTIONS & PRICING */}
-      <section className="price-section">
-        <div className="price-header reveal">
-          <div className="section-tag" style={{ justifyContent: "center", margin: "0 auto 16px" }}>
-            Package & Pricing
-          </div>
-          <h2 className="section-title" style={{ textAlign: "center" }}>
-            Your Dev Deepawali Yatra,<br /><em>Fully Sorted</em>
-          </h2>
-          <div className="gold-rule"></div>
-          <p className="section-body" style={{ margin: "0 auto", textAlign: "center" }}>
-            One clear, all-inclusive Dev Deepawali Varanasi package — travel, comfortable stays near the ghats, AC transport, festival boat ride, guided darshans, and full coordination from Mumbai & Thane. Transparent pricing, no hidden costs.
-          </p>
-        </div>
-
-        <div className="price-card reveal">
-          <div className="price-card-media">
-            <img
-              src="/devmain2.jpg"
-              alt="Dev Deepawali Varanasi Ghats"
-              onError={(e) => { (e.target as HTMLImageElement).src = '/rambg.jpg' }}
-            />
-            <div className="price-badge">⭐ Most Loved</div>
-            <div className="price-media-cities">
-              <span>VARANASI</span><span>DEV DEEPAWALI</span><span>KASHI DARSHAN</span>
-            </div>
-          </div>
-          <div className="price-card-body">
-            <div>
-              <div className="pkg-duration">2 Nights / 3 Days · Varanasi · Departures from Mumbai / Thane</div>
-              <div className="pkg-name">Dev Deepawali Varanasi Package</div>
-              <p className="pkg-desc">
-                Experience Kashi's legendary festival of light. Witness Varanasi's 84 ghats illuminated with a million earthen diyas on Kartik Purnima. Covers Kashi Vishwanath Mangala Aarti at 2 AM, the grand Ganga Aarti from a premium boat vantage, Sarnath, and all local temples. Vegetarian meals, comfortable hotel stay, AC vehicle transfers, and a dedicated coordinator are all included.
+        {/* ITINERARY */}
+        <section id="itinerary">
+          <div className="itinerary-section">
+            <div className="itin-header reveal">
+              <div className="section-tag" style={{ justifyContent: "center" }}>Complete Itinerary</div>
+              <h2 className="section-title">
+                Dev Deepawali Varanasi Package<br /><em>— What Your Days Look Like</em>
+              </h2>
+              <div className="gold-rule"></div>
+              <p className="section-body" style={{ margin: "0 auto" }}>
+                A thoughtfully sequenced 2-night, 3-day plan crafted to capture the most spiritually significant moments
+                without a moment of confusion or rush.
               </p>
-              <div className="pkg-includes">
-                <span className="pkg-tag">Dev Deepawali Boat Ride</span>
-                <span className="pkg-tag">Mangala Aarti at 2 AM</span>
-                <span className="pkg-tag">Maha Ganga Aarti View</span>
-                <span className="pkg-tag">Laser & Fire Show</span>
-                <span className="pkg-tag">Comfortable Hotel Stay</span>
-                <span className="pkg-tag">Pure Veg Meals</span>
-                <span className="pkg-tag">AC local transport</span>
-                <span className="pkg-tag">Mumbai–Thane Support</span>
+            </div>
+
+            <div className="itin-layout reveal reveal-delay-1">
+              <div>
+                <div className="day-tabs">
+                  <button
+                    className={`day-tab ${activeDay === "day1" ? "active" : ""}`}
+                    onClick={() => setActiveDay("day1")}
+                  >
+                    Day 1
+                  </button>
+                  <button
+                    className={`day-tab ${activeDay === "day2" ? "active" : ""}`}
+                    onClick={() => setActiveDay("day2")}
+                  >
+                    Day 2
+                  </button>
+                  <button
+                    className={`day-tab ${activeDay === "day3" ? "active" : ""}`}
+                    onClick={() => setActiveDay("day3")}
+                  >
+                    Day 3
+                  </button>
+                </div>
+
+                {/* DAY 1 */}
+                {activeDay === "day1" && (
+                  <div className="day-panel active" id="day1">
+                    <div className="day-title">Arrival & Sacred Temples</div>
+                    <div className="day-subtitle">Day 1 · Kaal Bhairav, Meditation & Shayan Aarti</div>
+                    <ul className="activity-list">
+                      <li className="activity-item">
+                        <div className="activity-dot">🛕</div>
+                        <div className="activity-text">
+                          <strong>Kaal Bhairav Temple Darshan</strong> — The fearless protector of Kashi. Devotees
+                          believe that taking his blessing first ensures safe movement through the city.
+                        </div>
+                      </li>
+                      <li className="activity-item">
+                        <div className="activity-dot">🛕</div>
+                        <div className="activity-text">
+                          <strong>Batuk Bhairav Temple</strong> — The gentler, youthful form of Bhairav. A
+                          spiritually important temple often missed by tourists but held in great reverence by Kashi
+                          locals.
+                        </div>
+                      </li>
+                      <li className="activity-item">
+                        <div className="activity-dot">🛕</div>
+                        <div className="activity-text">
+                          <strong>Mahamrityunjay Temple</strong> — One of Varanasi's most powerful Shiva temples,
+                          where the Mahamrityunjay mantra is chanted continuously — a profoundly calming experience.
+                        </div>
+                      </li>
+                      <li className="activity-item">
+                        <div className="activity-dot">🍽️</div>
+                        <div className="activity-text">
+                          <strong>Lunch</strong> — Pure vegetarian meal at a vetted restaurant or your hotel.
+                        </div>
+                      </li>
+                      <li className="activity-item">
+                        <div className="activity-dot">🧘</div>
+                        <div className="activity-text">
+                          <strong>Swarved Meditation Centre</strong> — A serene, world-class meditation space in
+                          Varanasi. Time for inward stillness before the evening's grand celebrations.
+                        </div>
+                      </li>
+                      <li className="activity-item">
+                        <div className="activity-dot">☕</div>
+                        <div className="activity-text">
+                          <strong>High Tea & Snacks</strong> — Refreshments at the centre or nearby.
+                        </div>
+                      </li>
+                      <li className="activity-item">
+                        <div className="activity-dot">🔔</div>
+                        <div className="activity-text">
+                          <strong>Shayan Aarti at Kashi Vishwanath</strong> — The final aarti of the day, performed
+                          as the deity is ceremonially prepared for rest. Deeply devotional and intimate.
+                        </div>
+                      </li>
+                      <li className="activity-item">
+                        <div className="activity-dot">🍽️</div>
+                        <div className="activity-text">
+                          <strong>Dinner & Rest</strong> — Early sleep is essential — tomorrow begins at 2 AM sharp.
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                )}
+
+                {/* DAY 2 */}
+                {activeDay === "day2" && (
+                  <div className="day-panel active" id="day2">
+                    <div className="day-title">The Sacred Pre-Dawn & Dev Deepawali</div>
+                    <div className="day-subtitle">Day 2 · Mangala Aarti, Ghats & the Festival Night</div>
+                    <ul className="activity-list">
+                      <li className="activity-item">
+                        <div className="activity-dot">🌙</div>
+                        <div className="activity-text">
+                          <strong>2:00 AM — Mangala Aarti, Kashi Vishwanath (Sparsh Darshan)</strong> — The holiest
+                          hour at Kashi Vishwanath. Sparsh Darshan means you physically touch the Jyotirlinga — a
+                          blessing available only at this aarti. Deeply rare and emotionally overwhelming for most
+                          devotees.
+                        </div>
+                      </li>
+                      <li className="activity-item">
+                        <div className="activity-dot">🛕</div>
+                        <div className="activity-text">
+                          <strong>Annapurna Temple Darshan</strong> — Located adjacent to Kashi Vishwanath, Goddess
+                          Annapurna — the goddess of food and nourishment — ensures the spiritual circuit of Kashi is
+                          complete.
+                        </div>
+                      </li>
+                      <li className="activity-item">
+                        <div className="activity-dot">☕</div>
+                        <div className="activity-text">
+                          <strong>Laxmi Chai & Toast</strong> — The famous early-morning chai ritual of Varanasi.
+                          Warm, sweet, and utterly grounding after the pre-dawn darshan.
+                        </div>
+                      </li>
+                      <li className="activity-item">
+                        <div className="activity-dot">🍽️</div>
+                        <div className="activity-text">
+                          <strong>Brunch</strong> — Rest and a proper vegetarian meal to restore energy before the
+                          evening.
+                        </div>
+                      </li>
+                      <li className="activity-item">
+                        <div className="activity-dot">🏨</div>
+                        <div className="activity-text">
+                          <strong>Hotel Rest (Ready for the Event)</strong> — Time at the hotel to freshen up and
+                          prepare for the festival evening. Your coordinator will brief you on ghat access and timing.
+                        </div>
+                      </li>
+                      <li className="activity-item">
+                        <div className="activity-dot">🚣</div>
+                        <div className="activity-text">
+                          <strong>Exploring Banaras Ghats</strong> — A guided walk or boat ride along the 84 ghats
+                          — watching them transform as diyas are set out row by row in the afternoon light.
+                        </div>
+                      </li>
+                      <li className="activity-item">
+                        <div className="activity-dot">🔥</div>
+                        <div className="activity-text">
+                          <strong>Maha Ganga Aarti</strong> — The grand Dashashwamedh Ghat aarti, magnified on Dev
+                          Deepawali. Best experienced from the ghat itself or from a boat on the river.
+                        </div>
+                      </li>
+                      <li className="activity-item">
+                        <div className="activity-dot">✨</div>
+                        <div className="activity-text">
+                          <strong>Laser Show</strong> — A modern light installation that complements the traditional
+                          lamp festival, telling the story of Kashi through light and sound.
+                        </div>
+                      </li>
+                      <li className="activity-item">
+                        <div className="activity-dot">🎇</div>
+                        <div className="activity-text">
+                          <strong>Fire Show</strong> — Performers at the ghats present fire rituals in the backdrop
+                          of a million diyas. The energy of this night is unlike anything else.
+                        </div>
+                      </li>
+                      <li className="activity-item">
+                        <div className="activity-dot">🍽️</div>
+                        <div className="activity-text">
+                          <strong>Dinner & Rest</strong> — Dinner after the celebrations. Time to absorb the magnitude
+                          of what you have just witnessed.
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                )}
+
+                {/* DAY 3 */}
+                {activeDay === "day3" && (
+                  <div className="day-panel active" id="day3">
+                    <div className="day-title">Departure Day</div>
+                    <div className="day-subtitle">Day 3 · Final Darshan & Return Journey</div>
+                    <ul className="activity-list">
+                      <li className="activity-item">
+                        <div className="activity-dot">🌅</div>
+                        <div className="activity-text">
+                          <strong>Morning at the Ghats</strong> — An optional sunrise boat ride on the Ganga —
+                          Varanasi mornings are unlike any other in the world. The mist on the river after the
+                          previous night's million diyas is something to see.
+                        </div>
+                      </li>
+                      <li className="activity-item">
+                        <div className="activity-dot">🍽️</div>
+                        <div className="activity-text">
+                          <strong>Breakfast & Check-out</strong> — After a relaxed breakfast, check out of the hotel
+                          at the appropriate time.
+                        </div>
+                      </li>
+                      <li className="activity-item">
+                        <div className="activity-dot">🚉</div>
+                        <div className="activity-text">
+                          <strong>Transfer to Varanasi Airport / Railway Station</strong> — Your coordinator arranges
+                          timely transfer to your departure point for your return to Mumbai or Thane.
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                )}
+
+                <div className="itin-ctas">
+                  <a href="tel:+917208771688" className="btn-primary">
+                    📞 Call Now
+                  </a>
+                  <a
+                    href={wa("I want to book Dev Deepawali Varanasi package")}
+                    className="btn-wa"
+                    style={{ padding: "14px 24px" }}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Book Now
+                  </a>
+                  {/* <a href="/Gujarat.pdf" download="Gujarat.pdf" className="char-btn-outline">Download Itinerary</a> */}
+                </div>
+              </div>
+
+              <div className="itin-img-stack">
+                <Image unoptimized={true} className="itin-img-main"
+                  src="/DevM.jpeg"
+                  alt="Dev Deepawali Varanasi Ghats 2026"
+                  width={800} height={600} quality={60} sizes="100vw" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
             </div>
-            <div className="price-footer">
-              <div className="price-amount-wrap">
-                <span className="price-from">Starting from</span>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
-                  <span className="price-amount" style={{ textDecoration: 'line-through', color: '#9ca3af', fontSize: '24px' }}>₹19,999</span>
-                  <span className="price-amount">₹14,999</span>
-                </div>
-                <span className="price-per"> / person</span>
-                <span className="price-note">
-                  Varies with travel mode, group size & hotel category. Was <span style={{ textDecoration: 'line-through' }}>₹19,999</span>. Final quote on enquiry.
-                </span>
+          </div>
+        </section>
+
+        {/* INCLUSIONS */}
+        <section style={{ paddingTop: 0 }}>
+          <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+            <div className="reveal" style={{ textAlign: "center", marginBottom: 48 }}>
+              <div className="section-tag" style={{ justifyContent: "center", margin: "0 auto 12px" }}>
+                What's Included
               </div>
-              <div className="price-actions">
-                <a href="tel:+917208771688" className="btn-secondary" style={{ padding: "14px 24px" }}>Call Us</a>
-                <a
-                  href={razorpayLink}
-                  className="btn-primary"
-                  style={{ padding: "14px 24px" }}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Book Now 
-                </a>
-                <a
-                  href="/UTTAR_PRADESH_MARGIKA_YATRA.pdf"
-                  download="UTTAR_PRADESH_MARGIKA_YATRA.pdf"
-                  className="char-btn-outline"
-                  style={{ padding: "14px 24px" }}
-                >
-                  Download Itinerary
-                </a>
+              <h2 className="section-title" style={{ textAlign: "center" }}>
+                Everything <em>Taken Care Of</em>
+              </h2>
+            </div>
+            <div className="inclusions-grid">
+              <div className="inc-card reveal">
+                <div className="inc-icon">🏨</div>
+                <div className="inc-title">Comfortable Hotel Stay</div>
+                <div className="inc-desc">
+                  2 nights at a vetted hotel in Varanasi — clean rooms, hot water, and a location that ensures you reach
+                  the ghats without long commutes on festival night.
+                </div>
+              </div>
+              <div className="inc-card reveal reveal-delay-1">
+                <div className="inc-icon">🚌</div>
+                <div className="inc-title">All Local Transport</div>
+                <div className="inc-desc">
+                  AC vehicle for all temple transfers, ghat visits, and airport/station drop. No auto-rickshaw haggling,
+                  no last-minute arrangements on your own during a crowded festival.
+                </div>
+              </div>
+              <div className="inc-card reveal reveal-delay-2">
+                <div className="inc-icon">🛕</div>
+                <div className="inc-title">All Darshan Assistance</div>
+                <div className="inc-desc">
+                  Kashi Vishwanath Mangala Aarti at 2 AM (Sparsh Darshan), Annapurna Temple, Kaal Bhairav, Batuk Bhairav,
+                  and Mahamrityunjay Temple — our coordinator handles all queuing and access.
+                </div>
+              </div>
+              <div className="inc-card reveal reveal-delay-3">
+                <div className="inc-icon">🪔</div>
+                <div className="inc-title">Dev Deepawali Event Access</div>
+                <div className="inc-desc">
+                  Prime vantage point for Maha Ganga Aarti, Laser Show, and Fire Show. Our team secures positioning at
+                  the ghats before the crowds arrive so you get the full view.
+                </div>
+              </div>
+              <div className="inc-card reveal">
+                <div className="inc-icon">🍽️</div>
+                <div className="inc-title">Vegetarian Meals</div>
+                <div className="inc-desc">
+                  Pure sattvic vegetarian food throughout — breakfast, brunch, lunch, high tea, and dinner as per
+                  itinerary. No compromise on quality or purity during a pilgrimage.
+                </div>
+              </div>
+              <div className="inc-card reveal reveal-delay-1">
+                <div className="inc-icon">👤</div>
+                <div className="inc-title">Dedicated Tour Coordinator</div>
+                <div className="inc-desc">
+                  A Margika Yatra representative travels with your group, handling all logistics, timings, and
+                  on-ground needs. You focus on the experience — we handle the rest.
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <p style={{ textAlign: "center", fontSize: 13, color: "var(--smoke)", maxWidth: 640, margin: "28px auto 0" }}>
-          Travelling as a family group, sangha, or corporate group?{" "}
-          <a
-            href={wa("I want a custom quote for the Dev Deepawali Varanasi tour package")}
-            style={{ color: "var(--saffron)", textDecoration: "none" }}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Message us for a personalised quote →
-          </a>
-        </p>
-      </section>
+        </section>
 
-      {/* ITINERARY */}
-      <section id="itinerary">
-        <div className="itinerary-section">
-          <div className="itin-header reveal">
-            <div className="section-tag" style={{ justifyContent: "center" }}>Complete Itinerary</div>
-            <h2 className="section-title">
-              Dev Deepawali Varanasi Package<br /><em>— What Your Days Look Like</em>
-            </h2>
-            <div className="gold-rule"></div>
-            <p className="section-body" style={{ margin: "0 auto" }}>
-              A thoughtfully sequenced 2-night, 3-day plan crafted to capture the most spiritually significant moments
-              without a moment of confusion or rush.
-            </p>
-          </div>
-
-          <div className="itin-layout reveal reveal-delay-1">
-            <div>
-              <div className="day-tabs">
-                <button
-                  className={`day-tab ${activeDay === "day1" ? "active" : ""}`}
-                  onClick={() => setActiveDay("day1")}
-                >
-                  Day 1
-                </button>
-                <button
-                  className={`day-tab ${activeDay === "day2" ? "active" : ""}`}
-                  onClick={() => setActiveDay("day2")}
-                >
-                  Day 2
-                </button>
-                <button
-                  className={`day-tab ${activeDay === "day3" ? "active" : ""}`}
-                  onClick={() => setActiveDay("day3")}
-                >
-                  Day 3
-                </button>
+        {/* WHY MARGIKA */}
+        <section className="why-section">
+          <div className="why-grid">
+            <div className="reveal">
+              <div className="section-tag" style={{ color: "#ffffff", "--saffron": "#ffffff" } as React.CSSProperties}>
+                Why Choose Us
               </div>
-
-              {/* DAY 1 */}
-              {activeDay === "day1" && (
-                <div className="day-panel active" id="day1">
-                  <div className="day-title">Arrival & Sacred Temples</div>
-                  <div className="day-subtitle">Day 1 · Kaal Bhairav, Meditation & Shayan Aarti</div>
-                  <ul className="activity-list">
-                    <li className="activity-item">
-                      <div className="activity-dot">🛕</div>
-                      <div className="activity-text">
-                        <strong>Kaal Bhairav Temple Darshan</strong> — The fearless protector of Kashi. Devotees
-                        believe that taking his blessing first ensures safe movement through the city.
-                      </div>
-                    </li>
-                    <li className="activity-item">
-                      <div className="activity-dot">🛕</div>
-                      <div className="activity-text">
-                        <strong>Batuk Bhairav Temple</strong> — The gentler, youthful form of Bhairav. A
-                        spiritually important temple often missed by tourists but held in great reverence by Kashi
-                        locals.
-                      </div>
-                    </li>
-                    <li className="activity-item">
-                      <div className="activity-dot">🛕</div>
-                      <div className="activity-text">
-                        <strong>Mahamrityunjay Temple</strong> — One of Varanasi's most powerful Shiva temples,
-                        where the Mahamrityunjay mantra is chanted continuously — a profoundly calming experience.
-                      </div>
-                    </li>
-                    <li className="activity-item">
-                      <div className="activity-dot">🍽️</div>
-                      <div className="activity-text">
-                        <strong>Lunch</strong> — Pure vegetarian meal at a vetted restaurant or your hotel.
-                      </div>
-                    </li>
-                    <li className="activity-item">
-                      <div className="activity-dot">🧘</div>
-                      <div className="activity-text">
-                        <strong>Swarved Meditation Centre</strong> — A serene, world-class meditation space in
-                        Varanasi. Time for inward stillness before the evening's grand celebrations.
-                      </div>
-                    </li>
-                    <li className="activity-item">
-                      <div className="activity-dot">☕</div>
-                      <div className="activity-text">
-                        <strong>High Tea & Snacks</strong> — Refreshments at the centre or nearby.
-                      </div>
-                    </li>
-                    <li className="activity-item">
-                      <div className="activity-dot">🔔</div>
-                      <div className="activity-text">
-                        <strong>Shayan Aarti at Kashi Vishwanath</strong> — The final aarti of the day, performed
-                        as the deity is ceremonially prepared for rest. Deeply devotional and intimate.
-                      </div>
-                    </li>
-                    <li className="activity-item">
-                      <div className="activity-dot">🍽️</div>
-                      <div className="activity-text">
-                        <strong>Dinner & Rest</strong> — Early sleep is essential — tomorrow begins at 2 AM sharp.
-                      </div>
-                    </li>
-                  </ul>
+              <h2 className="section-title">
+                Why Mumbai & Thane<br /><em style={{ color: "#ffffff" }}>Yatris Choose Margika</em>
+              </h2>
+              <div className="gold-rule" style={{ background: "#ffffff" }}></div>
+              <p className="section-body" style={{ fontWeight: 700, color: "#ffffff" }}>
+                We are based in Brahmand, Thane. When you call us, you speak to someone from your community who
+                understands your expectations, your schedule, and the kind of service you deserve. That local trust is
+                something no large national portal can offer.
+              </p>
+              <ul className="features-list">
+                <li className="feature-item">
+                  <div className="feature-icon">🙏</div>
+                  <div className="feature-text">
+                    <h4>Spiritual Tourism Specialists</h4>
+                    <p style={{ color: "#ffffff" }}>
+                      Not a generic tour operator. We plan exclusively for pilgrimage and spiritual travel — temples,
+                      aartis, and festival timings are our expertise.
+                    </p>
+                  </div>
+                </li>
+                <li className="feature-item">
+                  <div className="feature-icon">📍</div>
+                  <div className="feature-text">
+                    <h4>Local Office in Thane</h4>
+                    <p style={{ color: "#ffffff" }}>
+                      Walk in to our Brahmand, Thane office before booking. Meet us in person, ask every question. That
+                      transparency builds the trust that online operators can't.
+                    </p>
+                  </div>
+                </li>
+                <li className="feature-item">
+                  <div className="feature-icon">👨‍👩‍👧</div>
+                  <div className="feature-text">
+                    <h4>Family & Senior-Friendly</h4>
+                    <p style={{ color: "#ffffff" }}>
+                      Dev Deepawali includes a 2 AM darshan — we plan every timing, transport, and support around the
+                      comfort of all age groups in your family.
+                    </p>
+                  </div>
+                </li>
+                <li className="feature-item">
+                  <div className="feature-icon">💰</div>
+                  <div className="feature-text">
+                    <h4>Transparent Pricing</h4>
+                    <p style={{ color: "#ffffff" }}>
+                      The price you see is the price you pay. No hidden extras, no surprise charges at the destination.
+                      What we quote is complete.
+                    </p>
+                  </div>
+                </li>
+                <li className="feature-item">
+                  <div className="feature-icon">📞</div>
+                  <div className="feature-text">
+                    <h4>24×7 Support on Tour</h4>
+                    <p style={{ color: "#ffffff" }}>
+                      Our coordinator is with your group throughout. And our Thane office remains reachable on WhatsApp
+                      for any support needed by family back home.
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div className="reveal reveal-delay-2">
+              <div className="why-visual">
+                <Image unoptimized={true} src="https://www.margikayatra.com/2.jpg"
+                  alt="Margika Yatra group Varanasi"
+                  width={800} height={600} quality={60} sizes="100vw" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <div className="why-float-card">
+                  <p>"Every year our yatris tell us Dev Deepawali was the most moving night of their lives."</p>
+                  <span>— Margika Yatra Team</span>
                 </div>
-              )}
-
-              {/* DAY 2 */}
-              {activeDay === "day2" && (
-                <div className="day-panel active" id="day2">
-                  <div className="day-title">The Sacred Pre-Dawn & Dev Deepawali</div>
-                  <div className="day-subtitle">Day 2 · Mangala Aarti, Ghats & the Festival Night</div>
-                  <ul className="activity-list">
-                    <li className="activity-item">
-                      <div className="activity-dot">🌙</div>
-                      <div className="activity-text">
-                        <strong>2:00 AM — Mangala Aarti, Kashi Vishwanath (Sparsh Darshan)</strong> — The holiest
-                        hour at Kashi Vishwanath. Sparsh Darshan means you physically touch the Jyotirlinga — a
-                        blessing available only at this aarti. Deeply rare and emotionally overwhelming for most
-                        devotees.
-                      </div>
-                    </li>
-                    <li className="activity-item">
-                      <div className="activity-dot">🛕</div>
-                      <div className="activity-text">
-                        <strong>Annapurna Temple Darshan</strong> — Located adjacent to Kashi Vishwanath, Goddess
-                        Annapurna — the goddess of food and nourishment — ensures the spiritual circuit of Kashi is
-                        complete.
-                      </div>
-                    </li>
-                    <li className="activity-item">
-                      <div className="activity-dot">☕</div>
-                      <div className="activity-text">
-                        <strong>Laxmi Chai & Toast</strong> — The famous early-morning chai ritual of Varanasi.
-                        Warm, sweet, and utterly grounding after the pre-dawn darshan.
-                      </div>
-                    </li>
-                    <li className="activity-item">
-                      <div className="activity-dot">🍽️</div>
-                      <div className="activity-text">
-                        <strong>Brunch</strong> — Rest and a proper vegetarian meal to restore energy before the
-                        evening.
-                      </div>
-                    </li>
-                    <li className="activity-item">
-                      <div className="activity-dot">🏨</div>
-                      <div className="activity-text">
-                        <strong>Hotel Rest (Ready for the Event)</strong> — Time at the hotel to freshen up and
-                        prepare for the festival evening. Your coordinator will brief you on ghat access and timing.
-                      </div>
-                    </li>
-                    <li className="activity-item">
-                      <div className="activity-dot">🚣</div>
-                      <div className="activity-text">
-                        <strong>Exploring Banaras Ghats</strong> — A guided walk or boat ride along the 84 ghats
-                        — watching them transform as diyas are set out row by row in the afternoon light.
-                      </div>
-                    </li>
-                    <li className="activity-item">
-                      <div className="activity-dot">🔥</div>
-                      <div className="activity-text">
-                        <strong>Maha Ganga Aarti</strong> — The grand Dashashwamedh Ghat aarti, magnified on Dev
-                        Deepawali. Best experienced from the ghat itself or from a boat on the river.
-                      </div>
-                    </li>
-                    <li className="activity-item">
-                      <div className="activity-dot">✨</div>
-                      <div className="activity-text">
-                        <strong>Laser Show</strong> — A modern light installation that complements the traditional
-                        lamp festival, telling the story of Kashi through light and sound.
-                      </div>
-                    </li>
-                    <li className="activity-item">
-                      <div className="activity-dot">🎇</div>
-                      <div className="activity-text">
-                        <strong>Fire Show</strong> — Performers at the ghats present fire rituals in the backdrop
-                        of a million diyas. The energy of this night is unlike anything else.
-                      </div>
-                    </li>
-                    <li className="activity-item">
-                      <div className="activity-dot">🍽️</div>
-                      <div className="activity-text">
-                        <strong>Dinner & Rest</strong> — Dinner after the celebrations. Time to absorb the magnitude
-                        of what you have just witnessed.
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              )}
-
-              {/* DAY 3 */}
-              {activeDay === "day3" && (
-                <div className="day-panel active" id="day3">
-                  <div className="day-title">Departure Day</div>
-                  <div className="day-subtitle">Day 3 · Final Darshan & Return Journey</div>
-                  <ul className="activity-list">
-                    <li className="activity-item">
-                      <div className="activity-dot">🌅</div>
-                      <div className="activity-text">
-                        <strong>Morning at the Ghats</strong> — An optional sunrise boat ride on the Ganga —
-                        Varanasi mornings are unlike any other in the world. The mist on the river after the
-                        previous night's million diyas is something to see.
-                      </div>
-                    </li>
-                    <li className="activity-item">
-                      <div className="activity-dot">🍽️</div>
-                      <div className="activity-text">
-                        <strong>Breakfast & Check-out</strong> — After a relaxed breakfast, check out of the hotel
-                        at the appropriate time.
-                      </div>
-                    </li>
-                    <li className="activity-item">
-                      <div className="activity-dot">🚉</div>
-                      <div className="activity-text">
-                        <strong>Transfer to Varanasi Airport / Railway Station</strong> — Your coordinator arranges
-                        timely transfer to your departure point for your return to Mumbai or Thane.
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              )}
-
-              <div className="itin-ctas">
-                <a href="tel:+917208771688" className="btn-primary">
-                  📞 Call Now
-                </a>
-                <a
-                  href={wa("I want to book Dev Deepawali Varanasi package")}
-                  className="btn-wa"
-                  style={{ padding: "14px 24px" }}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Book Now
-                </a>
-                {/* <a href="/Gujarat.pdf" download="Gujarat.pdf" className="char-btn-outline">Download Itinerary</a> */}
               </div>
             </div>
-
-            <div className="itin-img-stack">
-              <img
-                className="itin-img-main"
-                src="/DevM.jpeg"
-                alt="Dev Deepawali Varanasi Ghats 2026"
-                onError={(e) => { (e.target as HTMLImageElement).src = '/rambg.jpg' }}
-              />
-            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* INCLUSIONS */}
-      <section style={{ paddingTop: 0 }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div className="reveal" style={{ textAlign: "center", marginBottom: 48 }}>
-            <div className="section-tag" style={{ justifyContent: "center", margin: "0 auto 12px" }}>
-              What's Included
+        {/* HOW IT WORKS */}
+        <section className="steps-section">
+          <div className="steps-header reveal">
+            <div className="section-tag" style={{ justifyContent: "center", margin: "0 auto 16px" }}>
+              Simple & Transparent
             </div>
             <h2 className="section-title" style={{ textAlign: "center" }}>
-              Everything <em>Taken Care Of</em>
+              How Your <em>Booking Begins</em>
             </h2>
+            <div className="gold-rule" style={{ margin: "20px auto" }}></div>
           </div>
-          <div className="inclusions-grid">
-            <div className="inc-card reveal">
-              <div className="inc-icon">🏨</div>
-              <div className="inc-title">Comfortable Hotel Stay</div>
-              <div className="inc-desc">
-                2 nights at a vetted hotel in Varanasi — clean rooms, hot water, and a location that ensures you reach
-                the ghats without long commutes on festival night.
-              </div>
+          <div className="steps-grid">
+            <div className="step-item reveal">
+              <div className="step-dot">📞</div>
+              <div className="step-title">Inquiry</div>
+              <div className="step-desc">Call or WhatsApp us with your preferred dates and group size</div>
             </div>
-            <div className="inc-card reveal reveal-delay-1">
-              <div className="inc-icon">🚌</div>
-              <div className="inc-title">All Local Transport</div>
-              <div className="inc-desc">
-                AC vehicle for all temple transfers, ghat visits, and airport/station drop. No auto-rickshaw haggling,
-                no last-minute arrangements on your own during a crowded festival.
-              </div>
+            <div className="step-item reveal reveal-delay-1">
+              <div className="step-dot">💬</div>
+              <div className="step-title">Consultation</div>
+              <div className="step-desc">We understand your group size, pacing, and senior citizen needs</div>
             </div>
-            <div className="inc-card reveal reveal-delay-2">
-              <div className="inc-icon">🛕</div>
-              <div className="inc-title">All Darshan Assistance</div>
-              <div className="inc-desc">
-                Kashi Vishwanath Mangala Aarti at 2 AM (Sparsh Darshan), Annapurna Temple, Kaal Bhairav, Batuk Bhairav,
-                and Mahamrityunjay Temple — our coordinator handles all queuing and access.
-              </div>
+            <div className="step-item reveal reveal-delay-2">
+              <div className="step-dot">📋</div>
+              <div className="step-title">proposal</div>
+              <div className="step-desc">We share a clear itinerary with an honest per-person quote</div>
             </div>
-            <div className="inc-card reveal reveal-delay-3">
-              <div className="inc-icon">🪔</div>
-              <div className="inc-title">Dev Deepawali Event Access</div>
-              <div className="inc-desc">
-                Prime vantage point for Maha Ganga Aarti, Laser Show, and Fire Show. Our team secures positioning at
-                the ghats before the crowds arrive so you get the full view.
-              </div>
+            <div className="step-item reveal reveal-delay-3">
+              <div className="step-dot">✅</div>
+              <div className="step-title">Confirmation</div>
+              <div className="step-desc">Secure your booking with a simple advance payment</div>
             </div>
-            <div className="inc-card reveal">
-              <div className="inc-icon">🍽️</div>
-              <div className="inc-title">Vegetarian Meals</div>
-              <div className="inc-desc">
-                Pure sattvic vegetarian food throughout — breakfast, brunch, lunch, high tea, and dinner as per
-                itinerary. No compromise on quality or purity during a pilgrimage.
-              </div>
+            <div className="step-item reveal reveal-delay-4">
+              <div className="step-dot">🛕</div>
+              <div className="step-title">On-Tour Support</div>
+              <div className="step-desc">Dedicated coordinator handles all logistics during the yatra</div>
             </div>
-            <div className="inc-card reveal reveal-delay-1">
-              <div className="inc-icon">👤</div>
-              <div className="inc-title">Dedicated Tour Coordinator</div>
-              <div className="inc-desc">
-                A Margika Yatra representative travels with your group, handling all logistics, timings, and
-                on-ground needs. You focus on the experience — we handle the rest.
-              </div>
+            <div className="step-item reveal">
+              <div className="step-dot">🙌</div>
+              <div className="step-title">Safe Return</div>
+              <div className="step-desc">We assist with transfers and follow up for your feedback</div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* WHY MARGIKA */}
-      <section className="why-section">
-        <div className="why-grid">
-          <div className="reveal">
-            <div className="section-tag" style={{ color: "#ffffff", "--saffron": "#ffffff" } as React.CSSProperties}>
-              Why Choose Us
+        {/* GALLERY */}
+        <section>
+          <div className="itin-header reveal" style={{ textAlign: "center", margin: "140px auto 40px" }}>
+            <div className="section-tag" style={{ justifyContent: "center" }}>
+              Memories of Kashi
             </div>
             <h2 className="section-title">
-              Why Mumbai & Thane<br /><em style={{ color: "#ffffff" }}>Yatris Choose Margika</em>
+              Yatris Who <em>Travelled Before You</em>
             </h2>
-            <div className="gold-rule" style={{ background: "#ffffff" }}></div>
-            <p className="section-body" style={{ fontWeight: 700, color: "#ffffff" }}>
-              We are based in Brahmand, Thane. When you call us, you speak to someone from your community who
-              understands your expectations, your schedule, and the kind of service you deserve. That local trust is
-              something no large national portal can offer.
-            </p>
-            <ul className="features-list">
-              <li className="feature-item">
-                <div className="feature-icon">🙏</div>
-                <div className="feature-text">
-                  <h4>Spiritual Tourism Specialists</h4>
-                  <p style={{ color: "#ffffff" }}>
-                    Not a generic tour operator. We plan exclusively for pilgrimage and spiritual travel — temples,
-                    aartis, and festival timings are our expertise.
-                  </p>
-                </div>
-              </li>
-              <li className="feature-item">
-                <div className="feature-icon">📍</div>
-                <div className="feature-text">
-                  <h4>Local Office in Thane</h4>
-                  <p style={{ color: "#ffffff" }}>
-                    Walk in to our Brahmand, Thane office before booking. Meet us in person, ask every question. That
-                    transparency builds the trust that online operators can't.
-                  </p>
-                </div>
-              </li>
-              <li className="feature-item">
-                <div className="feature-icon">👨‍👩‍👧</div>
-                <div className="feature-text">
-                  <h4>Family & Senior-Friendly</h4>
-                  <p style={{ color: "#ffffff" }}>
-                    Dev Deepawali includes a 2 AM darshan — we plan every timing, transport, and support around the
-                    comfort of all age groups in your family.
-                  </p>
-                </div>
-              </li>
-              <li className="feature-item">
-                <div className="feature-icon">💰</div>
-                <div className="feature-text">
-                  <h4>Transparent Pricing</h4>
-                  <p style={{ color: "#ffffff" }}>
-                    The price you see is the price you pay. No hidden extras, no surprise charges at the destination.
-                    What we quote is complete.
-                  </p>
-                </div>
-              </li>
-              <li className="feature-item">
-                <div className="feature-icon">📞</div>
-                <div className="feature-text">
-                  <h4>24×7 Support on Tour</h4>
-                  <p style={{ color: "#ffffff" }}>
-                    Our coordinator is with your group throughout. And our Thane office remains reachable on WhatsApp
-                    for any support needed by family back home.
-                  </p>
-                </div>
-              </li>
-            </ul>
+            <div className="gold-rule" style={{ margin: "20px auto" }}></div>
           </div>
-          <div className="reveal reveal-delay-2">
-            <div className="why-visual">
-              <img
-                src="https://www.margikayatra.com/2.jpg"
-                alt="Margika Yatra group Varanasi"
-                onError={(e) => {
-                  ; (e.target as HTMLImageElement).src =
-                    "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Ganga_Aarti_Varanasi.jpg/640px-Ganga_Aarti_Varanasi.jpg"
-                }}
-              />
-              <div className="why-float-card">
-                <p>"Every year our yatris tell us Dev Deepawali was the most moving night of their lives."</p>
-                <span>— Margika Yatra Team</span>
+          <div className="gallery-strip reveal" style={{ marginBottom: "60px" }}>
+            <div className="gallery-item">
+              <Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/1.jpg" alt="Margika Yatra pilgrims" />
+            </div>
+            <div className="gallery-item">
+              <Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/2.jpg" alt="Margika Yatra pilgrims" />
+            </div>
+            <div className="gallery-item">
+              <Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/Home1.jpeg" alt="Margika Yatra pilgrims" />
+            </div>
+            <div className="gallery-item">
+              <Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/Home2.jpeg" alt="Margika Yatra pilgrims" />
+            </div>
+            <div className="gallery-item">
+              <Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/5.jpg" alt="Margika Yatra pilgrims" />
+            </div>
+            <div className="gallery-item">
+              <Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/6.jpg" alt="Margika Yatra pilgrims" />
+            </div>
+            <div className="gallery-item"><Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/Home3.jpeg" alt="Margika Yatra pilgrims" /></div>
+            <div className="gallery-item"><Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/Home4.jpeg" alt="Margika Yatra pilgrims" /></div>
+            <div className="gallery-item"><Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/Home5.jpeg" alt="Margika Yatra pilgrims" /></div>
+            <div className="gallery-item"><Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/Home6.jpg" alt="Margika Yatra pilgrims" /></div>
+            <div className="gallery-item"><Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/Home7.jpg" alt="Margika Yatra pilgrims" /></div>
+          </div>
+        </section>
+
+        <GoogleReviews />
+
+        {/* OTHER PACKAGES */}
+        <section>
+          <div className="itin-header reveal" style={{ textAlign: "center", margin: "0 auto 40px" }}>
+            <div className="section-tag" style={{ justifyContent: "center", marginTop: "100px" }}>
+              Other Pilgrimages
+            </div>
+            <h2 className="section-title">
+              Other Sacred <em>Packages</em>
+            </h2>
+            <div className="gold-rule" style={{ margin: "20px auto" }}></div>
+          </div>
+          <div className="other-pkgs reveal">
+            <div className="opkg-card">
+              <Image unoptimized={true} quality={60} width={800} height={600} className="opkg-img" src="/up.jpg" alt="Varanasi Ayodhya Prayagraj" />
+              <div className="opkg-body">
+                <h3 className="opkg-name">Varanasi-Ayodhya-Prayagraj</h3>
+                <p className="opkg-desc">
+                  Cover the ultimate Uttar Pradesh tri-city circuit. Visit Ram Mandir, Triveni Sangam, and Kashi Vishwanath.
+                </p>
+                <Link prefetch={true} href="/packages/varanasi" className="opkg-link">
+                  View Package →
+                </Link>
+              </div>
+            </div>
+            <div className="opkg-card">
+              <Image unoptimized={true} quality={60} width={800} height={600} className="opkg-img" src="/rameshwaram.jpg" alt="Rameshwaram" />
+              <div className="opkg-body">
+                <h3 className="opkg-name">Rameshwaram & Madurai Meenakshi</h3>
+                <p className="opkg-desc">
+                  Embark on a sacred Southern pilgrimage to the holy shores of Rameshwaram and the grand halls of Madurai.
+                </p>
+                <Link prefetch={true} href="/packages/rameshwaram" className="opkg-link">
+                  View Package →
+                </Link>
+              </div>
+            </div>
+            <div className="opkg-card">
+              <Image unoptimized={true} quality={60} width={800} height={600} className="opkg-img" src="/puri.png" alt="Jagannath Puri" />
+              <div className="opkg-body">
+                <h3 className="opkg-name">Jagannath Puri & Konark</h3>
+                <p className="opkg-desc">
+                  Visit the sacred land of Lord Jagannath, Konark Sun Temple, and the holy temples of Bhubaneswar.
+                </p>
+                <Link prefetch={true} href="/packages/jagannath-puri" className="opkg-link">
+                  View Package →
+                </Link>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* HOW IT WORKS */}
-      <section className="steps-section">
-        <div className="steps-header reveal">
-          <div className="section-tag" style={{ justifyContent: "center", margin: "0 auto 16px" }}>
-            Simple & Transparent
-          </div>
-          <h2 className="section-title" style={{ textAlign: "center" }}>
-            How Your <em>Booking Begins</em>
-          </h2>
-          <div className="gold-rule" style={{ margin: "20px auto" }}></div>
-        </div>
-        <div className="steps-grid">
-          <div className="step-item reveal">
-            <div className="step-dot">📞</div>
-            <div className="step-title">Inquiry</div>
-            <div className="step-desc">Call or WhatsApp us with your preferred dates and group size</div>
-          </div>
-          <div className="step-item reveal reveal-delay-1">
-            <div className="step-dot">💬</div>
-            <div className="step-title">Consultation</div>
-            <div className="step-desc">We understand your group size, pacing, and senior citizen needs</div>
-          </div>
-          <div className="step-item reveal reveal-delay-2">
-            <div className="step-dot">📋</div>
-            <div className="step-title">proposal</div>
-            <div className="step-desc">We share a clear itinerary with an honest per-person quote</div>
-          </div>
-          <div className="step-item reveal reveal-delay-3">
-            <div className="step-dot">✅</div>
-            <div className="step-title">Confirmation</div>
-            <div className="step-desc">Secure your booking with a simple advance payment</div>
-          </div>
-          <div className="step-item reveal reveal-delay-4">
-            <div className="step-dot">🛕</div>
-            <div className="step-title">On-Tour Support</div>
-            <div className="step-desc">Dedicated coordinator handles all logistics during the yatra</div>
-          </div>
-          <div className="step-item reveal">
-            <div className="step-dot">🙌</div>
-            <div className="step-title">Safe Return</div>
-            <div className="step-desc">We assist with transfers and follow up for your feedback</div>
-          </div>
-        </div>
-      </section>
-
-      {/* GALLERY */}
-      <section>
-        <div className="itin-header reveal" style={{ textAlign: "center", margin: "140px auto 40px" }}>
-          <div className="section-tag" style={{ justifyContent: "center" }}>
-            Memories of Kashi
-          </div>
-          <h2 className="section-title">
-            Yatris Who <em>Travelled Before You</em>
-          </h2>
-          <div className="gold-rule" style={{ margin: "20px auto" }}></div>
-        </div>
-        <div className="gallery-strip reveal" style={{ marginBottom: "60px" }}>
-          <div className="gallery-item">
-            <img src="/1.jpg" alt="Margika Yatra pilgrims" />
-          </div>
-          <div className="gallery-item">
-            <img src="/2.jpg" alt="Margika Yatra pilgrims" />
-          </div>
-          <div className="gallery-item">
-            <img src="/Home1.jpeg" alt="Margika Yatra pilgrims" />
-          </div>
-          <div className="gallery-item">
-            <img src="/Home2.jpeg" alt="Margika Yatra pilgrims" />
-          </div>
-          <div className="gallery-item">
-            <img src="/5.jpg" alt="Margika Yatra pilgrims" />
-          </div>
-          <div className="gallery-item">
-            <img src="/6.jpg" alt="Margika Yatra pilgrims" />
-          </div>
-          <div className="gallery-item"><img src="/Home3.jpeg" alt="Margika Yatra pilgrims" /></div>
-          <div className="gallery-item"><img src="/Home4.jpeg" alt="Margika Yatra pilgrims" /></div>
-          <div className="gallery-item"><img src="/Home5.jpeg" alt="Margika Yatra pilgrims" /></div>
-          <div className="gallery-item"><img src="/Home6.jpg" alt="Margika Yatra pilgrims" /></div>
-          <div className="gallery-item"><img src="/Home7.jpg" alt="Margika Yatra pilgrims" /></div>
-        </div>
-      </section>
-
-      <GoogleReviews />
-
-      {/* OTHER PACKAGES */}
-      <section>
-        <div className="itin-header reveal" style={{ textAlign: "center", margin: "0 auto 40px" }}>
-          <div className="section-tag" style={{ justifyContent: "center", marginTop: "100px" }}>
-            Other Pilgrimages
-          </div>
-          <h2 className="section-title">
-            Other Sacred <em>Packages</em>
-          </h2>
-          <div className="gold-rule" style={{ margin: "20px auto" }}></div>
-        </div>
-        <div className="other-pkgs reveal">
-          <div className="opkg-card">
-            <img className="opkg-img" src="/up.jpg" alt="Varanasi Ayodhya Prayagraj" />
-            <div className="opkg-body">
-              <h3 className="opkg-name">Varanasi-Ayodhya-Prayagraj</h3>
-              <p className="opkg-desc">
-                Cover the ultimate Uttar Pradesh tri-city circuit. Visit Ram Mandir, Triveni Sangam, and Kashi Vishwanath.
-              </p>
-              <Link href="/packages/varanasi" className="opkg-link">
-                View Package →
-              </Link>
-            </div>
-          </div>
-          <div className="opkg-card">
-            <img className="opkg-img" src="/rameshwaram.jpg" alt="Rameshwaram" />
-            <div className="opkg-body">
-              <h3 className="opkg-name">Rameshwaram & Madurai Meenakshi</h3>
-              <p className="opkg-desc">
-                Embark on a sacred Southern pilgrimage to the holy shores of Rameshwaram and the grand halls of Madurai.
-              </p>
-              <Link href="/packages/rameshwaram" className="opkg-link">
-                View Package →
-              </Link>
-            </div>
-          </div>
-          <div className="opkg-card">
-            <img className="opkg-img" src="/puri.png" alt="Jagannath Puri" />
-            <div className="opkg-body">
-              <h3 className="opkg-name">Jagannath Puri & Konark</h3>
-              <p className="opkg-desc">
-                Visit the sacred land of Lord Jagannath, Konark Sun Temple, and the holy temples of Bhubaneswar.
-              </p>
-              <Link href="/packages/jagannath-puri" className="opkg-link">
-                View Package →
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
 
       </div>{/* end dd-page */}
 
@@ -2274,31 +2253,32 @@ export function DevDeepawaliDetail() {
       <FAQ />
 
       <div className="dd-page">{/* re-enter dd-page for CTA vars */}
-      {/* CTA BANNER */}
-      <section className="cta-banner">
-        <div className="cta-banner-content reveal">
-          <h2 className="section-title" style={{ color: "var(--white)", marginBottom: 16 }}>
-            Witness the River of Light
-          </h2>
-          <p className="section-body" style={{ color: "rgba(255,255,255,0.8)", margin: "0 auto 32px", fontWeight: "900", fontSize: "18px" }}>
-            Varanasi's Dev Deepawali 2026 slots are extremely limited due to boat and hotel availability. Plan your
-            yatra today.
-          </p>
-          <div className="cta-buttons">
-            <a href="tel:+917208771688" className="btn-primary">
-              📞 Call Now to Book
-            </a>
-            <a
-              href={wa("I want to check availability for Dev Deepawali Varanasi package")}
-              className="btn-wa"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              WhatsApp to Check Availability
-            </a>
+        {/* CTA BANNER */}
+        <section className="cta-banner">
+          <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}><Image unoptimized={true} src="/rambg.jpg" alt="Banner" fill sizes="100vw" quality={60} style={{ objectFit: 'cover' }} /></div>
+          <div className="cta-banner-content reveal">
+            <h2 className="section-title" style={{ color: "var(--white)", marginBottom: 16 }}>
+              Witness the River of Light
+            </h2>
+            <p className="section-body" style={{ color: "rgba(255,255,255,0.8)", margin: "0 auto 32px", fontWeight: "900", fontSize: "18px" }}>
+              Varanasi's Dev Deepawali 2026 slots are extremely limited due to boat and hotel availability. Plan your
+              yatra today.
+            </p>
+            <div className="cta-buttons">
+              <a href="tel:+917208771688" className="btn-primary">
+                📞 Call Now to Book
+              </a>
+              <a
+                href={wa("I want to check availability for Dev Deepawali Varanasi package")}
+                className="btn-wa"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                WhatsApp to Check Availability
+              </a>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
       </div>{/* end dd-page for CTA */}
 

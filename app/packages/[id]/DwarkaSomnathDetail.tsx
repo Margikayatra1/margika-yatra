@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/ui/newheader"
 import { GoogleReviews } from "@/components/ui/google-reviews"
@@ -240,14 +241,13 @@ export function DwarkaSomnathDetail() {
           flex-direction: column;
           justify-content: flex-end;
           overflow: hidden;
-          background: url('/rambg.jpg') center/cover no-repeat;
+          background: #0d1b3e;
           padding: 130px 5% 80px;
         }
         .gujarat-page .hero-img {
           position: absolute;
           inset: 0;
-          background: url("/DwMain.jpeg")
-            center/cover no-repeat;
+          
           transform: scale(1.05);
           animation: heroZoom 12s ease-out forwards;
         }
@@ -1503,14 +1503,13 @@ export function DwarkaSomnathDetail() {
           align-items: center;
           text-align: center;
           overflow: hidden;
-          background: url('/rambg.jpg') center/cover no-repeat;
+          background: #0d1b3e;
         }
         .gujarat-page .cta-banner::before {
           content: "";
           position: absolute;
           inset: 0;
-          background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Somnath_temple_2010.jpg/1280px-Somnath_temple_2010.jpg")
-            center/cover no-repeat;
+          
           filter: brightness(0.22) saturate(0.8);
         }
         .gujarat-page .cta-banner-content {
@@ -1619,8 +1618,15 @@ export function DwarkaSomnathDetail() {
 
 
 
+        .gujarat-page .intro-visual { position: relative; min-height: 520px; padding-bottom: 30px; padding-right: 30px; box-sizing: content-box; }
+        .gujarat-page .intro-img-main { display: block; width: 100%; height: 520px; object-fit: cover; border-radius: 4px; filter: brightness(0.95) saturate(1.1); position: relative; z-index: 1; }
+        .gujarat-page .intro-img-float { position: absolute; bottom: 0; right: 0; width: 200px; height: 200px; object-fit: cover; border-radius: 4px; border: 4px solid #ffffff; filter: brightness(0.95) saturate(1.2); z-index: 2; }
+
         /* RESPONSIVE */
         @media (max-width: 900px) {
+          .gujarat-page .intro-visual { min-height: auto; padding: 0; box-sizing: border-box; }
+          .gujarat-page .intro-img-main { height: 360px; }
+          .gujarat-page .intro-img-float { display: none; }
           .gujarat-page .hero-ctas,
           .gujarat-page .price-actions,
           .gujarat-page .cta-buttons,
@@ -1661,6 +1667,7 @@ export function DwarkaSomnathDetail() {
           .gujarat-page .why-grid,
           .gujarat-page .faq-grid {
             grid-template-columns: 1fr;
+            gap: 32px;
           }
           .gujarat-page .dhams-grid {
             grid-template-columns: 1fr;
@@ -1770,7 +1777,7 @@ export function DwarkaSomnathDetail() {
 
       {/* HERO */}
       <section className="hero">
-        <div className="hero-img"></div>
+        <div className="hero-img"><Image unoptimized={true} src="/DwMain.jpeg" alt="Hero" fill priority sizes="100vw" quality={60} style={{objectFit: 'cover'}} /></div>
         <div className="hero-overlay"></div>
         <div className="hero-content">
           <div className="hero-tag" style={{ color: "var(--saffron-light)", fontWeight: 900, fontSize: 14 }}>Sacred Gujarat Pilgrimage</div>
@@ -1809,22 +1816,8 @@ export function DwarkaSomnathDetail() {
       <section>
         <div className="intro-grid">
           <div className="intro-visual reveal">
-            <img
-              className="intro-img-main"
-              src="/Dw1.jpeg"
-              alt="Dwarkadhish Temple Dwarka Gujarat"
-              onError={(e) => {
-                ; (e.target as HTMLImageElement).src = "/rambg.jpg"
-              }}
-            />
-            <img
-              className="intro-img-float"
-              src="/Dw1.jpeg"
-              alt="Somnath Jyotirlinga Gujarat"
-              onError={(e) => {
-                ; (e.target as HTMLElement).style.display = "none"
-              }}
-            />
+            <img className="intro-img-main" src="/Dw1.jpeg" alt="Dwarkadhish Temple Dwarka Gujarat" />
+            <img className="intro-img-float" src="/1.jpg" alt="Margika Yatra pilgrims" />
           </div>
           <div className="reveal reveal-delay-2">
             <div className="section-tag">Spiritual Gujarat</div>
@@ -1871,13 +1864,9 @@ export function DwarkaSomnathDetail() {
         <div className="dhams-grid">
           {highlights.map((dham, index) => (
             <div className="dham-card" key={dham.name}>
-              <img
-                src={dham.image}
+              <Image unoptimized={true} src={dham.image}
                 alt={dham.name}
-                onError={(e) => {
-                  ; (e.target as HTMLImageElement).src = "https://www.margikayatra.com/rambg.jpg"
-                }}
-              />
+                width={800} height={600} quality={60} sizes="100vw" style={{width: '100%', height: '100%', objectFit: 'cover'}} />
               <div className="dham-overlay">
                 <div className="dham-num">{String(index + 1).padStart(2, "0")}</div>
                 <div className="dham-name">{dham.name}</div>
@@ -2041,13 +2030,9 @@ export function DwarkaSomnathDetail() {
           </div>
           <div className="reveal reveal-delay-2">
             <div className="why-visual">
-              <img
-                src="/Dw3.jpeg"
+              <Image unoptimized={true} src="/Dw3.jpeg"
                 alt="Margika Yatra group Gujarat"
-                onError={(e) => {
-                  ; (e.target as HTMLImageElement).src = "/rambg.jpg"
-                }}
-              />
+                width={800} height={600} quality={60} sizes="100vw" style={{width: '100%', height: '100%', objectFit: 'cover'}} />
               <div className="why-float-card">
                 <p>"Dwarkadhish and Somnath Jyotirlinga darshans are experiences that stay with you forever."</p>
                 <span>— Margika Yatra Team</span>
@@ -2075,11 +2060,9 @@ export function DwarkaSomnathDetail() {
           {/* Main Featured Card */}
           <div className="feat-card-main reveal">
             <div className="feat-img">
-              <img
-                src="/Dw1.jpeg"
+              <Image unoptimized={true} src="/Dw1.jpeg"
                 alt="Gujarat Pilgrimage Package — Dwarka Somnath Nageshwar"
-                onError={(e) => { ; (e.target as HTMLImageElement).src = "/rambg.jpg" }}
-              />
+                width={800} height={600} quality={60} sizes="100vw" style={{width: '100%', height: '100%', objectFit: 'cover'}} />
               <div className="feat-badge">Most Popular</div>
             </div>
             <div className="feat-body">
@@ -2176,6 +2159,7 @@ export function DwarkaSomnathDetail() {
 
       {/* CTA BANNER */}
       <section className="cta-banner">
+        <div style={{position: 'absolute', inset: 0, zIndex: 0}}><Image unoptimized={true} src="/rambg.jpg" alt="Banner" fill sizes="100vw" quality={60} style={{objectFit: 'cover'}} /></div>
         <div className="cta-banner-content reveal">
           <h2 className="section-title" style={{ color: "var(--white)", marginBottom: 16 }}>
             Experience the Divine Land of Gujarat

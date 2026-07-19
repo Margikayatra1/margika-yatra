@@ -115,7 +115,7 @@ ${formData.name}`
             transition={{ duration: 0.8 }}
             className="text-center mb-8"
           >
-            <Link href="/">
+            <Link prefetch={true} href="/">
               <Button variant="ghost" className="mb-4 text-orange-600 hover:text-orange-500">
                 <ArrowLeft className="h-4 w-4 mr-2" />
                 Back to Home
@@ -159,7 +159,7 @@ ${formData.name}`
                       }`}
                   >
                     <div className="relative h-48">
-                      <Image
+                      <Image unoptimized={true}
                         src={pkg.image || "/placeholder.svg"}
                         alt={pkg.name}
                         fill

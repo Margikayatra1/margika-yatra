@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/ui/newheader"
 import { GoogleReviews } from "@/components/ui/google-reviews"
@@ -67,7 +68,7 @@ export function KeralaDetail() {
           background: linear-gradient(to bottom right, #ffffff, #fff7ed, #ffedd5);
           color: var(--cream);
           font-family: "Jost", sans-serif;
-          overflow-x: hidden;
+          overflow: hidden;
           min-height: 100vh;
         }
 
@@ -587,7 +588,13 @@ export function KeralaDetail() {
         .dd-page .reveal-delay-4 { transition-delay: 0.6s; }
 
         /* RESPONSIVE */
+        .dd-page .intro-visual { position: relative; min-height: 520px; padding-bottom: 30px; padding-right: 30px; box-sizing: content-box; }
+        .dd-page .intro-img-main { display: block; width: 100%; height: 520px; object-fit: cover; border-radius: 4px; filter: brightness(0.95) saturate(1.1); position: relative; z-index: 1; }
+        .dd-page .intro-img-float { position: absolute; bottom: 0; right: 0; width: 200px; height: 200px; object-fit: cover; border-radius: 4px; border: 4px solid #ffffff; filter: brightness(0.95) saturate(1.2); z-index: 2; }
+
         @media (max-width: 900px) {
+          .dd-page .intro-visual { min-height: auto; padding: 0; box-sizing: border-box; }
+          .dd-page .intro-img-main { height: 360px; }
           .dd-page .hero-ctas,
           .dd-page .price-actions,
           .dd-page .complete-ctas,
@@ -762,8 +769,8 @@ export function KeralaDetail() {
       <section>
         <div className="intro-grid">
           <div className="intro-visual reveal">
-            <img className="intro-img-main" src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=1000&q=80" alt="Munnar Tea Gardens Kerala" onError={(e) => { (e.target as HTMLImageElement).src = '/rambg.jpg' }} />
-            <img className="intro-img-float" src="https://images.unsplash.com/photo-1593693411515-c20261bcad6e?w=500&q=80" alt="Kerala Backwaters Houseboat" onError={(e) => { (e.target as HTMLElement).style.display = "none" }} />
+            <Image unoptimized={true} width={1000} height={667} className="intro-img-main" src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=1000&q=80" alt="Munnar Tea Gardens Kerala" />
+            <Image unoptimized={true} width={500} height={333} className="intro-img-float" src="https://images.unsplash.com/photo-1593693411515-c20261bcad6e?w=500&q=80" alt="Kerala Backwaters Houseboat" />
           </div>
           <div className="reveal reveal-delay-2">
             <div className="section-tag">God's Own Country · Family & Couple Holiday</div>
@@ -796,7 +803,7 @@ export function KeralaDetail() {
         </div>
         <div className="highlights-grid">
           <div className="hl-card">
-            <img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=700&q=80" alt="Munnar Tea Hills Kerala" onError={(e) => { (e.target as HTMLImageElement).src = '/rambg.jpg' }} />
+            <Image unoptimized={true} fill src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=700&q=80" alt="Munnar Tea Hills Kerala" onError={(e) => { (e.currentTarget as HTMLImageElement).src = '/rambg.jpg' }} />
             <div className="hl-overlay">
               <div className="hl-num">01</div>
               <div className="hl-name">Munnar</div>
@@ -805,7 +812,7 @@ export function KeralaDetail() {
             </div>
           </div>
           <div className="hl-card">
-            <img src="https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?w=700&q=80" alt="Thekkady Periyar Kerala" onError={(e) => { (e.target as HTMLImageElement).src = '/rambg.jpg' }} />
+            <Image unoptimized={true} fill src="https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?w=700&q=80" alt="Thekkady Periyar Kerala" onError={(e) => { (e.currentTarget as HTMLImageElement).src = '/rambg.jpg' }} />
             <div className="hl-overlay">
               <div className="hl-num">02</div>
               <div className="hl-name">Thekkady</div>
@@ -814,7 +821,7 @@ export function KeralaDetail() {
             </div>
           </div>
           <div className="hl-card">
-            <img src="https://images.unsplash.com/photo-1593693411515-c20261bcad6e?w=700&q=80" alt="Alleppey Backwaters Kerala" onError={(e) => { (e.target as HTMLImageElement).src = '/rambg.jpg' }} />
+            <Image unoptimized={true} fill src="https://images.unsplash.com/photo-1593693411515-c20261bcad6e?w=700&q=80" alt="Alleppey Backwaters Kerala" onError={(e) => { (e.currentTarget as HTMLImageElement).src = '/rambg.jpg' }} />
             <div className="hl-overlay">
               <div className="hl-num">03</div>
               <div className="hl-name">Alleppey</div>
@@ -909,8 +916,8 @@ export function KeralaDetail() {
             </div>
 
             <div className="itin-img-stack">
-              <img className="itin-img-main" src="https://images.unsplash.com/photo-1593693411515-c20261bcad6e?w=900&q=80" alt="Alleppey Houseboat Kerala" onError={(e) => { (e.target as HTMLImageElement).src = '/rambg.jpg' }} />
-              <img className="itin-img-secondary" src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=900&q=80" alt="Munnar Tea Gardens" onError={(e) => { (e.target as HTMLImageElement).src = '/rambg.jpg' }} />
+              <Image unoptimized={true} width={900} height={600} className="itin-img-main" src="https://images.unsplash.com/photo-1593693411515-c20261bcad6e?w=900&q=80" alt="Alleppey Houseboat Kerala" onError={(e) => { (e.currentTarget as HTMLImageElement).src = '/rambg.jpg' }} />
+              <Image unoptimized={true} width={900} height={600} className="itin-img-secondary" src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=900&q=80" alt="Munnar Tea Gardens" onError={(e) => { (e.currentTarget as HTMLImageElement).src = '/rambg.jpg' }} />
             </div>
           </div>
         </div>
@@ -969,7 +976,7 @@ export function KeralaDetail() {
 
           <div className="price-card reveal">
             <div className="price-card-media">
-              <img src="https://images.unsplash.com/photo-1593693411515-c20261bcad6e?w=900&q=80" alt="Kerala tour package from Mumbai — Munnar, Thekkady, Alleppey, Kochi" onError={(e) => { (e.target as HTMLImageElement).src = '/rambg.jpg' }} />
+              <Image unoptimized={true} fill src="https://images.unsplash.com/photo-1593693411515-c20261bcad6e?w=900&q=80" alt="Kerala tour package from Mumbai — Munnar, Thekkady, Alleppey, Kochi" onError={(e) => { (e.currentTarget as HTMLImageElement).src = '/rambg.jpg' }} />
               <div className="price-badge">⭐ Most Loved</div>
               <div className="price-media-cities">
                 <span>MUNNAR</span>
@@ -1081,27 +1088,27 @@ export function KeralaDetail() {
         </div>
         <div className="other-pkgs reveal">
           <div className="opkg-card">
-            <img className="opkg-img" src="/up.jpg" alt="Varanasi Ayodhya Prayagraj" />
+            <Image unoptimized={true} width={800} height={600} className="opkg-img" src="/up.jpg" alt="Varanasi Ayodhya Prayagraj" />
             <div className="opkg-body">
               <h3 className="opkg-name">Varanasi–Ayodhya–Prayagraj</h3>
               <p className="opkg-desc">Cover the ultimate Uttar Pradesh tri-city circuit. Visit Ram Mandir, Triveni Sangam, and Kashi Vishwanath.</p>
-              <Link href="/packages/varanasi" className="opkg-link">View Package →</Link>
+              <Link prefetch={true} href="/packages/varanasi" className="opkg-link">View Package →</Link>
             </div>
           </div>
           <div className="opkg-card">
-            <img className="opkg-img" src="/rameshwaram.jpg" alt="Rameshwaram" />
+            <Image unoptimized={true} width={800} height={600} className="opkg-img" src="/rameshwaram.jpg" alt="Rameshwaram" />
             <div className="opkg-body">
               <h3 className="opkg-name">Rameshwaram & Madurai Meenakshi</h3>
               <p className="opkg-desc">Embark on a sacred Southern pilgrimage to the holy shores of Rameshwaram and the grand halls of Madurai.</p>
-              <Link href="/packages/rameshwaram" className="opkg-link">View Package →</Link>
+              <Link prefetch={true} href="/packages/rameshwaram" className="opkg-link">View Package →</Link>
             </div>
           </div>
           <div className="opkg-card">
-            <img className="opkg-img" src="/dd.jpg" alt="Dev Deepawali Varanasi" />
+            <Image unoptimized={true} width={800} height={600} className="opkg-img" src="/dd.jpg" alt="Dev Deepawali Varanasi" />
             <div className="opkg-body">
               <h3 className="opkg-name">Dev Deepawali Varanasi</h3>
               <p className="opkg-desc">Witness the gods' own Diwali — a million earthen lamps lining all 84 ghats of Kashi on Kartik Purnima.</p>
-              <Link href="/packages/dev-deepawali" className="opkg-link">View Package →</Link>
+              <Link prefetch={true} href="/packages/dev-deepawali" className="opkg-link">View Package →</Link>
             </div>
           </div>
         </div>

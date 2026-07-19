@@ -172,7 +172,7 @@ export default function PreviousTripsPage() {
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
         >
-          <Image
+          <Image unoptimized={true}
             src="/rambg.jpg"
             alt="Reviews & Spiritual Journeys"
             fill
@@ -189,7 +189,7 @@ export default function PreviousTripsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
           >
-            <Link href="/" className="inline-flex items-center text-orange-600 hover:text-orange-500 mb-6 transition-colors">
+            <Link prefetch={true} href="/" className="inline-flex items-center text-orange-600 hover:text-orange-500 mb-6 transition-colors">
               <ArrowLeft className="mr-2 h-5 w-5" />
               Back to Home
             </Link>
@@ -218,7 +218,7 @@ export default function PreviousTripsPage() {
               >
                 <Card className="bg-white/90 backdrop-blur-sm border-orange-200 overflow-hidden group hover:border-orange-400 transition-all duration-500 shadow-xl h-full flex flex-col">
                   <div className="relative h-56">
-                    <Image
+                    <Image unoptimized={true}
                       src={trip.image}
                       alt={trip.name}
                       fill
@@ -278,7 +278,7 @@ export default function PreviousTripsPage() {
                         whileHover={{ scale: 1.03, boxShadow: "0 10px 30px rgba(249, 115, 22, 0.3)" }}
                         whileTap={{ scale: 0.95 }}
                       >
-                        <Link href={trip.link}>
+                        <Link prefetch={true} href={trip.link}>
                           <Button
                             size="lg"
                             className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-6 py-3 text-base shadow-xl border-0 font-semibold"
@@ -329,7 +329,7 @@ export default function PreviousTripsPage() {
                   <CardContent className="p-6">
                     <div className="flex items-center mb-4">
                       <div className="relative w-12 h-12 mr-4">
-                        <Image
+                        <Image unoptimized={true}
                           src={testimonial.image}
                           alt={testimonial.name}
                           fill
@@ -389,7 +389,7 @@ export default function PreviousTripsPage() {
                 whileTap={{ scale: 0.95 }}
                 className="w-full sm:w-auto"
               >
-                <Link href="/book-trip" className="w-full sm:w-auto block">
+                <Link prefetch={true} href="/book-trip" className="w-full sm:w-auto block">
                   <Button
                     size="lg"
                     className="w-full sm:w-auto bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-3 text-lg shadow-xl border-0 font-semibold"

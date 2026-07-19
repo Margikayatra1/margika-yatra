@@ -1,5 +1,3 @@
-"use client"
-
 import React from "react"
 import Image from "next/image"
 import Link from "next/link"
@@ -9,42 +7,27 @@ import { Footer } from "@/components/footer"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { client } from "@/sanity/lib/client"
+import { urlForImage } from "@/sanity/lib/image"
+import { groq } from "next-sanity"
 
-const blogs = [
-  {
-    slug: "first-time-pilgrim-guide",
-    title: "Travel Tips for First-Time Pilgrims in India",
-    excerpt: "Planning your first pilgrimage? These essential travel tips will help you enjoy a smooth and spiritually fulfilling journey. Here's what you need to know before you go.",
-    coverImage: "/HomeMain.png",
-    date: "July 3, 2026",
-    readTime: "8 min read",
-    category: "Pilgrimage Guide",
-    location: "India"
-  },
-  {
-    slug: "top-25-pilgrimage-places-in-india",
-    title: "Top 25 Best Pilgrimage Places in India | Travel Guide",
-    excerpt: "Explore the best pilgrimage places in India, from Char Dham to Rameshwaram. Get practical tips, tour package ideas, and planning advice for every traveler.",
-    coverImage: "/dev1.png",
-    date: "June 28, 2026",
-    readTime: "7 min read",
-    category: "Travel Guide",
-    location: "India"
-  },
-  {
-    slug: "best-religious-places-to-visit-in-india",
-    title: "Best Religious Places to Visit in India | Full Guide",
-    excerpt: "Discover the best religious places to visit in India, from Kedarnath to Kerala. Practical tips, tour package insights, and planning advice for every pilgrim.",
-    coverImage: "/rambg.jpg",
-    date: "June 15, 2026",
-    readTime: "6 min read",
-    category: "Travel Guide",
-    location: "India"
-  }
-]
+export const revalidate = 60; // Revalidate every 60 seconds
 
-export default function BlogListingPage() {
+export default async function BlogListingPage() {
   const wa = (text: string) => `https://wa.me/917208771688?text=${encodeURIComponent(text)}`
+
+  // Fetch blogs from Sanity
+  const query = groq`*[_type == "blog"] | order(date desc) {
+    title,
+    "slug": slug.current,
+    excerpt,
+    coverImage,
+    date,
+    readTime,
+    category,
+    location
+  }`
+  const sanityBlogs = await client.fetch(query)
 
   return (
     <main className="min-h-screen bg-[#fffcf8] text-gray-900 font-sans selection:bg-orange-100 selection:text-orange-900">
@@ -53,7 +36,7 @@ export default function BlogListingPage() {
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 bg-[#181009] overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <Image
+          <Image unoptimized={true}
             src="/HomeMain.png"
             alt="Spiritual pilgrimage in India"
             fill
@@ -81,62 +64,69 @@ export default function BlogListingPage() {
 
       {/* Blog Cards Grid */}
       <section className="container mx-auto px-4 py-16 md:py-24">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
-          {blogs.map((blog) => (
-            <Card key={blog.slug} className="group border border-orange-100/60 bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden rounded-xl shadow-md">
-              <div>
-                {/* Cover Image Wrapper */}
-                <div className="relative aspect-[16/10] overflow-hidden">
-                  <Image
-                    src={blog.coverImage}
-                    alt={blog.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
-                  <div className="absolute top-4 left-4 z-10">
-                    <Badge className="bg-orange-600 hover:bg-orange-700 text-white font-medium px-2.5 py-0.5 text-xs rounded-md shadow-md uppercase tracking-wider">
-                      {blog.category}
-                    </Badge>
+        {sanityBlogs.length === 0 ? (
+          <div className="text-center py-20 text-gray-500">
+            <p className="text-xl">No blogs published yet.</p>
+            <p className="mt-2 text-sm">Please log in to the Sanity Studio to publish your first post!</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+            {sanityBlogs.map((blog: any) => (
+              <Card key={blog.slug} className="group border border-orange-100/60 bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden rounded-xl shadow-md">
+                <div>
+                  {/* Cover Image Wrapper */}
+                  <div className="relative aspect-[16/10] overflow-hidden">
+                    <Image unoptimized={true}
+                      src={blog.coverImage ? urlForImage(blog.coverImage)?.url() || '/placeholder.png' : '/placeholder.png'}
+                      alt={blog.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                    <div className="absolute top-4 left-4 z-10">
+                      <Badge className="bg-orange-600 hover:bg-orange-700 text-white font-medium px-2.5 py-0.5 text-xs rounded-md shadow-md uppercase tracking-wider">
+                        {blog.category || 'Guide'}
+                      </Badge>
+                    </div>
                   </div>
+
+                  {/* Card Body */}
+                  <CardContent className="p-6 md:p-8">
+                    <div className="flex items-center gap-4 text-xs text-gray-500 mb-3">
+                      <span className="flex items-center gap-1.5">
+                        <CalendarDays className="h-3.5 w-3.5 text-orange-500" />
+                        {blog.date}
+                      </span>
+                      <span className="h-1 w-1 rounded-full bg-gray-300" />
+                      <span className="flex items-center gap-1.5">
+                        <Clock className="h-3.5 w-3.5 text-orange-500" />
+                        {blog.readTime || '5 min read'}
+                      </span>
+                    </div>
+                    <h3 className="font-serif text-xl md:text-2xl font-semibold text-gray-900 leading-snug mb-3 group-hover:text-orange-600 transition-colors">
+                      {blog.title}
+                    </h3>
+                    <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">
+                      {blog.excerpt}
+                    </p>
+                  </CardContent>
                 </div>
 
-                {/* Card Body */}
-                <CardContent className="p-6 md:p-8">
-                  <div className="flex items-center gap-4 text-xs text-gray-500 mb-3">
-                    <span className="flex items-center gap-1.5">
-                      <CalendarDays className="h-3.5 w-3.5 text-orange-500" />
-                      {blog.date}
-                    </span>
-                    <span className="h-1 w-1 rounded-full bg-gray-300" />
-                    <span className="flex items-center gap-1.5">
-                      <Clock className="h-3.5 w-3.5 text-orange-500" />
-                      {blog.readTime}
-                    </span>
-                  </div>
-                  <h3 className="font-serif text-xl md:text-2xl font-semibold text-gray-900 leading-snug mb-3 group-hover:text-orange-600 transition-colors">
-                    {blog.title}
-                  </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">
-                    {blog.excerpt}
-                  </p>
-                </CardContent>
-              </div>
-
-              {/* Card Footer */}
-              <div className="p-6 pt-0 border-t border-orange-50/60 mt-auto flex items-center justify-between">
-                <span className="flex items-center gap-1.5 text-xs text-gray-500">
-                  <MapPin className="h-3.5 w-3.5 text-orange-500" />
-                  {blog.location}
-                </span>
-                <Link href={`/blog/${blog.slug}`} className="inline-flex items-center gap-1 text-sm font-semibold text-orange-600 hover:text-orange-700 transition-colors group-hover:underline">
-                  Read Article
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </div>
-            </Card>
-          ))}
-        </div>
+                {/* Card Footer */}
+                <div className="p-6 pt-0 border-t border-orange-50/60 mt-auto flex items-center justify-between">
+                  <span className="flex items-center gap-1.5 text-xs text-gray-500">
+                    <MapPin className="h-3.5 w-3.5 text-orange-500" />
+                    {blog.location || 'India'}
+                  </span>
+                  <Link prefetch={true} href={`/blog/${blog.slug}`} className="inline-flex items-center gap-1 text-sm font-semibold text-orange-600 hover:text-orange-700 transition-colors group-hover:underline">
+                    Read Article
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                </div>
+              </Card>
+            ))}
+          </div>
+        )}
       </section>
 
       {/* Thane Office / CTA Section */}

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/ui/newheader"
 import { CharStats } from "@/components/char-stats"
@@ -142,12 +143,12 @@ export function RameshwaramDetail() {
           position: relative; min-height: 100vh;
           display: flex; flex-direction: column; justify-content: flex-end;
           overflow: hidden;
-          background: url('/rambg.jpg') center/cover no-repeat;
+          background: #0d1b3e;
           padding-top: 130px;
         }
         .r-hero-img {
           position: absolute; inset: 0;
-          background: url('/Rammain.png') center/cover no-repeat;
+          
           transform: scale(1.05);
           animation: heroZoom 12s ease-out forwards;
         }
@@ -632,15 +633,14 @@ export function RameshwaramDetail() {
           align-items: center;
           text-align: center;
           overflow: hidden;
-          background: url('/rambg.jpg') center/cover no-repeat;
+          background: #0d1b3e;
      
         }
         .v-cta-banner::before {
           content: "";
           position: absolute;
           inset: 0;
-          background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Rameswaram_temple_%282%29.jpg/1280px-Rameswaram_temple_%282%29.jpg")
-            center/cover no-repeat;
+          
           filter: brightness(0.2) saturate(0.4);
         }
         .v-cta-banner-content {
@@ -707,7 +707,13 @@ export function RameshwaramDetail() {
 
         .r-price-actions { display: flex; gap: 12px; align-items: center; }
 
+        .r-intro-visual { position: relative; min-height: 520px; padding-bottom: 30px; padding-right: 30px; box-sizing: content-box; }
+        .r-intro-img-main { display: block; width: 100%; height: 520px; object-fit: cover; border-radius: 4px; filter: brightness(0.95) saturate(1.1); position: relative; z-index: 1; }
+        .r-intro-img-float { position: absolute; bottom: 0; right: 0; width: 200px; height: 200px; object-fit: cover; border-radius: 4px; border: 4px solid #ffffff; filter: brightness(0.95) saturate(1.2); z-index: 2; }
+
         @media (max-width: 900px) {
+          .r-intro-visual { min-height: auto; padding: 0; box-sizing: border-box; }
+          .r-intro-img-main { height: 360px; }
           .rameshwaram-page-wrapper .r-hero-ctas,
           .rameshwaram-page-wrapper .r-price-actions,
           .rameshwaram-page-wrapper .r-complete-ctas,
@@ -737,7 +743,7 @@ export function RameshwaramDetail() {
             align-items: center !important;
           }
 
-          .r-intro-grid, .v-why-grid, .v-faq-grid { grid-template-columns: 1fr; }
+          .r-intro-grid, .v-why-grid, .v-faq-grid { grid-template-columns: 1fr; gap: 32px; }
           .r-dhams-grid { grid-template-columns: 1fr; }
           .r-price-card { grid-template-columns: 1fr; }
           .r-price-card-media { min-height: 260px; }
@@ -801,7 +807,7 @@ export function RameshwaramDetail() {
 
       {/* HERO */}
       <section className="r-hero">
-        <div className="r-hero-img"></div>
+        <div className="r-hero-img"><Image unoptimized={true} src="/Rammain.png" alt="Hero" fill priority sizes="100vw" quality={60} style={{objectFit: 'cover'}} /></div>
         <div className="r-hero-overlay"></div>
         <div className="r-hero-content">
           {/* <div className="r-hero-tag" style={{ color: "var(--saffron-dark)", fontWeight: 900, fontSize: 14 }}>Ramanathaswamy · Dhanushkodi · Madurai</div> */}
@@ -823,13 +829,8 @@ export function RameshwaramDetail() {
       <section className="r-section">
         <div className="r-intro-grid">
           <div className="r-intro-visual reveal">
-            <img
-              className="r-intro-img-main"
-              src="/ram.jpg"
-              alt="Rameshwaram Ramanathaswamy Corridor"
-              onError={(e) => { (e.target as HTMLImageElement).src = '/rambg.jpg' }}
-            />
-            <img className="r-intro-img-float" src="/1.jpg" alt="Margika Yatra pilgrims" />
+            <Image unoptimized={true} width={800} height={520} className="r-intro-img-main" src="/ram.jpg" alt="Rameshwaram Ramanathaswamy Corridor" />
+            <Image unoptimized={true} width={200} height={200} className="r-intro-img-float" src="/1.jpg" alt="Margika Yatra pilgrims" />
           </div>
           <div className="reveal reveal-delay-2">
             <div className="r-section-tag">Char Dham of the South · One Sacred Island</div>
@@ -855,7 +856,7 @@ export function RameshwaramDetail() {
         <div className="r-dhams-grid">
           {sights.map((dham, index) => (
             <div className="r-dham-card" key={dham.name}>
-              <img src={dham.image} alt={dham.name} />
+              <Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src={dham.image} alt={dham.name} />
               <div className="r-dham-overlay">
                 <div className="r-dham-num">0{index + 1}</div>
                 <div className="r-dham-name">{dham.name}</div>
@@ -877,11 +878,9 @@ export function RameshwaramDetail() {
         </div>
         <div className="r-price-card reveal">
           <div className="r-price-card-media">
-            <img
-              src="/ram.jpg"
+            <Image unoptimized={true} src="/ram.jpg"
               alt="Rameshwaram Tour"
-              onError={(e) => { (e.target as HTMLImageElement).src = '/rambg.jpg' }}
-            />
+              width={800} height={600} quality={60} sizes="100vw" style={{width: '100%', height: '100%', objectFit: 'cover'}} />
             <div className="r-price-badge">⭐ Most Loved</div>
             <div className="r-price-media-cities"><span>RAMESHWARAM</span><span>DHANUSHKODI</span><span>MADURAI</span></div>
           </div>
@@ -1058,7 +1057,7 @@ export function RameshwaramDetail() {
           </div>
           <div className="reveal reveal-delay-2">
             <div className="v-why-visual">
-              <img src="/2.jpg" alt="Margika Yatra group" />
+              <Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/2.jpg" alt="Margika Yatra group" />
               <div className="v-why-float-card">
                 <p>"Many yatris tell us this felt like the most peaceful journey of their lives."</p>
                 <span>— Margika Yatra Team</span>
@@ -1075,6 +1074,7 @@ export function RameshwaramDetail() {
 
       {/* CTA BANNER */}
       <div className="v-cta-banner">
+        <div style={{position: 'absolute', inset: 0, zIndex: 0}}><Image unoptimized={true} src="/rambg.jpg" alt="Banner" fill sizes="100vw" quality={60} style={{objectFit: 'cover'}} /></div>
         <div className="v-cta-banner-content reveal">
           <div className="v-section-tag" style={{ justifyContent: "center", margin: "0 auto 16px" }}>Plan Your Yatra with Confidence</div>
           <h2 className="v-section-title">Book Your Rameshwaram<br /><em>Tour Today</em></h2>

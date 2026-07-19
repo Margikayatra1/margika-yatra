@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/ui/newheader"
 import { GoogleReviews } from "@/components/ui/google-reviews"
@@ -157,12 +158,12 @@ export function VaranasiPrayagrajAyodhyaDetail() {
           position: relative; min-height: 100vh;
           display: flex; flex-direction: column; justify-content: flex-end;
           overflow: hidden;
-          background: url('/rambg.jpg') center/cover no-repeat;
+          background: #0d1b3e;
           padding-top: 130px;
         }
         .v-hero-img {
           position: absolute; inset: 0;
-          background: url('/Ayomain.png') center/cover no-repeat;
+          
           transform: scale(1.05);
           animation: heroZoom 12s ease-out forwards;
         }
@@ -507,8 +508,8 @@ export function VaranasiPrayagrajAyodhyaDetail() {
         .v-faq-item.open .v-faq-a { max-height: 320px; padding-bottom: 20px; }
 
         /* CTA BANNER */
-        .v-cta-banner { position: relative; padding: 100px 5%; display: flex; flex-direction: column; align-items: center; text-align: center; overflow: hidden; background: url('/rambg.jpg') center/cover no-repeat; }
-        .v-cta-banner::before { content: ''; position: absolute; inset: 0; background: url('/rambg.jpg') center/cover no-repeat; filter: brightness(0.25) saturate(0.8); }
+        .v-cta-banner { position: relative; padding: 100px 5%; display: flex; flex-direction: column; align-items: center; text-align: center; overflow: hidden; background: #0d1b3e; }
+        .v-cta-banner::before { content: ''; position: absolute; inset: 0;  filter: brightness(0.25) saturate(0.8); }
         .v-cta-banner-content { position: relative; z-index: 1; max-width: 700px; }
         .v-cta-banner .v-section-title { text-align: center; color: var(--white) !important; }
         .v-cta-banner .v-section-body { margin: 0 auto 40px; text-align: center; color: rgba(255, 255, 255, 0.8) !important; }
@@ -588,8 +589,14 @@ export function VaranasiPrayagrajAyodhyaDetail() {
           box-shadow: 0 8px 18px rgba(0,0,0,0.12);
         }
 
+        .v-intro-visual { position: relative; min-height: 520px; padding-bottom: 30px; padding-right: 30px; box-sizing: content-box; }
+        .v-intro-img-main { display: block; width: 100%; height: 520px; object-fit: cover; border-radius: 4px; filter: brightness(0.95) saturate(1.1); position: relative; z-index: 1; }
+        .v-intro-img-float { position: absolute; bottom: 0; right: 0; width: 200px; height: 200px; object-fit: cover; border-radius: 4px; border: 4px solid #ffffff; filter: brightness(0.95) saturate(1.2); z-index: 2; }
+
         @media (max-width: 900px) {
-          .v-intro-grid, .v-why-grid, .v-faq-grid { grid-template-columns: 1fr; }
+          .v-intro-visual { min-height: auto; padding: 0; box-sizing: border-box; }
+          .v-intro-img-main { height: 360px; }
+          .v-intro-grid, .v-why-grid, .v-faq-grid { grid-template-columns: 1fr; gap: 32px; }
           .v-dhams-grid { grid-template-columns: 1fr; }
           .v-price-card { grid-template-columns: 1fr; }
           .v-price-card-media { min-height: 260px; }
@@ -749,7 +756,7 @@ export function VaranasiPrayagrajAyodhyaDetail() {
 
       {/* HERO */}
       <section className="v-hero">
-        <div className="v-hero-img"></div>
+        <div className="v-hero-img"><Image unoptimized={true} fill src="/Ayomain.png" alt="Hero" style={{ objectFit: 'cover' }} /></div>
         <div className="v-hero-overlay"></div>
         <div className="v-hero-content">
           <div className="v-hero-tag" style={{ fontWeight: 700, fontSize: 14 }}>Kashi · Prayagraj · Ayodhya</div>
@@ -774,8 +781,8 @@ export function VaranasiPrayagrajAyodhyaDetail() {
       <section className="v-section">
         <div className="v-intro-grid">
           <div className="v-intro-visual reveal">
-            <img className="v-intro-img-main" src="/Ayomain2.png" alt="Varanasi Prayagraj Ayodhya tour package" />
-            <img className="v-intro-img-float" src="/1.jpg" alt="Margika Yatra pilgrims" />
+            <Image unoptimized={true} width={800} height={520} className="v-intro-img-main" src="/Ayomain2.png" alt="Varanasi Prayagraj Ayodhya tour package" />
+            <Image unoptimized={true} width={200} height={200} className="v-intro-img-float" src="/1.jpg" alt="Margika Yatra pilgrims" />
           </div>
           <div className="reveal reveal-delay-2">
             <div className="v-section-tag">Three Cities · One Sacred Circuit</div>
@@ -801,7 +808,7 @@ export function VaranasiPrayagrajAyodhyaDetail() {
         <div className="v-dhams-grid">
           {cities.map((city, idx) => (
             <div className="v-dham-card" key={city.name}>
-              <img src={city.image} alt={city.name} />
+              <Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src={city.image} alt={city.name} />
               <div className="v-dham-overlay">
                 <div className="v-dham-num">0{idx + 1}</div>
                 <div className="v-dham-name">{city.name}</div>
@@ -824,7 +831,7 @@ export function VaranasiPrayagrajAyodhyaDetail() {
 
         <div className="v-price-card reveal">
           <div className="v-price-card-media">
-            <img src="/Ayomain3.png" alt="Varanasi Prayagraj Ayodhya tour package" />
+            <Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/Ayomain3.png" alt="Varanasi Prayagraj Ayodhya tour package" />
             <div className="v-price-badge">⭐ Most Loved</div>
             <div className="v-price-media-cities">
               <span>KASHI</span><span>PRAYAGRAJ</span><span>AYODHYA</span>
@@ -986,7 +993,7 @@ export function VaranasiPrayagrajAyodhyaDetail() {
           </div>
           <div className="reveal reveal-delay-2">
             <div className="v-why-visual">
-              <img src="/2.jpg" alt="Margika Yatra group" />
+              <Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/2.jpg" alt="Margika Yatra group" />
               <div className="v-why-float-card">
                 <p>"Many yatris tell us this felt like the most peaceful journey of their lives."</p>
                 <span>— Margika Yatra Team</span>
@@ -1019,27 +1026,28 @@ export function VaranasiPrayagrajAyodhyaDetail() {
           <h2 className="v-section-title" style={{ textAlign: "center" }}>Moments from <em>Sacred Journeys</em></h2>
         </div>
         <div className="v-gallery-strip">
-          <div className="v-gallery-item"><img src="/1.jpg" alt="Varanasi Ganga Aarti" /></div>
-          <div className="v-gallery-item"><img src="/2.jpg" alt="Kashi Vishwanath" /></div>
-          <div className="v-gallery-item"><img src="/Home1.jpeg" alt="Prayagraj Triveni Sangam" /></div>
-          <div className="v-gallery-item"><img src="/Home2.jpeg" alt="Ayodhya Ram Mandir" /></div>
-          <div className="v-gallery-item"><img src="/5.jpg" alt="Spiritual tour" /></div>
-          <div className="v-gallery-item"><img src="/6.jpg" alt="Saryu Aarti" /></div>
-          <div className="v-gallery-item"><img src="/Home3.jpeg" alt="Saryu Aarti" /></div>
-          <div className="v-gallery-item"><img src="/Home4.jpeg" alt="Saryu Aarti" /></div>
-          <div className="v-gallery-item"><img src="/Home5.jpeg" alt="Saryu Aarti" /></div>
-          <div className="v-gallery-item"><img src="/Home6.jpg" alt="Saryu Aarti" /></div>
-          <div className="v-gallery-item"><img src="/Home7.jpg" alt="Saryu Aarti" /></div>
+          <div className="v-gallery-item"><Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/1.jpg" alt="Varanasi Ganga Aarti" /></div>
+          <div className="v-gallery-item"><Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/2.jpg" alt="Kashi Vishwanath" /></div>
+          <div className="v-gallery-item"><Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/Home1.jpeg" alt="Prayagraj Triveni Sangam" /></div>
+          <div className="v-gallery-item"><Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/Home2.jpeg" alt="Ayodhya Ram Mandir" /></div>
+          <div className="v-gallery-item"><Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/5.jpg" alt="Spiritual tour" /></div>
+          <div className="v-gallery-item"><Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/6.jpg" alt="Saryu Aarti" /></div>
+          <div className="v-gallery-item"><Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/Home3.jpeg" alt="Saryu Aarti" /></div>
+          <div className="v-gallery-item"><Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/Home4.jpeg" alt="Saryu Aarti" /></div>
+          <div className="v-gallery-item"><Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/Home5.jpeg" alt="Saryu Aarti" /></div>
+          <div className="v-gallery-item"><Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/Home6.jpg" alt="Saryu Aarti" /></div>
+          <div className="v-gallery-item"><Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/Home7.jpg" alt="Saryu Aarti" /></div>
         </div>
       </section>
 
       <GoogleReviews />
 
       {/* FAQ */}
-      <FAQ/>
+      <FAQ />
 
       {/* CTA BANNER */}
       <div className="v-cta-banner">
+        <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}><Image unoptimized={true} fill src="/rambg.jpg" alt="Banner" style={{ objectFit: 'cover' }} /></div>
         <div className="v-cta-banner-content reveal">
           <div className="v-section-tag" style={{ justifyContent: "center", margin: "0 auto 16px" }}>Plan Your Yatra with Confidence</div>
           <h2 className="v-section-title">Book Your Varanasi Prayagraj<br /><em>Ayodhya Tour Today</em></h2>

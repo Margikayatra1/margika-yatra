@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/ui/newheader"
 import { GoogleReviews } from "@/components/ui/google-reviews"
@@ -94,64 +95,64 @@ export function UjjainOmkareshwarDetail() {
   return (
     <>
       <div className="ujjain-page">
-      {/* FAQ Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": faqs.map(([q, a]) => ({
-              "@type": "Question",
-              "name": q,
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": a
-              }
-            }))
-          })
-        }}
-      />
+        {/* FAQ Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": faqs.map(([q, a]) => ({
+                "@type": "Question",
+                "name": q,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": a
+                }
+              }))
+            })
+          }}
+        />
 
-      {/* TourPackage Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "TouristTrip",
-            "name": "Ujjain Omkareshwar Tour Package",
-            "description": "3 Nights 4 Days spiritual tour covering Mahakaleshwar Jyotirlinga Ujjain and Omkareshwar Jyotirlinga with Bhasma Aarti, VIP Darshan, and Narmada Boat Ride.",
-            "provider": {
-              "@type": "TravelAgency",
-              "name": "Margika Yatra",
-              "url": "https://www.margikayatra.com",
-              "telephone": "+917208771688",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "Brahmand, Azad Nagar",
-                "addressLocality": "Thane West",
-                "postalCode": "400607",
-                "addressRegion": "Maharashtra",
-                "addressCountry": "IN"
-              }
-            },
-            "touristType": "PilgrimageTourist",
-            "offers": {
-              "@type": "Offer",
-              "priceCurrency": "INR",
-              "price": "15999",
-              "priceSpecification": {
-                "@type": "UnitPriceSpecification",
-                "price": "15999",
+        {/* TourPackage Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "TouristTrip",
+              "name": "Ujjain Omkareshwar Tour Package",
+              "description": "3 Nights 4 Days spiritual tour covering Mahakaleshwar Jyotirlinga Ujjain and Omkareshwar Jyotirlinga with Bhasma Aarti, VIP Darshan, and Narmada Boat Ride.",
+              "provider": {
+                "@type": "TravelAgency",
+                "name": "Margika Yatra",
+                "url": "https://www.margikayatra.com",
+                "telephone": "+917208771688",
+                "address": {
+                  "@type": "PostalAddress",
+                  "streetAddress": "Brahmand, Azad Nagar",
+                  "addressLocality": "Thane West",
+                  "postalCode": "400607",
+                  "addressRegion": "Maharashtra",
+                  "addressCountry": "IN"
+                }
+              },
+              "touristType": "PilgrimageTourist",
+              "offers": {
+                "@type": "Offer",
                 "priceCurrency": "INR",
-                "unitText": "per person"
+                "price": "15999",
+                "priceSpecification": {
+                  "@type": "UnitPriceSpecification",
+                  "price": "15999",
+                  "priceCurrency": "INR",
+                  "unitText": "per person"
+                }
               }
-            }
-          })
-        }}
-      />
-      <style jsx global>{`
+            })
+          }}
+        />
+        <style jsx global>{`
         .ujjain-page {
           --saffron: #f97316;
           --saffron-light: #fdba74;
@@ -170,7 +171,7 @@ export function UjjainOmkareshwarDetail() {
           background: linear-gradient(to bottom right, #ffffff, #fff7ed, #ffedd5);
           color: var(--cream);
           font-family: 'Jost', sans-serif;
-          overflow-x: hidden;
+          overflow: hidden;
           min-height: 100vh;
         }
 
@@ -184,10 +185,10 @@ export function UjjainOmkareshwarDetail() {
 
 
         /* HERO */
-        .ujjain-page .hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; background: url('/rambg.jpg') center/cover no-repeat; padding-top: 130px; }
+        .ujjain-page .hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; background: #0d1b3e; padding-top: 130px; }
         .ujjain-page .hero-img {
           position: absolute; inset: 0;
-          background: url('Ujjainmain.png') center/cover no-repeat;
+          
           transform: scale(1.05);
           animation: heroZoom 12s ease-out forwards;
         }
@@ -469,8 +470,8 @@ export function UjjainOmkareshwarDetail() {
         .ujjain-page .faq-item.open .faq-a { max-height: 200px; padding-bottom: 20px; }
 
         /* CTA BANNER */
-        .ujjain-page .cta-banner { position: relative; padding: 100px 5%; display: flex; flex-direction: column; align-items: center; text-align: center; overflow: hidden; background: url('/rambg.jpg') center/cover no-repeat; }
-        .ujjain-page .cta-banner::before { content: ''; position: absolute; inset: 0; background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Omkareshwar_temple.jpg/1280px-Omkareshwar_temple.jpg') center/cover no-repeat; filter: brightness(0.1) saturate(0.8); }
+        .ujjain-page .cta-banner { position: relative; padding: 100px 5%; display: flex; flex-direction: column; align-items: center; text-align: center; overflow: hidden; background: #0d1b3e; }
+        .ujjain-page .cta-banner::before { content: ''; position: absolute; inset: 0;  filter: brightness(0.1) saturate(0.8); }
         .ujjain-page .cta-banner-content { position: relative; z-index: 1; max-width: 700px; }
         .ujjain-page .cta-banner .section-title { text-align: center; color: #ffffff; }
         .ujjain-page .cta-banner .section-body { margin: 0 auto 40px; text-align: center; color: rgba(255, 255, 255, 0.8) !important; }
@@ -505,8 +506,14 @@ export function UjjainOmkareshwarDetail() {
         .ujjain-page .note-box p { font-size: 13px; color: var(--smoke); line-height: 1.7; }
         .ujjain-page .note-box strong { color: var(--saffron); }
 
+        .ujjain-page .intro-visual { position: relative; min-height: 520px; padding-bottom: 30px; padding-right: 30px; box-sizing: content-box; }
+        .ujjain-page .intro-img-main { display: block; width: 100%; height: 520px; object-fit: cover; border-radius: 4px; filter: brightness(0.85) saturate(1.1); position: relative; z-index: 1; }
+        .ujjain-page .intro-img-float { position: absolute; bottom: 0; right: 0; width: 200px; height: 200px; object-fit: cover; border-radius: 4px; border: 4px solid #ffffff; filter: brightness(0.9) saturate(1.2); z-index: 2; }
+
         @media (max-width: 900px) {
-          .ujjain-page .intro-grid, .ujjain-page .why-grid, .ujjain-page .faq-grid { grid-template-columns: 1fr; }
+          .ujjain-page .intro-visual { min-height: auto; padding: 0 20px; box-sizing: border-box; }
+          .ujjain-page .intro-img-main { height: 360px; border-radius: 8px; }
+          .ujjain-page .intro-grid, .ujjain-page .why-grid, .ujjain-page .faq-grid { grid-template-columns: 1fr; gap: 32px; }
           .ujjain-page .price-card { grid-template-columns: 1fr; }
           .ujjain-page .price-card-media { min-height: 260px; }
           .ujjain-page .highlights-grid { grid-template-columns: 1fr 1fr; }
@@ -632,393 +639,375 @@ export function UjjainOmkareshwarDetail() {
         }
       `}</style>
 
-      {/* NAV */}
-      <Header />
+        {/* NAV */}
+        <Header />
 
-      {/* HERO */}
-      <section className="hero">
-        <div className="hero-img"></div>
-        <div className="hero-overlay"></div>
-        <div className="hero-content">
-          <div className="hero-tag" style={{ fontWeight: 900, fontSize: 14 }}>2 Sacred Jyotirlingas · 3 Nights 4 Days</div>
-          <h1 className="hero-title">Ujjain Omkareshwar<br /><em>Tour Package</em></h1>
-          <p className="hero-subtitle">Mahakal Bhasma Aarti at dawn. VIP darshan at two Jyotirlingas. The sacred Narmada at Omkareshwar. Departing from Mumbai &amp; Thane — fully planned, nothing to worry about.</p>
-          <div className="hero-ctas">
-            <a href="tel:+917208771688" className="btn-primary">📞 Call to Book</a>
-            <a href={wa("I want to enquire about Ujjain Omkareshwar tour package")} className="btn-wa" target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg>
-              WhatsApp Us
-            </a>
-            <a href="/Ujjain.pdf" download="Ujjain.pdf" className="btn-primary">
-              Download Itinerary
-            </a>
+        {/* HERO */}
+        <section className="hero">
+          <div className="hero-img"><Image unoptimized={true} src="/Ujjainmain.png" alt="Hero" fill priority sizes="100vw" quality={60} style={{ objectFit: 'cover' }} /></div>
+          <div className="hero-overlay"></div>
+          <div className="hero-content">
+            <div className="hero-tag" style={{ fontWeight: 900, fontSize: 14 }}>2 Sacred Jyotirlingas · 3 Nights 4 Days</div>
+            <h1 className="hero-title">Ujjain Omkareshwar<br /><em>Tour Package</em></h1>
+            <p className="hero-subtitle">Mahakal Bhasma Aarti at dawn. VIP darshan at two Jyotirlingas. The sacred Narmada at Omkareshwar. Departing from Mumbai &amp; Thane — fully planned, nothing to worry about.</p>
+            <div className="hero-ctas">
+              <a href="tel:+917208771688" className="btn-primary">📞 Call to Book</a>
+              <a href={wa("I want to enquire about Ujjain Omkareshwar tour package")} className="btn-wa" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg>
+                WhatsApp Us
+              </a>
+              <a href="/Ujjain.pdf" download="Ujjain.pdf" className="btn-primary">
+                Download Itinerary
+              </a>
+            </div>
+            <div className="hero-badges">
+              <span className="hero-badge">Bhasma Aarti Pass Included</span>
+              <span className="hero-badge">VIP Darshan at Both Jyotirlingas</span>
+              <span className="hero-badge">Departures from Mumbai &amp; Thane</span>
+              <span className="hero-badge">Vegetarian Meals</span>
+            </div>
           </div>
-          <div className="hero-badges">
-            <span className="hero-badge">Bhasma Aarti Pass Included</span>
-            <span className="hero-badge">VIP Darshan at Both Jyotirlingas</span>
-            <span className="hero-badge">Departures from Mumbai &amp; Thane</span>
-            <span className="hero-badge">Vegetarian Meals</span>
-          </div>
+        </section>
+
+        <div className="char-stats-wrapper mb-20">
+          <CharStats />
         </div>
-      </section>
 
-      <div className="char-stats-wrapper mb-20">
-        <CharStats />
-      </div>
-
-      {/* INTRO / ABOUT */}
-      <section>
-        <div className="intro-grid">
-          <div className="intro-visual reveal">
-            <img className="intro-img-main"
-              src="/Ujjainmain2.png"
-              alt="Mahakaleshwar Temple Ujjain — Jyotirlinga"
-              onError={(e) => { (e.target as HTMLImageElement).src = '/rambg.jpg' }} />
-            <img className="intro-img-float"
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Omkareshwar_temple.jpg/640px-Omkareshwar_temple.jpg"
-              alt="Omkareshwar Jyotirlinga on Narmada Island"
-              onError={(e) => { (e.target as HTMLElement).style.display = 'none' }} />
+        {/* INTRO / ABOUT */}
+        <section>
+          <div className="intro-grid">
+            <div className="intro-visual reveal">
+              <Image unoptimized={true} width={800} height={520} className="intro-img-main" src="/Ujjainmain2.png" alt="Mahakaleshwar Temple Ujjain — Jyotirlinga" />
+              {/* <Image unoptimized={true} width={200} height={200} className="intro-img-float" src="/1.jpg" alt="Margika Yatra pilgrims" /> */}
+            </div>
+            <div className="reveal reveal-delay-2">
+              <div className="section-tag">2 Jyotirlingas · One Sacred Journey</div>
+              <h2 className="section-title">Ujjain Omkareshwar Tour Package —<br /><em>Where Shiva's Presence Is Felt</em></h2>
+              <div className="gold-rule"></div>
+              <p className="section-body">Ujjain is one of the seven sacred cities in Hinduism — home to Mahakaleshwar, the only south-facing Jyotirlinga and the only one where Bhasma Aarti is performed with sacred ash at midnight. Omkareshwar, just 130 km away, sits on a natural island in the Narmada River shaped like the Om symbol — home to the fourth Jyotirlinga.</p>
+              <p className="section-body" style={{ marginTop: '16px' }}>Covering both in a single 3-night, 4-day trip is not just convenient — it is the ideal way to complete two out of twelve Jyotirlingas in one meaningful journey. Travellers from Mumbai and Thane find this one of the most spiritually fulfilling short breaks they can plan in India.</p>
+              <div className="intro-quote">
+                <p>"Two Jyotirlingas. Four days. A lifetime of memory."</p>
+              </div>
+            </div>
           </div>
-          <div className="reveal reveal-delay-2">
-            <div className="section-tag">2 Jyotirlingas · One Sacred Journey</div>
-            <h2 className="section-title">Ujjain Omkareshwar Tour Package —<br /><em>Where Shiva's Presence Is Felt</em></h2>
+        </section>
+
+        {/* DESTINATION HIGHLIGHTS */}
+        <section className="highlights-section">
+          <div className="highlights-header reveal">
+            <div className="section-tag" style={{ justifyContent: 'center', margin: '0 auto 16px' }}>Sacred Destinations</div>
+            <h2 className="section-title" style={{ textAlign: "center" }}>The Temples You<br /><em>Will Visit</em></h2>
             <div className="gold-rule"></div>
-            <p className="section-body">Ujjain is one of the seven sacred cities in Hinduism — home to Mahakaleshwar, the only south-facing Jyotirlinga and the only one where Bhasma Aarti is performed with sacred ash at midnight. Omkareshwar, just 130 km away, sits on a natural island in the Narmada River shaped like the Om symbol — home to the fourth Jyotirlinga.</p>
-            <p className="section-body" style={{ marginTop: '16px' }}>Covering both in a single 3-night, 4-day trip is not just convenient — it is the ideal way to complete two out of twelve Jyotirlingas in one meaningful journey. Travellers from Mumbai and Thane find this one of the most spiritually fulfilling short breaks they can plan in India.</p>
-            <div className="intro-quote">
-              <p>"Two Jyotirlingas. Four days. A lifetime of memory."</p>
-            </div>
+            <p className="section-body" style={{ margin: '0 auto', textAlign: 'center' }}>Each stop on this itinerary carries centuries of devotion. Here is what makes this route so spiritually significant.</p>
           </div>
-        </div>
-      </section>
-
-      {/* DESTINATION HIGHLIGHTS */}
-      <section className="highlights-section">
-        <div className="highlights-header reveal">
-          <div className="section-tag" style={{ justifyContent: 'center', margin: '0 auto 16px' }}>Sacred Destinations</div>
-          <h2 className="section-title" style={{ textAlign: "center" }}>The Temples You<br /><em>Will Visit</em></h2>
-          <div className="gold-rule"></div>
-          <p className="section-body" style={{ margin: '0 auto', textAlign: 'center' }}>Each stop on this itinerary carries centuries of devotion. Here is what makes this route so spiritually significant.</p>
-        </div>
-        <div className="highlights-grid">
-          <div className="hl-card">
-            <img
-              src="/Ujj1.jpg"
-              alt="Mahakaleshwar Temple Ujjain — Jyotirlinga"
-              onError={(e) => { (e.target as HTMLImageElement).src = '/rambg.jpg' }}
-            />
-            <div className="hl-overlay">
-              <div className="hl-num">01</div>
-              <div className="hl-name">Mahakaleshwar Temple</div>
-              <div className="hl-desc">Jyotirlinga No. 3 · Ujjain</div>
-              <div className="hl-detail">The only south-facing Jyotirlinga in all twelve. Bhasma Aarti here — performed with sacred ash — begins around 4:00 AM and is unlike any spiritual experience in India.</div>
-            </div>
-          </div>
-          <div className="hl-card">
-            <img
-              src="Ujj2.jpg"
-              alt="Omkareshwar Jyotirlinga Temple Madhya Pradesh"
-              onError={(e) => { (e.target as HTMLImageElement).src = '/rambg.jpg' }}
-            />
-            <div className="hl-overlay">
-              <div className="hl-num">02</div>
-              <div className="hl-name">Omkareshwar Jyotirlinga</div>
-              <div className="hl-desc">Jyotirlinga No. 4 · Narmada Island</div>
-              <div className="hl-detail">Situated on Mandhata Island where the Narmada and Kaveri rivers meet, forming the sacred Om shape. VIP darshan is arranged to ensure a composed, peaceful experience.</div>
-            </div>
-          </div>
-          <div className="hl-card">
-            <img
-              src="Ujj3.jpg"
-              alt="Ram Ghat Ujjain Shipra Aarti"
-              onError={(e) => { (e.target as HTMLImageElement).src = '/rambg.jpg' }}
-            />
-            <div className="hl-overlay">
-              <div className="hl-num">03</div>
-              <div className="hl-name">Ram Ghat Shipra Aarti</div>
-              <div className="hl-desc">Sacred Ghat · Ujjain</div>
-              <div className="hl-detail">The evening aarti on the banks of the Shipra River is one of Ujjain's most calming rituals. The chanting, lamps, and river reflections stay with you long after you leave.</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* PACKAGE PRICING */}
-      <section className="price-section">
-        <div className="price-header reveal">
-          <div className="section-tag" style={{ justifyContent: 'center', margin: '0 auto 16px' }}>Package & Pricing</div>
-          <h2 className="section-title" style={{ textAlign: "center" }}>Your Ujjain Omkareshwar<br /><em>Yatra, Fully Sorted</em></h2>
-          <div className="gold-rule"></div>
-          <p className="section-body" style={{ margin: '0 auto', textAlign: 'center' }}>One clear, all-inclusive Ujjain Omkareshwar tour package — Mahakal Bhasma Aarti VIP pass, VIP Darshan at both Jyotirlingas, hotels, private AC transport, vegetarian meals and full coordination from Mumbai &amp; Thane. Transparent pricing, no hidden costs.</p>
-        </div>
-
-        <div className="price-card reveal">
-          <div className="price-card-media">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Omkareshwar_Jyotirlinga_Temple%2C_Madhya_Pradesh%2C_India.jpg/1280px-Omkareshwar_Jyotirlinga_Temple%2C_Madhya_Pradesh%2C_India.jpg" alt="Ujjain Omkareshwar tour package — Mahakaleshwar and Omkareshwar Jyotirlinga" onError={(e) => { (e.target as HTMLImageElement).src = '/Ujjainmain3.jpg' }} />
-            <div className="price-badge">⭐ Most Loved</div>
-            <div className="price-media-cities">
-              <span>UJJAIN</span><span>OMKARESHWAR</span><span>2 JYOTIRLINGAS</span>
-            </div>
-          </div>
-          <div className="price-card-body">
-            <div>
-              <div className="pkg-duration">3 Nights / 4 Days · Ujjain + Omkareshwar · Departures from Mumbai / Thane</div>
-              <div className="pkg-name">Ujjain Omkareshwar Tour Package</div>
-              <p className="pkg-desc">The complete 2 Jyotirlinga circuit — the Mahakal Bhasma Aarti VIP pass at Mahakaleshwar, VIP Darshan at Omkareshwar Jyotirlinga and Mamleshwar Jyotirlinga, the Narmada boat ride, and the full Ujjain temple circuit (Kaal Bhairav, Gadkalika Mata, Mangal Nath, Harsiddhi Mata, Rinmukteshwar and the Ram Ghat Shipra Aarti). Comfortable hotels near the Mahakal temple, private AC transport, pure vegetarian meals and a dedicated coordinator with 24×7 support are all included.</p>
-              <div className="pkg-includes">
-                <span className="pkg-tag">Bhasma Aarti VIP Pass</span>
-                <span className="pkg-tag">VIP Darshan · 2 Jyotirlingas</span>
-                <span className="pkg-tag">Narmada Boat Ride</span>
-                <span className="pkg-tag">AC Transport</span>
-                <span className="pkg-tag">Veg Meals</span>
-                <span className="pkg-tag">Hotel Stay (Ujjain)</span>
-                <span className="pkg-tag">Ujjain Temple Circuit</span>
-                <span className="pkg-tag">Mumbai–Thane Support</span>
+          <div className="highlights-grid">
+            <div className="hl-card">
+              <Image unoptimized={true} src="/Ujj1.jpg"
+                alt="Mahakaleshwar Temple Ujjain — Jyotirlinga"
+                width={800} height={600} quality={60} sizes="100vw" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <div className="hl-overlay">
+                <div className="hl-num">01</div>
+                <div className="hl-name">Mahakaleshwar Temple</div>
+                <div className="hl-desc">Jyotirlinga No. 3 · Ujjain</div>
+                <div className="hl-detail">The only south-facing Jyotirlinga in all twelve. Bhasma Aarti here — performed with sacred ash — begins around 4:00 AM and is unlike any spiritual experience in India.</div>
               </div>
             </div>
-            <div className="price-footer">
-              <div className="price-amount-wrap">
-                <span className="price-from">Starting from</span>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
-                  <span className="price-amount" style={{ textDecoration: 'line-through', color: '#9ca3af', fontSize: '24px' }}>₹15,500</span>
-                  <span className="price-amount">₹10,500</span>
+            <div className="hl-card">
+              <Image unoptimized={true} src="/Ujj2.jpg"
+                alt="Omkareshwar Jyotirlinga Temple Madhya Pradesh"
+                width={800} height={600} quality={60} sizes="100vw" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <div className="hl-overlay">
+                <div className="hl-num">02</div>
+                <div className="hl-name">Omkareshwar Jyotirlinga</div>
+                <div className="hl-desc">Jyotirlinga No. 4 · Narmada Island</div>
+                <div className="hl-detail">Situated on Mandhata Island where the Narmada and Kaveri rivers meet, forming the sacred Om shape. VIP darshan is arranged to ensure a composed, peaceful experience.</div>
+              </div>
+            </div>
+            <div className="hl-card">
+              <Image unoptimized={true} src="/Ujj3.jpg"
+                alt="Ram Ghat Ujjain Shipra Aarti"
+                width={800} height={600} quality={60} sizes="100vw" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <div className="hl-overlay">
+                <div className="hl-num">03</div>
+                <div className="hl-name">Ram Ghat Shipra Aarti</div>
+                <div className="hl-desc">Sacred Ghat · Ujjain</div>
+                <div className="hl-detail">The evening aarti on the banks of the Shipra River is one of Ujjain's most calming rituals. The chanting, lamps, and river reflections stay with you long after you leave.</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* PACKAGE PRICING */}
+        <section className="price-section">
+          <div className="price-header reveal">
+            <div className="section-tag" style={{ justifyContent: 'center', margin: '0 auto 16px' }}>Package & Pricing</div>
+            <h2 className="section-title" style={{ textAlign: "center" }}>Your Ujjain Omkareshwar<br /><em>Yatra, Fully Sorted</em></h2>
+            <div className="gold-rule"></div>
+            <p className="section-body" style={{ margin: '0 auto', textAlign: 'center' }}>One clear, all-inclusive Ujjain Omkareshwar tour package — Mahakal Bhasma Aarti VIP pass, VIP Darshan at both Jyotirlingas, hotels, private AC transport, vegetarian meals and full coordination from Mumbai &amp; Thane. Transparent pricing, no hidden costs.</p>
+          </div>
+
+          <div className="price-card reveal">
+            <div className="price-card-media">
+              <Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/Ujjainmain3.jpg" alt="Ujjain Omkareshwar tour package — Mahakaleshwar and Omkareshwar Jyotirlinga" />
+              <div className="price-badge">⭐ Most Loved</div>
+              <div className="price-media-cities">
+                <span>UJJAIN</span><span>OMKARESHWAR</span><span>2 JYOTIRLINGAS</span>
+              </div>
+            </div>
+            <div className="price-card-body">
+              <div>
+                <div className="pkg-duration">3 Nights / 4 Days · Ujjain + Omkareshwar · Departures from Mumbai / Thane</div>
+                <div className="pkg-name">Ujjain Omkareshwar Tour Package</div>
+                <p className="pkg-desc">The complete 2 Jyotirlinga circuit — the Mahakal Bhasma Aarti VIP pass at Mahakaleshwar, VIP Darshan at Omkareshwar Jyotirlinga and Mamleshwar Jyotirlinga, the Narmada boat ride, and the full Ujjain temple circuit (Kaal Bhairav, Gadkalika Mata, Mangal Nath, Harsiddhi Mata, Rinmukteshwar and the Ram Ghat Shipra Aarti). Comfortable hotels near the Mahakal temple, private AC transport, pure vegetarian meals and a dedicated coordinator with 24×7 support are all included.</p>
+                <div className="pkg-includes">
+                  <span className="pkg-tag">Bhasma Aarti VIP Pass</span>
+                  <span className="pkg-tag">VIP Darshan · 2 Jyotirlingas</span>
+                  <span className="pkg-tag">Narmada Boat Ride</span>
+                  <span className="pkg-tag">AC Transport</span>
+                  <span className="pkg-tag">Veg Meals</span>
+                  <span className="pkg-tag">Hotel Stay (Ujjain)</span>
+                  <span className="pkg-tag">Ujjain Temple Circuit</span>
+                  <span className="pkg-tag">Mumbai–Thane Support</span>
                 </div>
-                <span className="price-per"> / person</span>
-                <span className="price-note">Standard Package: ₹10,500 / person (was <span style={{ textDecoration: 'line-through' }}>₹15,500</span>). Premium Package: ₹15,999 / person (was <span style={{ textDecoration: 'line-through' }}>₹20,999</span>). Final price depends on dates, group size &amp; hotel category.</span>
               </div>
-              <div className="price-actions">
-                <a href="tel:+917208771688" className="btn-book-outline">Call Us</a>
-                <a href={razorpayLink} className="btn-book" target="_blank" rel="noopener noreferrer">Book Now </a>
-                <a href="/Ujjain.pdf" download="Ujjain.pdf" className="char-btn-outline">
-                  Download Itinerary
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <p style={{ textAlign: 'center', fontSize: '13px', color: 'var(--smoke)', maxWidth: '640px', margin: '28px auto 0' }}>Looking for a longer stay, a premium hotel, or a custom group rate for your family or sangat? <a href={wa("I want a custom quote for the Ujjain Omkareshwar tour package")} style={{ color: 'var(--saffron)', textDecoration: 'none' }} target="_blank" rel="noopener noreferrer">Message us for a personalised quote →</a></p>
-      </section>
-
-      {/* DETAILED ITINERARY */}
-      <section className="itinerary-section">
-        <div className="itinerary-header reveal">
-          <div className="section-tag" style={{ justifyContent: 'center', margin: '0 auto 16px' }}>Day-by-Day Plan</div>
-          <h2 className="section-title" style={{ textAlign: "center" }}>Detailed Tour<br /><em>Itinerary</em></h2>
-          <div className="gold-rule"></div>
-          <p className="section-body" style={{ margin: '0 auto', textAlign: 'center' }}>Every hour is planned with purpose — so you spend your time in darshan and prayer, not logistics.</p>
-        </div>
-        <div className="itinerary-days">
-          {/* DAY 1 */}
-          <div className="day-card reveal">
-            {/* <div className="day-img">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Ram_Ghat%2C_Ujjain.jpg/1280px-Ram_Ghat%2C_Ujjain.jpg"
-                alt="Ujjain Day 1 — Temple Circuit"
-                onError={(e) => { (e.target as HTMLImageElement).src = '/rambg.jpg' }}
-              />
-                   </div> */}
-
-
-            <div className="day-body">
-              <div className="day-badge">Day 1 — Ujjain</div>
-              <div className="day-title">Ujjain Temple Circuit</div>
-              <ul className="day-stops">
-                <li>Check-in at hotel near Mahakal</li>
-                <li>Kaal Bhairav Temple darshan</li>
-                <li>Gadkalika Mata Temple</li>
-                <li>Mangal Nath Temple (Mars origin)</li>
-                <li>Ram Ghat — Shipra Aarti (evening)</li>
-                <li>Harsiddhi Mata Temple</li>
-                <li>Rinmukteshwar Temple</li>
-                <li>Return to hotel — rest</li>
-              </ul>
-              <div className="day-note"><strong>Note:</strong> The Shipra Aarti at Ram Ghat typically happens at sunset. Timings may vary by season — we plan accordingly.</div>
-            </div>
-          </div>
-          {/* DAY 2 */}
-          <div className="day-card reveal reveal-delay-1">
-            {/* <div className="day-img">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Mahakaleshwar_Jyotirlinga%2C_Ujjain.jpg/1280px-Mahakaleshwar_Jyotirlinga%2C_Ujjain.jpg"
-                alt="Bhasma Aarti Ujjain — Mahakaleshwar"
-                onError={(e) => { (e.target as HTMLImageElement).src = '/rambg.jpg' }}
-              />
-              <div className="day-badge">Day 2 — Bhasma Aarti + Omkareshwar</div>
-            </div> */}
-            <div className="day-body">
-              <div className="day-badge">Day 2 — Bhasma Aarti + Omkareshwar</div>
-              <div className="day-title">Bhasma Aarti & Omkareshwar</div>
-              <ul className="day-stops">
-                <li>~12:30 AM — depart for Mahakal Bhasma Aarti</li>
-                <li>Bhasma Aarti darshan (VIP pass secured)</li>
-                <li>Return to hotel by 6:00 AM — breakfast &amp; rest</li>
-                <li>Drive to Omkareshwar (~2.5 hrs)</li>
-                <li>Omkareshwar Jyotirlinga — VIP darshan</li>
-                <li>Mamleshwar Jyotirlinga darshan</li>
-                <li>Narmada River boat ride</li>
-                <li>Shani Mandir darshan</li>
-                <li>Return to Ujjain — dinner &amp; rest</li>
-              </ul>
-              <div className="day-note"><strong>Important:</strong> If Bhasma Aarti passes cannot be arranged due to unforeseen temple circumstances, we will provide equivalent spiritual compensation — we never leave this unaddressed.</div>
-            </div>
-          </div>
-          {/* DAY 3 */}
-          <div className="day-card reveal reveal-delay-2">
-            {/* <div className="day-img">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Omkareshwar_temple.jpg/1280px-Omkareshwar_temple.jpg"
-                alt="Day 3 — Departure from Ujjain"
-                onError={(e) => { (e.target as HTMLImageElement).src = '/rambg.jpg' }}
-              />
-              <div className="day-badge">Day 3 / 4 — Departure</div>
-            </div> */}
-            <div className="day-body">
-              <div className="day-badge">Day 3 / 4 — Departure</div>
-              <div className="day-title">Morning & Check-Out</div>
-              <ul className="day-stops">
-                <li>Morning breakfast at hotel</li>
-                <li>Free time for shopping (Prasad, puja items — own expenses)</li>
-                <li>Visit any missed temples at your own pace</li>
-                <li>Check-out from hotel</li>
-                <li>Transfer to Ujjain railway station / Indore airport</li>
-                <li>Journey back to Mumbai / Thane</li>
-              </ul>
-              <div className="day-note"><strong>Shopping Tip:</strong> Ujjain's Freeganj area is known for quality puja items, silver, and Mahakal-themed prasad. Budget 1–2 hours if you plan to shop.</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* WHY MARGIKA */}
-      <section className="why-section">
-        <div className="why-grid">
-          <div className="reveal">
-            <div className="section-tag" style={{ color: '#ffffff', '--saffron': '#ffffff' } as React.CSSProperties}>Why Choose Us</div>
-            <h2 className="section-title">Why Mumbai &amp; Thane<br /><em style={{ color: "#ffffff" }}>Yatris Choose Margika</em></h2>
-            <div className="gold-rule" style={{ background: '#ffffff' }}></div>
-            <p className="section-body" style={{ color: "#ffffff", fontWeight: 700 }}>We are based in Brahmand, Thane. When you call us, you speak to someone from your community — not a national call centre. That personal understanding shapes how we plan every trip.</p>
-            <ul className="features-list">
-              <li className="feature-item">
-                <div className="feature-icon">🙏</div>
-                <div className="feature-text"><h4>Bhasma Aarti Passes — Secured in Advance</h4><p style={{ color: "#ffffff" }}>Passes are limited and go fast. We book them well before your travel date so there is no last-minute uncertainty.</p></div>
-              </li>
-              <li className="feature-item">
-                <div className="feature-icon">⚡</div>
-                <div className="feature-text"><h4>VIP Darshan at Both Jyotirlingas</h4><p style={{ color: "#ffffff" }}>Shorter queues, more time in the sanctum, no scrambling — we arrange priority darshan at Mahakaleshwar and Omkareshwar both.</p></div>
-              </li>
-              <li className="feature-item">
-                <div className="feature-icon">👴</div>
-                <div className="feature-text"><h4>Senior Citizen &amp; Family Friendly</h4><p style={{ color: "#ffffff" }}>Gentle itinerary pacing, ground-floor room requests, and extra care for elderly travellers. Many Mumbai families travel with grandparents on this trip.</p></div>
-              </li>
-              <li className="feature-item">
-                <div className="feature-icon">💰</div>
-                <div className="feature-text"><h4>Transparent Pricing — No Surprises</h4><p style={{ color: "#ffffff" }}>You get a clear, itemised quote before confirming. What is in the package is in the package. No hidden charges after departure.</p></div>
-              </li>
-              <li className="feature-item">
-                <div className="feature-icon">📍</div>
-                <div className="feature-text"><h4>Departures from Thane &amp; Mumbai</h4><p style={{ color: "#ffffff" }}>We coordinate from Thane railway station and CSMT / Dadar. No need to travel to a central office — we come to your convenience.</p></div>
-              </li>
-            </ul>
-          </div>
-          <div className="reveal reveal-delay-2">
-            <div className="why-visual">
-              <img src="https://www.margikayatra.com/2.jpg" alt="Margika Yatra group pilgrimage — Ujjain" onError={(e) => { (e.target as HTMLImageElement).src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Mahakaleshwar_Jyotirlinga%2C_Ujjain.jpg/640px-Mahakaleshwar_Jyotirlinga%2C_Ujjain.jpg' }} />
-              <div className="why-float-card">
-                <p>"Every yatri from our group got Bhasma Aarti darshan. Margika handled everything — from Thane to Ujjain."</p>
-                <span>— Sunita & Prakash Deshmukh, Thane</span>
+              <div className="price-footer">
+                <div className="price-amount-wrap">
+                  <span className="price-from">Starting from</span>
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
+                    <span className="price-amount" style={{ textDecoration: 'line-through', color: '#9ca3af', fontSize: '24px' }}>₹15,500</span>
+                    <span className="price-amount">₹10,500</span>
+                  </div>
+                  <span className="price-per"> / person</span>
+                  <span className="price-note">Standard Package: ₹10,500 / person (was <span style={{ textDecoration: 'line-through' }}>₹15,500</span>). Premium Package: ₹15,999 / person (was <span style={{ textDecoration: 'line-through' }}>₹20,999</span>). Final price depends on dates, group size &amp; hotel category.</span>
+                </div>
+                <div className="price-actions">
+                  <a href="tel:+917208771688" className="btn-book-outline">Call Us</a>
+                  <a href={razorpayLink} className="btn-book" target="_blank" rel="noopener noreferrer">Book Now </a>
+                  <a href="/Ujjain.pdf" download="Ujjain.pdf" className="char-btn-outline">
+                    Download Itinerary
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* BOOKING PROCESS */}
-      <section className="steps-section">
-        <div className="steps-header reveal">
-          <div className="section-tag" style={{ justifyContent: 'center', margin: '0 auto 16px' }}>Simple &amp; Transparent</div>
-          <h2 className="section-title" style={{ textAlign: 'center' }}>How Your<br /><em>Yatra Begins</em></h2>
-          <div className="gold-rule" style={{ margin: '20px auto' }}></div>
-          <p style={{ textAlign: 'center', fontSize: '14px', color: 'var(--smoke)', maxWidth: '500px', margin: '0 auto' }}>From your first inquiry to the moment you return home — we are with you at every step.</p>
-        </div>
-        <div className="steps-grid">
-          <div className="step-item reveal">
-            <div className="step-dot">📞</div>
-            <div className="step-title">Inquiry</div>
-            <div className="step-desc">Call or WhatsApp — share your travel dates and group size</div>
-          </div>
-          <div className="step-item reveal reveal-delay-1">
-            <div className="step-dot">💬</div>
-            <div className="step-title">Consultation</div>
-            <div className="step-desc">We discuss your needs and share a clear itinerary within 24 hrs</div>
-          </div>
-          <div className="step-item reveal reveal-delay-2">
-            <div className="step-dot">📋</div>
-            <div className="step-title">Confirmation</div>
-            <div className="step-desc">Simple advance to lock your dates and Bhasma Aarti passes</div>
-          </div>
-          <div className="step-item reveal reveal-delay-3">
-            <div className="step-dot">🛕</div>
-            <div className="step-title">On-Tour Support</div>
-            <div className="step-desc">Dedicated coordinator handles all logistics during the yatra</div>
-          </div>
-          <div className="step-item reveal reveal-delay-4">
-            <div className="step-dot">🙌</div>
-            <div className="step-title">Safe Return</div>
-            <div className="step-desc">We assist with transfers and follow up for your feedback</div>
-          </div>
-        </div>
-      </section>
+          <p style={{ textAlign: 'center', fontSize: '13px', color: 'var(--smoke)', maxWidth: '640px', margin: '28px auto 0' }}>Looking for a longer stay, a premium hotel, or a custom group rate for your family or sangat? <a href={wa("I want a custom quote for the Ujjain Omkareshwar tour package")} style={{ color: 'var(--saffron)', textDecoration: 'none' }} target="_blank" rel="noopener noreferrer">Message us for a personalised quote →</a></p>
+        </section>
 
-      {/* OTHER PACKAGES */}
-      <section style={{ background: 'rgba(255,255,255,0.01)', borderTop: '1px solid rgba(212,175,106,0.1)' }}>
-        <div className="price-header reveal">
-          <div className="section-tag" style={{ justifyContent: 'center', margin: '0 auto 16px' }}>Explore More</div>
-          <h2 className="section-title" style={{ textAlign: 'center' }}>Other Spiritual<br /><em>Journeys</em></h2>
-          <div className="gold-rule"></div>
-        </div>
-        <div className="pkg-grid">
-          {/* Package 1 */}
-          <div className="pkg-card reveal">
-            <div className="pkg-img">
-              <img src="/DD1.PNG" alt="Dev Deepawali in Varanasi" />
-              <div className="pkg-badge">Once a Year</div>
+        {/* DETAILED ITINERARY */}
+        <section className="itinerary-section">
+          <div className="itinerary-header reveal">
+            <div className="section-tag" style={{ justifyContent: 'center', margin: '0 auto 16px' }}>Day-by-Day Plan</div>
+            <h2 className="section-title" style={{ textAlign: "center" }}>Detailed Tour<br /><em>Itinerary</em></h2>
+            <div className="gold-rule"></div>
+            <p className="section-body" style={{ margin: '0 auto', textAlign: 'center' }}>Every hour is planned with purpose — so you spend your time in darshan and prayer, not logistics.</p>
+          </div>
+          <div className="itinerary-days">
+            {/* DAY 1 */}
+            <div className="day-card reveal">
+              <div className="day-img">
+                <Image unoptimized={true} src="/Ujj1.jpg"
+                  alt="Ujjain Day 1 — Temple Circuit"
+                  width={800} height={600} quality={60} sizes="100vw" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              </div>
+
+
+              <div className="day-body">
+                <div className="day-badge">Day 1 — Ujjain</div>
+                <div className="day-title">Ujjain Temple Circuit</div>
+                <ul className="day-stops">
+                  <li>Check-in at hotel near Mahakal</li>
+                  <li>Kaal Bhairav Temple darshan</li>
+                  <li>Gadkalika Mata Temple</li>
+                  <li>Mangal Nath Temple (Mars origin)</li>
+                  <li>Ram Ghat — Shipra Aarti (evening)</li>
+                  <li>Harsiddhi Mata Temple</li>
+                  <li>Rinmukteshwar Temple</li>
+                  <li>Return to hotel — rest</li>
+                </ul>
+                <div className="day-note"><strong>Note:</strong> The Shipra Aarti at Ram Ghat typically happens at sunset. Timings may vary by season — we plan accordingly.</div>
+              </div>
             </div>
-            <div className="pkg-body">
-              <div className="pkg-duration">2 Nights / 3 Days</div>
-              <h3 className="pkg-name">Dev Deepawali Varanasi</h3>
-              <p className="pkg-desc">Experience Varanasi lit by a million diyas on Kartik Purnima. Includes boat ride and special Ganga Aarti entry.</p>
-              <Link href="/packages/dev-deepawali" className="pkg-cta">View Details</Link>
+            {/* DAY 2 */}
+            <div className="day-card reveal reveal-delay-1">
+              <div className="day-img">
+                <Image unoptimized={true} src="/Ujj2.jpg"
+                  alt="Bhasma Aarti Ujjain — Mahakaleshwar"
+                  width={800} height={600} quality={60} sizes="100vw" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <div className="day-badge">Day 2 — Bhasma Aarti + Omkareshwar</div>
+              </div>
+              <div className="day-body">
+                <div className="day-badge">Day 2 — Bhasma Aarti + Omkareshwar</div>
+                <div className="day-title">Bhasma Aarti & Omkareshwar</div>
+                <ul className="day-stops">
+                  <li>~12:30 AM — depart for Mahakal Bhasma Aarti</li>
+                  <li>Bhasma Aarti darshan (VIP pass secured)</li>
+                  <li>Return to hotel by 6:00 AM — breakfast &amp; rest</li>
+                  <li>Drive to Omkareshwar (~2.5 hrs)</li>
+                  <li>Omkareshwar Jyotirlinga — VIP darshan</li>
+                  <li>Mamleshwar Jyotirlinga darshan</li>
+                  <li>Narmada River boat ride</li>
+                  <li>Shani Mandir darshan</li>
+                  <li>Return to Ujjain — dinner &amp; rest</li>
+                </ul>
+                <div className="day-note"><strong>Important:</strong> If Bhasma Aarti passes cannot be arranged due to unforeseen temple circumstances, we will provide equivalent spiritual compensation — we never leave this unaddressed.</div>
+              </div>
+            </div>
+            {/* DAY 3 */}
+            <div className="day-card reveal reveal-delay-2">
+              <div className="day-img">
+                <Image unoptimized={true} src="/Ujj3.jpg"
+                  alt="Day 3 — Departure from Ujjain"
+                  width={800} height={600} quality={60} sizes="100vw" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <div className="day-badge">Day 3 / 4 — Departure</div>
+              </div>
+              <div className="day-body">
+                <div className="day-badge">Day 3 / 4 — Departure</div>
+                <div className="day-title">Morning & Check-Out</div>
+                <ul className="day-stops">
+                  <li>Morning breakfast at hotel</li>
+                  <li>Free time for shopping (Prasad, puja items — own expenses)</li>
+                  <li>Visit any missed temples at your own pace</li>
+                  <li>Check-out from hotel</li>
+                  <li>Transfer to Ujjain railway station / Indore airport</li>
+                  <li>Journey back to Mumbai / Thane</li>
+                </ul>
+                <div className="day-note"><strong>Shopping Tip:</strong> Ujjain's Freeganj area is known for quality puja items, silver, and Mahakal-themed prasad. Budget 1–2 hours if you plan to shop.</div>
+              </div>
             </div>
           </div>
-          {/* Package 2 */}
-          <div className="pkg-card reveal reveal-delay-1">
-            <div className="pkg-img">
-              <img src="/mh.jpg" alt="3 Jyotirling of Maharashtra" />
-              <div className="pkg-badge">Jyotirlinga</div>
+        </section>
+
+        {/* WHY MARGIKA */}
+        <section className="why-section">
+          <div className="why-grid">
+            <div className="reveal">
+              <div className="section-tag" style={{ color: '#ffffff', '--saffron': '#ffffff' } as React.CSSProperties}>Why Choose Us</div>
+              <h2 className="section-title">Why Mumbai &amp; Thane<br /><em style={{ color: "#ffffff" }}>Yatris Choose Margika</em></h2>
+              <div className="gold-rule" style={{ background: '#ffffff' }}></div>
+              <p className="section-body" style={{ color: "#ffffff", fontWeight: 700 }}>We are based in Brahmand, Thane. When you call us, you speak to someone from your community — not a national call centre. That personal understanding shapes how we plan every trip.</p>
+              <ul className="features-list">
+                <li className="feature-item">
+                  <div className="feature-icon">🙏</div>
+                  <div className="feature-text"><h4>Bhasma Aarti Passes — Secured in Advance</h4><p style={{ color: "#ffffff" }}>Passes are limited and go fast. We book them well before your travel date so there is no last-minute uncertainty.</p></div>
+                </li>
+                <li className="feature-item">
+                  <div className="feature-icon">⚡</div>
+                  <div className="feature-text"><h4>VIP Darshan at Both Jyotirlingas</h4><p style={{ color: "#ffffff" }}>Shorter queues, more time in the sanctum, no scrambling — we arrange priority darshan at Mahakaleshwar and Omkareshwar both.</p></div>
+                </li>
+                <li className="feature-item">
+                  <div className="feature-icon">👴</div>
+                  <div className="feature-text"><h4>Senior Citizen &amp; Family Friendly</h4><p style={{ color: "#ffffff" }}>Gentle itinerary pacing, ground-floor room requests, and extra care for elderly travellers. Many Mumbai families travel with grandparents on this trip.</p></div>
+                </li>
+                <li className="feature-item">
+                  <div className="feature-icon">💰</div>
+                  <div className="feature-text"><h4>Transparent Pricing — No Surprises</h4><p style={{ color: "#ffffff" }}>You get a clear, itemised quote before confirming. What is in the package is in the package. No hidden charges after departure.</p></div>
+                </li>
+                <li className="feature-item">
+                  <div className="feature-icon">📍</div>
+                  <div className="feature-text"><h4>Departures from Thane &amp; Mumbai</h4><p style={{ color: "#ffffff" }}>We coordinate from Thane railway station and CSMT / Dadar. No need to travel to a central office — we come to your convenience.</p></div>
+                </li>
+              </ul>
             </div>
-            <div className="pkg-body">
-              <div className="pkg-duration">3 Nights / 4 Days</div>
-              <h3 className="pkg-name">3 Jyotirling Maharashtra</h3>
-              <p className="pkg-desc">Explore Trimbakeshwar, Bhimashankar, Grishneshwar, and Shirdi in a structured, senior-friendly travel route.</p>
-              <Link href="/packages/maharashtra" className="pkg-cta">View Details</Link>
+            <div className="reveal reveal-delay-2">
+              <div className="why-visual">
+                <Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="https://www.margikayatra.com/2.jpg" alt="Margika Yatra group pilgrimage — Ujjain" />
+                <div className="why-float-card">
+                  <p>"Every yatri from our group got Bhasma Aarti darshan. Margika handled everything — from Thane to Ujjain."</p>
+                  <span>— Sunita & Prakash Deshmukh, Thane</span>
+                </div>
+              </div>
             </div>
           </div>
-          {/* Package 3 */}
-          <div className="pkg-card reveal reveal-delay-2">
-            <div className="pkg-img">
-              <img src="/DwMain.jpeg" alt="Dwarka Somnath Gujarat Yatra" />
-              <div className="pkg-badge">Popular</div>
+        </section>
+
+        {/* BOOKING PROCESS */}
+        <section className="steps-section">
+          <div className="steps-header reveal">
+            <div className="section-tag" style={{ justifyContent: 'center', margin: '0 auto 16px' }}>Simple &amp; Transparent</div>
+            <h2 className="section-title" style={{ textAlign: 'center' }}>How Your<br /><em>Yatra Begins</em></h2>
+            <div className="gold-rule" style={{ margin: '20px auto' }}></div>
+            <p style={{ textAlign: 'center', fontSize: '14px', color: 'var(--smoke)', maxWidth: '500px', margin: '0 auto' }}>From your first inquiry to the moment you return home — we are with you at every step.</p>
+          </div>
+          <div className="steps-grid">
+            <div className="step-item reveal">
+              <div className="step-dot">📞</div>
+              <div className="step-title">Inquiry</div>
+              <div className="step-desc">Call or WhatsApp — share your travel dates and group size</div>
             </div>
-            <div className="pkg-body">
-              <div className="pkg-duration">3 Nights / 4 Days</div>
-              <h3 className="pkg-name">Dwarka Somnath Yatra</h3>
-              <p className="pkg-desc">Sacred Gujarat pilgrimage covering Dwarkadhish Temple, Somnath Temple, Nageshwar Jyotirlinga &amp; Beyt Dwarka.</p>
-              <Link href="/packages/dwarka-somnath" className="pkg-cta">View Details</Link>
+            <div className="step-item reveal reveal-delay-1">
+              <div className="step-dot">💬</div>
+              <div className="step-title">Consultation</div>
+              <div className="step-desc">We discuss your needs and share a clear itinerary within 24 hrs</div>
+            </div>
+            <div className="step-item reveal reveal-delay-2">
+              <div className="step-dot">📋</div>
+              <div className="step-title">Confirmation</div>
+              <div className="step-desc">Simple advance to lock your dates and Bhasma Aarti passes</div>
+            </div>
+            <div className="step-item reveal reveal-delay-3">
+              <div className="step-dot">🛕</div>
+              <div className="step-title">On-Tour Support</div>
+              <div className="step-desc">Dedicated coordinator handles all logistics during the yatra</div>
+            </div>
+            <div className="step-item reveal reveal-delay-4">
+              <div className="step-dot">🙌</div>
+              <div className="step-title">Safe Return</div>
+              <div className="step-desc">We assist with transfers and follow up for your feedback</div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* OTHER PACKAGES */}
+        <section style={{ background: 'rgba(255,255,255,0.01)', borderTop: '1px solid rgba(212,175,106,0.1)' }}>
+          <div className="price-header reveal">
+            <div className="section-tag" style={{ justifyContent: 'center', margin: '0 auto 16px' }}>Explore More</div>
+            <h2 className="section-title" style={{ textAlign: 'center' }}>Other Spiritual<br /><em>Journeys</em></h2>
+            <div className="gold-rule"></div>
+          </div>
+          <div className="pkg-grid">
+            {/* Package 1 */}
+            <div className="pkg-card reveal">
+              <div className="pkg-img">
+                <Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/DD1.PNG" alt="Dev Deepawali in Varanasi" />
+                <div className="pkg-badge">Once a Year</div>
+              </div>
+              <div className="pkg-body">
+                <div className="pkg-duration">2 Nights / 3 Days</div>
+                <h3 className="pkg-name">Dev Deepawali Varanasi</h3>
+                <p className="pkg-desc">Experience Varanasi lit by a million diyas on Kartik Purnima. Includes boat ride and special Ganga Aarti entry.</p>
+                <Link prefetch={true} href="/packages/dev-deepawali" className="pkg-cta">View Details</Link>
+              </div>
+            </div>
+            {/* Package 2 */}
+            <div className="pkg-card reveal reveal-delay-1">
+              <div className="pkg-img">
+                <Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/mh.jpg" alt="3 Jyotirling of Maharashtra" />
+                <div className="pkg-badge">Jyotirlinga</div>
+              </div>
+              <div className="pkg-body">
+                <div className="pkg-duration">3 Nights / 4 Days</div>
+                <h3 className="pkg-name">3 Jyotirling Maharashtra</h3>
+                <p className="pkg-desc">Explore Trimbakeshwar, Bhimashankar, Grishneshwar, and Shirdi in a structured, senior-friendly travel route.</p>
+                <Link prefetch={true} href="/packages/maharashtra" className="pkg-cta">View Details</Link>
+              </div>
+            </div>
+            {/* Package 3 */}
+            <div className="pkg-card reveal reveal-delay-2">
+              <div className="pkg-img">
+                <Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/DwMain.jpeg" alt="Dwarka Somnath Gujarat Yatra" />
+                <div className="pkg-badge">Popular</div>
+              </div>
+              <div className="pkg-body">
+                <div className="pkg-duration">3 Nights / 4 Days</div>
+                <h3 className="pkg-name">Dwarka Somnath Yatra</h3>
+                <p className="pkg-desc">Sacred Gujarat pilgrimage covering Dwarkadhish Temple, Somnath Temple, Nageshwar Jyotirlinga &amp; Beyt Dwarka.</p>
+                <Link prefetch={true} href="/packages/dwarka-somnath" className="pkg-cta">View Details</Link>
+              </div>
+            </div>
+          </div>
+        </section>
 
       </div>{/* end ujjain-page */}
 
@@ -1030,21 +1019,22 @@ export function UjjainOmkareshwarDetail() {
       <div className="ujjain-page">{/* re-enter ujjain-page for Gallery & CTA vars */}
         {/* GALLERY */}
         <div className="gallery-strip">
-          <div className="gallery-item"><img src="/1.jpg" alt="Pilgrim group photo 1" /></div>
-          <div className="gallery-item"><img src="/2.jpg" alt="Pilgrim group photo 2" /></div>
-          <div className="gallery-item"><img src="/Home1.jpeg" alt="Pilgrim group photo 3" /></div>
-          <div className="gallery-item"><img src="/Home2.jpeg" alt="Pilgrim group photo 4" /></div>
-          <div className="gallery-item"><img src="/5.jpg" alt="Pilgrim group photo 5" /></div>
-          <div className="gallery-item"><img src="/6.jpg" alt="Pilgrim group photo 6" /></div>
-          <div className="gallery-item"><img src="/Home3.jpeg" alt="Pilgrim group photo 7" /></div>
-          <div className="gallery-item"><img src="/Home4.jpeg" alt="Pilgrim group photo 8" /></div>
-          <div className="gallery-item"><img src="/Home5.jpeg" alt="Pilgrim group photo 9" /></div>
-          <div className="gallery-item"><img src="/Home6.jpg" alt="Pilgrim group photo 10" /></div>
-          <div className="gallery-item"><img src="/Home7.jpg" alt="Pilgrim group photo 11" /></div>
+          <div className="gallery-item"><Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/1.jpg" alt="Pilgrim group photo 1" /></div>
+          <div className="gallery-item"><Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/2.jpg" alt="Pilgrim group photo 2" /></div>
+          <div className="gallery-item"><Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/Home1.jpeg" alt="Pilgrim group photo 3" /></div>
+          <div className="gallery-item"><Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/Home2.jpeg" alt="Pilgrim group photo 4" /></div>
+          <div className="gallery-item"><Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/5.jpg" alt="Pilgrim group photo 5" /></div>
+          <div className="gallery-item"><Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/6.jpg" alt="Pilgrim group photo 6" /></div>
+          <div className="gallery-item"><Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/Home3.jpeg" alt="Pilgrim group photo 7" /></div>
+          <div className="gallery-item"><Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/Home4.jpeg" alt="Pilgrim group photo 8" /></div>
+          <div className="gallery-item"><Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/Home5.jpeg" alt="Pilgrim group photo 9" /></div>
+          <div className="gallery-item"><Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/Home6.jpg" alt="Pilgrim group photo 10" /></div>
+          <div className="gallery-item"><Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/Home7.jpg" alt="Pilgrim group photo 11" /></div>
         </div>
 
         {/* CTA BANNER */}
         <section className="cta-banner">
+          <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}><Image unoptimized={true} src="/rambg.jpg" alt="Banner" fill sizes="100vw" quality={60} style={{ objectFit: 'cover' }} /></div>
           <div className="cta-banner-content reveal">
             <h2 className="section-title" style={{ color: 'var(--white)' }}>Plan Your Sacred Yatra</h2>
             <p className="section-body" style={{ color: 'rgba(255,255,255,0.8)', margin: '0 auto 40px', fontWeight: 700 }}>Secure your Bhasma Aarti VIP passes and comfortable hotel stay close to the temple. Speak to our Thane office today.</p>

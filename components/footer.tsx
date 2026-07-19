@@ -11,7 +11,7 @@ export function Footer() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2 flex flex-col items-center md:items-start text-center md:text-left">
-            <Link href="/">
+            <Link prefetch={true} href="/">
               <motion.div
                 className="flex items-center space-x-2 mb-4"
                 whileHover={{
@@ -83,17 +83,17 @@ export function Footer() {
             <h4 className="font-bold text-[#CB460C] mb-4 text-lg">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/" className="text-gray-900 hover:text-[#CB460C] transition-colors font-medium">
+                <Link prefetch={true} href="/" className="text-gray-900 hover:text-[#CB460C] transition-colors font-medium">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/book-trip" className="text-gray-900 hover:text-[#CB460C] transition-colors font-medium">
+                <Link prefetch={true} href="/book-trip" className="text-gray-900 hover:text-[#CB460C] transition-colors font-medium">
                   Book Trip
                 </Link>
               </li>
               <li>
-                <Link
+                <Link prefetch={true}
                   href="/personalized-trip"
                   className="text-gray-900 hover:text-[#CB460C] transition-colors font-medium"
                 >
@@ -101,7 +101,7 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link
+                <Link prefetch={true}
                   href="/previous-trips"
                   className="text-gray-900 hover:text-[#CB460C] transition-colors font-medium"
                 >
@@ -109,17 +109,17 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="text-gray-900 hover:text-[#CB460C] transition-colors font-medium">
+                <Link prefetch={true} href="/about" className="text-gray-900 hover:text-[#CB460C] transition-colors font-medium">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-gray-900 hover:text-[#CB460C] transition-colors font-medium">
+                <Link prefetch={true} href="/contact" className="text-gray-900 hover:text-[#CB460C] transition-colors font-medium">
                   Contact Us
                 </Link>
               </li>
               <li>
-                <Link href="/privacy" className="text-gray-900 hover:text-[#CB460C] transition-colors font-medium">
+                <Link prefetch={true} href="/privacy" className="text-gray-900 hover:text-[#CB460C] transition-colors font-medium">
                   Privacy Policy
                 </Link>
               </li>

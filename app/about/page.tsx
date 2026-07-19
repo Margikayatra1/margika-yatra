@@ -68,7 +68,7 @@ export default function AboutPage() {
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
         >
-          <Image
+          <Image unoptimized={true}
             src="/rambg.jpg"
             alt="About Margika Yatra"
             fill
@@ -85,7 +85,7 @@ export default function AboutPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <Link href="/" className="inline-flex items-center text-orange-600 hover:text-orange-500 mb-6 transition-colors font-medium">
+            <Link prefetch={true} href="/" className="inline-flex items-center text-orange-600 hover:text-orange-500 mb-6 transition-colors font-medium">
               <ArrowLeft className="mr-2 h-5 w-5" />
               Back to Home
             </Link>
@@ -241,7 +241,7 @@ export default function AboutPage() {
             Embark on a sacred journey with us and discover the spiritual heritage of India through thoughtfully designed pilgrimage experiences. Let Margika Yatra be your trusted companion.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <Link href="/book-trip">
+            <Link prefetch={true} href="/book-trip">
               <Button size="lg" className="w-full sm:w-auto bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold px-8 shadow-lg">
                 Book Your Yatra
               </Button>

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/ui/newheader"
 import { CharStats } from "@/components/char-stats"
@@ -141,12 +142,12 @@ export function JagannathPuriDetail() {
           position: relative; min-height: 100vh;
           display: flex; flex-direction: column; justify-content: flex-end;
           overflow: hidden;
-          background: url('/rambg.jpg') center/cover no-repeat;
+          background: #0d1b3e;
           padding-top: 130px;
         }
         .p-hero-img {
           position: absolute; inset: 0;
-          background: url('/jagmain2.png') center/cover no-repeat;
+          
           transform: scale(1.05);
           animation: heroZoom 12s ease-out forwards;
         }
@@ -598,14 +599,13 @@ export function JagannathPuriDetail() {
           align-items: center;
           text-align: center;
           overflow: hidden;
-          background: url('/rambg.jpg') center/cover no-repeat;
+          background: #0d1b3e;
         }
         .v-cta-banner::before {
           content: "";
           position: absolute;
           inset: 0;
-          background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Jagannath_temple%2C_Puri.jpg/1280px-Jagannath_temple%2C_Puri.jpg")
-            center/cover no-repeat;
+          
           filter: brightness(0.22) saturate(0.8);
         }
         .v-cta-banner-content {
@@ -751,7 +751,13 @@ export function JagannathPuriDetail() {
         .v-faq-a { max-height: 0; overflow: hidden; transition: max-height 0.45s ease; font-size: 14px; color: var(--smoke); line-height: 1.75; padding-bottom: 0; }
         .v-faq-item.open .v-faq-a { max-height: 200px; padding-bottom: 20px; }
 
+        .p-intro-visual { position: relative; min-height: 520px; padding-bottom: 30px; padding-right: 30px; box-sizing: content-box; }
+        .p-intro-img-main { display: block; width: 100%; height: 520px; object-fit: cover; border-radius: 4px; filter: brightness(0.95) saturate(1.1); position: relative; z-index: 1; }
+        .p-intro-img-float { position: absolute; bottom: 0; right: 0; width: 200px; height: 200px; object-fit: cover; border-radius: 4px; border: 4px solid #ffffff; filter: brightness(0.95) saturate(1.2); z-index: 2; }
+
         @media (max-width: 900px) {
+          .p-intro-visual { min-height: auto; padding: 0; box-sizing: border-box; }
+          .p-intro-img-main { height: 360px; }
           .puri-page-wrapper .p-hero-ctas,
           .puri-page-wrapper .r-price-actions,
           .puri-page-wrapper .p-complete-ctas,
@@ -781,7 +787,7 @@ export function JagannathPuriDetail() {
             align-items: center !important;
           }
 
-          .p-intro-grid, .v-why-grid, .p-why-grid, .v-faq-grid { grid-template-columns: 1fr; }
+          .p-intro-grid, .v-why-grid, .p-why-grid, .v-faq-grid { grid-template-columns: 1fr; gap: 32px; }
           .p-dhams-grid { grid-template-columns: 1fr; }
           .p-price-card { grid-template-columns: 1fr; }
           .p-price-card-media { min-height: 260px; }
@@ -869,7 +875,7 @@ export function JagannathPuriDetail() {
 
       {/* HERO */}
       <section className="p-hero">
-        <div className="p-hero-img"></div>
+        <div className="p-hero-img"><Image unoptimized={true} src="/jagmain2.png" alt="Hero" fill priority sizes="100vw" quality={60} style={{objectFit: 'cover'}} /></div>
         <div className="p-hero-overlay"></div>
         <div className="p-hero-content">
           <div className="p-hero-tag" style={{ color: "var(--saffron-dark)", fontWeight: 900, fontSize: 14 }}>Jagannath Puri · Konark · Lingaraj</div>
@@ -891,13 +897,8 @@ export function JagannathPuriDetail() {
       <section className="p-section">
         <div className="p-intro-grid">
           <div className="p-intro-visual reveal">
-            <img
-              className="p-intro-img-main"
-              src="/jagmain2.png"
-              alt="Jagannath Temple Puri"
-              onError={(e) => { (e.target as HTMLImageElement).src = '/rambg.jpg' }}
-            />
-            <img className="p-intro-img-float" src="/1.jpg" alt="Margika Yatra pilgrims" />
+            <Image unoptimized={true} width={800} height={520} className="p-intro-img-main" src="/jagmain2.png" alt="Jagannath Temple Puri" />
+            <Image unoptimized={true} width={200} height={200} className="p-intro-img-float" src="/1.jpg" alt="Margika Yatra pilgrims" />
           </div>
           <div className="reveal reveal-delay-2">
             <div className="p-section-tag">Char Dham of the East · Land of Lord Jagannath</div>
@@ -923,7 +924,7 @@ export function JagannathPuriDetail() {
         <div className="p-dhams-grid">
           {sights.map((dham, index) => (
             <div className="p-dham-card" key={dham.name}>
-              <img src={dham.image} alt={dham.name} />
+              <Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src={dham.image} alt={dham.name} />
               <div className="p-dham-overlay">
                 <div className="p-dham-num">0{index + 1}</div>
                 <div className="p-dham-name">{dham.name}</div>
@@ -968,11 +969,9 @@ export function JagannathPuriDetail() {
         </div>
         <div className="p-price-card reveal">
           <div className="p-price-card-media">
-            <img
-              src="/JagM.jpeg"
+            <Image unoptimized={true} src="/JagM.jpeg"
               alt="Konark Sun Temple"
-              onError={(e) => { (e.target as HTMLImageElement).src = '/rambg.jpg' }}
-            />
+              width={800} height={600} quality={60} sizes="100vw" style={{width: '100%', height: '100%', objectFit: 'cover'}} />
             <div className="p-price-badge">⭐ Most Loved</div>
             <div className="p-price-media-cities"><span>PURI</span><span>KONARK</span><span>BHUBANESWAR</span></div>
           </div>
@@ -1091,7 +1090,7 @@ export function JagannathPuriDetail() {
           </div>
           <div className="reveal reveal-delay-2">
             <div className="v-why-visual">
-              <img src="/2.jpg" alt="Margika Yatra group" />
+              <Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/2.jpg" alt="Margika Yatra group" />
               <div className="v-why-float-card">
                 <p>"Many yatris tell us this felt like the most peaceful journey of their lives."</p>
                 <span>— Margika Yatra Team</span>
@@ -1108,6 +1107,7 @@ export function JagannathPuriDetail() {
 
       {/* CTA BANNER */}
       <div className="v-cta-banner">
+        <div style={{position: 'absolute', inset: 0, zIndex: 0}}><Image unoptimized={true} src="/rambg.jpg" alt="Banner" fill sizes="100vw" quality={60} style={{objectFit: 'cover'}} /></div>
         <div className="v-cta-banner-content reveal">
           <div className="v-section-tag" style={{ justifyContent: "center", margin: "0 auto 16px" }}>Plan Your Yatra with Confidence</div>
           <h2 className="v-section-title">Book Your Jagannath Puri<br /><em>Tour Today</em></h2>
