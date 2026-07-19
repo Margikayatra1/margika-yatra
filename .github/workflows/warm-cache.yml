@@ -1,0 +1,38 @@
+name: Warm Image Cache After Deploy
+
+# Runs automatically every time you push to main/master
+# Waits for Vercel to finish deploying, then pre-generates all optimized images
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  warm-cache:
+    name: Warm Vercel Image Cache
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Wait for Vercel deployment
+        # Give Vercel ~2 minutes to build and deploy before warming
+        run: |
+          echo "⏳ Waiting 120s for Vercel deployment to complete..."
+          sleep 120
+          echo "✅ Wait complete, starting cache warm-up"
+
+      - name: Warm image cache (your Vercel URL)
+        run: node warm-cache.js ${{ secrets.PRODUCTION_URL || 'https://margika-yatra-orpin.vercel.app' }}
+
+      - name: Warm image cache (client's Vercel URL)
+        # Only runs if CLIENT_URL secret is set in your repo settings
+        if: ${{ secrets.CLIENT_URL != '' }}
+        run: node warm-cache.js ${{ secrets.CLIENT_URL }}
