@@ -1,21 +1,34 @@
 "use client"
 import { useState, useEffect, useCallback } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import Link from 'next/link';
 import Image from 'next/image';
+import { tripPackages } from '@/lib/trip-packages';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { usePathname } from 'next/navigation';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isPackagesOpen, setIsPackagesOpen] = useState(false);
+  const pathname = usePathname();
 
   const navItems = [
     { name: 'Home', href: '/' },
+    { name: 'Packages', dropdown: true },
+    { name: 'About Us', href: '/about' },
     { name: 'Blog', href: '/blog' },
     { name: 'Reviews', href: '/previous-trips' },
     { name: 'Book a Trip', href: '/book-trip' },
     { name: 'Personalized Trip', href: '/personalized-trip' },
+    { name: 'Contact Us', href: '/contact' },
   ];
 
   const handleNavClick = (href: string) => {
@@ -161,25 +174,47 @@ export function Header() {
           <div className="flex items-center space-x-4 lg:space-x-8">
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-6">
-              {navItems.map((item) => (
-                <div key={item.name} className="nav-item">
-                  {item.href.startsWith('/') && !item.href.startsWith('/#') ? (
-                    <Link prefetch={true}
-                      href={item.href}
-                      className="nav-link relative text-gray-700 hover:text-orange-600 transition-colors duration-200 font-semibold text-sm"
-                    >
-                      {item.name}
-                    </Link>
-                  ) : (
-                    <button
-                      onClick={() => handleNavClick(item.href)}
-                      className="nav-link relative text-gray-700 hover:text-orange-600 transition-colors duration-200 font-semibold text-sm"
-                    >
-                      {item.name}
-                    </button>
-                  )}
-                </div>
-              ))}
+              {navItems.map((item) => {
+                if (item.dropdown) {
+                  return (
+                    <DropdownMenu key={item.name}>
+                      <DropdownMenuTrigger className="flex items-center gap-1 nav-link relative text-gray-700 hover:text-orange-600 transition-colors duration-200 font-semibold text-sm outline-none">
+                        {item.name} <ChevronDown className="h-4 w-4" />
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end" className="w-56 bg-white/95 backdrop-blur-md border-orange-100 shadow-xl rounded-xl mt-2 p-2">
+                        {tripPackages.map((pkg) => (
+                          <DropdownMenuItem key={pkg.id} className="cursor-pointer hover:bg-[#FF9933] focus:bg-[#FF9933] rounded-md transition-colors group" asChild>
+                            <Link prefetch={true} href={`/packages/${pkg.id}`} className="block w-full py-2 px-3 text-sm font-medium text-gray-700 group-hover:text-white group-focus:text-white">
+                              {pkg.name}
+                            </Link>
+                          </DropdownMenuItem>
+                        ))}
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  );
+                }
+
+                const isHashOnHome = item.href!.startsWith('/#') && pathname === '/';
+                return (
+                  <div key={item.name} className="nav-item">
+                    {isHashOnHome ? (
+                      <button
+                        onClick={() => handleNavClick(item.href!)}
+                        className="nav-link relative text-gray-700 hover:text-orange-600 transition-colors duration-200 font-semibold text-sm"
+                      >
+                        {item.name}
+                      </button>
+                    ) : (
+                      <Link prefetch={true}
+                        href={item.href!}
+                        className="nav-link relative text-gray-700 hover:text-orange-600 transition-colors duration-200 font-semibold text-sm"
+                      >
+                        {item.name}
+                      </Link>
+                    )}
+                  </div>
+                );
+              })}
             </div>
 
             {/* CTA Actions */}
@@ -209,9 +244,9 @@ export function Header() {
                 )}
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="bg-white border-orange-200 w-72">
+            <SheetContent side="right" className="bg-white border-orange-200 w-72 flex flex-col h-full overflow-hidden">
               {/* Logo inside drawer */}
-              <div className="flex items-center space-x-2 mb-8 pt-2">
+              <div className="flex items-center space-x-2 mb-6 pt-2 shrink-0">
                 <Image unoptimized={true}
                   src="/logo.png"
                   alt="Margika Yatra Logo"
@@ -224,21 +259,62 @@ export function Header() {
                 </span>
               </div>
 
-              <div className="flex flex-col space-y-1">
-                {navItems.map((item) => (
-                  <Link prefetch={true}
-                    key={item.name}
-                    href={item.href}
-                    className="text-gray-700 hover:text-orange-600 hover:bg-orange-50 transition-colors duration-200 py-3 px-3 rounded-lg block font-semibold text-base"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                ))}
+              <div className="flex flex-col space-y-1 overflow-y-auto flex-1 pr-2">
+                {navItems.map((item) => {
+                  if (item.dropdown) {
+                    return (
+                      <div key={item.name} className="py-2">
+                        <button 
+                          onClick={() => setIsPackagesOpen(!isPackagesOpen)}
+                          className="w-full text-left text-gray-700 font-semibold text-base px-3 mb-2 flex items-center justify-between hover:text-orange-600 transition-colors"
+                        >
+                          {item.name}
+                          <ChevronDown className={`h-5 w-5 transition-transform duration-200 ${isPackagesOpen ? 'rotate-180 text-orange-600' : ''}`} />
+                        </button>
+                        
+                        <div className={`flex flex-col space-y-1 pl-4 border-l-2 border-orange-100 ml-4 overflow-hidden transition-all duration-300 ease-in-out ${isPackagesOpen ? 'max-h-[800px] opacity-100 mt-2' : 'max-h-0 opacity-0'}`}>
+                          {tripPackages.map((pkg) => (
+                            <Link prefetch={true}
+                              key={pkg.id}
+                              href={`/packages/${pkg.id}`}
+                              className="text-gray-600 hover:text-white hover:bg-[#FF9933] transition-colors duration-200 py-2 px-3 rounded-lg block text-sm font-medium"
+                              onClick={() => {
+                                setIsMenuOpen(false);
+                                setIsPackagesOpen(false);
+                              }}
+                            >
+                              {pkg.name}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    );
+                  }
+
+                  const isHashOnHome = item.href!.startsWith('/#') && pathname === '/';
+                  return isHashOnHome ? (
+                    <button
+                      key={item.name}
+                      onClick={() => handleNavClick(item.href!)}
+                      className="text-left text-gray-700 hover:text-orange-600 hover:bg-orange-50 transition-colors duration-200 py-3 px-3 rounded-lg block font-semibold text-base w-full"
+                    >
+                      {item.name}
+                    </button>
+                  ) : (
+                    <Link prefetch={true}
+                      key={item.name}
+                      href={item.href!}
+                      className="text-gray-700 hover:text-orange-600 hover:bg-orange-50 transition-colors duration-200 py-3 px-3 rounded-lg block font-semibold text-base"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
+                  );
+                })}
               </div>
 
               {/* CTA inside mobile menu */}
-              <div className="absolute bottom-8 left-4 right-4 space-y-3">
+              <div className="shrink-0 pt-4 pb-6 px-0 space-y-3 border-t border-orange-100 mt-auto">
                 <a
                   href="tel:+917208771688"
                   className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-xl border border-orange-300 text-[#c2410c] font-bold text-base hover:bg-orange-50 transition-colors"
