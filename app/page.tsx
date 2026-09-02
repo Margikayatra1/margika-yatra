@@ -9,6 +9,8 @@ import { Phone, Mail, MapPin } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { SchemaMarkup } from "@/components/SchemaMarkup"
+import { schemas } from "@/lib/schemas"
 
 // Dynamically import non-critical UI — deferred after main content paints
 const ParticleEffects = nextDynamic(() => import('@/components/particle-effects').then(m => ({ default: m.ParticleEffects })), { ssr: false })
@@ -35,6 +37,7 @@ export const dynamic = 'force-static'
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-orange-50 to-orange-100 text-gray-900 overflow-x-hidden relative">
+      <SchemaMarkup schemas={[schemas.organization, schemas.travelAgency, schemas.website, schemas.videoObject]} />
       <ParticleEffects />
       <Header />
 

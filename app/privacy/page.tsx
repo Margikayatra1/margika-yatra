@@ -12,6 +12,8 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { ParticleEffects } from "@/components/particle-effects"
 import Link from "next/link"
+import { SchemaMarkup } from "@/components/SchemaMarkup"
+import { schemas } from "@/lib/schemas"
 
 export default function PrivacyPage() {
   const [activeSection, setActiveSection] = useState("1")
@@ -137,6 +139,7 @@ export default function PrivacyPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-orange-50/50 to-orange-100/30 text-gray-900 overflow-x-hidden">
+      <SchemaMarkup schemas={[schemas.privacyPage]} />
       <ParticleEffects />
       <Header />
 

@@ -24,6 +24,8 @@ import { KeralaDetail } from "./KeralaDetail"
 import { Header } from "@/components/ui/newheader"
 import { CharStats } from "@/components/char-stats"
 import { FAQ } from "@/components/faq"
+import { SchemaMarkup } from "@/components/SchemaMarkup"
+import { schemas } from "@/lib/schemas"
 
 
 export default function PackageDetailPage() {
@@ -54,44 +56,49 @@ export default function PackageDetailPage() {
     window.open(`https://wa.me/917208771688?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer")
   }
 
+  const schemaList = []
+  if (pkg.id && (schemas.packages as any)[pkg.id]) schemaList.push((schemas.packages as any)[pkg.id])
+  if (pkg.id && (schemas.webpages as any)[pkg.id]) schemaList.push((schemas.webpages as any)[pkg.id])
+
   if (pkg.id === "char-dham") {
-    return <CharDhamDetail />
+    return <><SchemaMarkup schemas={schemaList} /><CharDhamDetail /></>
   }
 
   if (pkg.id === "maharashtra") {
-    return <MaharashtraJyotirlingDetail />
+    return <><SchemaMarkup schemas={schemaList} /><MaharashtraJyotirlingDetail /></>
   }
 
   if (pkg.id === "ujjain") {
-    return <UjjainOmkareshwarDetail />
+    return <><SchemaMarkup schemas={schemaList} /><UjjainOmkareshwarDetail /></>
   }
 
   if (pkg.id === "dev-deepawali") {
-    return <DevDeepawaliDetail />
+    return <><SchemaMarkup schemas={schemaList} /><DevDeepawaliDetail /></>
   }
 
   if (pkg.id === "dwarka-somnath") {
-    return <DwarkaSomnathDetail />
+    return <><SchemaMarkup schemas={schemaList} /><DwarkaSomnathDetail /></>
   }
 
   if (pkg.id === "varanasi" || pkg.id === "tri-city") {
-    return <VaranasiPrayagrajAyodhyaDetail />
+    return <><SchemaMarkup schemas={schemaList} /><VaranasiPrayagrajAyodhyaDetail /></>
   }
 
   if (pkg.id === "rameshwaram") {
-    return <RameshwaramDetail />
+    return <><SchemaMarkup schemas={schemaList} /><RameshwaramDetail /></>
   }
 
   if (pkg.id === "jagannath-puri") {
-    return <JagannathPuriDetail />
+    return <><SchemaMarkup schemas={schemaList} /><JagannathPuriDetail /></>
   }
 
   if (pkg.id === "kerala") {
-    return <KeralaDetail />
+    return <><SchemaMarkup schemas={schemaList} /><KeralaDetail /></>
   }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-orange-50 to-orange-100 text-gray-900">
+      <SchemaMarkup schemas={schemaList} />
       <Header />
 
       <main>

@@ -27,6 +27,8 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import Image from "next/image"
 import Link from "next/link"
+import { SchemaMarkup } from "@/components/SchemaMarkup"
+import { schemas } from "@/lib/schemas"
 
 export default function PersonalizedTripPage() {
   const [formData, setFormData] = useState({
@@ -194,6 +196,7 @@ ${formData.name}`
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-orange-50 to-orange-100 text-gray-900">
+      <SchemaMarkup schemas={[schemas.personalizedService, schemas.personalizedWebPage]} />
       <Header />
 
       {/* Hero Section */}

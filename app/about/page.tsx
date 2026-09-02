@@ -9,6 +9,8 @@ import { Footer } from "@/components/footer"
 import { ParticleEffects } from "@/components/particle-effects"
 import Image from "next/image"
 import Link from "next/link"
+import { SchemaMarkup } from "@/components/SchemaMarkup"
+import { schemas } from "@/lib/schemas"
 
 export default function AboutPage() {
   const highlights = [
@@ -57,6 +59,7 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-orange-50 to-orange-100 text-gray-900 overflow-x-hidden">
+      <SchemaMarkup schemas={[schemas.aboutPage, schemas.aboutPageWebPage]} />
       <ParticleEffects />
       <Header />
 
