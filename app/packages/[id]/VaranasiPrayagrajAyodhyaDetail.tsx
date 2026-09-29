@@ -8,6 +8,7 @@ import { Header } from "@/components/ui/newheader"
 import { GoogleReviews } from "@/components/ui/google-reviews"
 import { CharStats } from "@/components/char-stats"
 import { FAQ } from "@/components/faq"
+import { CmsHeadingContent, CmsTextContent, PackageCmsContent } from "./PackageCmsContext"
 
 export function VaranasiPrayagrajAyodhyaDetail() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
@@ -760,8 +761,8 @@ export function VaranasiPrayagrajAyodhyaDetail() {
         <div className="v-hero-overlay"></div>
         <div className="v-hero-content">
           <div className="v-hero-tag" style={{ fontWeight: 700, fontSize: 14 }}>Kashi · Prayagraj · Ayodhya</div>
-          <h1 className="v-hero-title">Varanasi Prayagraj Ayodhya<br /><em>Tour Package</em></h1>
-          <p className="v-hero-subtitle">A guided spiritual journey through three of India's holiest cities — from the ghats of Kashi to the Sangam at Prayagraj to Lord Ram's Ayodhya. Departures and full coordination from Mumbai & Thane.</p>
+          <h1 className="v-hero-title"><CmsHeadingContent sectionKey="hero" fallback={<>Varanasi Prayagraj Ayodhya<br /><em>Tour Package</em></>} /></h1>
+          <p className="v-hero-subtitle"><CmsTextContent textKey="heroSubtitle" fallback={<>A guided spiritual journey through three of India's holiest cities — from the ghats of Kashi to the Sangam at Prayagraj to Lord Ram's Ayodhya. Departures and full coordination from Mumbai & Thane.</>} /></p>
           <div className="v-hero-ctas">
             <a href="tel:+917208771688" className="v-btn-primary">📞 Call to Book</a>
             <a href={wa("I want to enquire about the Varanasi Prayagraj Ayodhya tour package")} className="v-btn-wa" target="_blank" rel="noopener noreferrer">
@@ -786,10 +787,10 @@ export function VaranasiPrayagrajAyodhyaDetail() {
           </div>
           <div className="reveal reveal-delay-2">
             <div className="v-section-tag">Three Cities · One Sacred Circuit</div>
-            <h2 className="v-section-title">The Kashi–Prayagraj–<br /><em>Ayodhya Yatra</em></h2>
+            <h2 className="v-section-title"><CmsHeadingContent sectionKey="intro" fallback={<>The Kashi–Prayagraj–<br /><em>Ayodhya Yatra</em></>} /></h2>
             <div className="v-gold-rule"></div>
-            <p className="v-section-body">The Varanasi, Prayagraj and Ayodhya tour package connects three of Hinduism's most revered cities into one well-paced pilgrimage. You begin in Kashi, Lord Shiva's eternal city on the Ganga, move to the holy Triveni Sangam at Prayagraj, and complete the journey at Shri Ram Janmabhoomi in Ayodhya.</p>
-            <p className="v-section-body" style={{ marginTop: 16 }}>Long distance temple travel, hotel timing, darshan queues and inter-city drives can quickly tire a family. That is exactly why travellers from Mumbai, Thane and across India let Margika Yatra plan and coordinate every detail, so you can give your full attention to the darshan, not the logistics.</p>
+            <p className="v-section-body"><CmsTextContent textKey="intro1" fallback={<>The Varanasi, Prayagraj and Ayodhya tour package connects three of Hinduism's most revered cities into one well-paced pilgrimage. You begin in Kashi, Lord Shiva's eternal city on the Ganga, move to the holy Triveni Sangam at Prayagraj, and complete the journey at Shri Ram Janmabhoomi in Ayodhya.</>} /></p>
+            <p className="v-section-body" style={{ marginTop: 16 }}><CmsTextContent textKey="intro2" fallback={<>Long distance temple travel, hotel timing, darshan queues and inter-city drives can quickly tire a family. That is exactly why travellers from Mumbai, Thane and across India let Margika Yatra plan and coordinate every detail, so you can give your full attention to the darshan, not the logistics.</>} /></p>
             <div className="v-intro-quote">
               <p>"We handle every detail. You carry only your devotion."</p>
             </div>
@@ -801,7 +802,7 @@ export function VaranasiPrayagrajAyodhyaDetail() {
       <section className="v-section alt">
         <div className="v-dhams-header reveal">
           <div className="v-section-tag" style={{ justifyContent: "center", margin: "0 auto 16px" }}>The Sacred Triangle</div>
-          <h2 className="v-section-title">Three Holy Cities,<br /><em>One Journey of Faith</em></h2>
+          <h2 className="v-section-title"><CmsHeadingContent sectionKey="sacred-sites" fallback={<>Three Holy Cities,<br /><em>One Journey of Faith</em></>} /></h2>
           <div className="v-gold-rule"></div>
           <p className="v-section-body" style={{ margin: "0 auto", textAlign: "center" }}>Each city carries its own deity, its own rivers, and its own place in the Hindu heart. Together they make one of India's most meaningful pilgrimage routes.</p>
         </div>
@@ -824,7 +825,7 @@ export function VaranasiPrayagrajAyodhyaDetail() {
       <section className="v-section">
         <div className="v-price-header reveal">
           <div className="v-section-tag" style={{ justifyContent: "center", margin: "0 auto 16px" }}>Package & Pricing</div>
-          <h2 className="v-section-title">Your Yatra, <em>Fully Sorted</em></h2>
+          <h2 className="v-section-title"><CmsHeadingContent sectionKey="package" fallback={<>Your Yatra, <em>Fully Sorted</em></>} /></h2>
           <div className="v-gold-rule"></div>
           <p className="v-section-body" style={{ margin: "0 auto", textAlign: "center" }}>One clear, all-inclusive package — hotels, transport, meals, guided darshan and full coordination from Mumbai & Thane. Transparent pricing, no hidden costs.</p>
         </div>
@@ -884,7 +885,7 @@ export function VaranasiPrayagrajAyodhyaDetail() {
       <section className="v-section alt">
         <div className="v-itin-header reveal">
           <div className="v-section-tag" style={{ justifyContent: "center", margin: "0 auto 16px" }}>Day-Wise Tour Overview</div>
-          <h2 className="v-section-title">Your Detailed<br /><em>Spiritual Itinerary</em></h2>
+          <h2 className="v-section-title"><CmsHeadingContent sectionKey="itinerary" fallback={<>Your Detailed<br /><em>Spiritual Itinerary</em></>} /></h2>
           <div className="v-gold-rule"></div>
           <p className="v-section-body" style={{ margin: "0 auto", textAlign: "center" }}>A clear, day-by-day plan covering Varanasi, Prayagraj and Ayodhya. Timings and temple order can be customised to your group, dates and pace.</p>
         </div>
@@ -980,7 +981,7 @@ export function VaranasiPrayagrajAyodhyaDetail() {
         <div className="v-why-grid">
           <div className="reveal">
             <div className="v-section-tag" style={{ color: "#ffffff", "--saffron": "#ffffff" } as React.CSSProperties}>Why Choose Us</div>
-            <h2 className="v-section-title">Why Mumbai & Thane<br /><em style={{ color: "#ffffff" }}>Yatris Choose Margika</em></h2>
+            <h2 className="v-section-title"><CmsHeadingContent sectionKey="why-margika" fallback={<>Why Mumbai & Thane<br /><em style={{ color: "#ffffff" }}>Yatris Choose Margika</em></>} /></h2>
             <div className="v-gold-rule" style={{ background: "#ffffff" }}></div>
             <p className="v-section-body" style={{ fontWeight: 700, color: "#ffffff" }}>We are based in Brahmand, Thane. When you call us, you speak to a local team that understands your community, your travel concerns and your schedule — a level of trust no distant online operator can match. We specialise in spiritual journeys, so the planning is in experienced hands.</p>
             <ul className="v-features-list">
@@ -1007,7 +1008,7 @@ export function VaranasiPrayagrajAyodhyaDetail() {
       <section className="v-section alt">
         <div className="v-steps-header reveal">
           <div className="v-section-tag" style={{ justifyContent: "center", margin: "0 auto 16px" }}>Simple & Transparent</div>
-          <h2 className="v-section-title" style={{ textAlign: "center" }}>How Your <em>Booking Works</em></h2>
+          <h2 className="v-section-title" style={{ textAlign: "center" }}><CmsHeadingContent sectionKey="booking" fallback={<>How Your <em>Booking Works</em></>} /></h2>
           <div className="v-gold-rule" style={{ margin: "20px auto" }}></div>
         </div>
         <div className="v-steps-grid">
@@ -1023,7 +1024,7 @@ export function VaranasiPrayagrajAyodhyaDetail() {
       <section className="v-section">
         <div className="reveal" style={{ textAlign: "center" }}>
           <div className="v-section-tag" style={{ justifyContent: "center", margin: "0 auto 12px" }}>Glimpses of the Yatra</div>
-          <h2 className="v-section-title" style={{ textAlign: "center" }}>Moments from <em>Sacred Journeys</em></h2>
+          <h2 className="v-section-title" style={{ textAlign: "center" }}><CmsHeadingContent sectionKey="gallery" fallback={<>Moments from <em>Sacred Journeys</em></>} /></h2>
         </div>
         <div className="v-gallery-strip">
           <div className="v-gallery-item"><Image unoptimized={true} quality={60} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover' }} src="/1.jpg" alt="Varanasi Ganga Aarti" /></div>
@@ -1050,7 +1051,7 @@ export function VaranasiPrayagrajAyodhyaDetail() {
         <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}><Image unoptimized={true} fill src="/rambg.jpg" alt="Banner" style={{ objectFit: 'cover' }} /></div>
         <div className="v-cta-banner-content reveal">
           <div className="v-section-tag" style={{ justifyContent: "center", margin: "0 auto 16px" }}>Plan Your Yatra with Confidence</div>
-          <h2 className="v-section-title">Book Your Varanasi Prayagraj<br /><em>Ayodhya Tour Today</em></h2>
+          <h2 className="v-section-title"><CmsHeadingContent sectionKey="cta" fallback={<>Book Your Varanasi Prayagraj<br /><em>Ayodhya Tour Today</em></>} /></h2>
           <p className="v-section-body">Tell us your dates and group size, and our Mumbai–Thane team will put together a clear, personalised plan with honest pricing. No pressure — just guidance and support every step of the way.</p>
           <div className="v-cta-buttons">
             <a href="tel:+917208771688" className="v-btn-primary">📞 Call Now — +91 72087 71688</a>
@@ -1060,6 +1061,8 @@ export function VaranasiPrayagrajAyodhyaDetail() {
           </div>
         </div>
       </div>
+
+      <PackageCmsContent />
 
       <Footer />
 

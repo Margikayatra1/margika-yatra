@@ -8,6 +8,7 @@ import { Header } from "@/components/ui/newheader"
 import { GoogleReviews } from "@/components/ui/google-reviews"
 import { CharStats } from "@/components/char-stats"
 import { FAQ } from "@/components/faq"
+import { CmsHeadingContent, CmsTextContent, PackageCmsContent } from "./PackageCmsContext"
 
 export function DwarkaSomnathDetail() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
@@ -1781,13 +1782,13 @@ export function DwarkaSomnathDetail() {
         <div className="hero-overlay"></div>
         <div className="hero-content">
           <div className="hero-tag" style={{ color: "var(--saffron-light)", fontWeight: 900, fontSize: 14 }}>Sacred Gujarat Pilgrimage</div>
-          <h1 className="hero-title">
+          <h1 className="hero-title"><CmsHeadingContent sectionKey="hero" fallback={<>
             Gujarat Tour Package<br />from <em>Mumbai & Thane</em>
-          </h1>
-          <p className="hero-subtitle">
+          </>} /></h1>
+          <p className="hero-subtitle"><CmsTextContent textKey="heroSubtitle" fallback={<>
             Dwarka — Nageshwar Jyotirlinga — Somnath. Three of India's most sacred shrines, thoughtfully connected
             in one comfortable package. Departing from Mumbai and Thane.
-          </p>
+          </>} /></p>
           <div className="hero-ctas">
             <a href="tel:+917208771688" className="btn-primary">
               📞 Call Now
@@ -1821,22 +1822,22 @@ export function DwarkaSomnathDetail() {
           </div>
           <div className="reveal reveal-delay-2">
             <div className="section-tag">Spiritual Gujarat</div>
-            <h2 className="section-title">
+            <h2 className="section-title"><CmsHeadingContent sectionKey="intro" fallback={<>
               Gujarat Tour Package<br /><em>— Where Devotion Meets the Sea</em>
-            </h2>
+            </>} /></h2>
             <div className="gold-rule"></div>
-            <p className="section-body">
+            <p className="section-body"><CmsTextContent textKey="intro1" fallback={<>
               Gujarat holds some of the most significant pilgrimage sites in all of India — and this tour brings the
               most important ones together. The Gujarat tour package from Margika Yatra covers Dwarka, one of the
               four sacred dhams of Hinduism; Nageshwar Jyotirlinga, the first among the 12 Jyotirlingas of Lord Shiva;
               and Somnath, the eternal abode of the Moon God — rebuilt twelve times and standing today as a symbol of
               unbreakable faith.
-            </p>
-            <p className="section-body" style={{ marginTop: 16 }}>
+            </>} /></p>
+            <p className="section-body" style={{ marginTop: 16 }}><CmsTextContent textKey="intro2" fallback={<>
               This is a well-paced 3-night, 4-day journey designed for families, couples, and senior pilgrims traveling
               from Mumbai and Thane. The route is straightforward, the temples are deeply significant, and our team
               handles every arrangement so you can focus entirely on your spiritual experience.
-            </p>
+            </>} /></p>
             <div className="intro-quote">
               <p>
                 "Gujarat is not just a state to visit — it is a sacred geography that has shaped Indian civilisation,
@@ -1853,9 +1854,9 @@ export function DwarkaSomnathDetail() {
           <div className="section-tag" style={{ justifyContent: "center", margin: "0 auto 16px" }}>
             Sacred Destinations
           </div>
-          <h2 className="section-title" style={{ textAlign: "center" }}>
+          <h2 className="section-title" style={{ textAlign: "center" }}><CmsHeadingContent sectionKey="sacred-sites" fallback={<>
             Gujarat's <em>Divine Circuit</em>
-          </h2>
+          </>} /></h2>
           <div className="gold-rule" style={{ margin: "24px auto" }}></div>
           <p className="section-body" style={{ margin: "0 auto", textAlign: "center" }}>
             Each destination in this package carries centuries of devotion, mythology, and spiritual power.
@@ -1883,9 +1884,9 @@ export function DwarkaSomnathDetail() {
         <div className="itinerary-section">
           <div className="itinerary-header reveal">
             <div className="section-tag">Complete Itinerary</div>
-            <h2 className="section-title">
+            <h2 className="section-title"><CmsHeadingContent sectionKey="itinerary" fallback={<>
               Gujarat Tour Package<br /><em>— 3 Nights, 4 Days</em>
-            </h2>
+            </>} /></h2>
             <div className="gold-rule"></div>
             <p className="section-body">
               Every day is planned with purpose — meaningful darshan, comfortable travel, and time to breathe in
@@ -1947,9 +1948,9 @@ export function DwarkaSomnathDetail() {
             <div className="section-tag" style={{ justifyContent: "center" }}>
               Pricing & Vehicles
             </div>
-            <h2 className="section-title">
+            <h2 className="section-title"><CmsHeadingContent sectionKey="package" fallback={<>
               Dwarka - Somnath Yatra<br /><em>— Complete Package Pricing</em>
-            </h2>
+            </>} /></h2>
             <div className="gold-rule" style={{ margin: "20px auto" }}></div>
             <p className="section-body" style={{ margin: "0 auto", textAlign: "center" }}>
               We keep our pricing fully transparent. Standard package costs based on private vehicle selections and group size.
@@ -1986,9 +1987,9 @@ export function DwarkaSomnathDetail() {
             <div className="section-tag" style={{ color: "#ffffff", "--saffron": "#ffffff" } as React.CSSProperties}>
               Why Choose Us
             </div>
-            <h2 className="section-title">
+            <h2 className="section-title"><CmsHeadingContent sectionKey="why-margika" fallback={<>
               Why Mumbai & Thane<br /><em style={{ color: "#ffffff" }}>Yatris Choose Margika</em>
-            </h2>
+            </>} /></h2>
             <div className="gold-rule" style={{ background: "#ffffff" }}></div>
             <p className="section-body" style={{ fontWeight: 700, color: "#ffffff" }}>
               We are based in Brahmand, Thane. When you call us, you speak to someone from your community who
@@ -2048,9 +2049,9 @@ export function DwarkaSomnathDetail() {
           <div className="section-tag" style={{ justifyContent: "center", margin: "0 auto 16px" }}>
             Best Gujarat Tour Package
           </div>
-          <h2 className="section-title" style={{ textAlign: "center" }}>
+          <h2 className="section-title" style={{ textAlign: "center" }}><CmsHeadingContent sectionKey="related" fallback={<>
             Choose Your <em>Journey</em>
-          </h2>
+          </>} /></h2>
           <div className="gold-rule" style={{ margin: "20px auto" }}></div>
           <p className="section-body" style={{ margin: "0 auto", textAlign: "center" }}>
             Select the Gujarat pilgrimage experience that suits you best — all packages depart from Mumbai &amp; Thane.
@@ -2109,9 +2110,9 @@ export function DwarkaSomnathDetail() {
           <div className="section-tag" style={{ justifyContent: "center", margin: "0 auto 16px" }}>
             Simple & Transparent
           </div>
-          <h2 className="section-title" style={{ textAlign: "center" }}>
+          <h2 className="section-title" style={{ textAlign: "center" }}><CmsHeadingContent sectionKey="booking" fallback={<>
             How Your <em>Yatra Begins</em>
-          </h2>
+          </>} /></h2>
           <div className="gold-rule" style={{ margin: "20px auto" }}></div>
         </div>
         <div className="steps-grid">
@@ -2161,9 +2162,9 @@ export function DwarkaSomnathDetail() {
       <section className="cta-banner">
         <div style={{position: 'absolute', inset: 0, zIndex: 0}}><Image unoptimized={true} src="/rambg.jpg" alt="Banner" fill sizes="100vw" quality={60} style={{objectFit: 'cover'}} /></div>
         <div className="cta-banner-content reveal">
-          <h2 className="section-title" style={{ color: "var(--white)", marginBottom: 16 }}>
+          <h2 className="section-title" style={{ color: "var(--white)", marginBottom: 16 }}><CmsHeadingContent sectionKey="cta" fallback={<>
             Experience the Divine Land of Gujarat
-          </h2>
+          </>} /></h2>
           <p className="section-body" style={{ color: "rgba(255,255,255,0.8)", margin: "0 auto 32px", fontWeight: "900", fontSize: "16px" }}>
             Book your sacred Dwarka, Nageshwar, and Somnath yatra batch today. Stays and transfers are fully arranged.
           </p>
@@ -2187,6 +2188,8 @@ export function DwarkaSomnathDetail() {
       </section>
 
       </div>{/* end gujarat-page for CTA */}
+
+      <PackageCmsContent />
 
       <Footer />
 

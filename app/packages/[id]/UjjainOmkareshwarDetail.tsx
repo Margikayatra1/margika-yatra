@@ -8,6 +8,7 @@ import { Header } from "@/components/ui/newheader"
 import { GoogleReviews } from "@/components/ui/google-reviews"
 import { CharStats } from "@/components/char-stats"
 import { FAQ } from "@/components/faq"
+import { CmsHeadingContent, CmsTextContent, PackageCmsContent } from "./PackageCmsContext"
 
 export function UjjainOmkareshwarDetail() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
@@ -648,8 +649,8 @@ export function UjjainOmkareshwarDetail() {
           <div className="hero-overlay"></div>
           <div className="hero-content">
             <div className="hero-tag" style={{ fontWeight: 900, fontSize: 14 }}>2 Sacred Jyotirlingas · 3 Nights 4 Days</div>
-            <h1 className="hero-title">Ujjain Omkareshwar<br /><em>Tour Package</em></h1>
-            <p className="hero-subtitle">Mahakal Bhasma Aarti at dawn. VIP darshan at two Jyotirlingas. The sacred Narmada at Omkareshwar. Departing from Mumbai &amp; Thane — fully planned, nothing to worry about.</p>
+            <h1 className="hero-title"><CmsHeadingContent sectionKey="hero" fallback={<>Ujjain Omkareshwar<br /><em>Tour Package</em></>} /></h1>
+            <p className="hero-subtitle"><CmsTextContent textKey="heroSubtitle" fallback={<>Mahakal Bhasma Aarti at dawn. VIP darshan at two Jyotirlingas. The sacred Narmada at Omkareshwar. Departing from Mumbai &amp; Thane — fully planned, nothing to worry about.</>} /></p>
             <div className="hero-ctas">
               <a href="tel:+917208771688" className="btn-primary">📞 Call to Book</a>
               <a href={wa("I want to enquire about Ujjain Omkareshwar tour package")} className="btn-wa" target="_blank" rel="noopener noreferrer">
@@ -682,10 +683,10 @@ export function UjjainOmkareshwarDetail() {
             </div>
             <div className="reveal reveal-delay-2">
               <div className="section-tag">2 Jyotirlingas · One Sacred Journey</div>
-              <h2 className="section-title">Ujjain Omkareshwar Tour Package —<br /><em>Where Shiva's Presence Is Felt</em></h2>
+              <h2 className="section-title"><CmsHeadingContent sectionKey="intro" fallback={<>Ujjain Omkareshwar Tour Package —<br /><em>Where Shiva's Presence Is Felt</em></>} /></h2>
               <div className="gold-rule"></div>
-              <p className="section-body">Ujjain is one of the seven sacred cities in Hinduism — home to Mahakaleshwar, the only south-facing Jyotirlinga and the only one where Bhasma Aarti is performed with sacred ash at midnight. Omkareshwar, just 130 km away, sits on a natural island in the Narmada River shaped like the Om symbol — home to the fourth Jyotirlinga.</p>
-              <p className="section-body" style={{ marginTop: '16px' }}>Covering both in a single 3-night, 4-day trip is not just convenient — it is the ideal way to complete two out of twelve Jyotirlingas in one meaningful journey. Travellers from Mumbai and Thane find this one of the most spiritually fulfilling short breaks they can plan in India.</p>
+              <p className="section-body"><CmsTextContent textKey="intro1" fallback={<>Ujjain is one of the seven sacred cities in Hinduism — home to Mahakaleshwar, the only south-facing Jyotirlinga and the only one where Bhasma Aarti is performed with sacred ash at midnight. Omkareshwar, just 130 km away, sits on a natural island in the Narmada River shaped like the Om symbol — home to the fourth Jyotirlinga.</>} /></p>
+              <p className="section-body" style={{ marginTop: '16px' }}><CmsTextContent textKey="intro2" fallback={<>Covering both in a single 3-night, 4-day trip is not just convenient — it is the ideal way to complete two out of twelve Jyotirlingas in one meaningful journey. Travellers from Mumbai and Thane find this one of the most spiritually fulfilling short breaks they can plan in India.</>} /></p>
               <div className="intro-quote">
                 <p>"Two Jyotirlingas. Four days. A lifetime of memory."</p>
               </div>
@@ -697,7 +698,7 @@ export function UjjainOmkareshwarDetail() {
         <section className="highlights-section">
           <div className="highlights-header reveal">
             <div className="section-tag" style={{ justifyContent: 'center', margin: '0 auto 16px' }}>Sacred Destinations</div>
-            <h2 className="section-title" style={{ textAlign: "center" }}>The Temples You<br /><em>Will Visit</em></h2>
+            <h2 className="section-title" style={{ textAlign: "center" }}><CmsHeadingContent sectionKey="sacred-sites" fallback={<>The Temples You<br /><em>Will Visit</em></>} /></h2>
             <div className="gold-rule"></div>
             <p className="section-body" style={{ margin: '0 auto', textAlign: 'center' }}>Each stop on this itinerary carries centuries of devotion. Here is what makes this route so spiritually significant.</p>
           </div>
@@ -742,7 +743,7 @@ export function UjjainOmkareshwarDetail() {
         <section className="price-section">
           <div className="price-header reveal">
             <div className="section-tag" style={{ justifyContent: 'center', margin: '0 auto 16px' }}>Package & Pricing</div>
-            <h2 className="section-title" style={{ textAlign: "center" }}>Your Ujjain Omkareshwar<br /><em>Yatra, Fully Sorted</em></h2>
+            <h2 className="section-title" style={{ textAlign: "center" }}><CmsHeadingContent sectionKey="package" fallback={<>Your Ujjain Omkareshwar<br /><em>Yatra, Fully Sorted</em></>} /></h2>
             <div className="gold-rule"></div>
             <p className="section-body" style={{ margin: '0 auto', textAlign: 'center' }}>One clear, all-inclusive Ujjain Omkareshwar tour package — Mahakal Bhasma Aarti VIP pass, VIP Darshan at both Jyotirlingas, hotels, private AC transport, vegetarian meals and full coordination from Mumbai &amp; Thane. Transparent pricing, no hidden costs.</p>
           </div>
@@ -799,7 +800,7 @@ export function UjjainOmkareshwarDetail() {
         <section className="itinerary-section">
           <div className="itinerary-header reveal">
             <div className="section-tag" style={{ justifyContent: 'center', margin: '0 auto 16px' }}>Day-by-Day Plan</div>
-            <h2 className="section-title" style={{ textAlign: "center" }}>Detailed Tour<br /><em>Itinerary</em></h2>
+            <h2 className="section-title" style={{ textAlign: "center" }}><CmsHeadingContent sectionKey="itinerary" fallback={<>Detailed Tour<br /><em>Itinerary</em></>} /></h2>
             <div className="gold-rule"></div>
             <p className="section-body" style={{ margin: '0 auto', textAlign: 'center' }}>Every hour is planned with purpose — so you spend your time in darshan and prayer, not logistics.</p>
           </div>
@@ -884,7 +885,7 @@ export function UjjainOmkareshwarDetail() {
           <div className="why-grid">
             <div className="reveal">
               <div className="section-tag" style={{ color: '#ffffff', '--saffron': '#ffffff' } as React.CSSProperties}>Why Choose Us</div>
-              <h2 className="section-title">Why Mumbai &amp; Thane<br /><em style={{ color: "#ffffff" }}>Yatris Choose Margika</em></h2>
+              <h2 className="section-title"><CmsHeadingContent sectionKey="why-margika" fallback={<>Why Mumbai &amp; Thane<br /><em style={{ color: "#ffffff" }}>Yatris Choose Margika</em></>} /></h2>
               <div className="gold-rule" style={{ background: '#ffffff' }}></div>
               <p className="section-body" style={{ color: "#ffffff", fontWeight: 700 }}>We are based in Brahmand, Thane. When you call us, you speak to someone from your community — not a national call centre. That personal understanding shapes how we plan every trip.</p>
               <ul className="features-list">
@@ -926,7 +927,7 @@ export function UjjainOmkareshwarDetail() {
         <section className="steps-section">
           <div className="steps-header reveal">
             <div className="section-tag" style={{ justifyContent: 'center', margin: '0 auto 16px' }}>Simple &amp; Transparent</div>
-            <h2 className="section-title" style={{ textAlign: 'center' }}>How Your<br /><em>Yatra Begins</em></h2>
+            <h2 className="section-title" style={{ textAlign: 'center' }}><CmsHeadingContent sectionKey="booking" fallback={<>How Your<br /><em>Yatra Begins</em></>} /></h2>
             <div className="gold-rule" style={{ margin: '20px auto' }}></div>
             <p style={{ textAlign: 'center', fontSize: '14px', color: 'var(--smoke)', maxWidth: '500px', margin: '0 auto' }}>From your first inquiry to the moment you return home — we are with you at every step.</p>
           </div>
@@ -963,7 +964,7 @@ export function UjjainOmkareshwarDetail() {
         <section style={{ background: 'rgba(255,255,255,0.01)', borderTop: '1px solid rgba(212,175,106,0.1)' }}>
           <div className="price-header reveal">
             <div className="section-tag" style={{ justifyContent: 'center', margin: '0 auto 16px' }}>Explore More</div>
-            <h2 className="section-title" style={{ textAlign: 'center' }}>Other Spiritual<br /><em>Journeys</em></h2>
+            <h2 className="section-title" style={{ textAlign: 'center' }}><CmsHeadingContent sectionKey="related" fallback={<>Other Spiritual<br /><em>Journeys</em></>} /></h2>
             <div className="gold-rule"></div>
           </div>
           <div className="pkg-grid">
@@ -1036,7 +1037,7 @@ export function UjjainOmkareshwarDetail() {
         <section className="cta-banner">
           <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}><Image unoptimized={true} src="/rambg.jpg" alt="Banner" fill sizes="100vw" quality={60} style={{ objectFit: 'cover' }} /></div>
           <div className="cta-banner-content reveal">
-            <h2 className="section-title" style={{ color: 'var(--white)' }}>Plan Your Sacred Yatra</h2>
+            <h2 className="section-title" style={{ color: 'var(--white)' }}><CmsHeadingContent sectionKey="cta" fallback={<>Plan Your Sacred Yatra</>} /></h2>
             <p className="section-body" style={{ color: 'rgba(255,255,255,0.8)', margin: '0 auto 40px', fontWeight: 700 }}>Secure your Bhasma Aarti VIP passes and comfortable hotel stay close to the temple. Speak to our Thane office today.</p>
             <div className="cta-buttons">
               <a href="tel:+917208771688" className="btn-primary">📞 Call Now: +91 72087 71688</a>
@@ -1050,6 +1051,8 @@ export function UjjainOmkareshwarDetail() {
           <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg>
         </a>
       </div>{/* end ujjain-page for CTA */}
+
+      <PackageCmsContent />
 
       <Footer />
     </>

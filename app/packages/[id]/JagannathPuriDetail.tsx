@@ -8,6 +8,7 @@ import { Header } from "@/components/ui/newheader"
 import { CharStats } from "@/components/char-stats"
 import { GoogleReviews } from "@/components/ui/google-reviews"
 import { FAQ } from "@/components/faq"
+import { CmsHeadingContent, CmsTextContent, PackageCmsContent } from "./PackageCmsContext"
 
 export function JagannathPuriDetail() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
@@ -879,8 +880,8 @@ export function JagannathPuriDetail() {
         <div className="p-hero-overlay"></div>
         <div className="p-hero-content">
           <div className="p-hero-tag" style={{ color: "var(--saffron-dark)", fontWeight: 900, fontSize: 14 }}>Jagannath Puri · Konark · Lingaraj</div>
-          <h1 className="p-hero-title">Jagannath Puri<br /><em>Tour Package</em></h1>
-          <p className="p-hero-subtitle">A guided spiritual journey to Puri — Jagannath temple darshan, the Konark Sun Temple, Lingaraj, Vimala Shaktipeeth and the Golden Beach. Flights, hotels and darshan fully coordinated for travellers from Mumbai & Thane.</p>
+          <h1 className="p-hero-title"><CmsHeadingContent sectionKey="hero" fallback={<>Jagannath Puri<br /><em>Tour Package</em></>} /></h1>
+          <p className="p-hero-subtitle"><CmsTextContent textKey="heroSubtitle" fallback={<>A guided spiritual journey to Puri — Jagannath temple darshan, the Konark Sun Temple, Lingaraj, Vimala Shaktipeeth and the Golden Beach. Flights, hotels and darshan fully coordinated for travellers from Mumbai & Thane.</>} /></p>
           <div className="p-hero-ctas">
             <a href="tel:+917208771688" className="p-btn-primary">📞 Call to Book</a>
             <a href={wa("I want to enquire about the Jagannath Puri tour package")} className="p-btn-wa" target="_blank" rel="noopener noreferrer">
@@ -902,10 +903,10 @@ export function JagannathPuriDetail() {
           </div>
           <div className="reveal reveal-delay-2">
             <div className="p-section-tag">Char Dham of the East · Land of Lord Jagannath</div>
-            <h2 className="p-section-title">Jagannath Puri Tour Package —<br /><em>The Abode of Lord Jagannath</em></h2>
+            <h2 className="p-section-title"><CmsHeadingContent sectionKey="intro" fallback={<>Jagannath Puri Tour Package —<br /><em>The Abode of Lord Jagannath</em></>} /></h2>
             <div className="p-gold-rule"></div>
-            <p className="p-section-body">Puri is one of the four sacred Char Dham shrines of India, home to the magnificent Jagannath Temple where Lord Jagannath is worshipped with his elder brother Balabhadra and sister Subhadra. This Jagannath Puri tour package brings together the grand temple darshan, the famous Mahaprasad, the UNESCO-listed Konark Sun Temple and the ancient Lingaraj Temple in Bhubaneswar.</p>
-            <p className="p-section-body" style={{ marginTop: 16 }}>For travellers from Mumbai and Thane, reaching coastal Odisha can feel like a long haul to plan. Our Puri travel package takes care of everything — flights or trains, hotels, AC transport and darshan timings — so the whole family can focus on the devotion and the sea breeze rather than the logistics.</p>
+            <p className="p-section-body"><CmsTextContent textKey="intro1" fallback={<>Puri is one of the four sacred Char Dham shrines of India, home to the magnificent Jagannath Temple where Lord Jagannath is worshipped with his elder brother Balabhadra and sister Subhadra. This Jagannath Puri tour package brings together the grand temple darshan, the famous Mahaprasad, the UNESCO-listed Konark Sun Temple and the ancient Lingaraj Temple in Bhubaneswar.</>} /></p>
+            <p className="p-section-body" style={{ marginTop: 16 }}><CmsTextContent textKey="intro2" fallback={<>For travellers from Mumbai and Thane, reaching coastal Odisha can feel like a long haul to plan. Our Puri travel package takes care of everything — flights or trains, hotels, AC transport and darshan timings — so the whole family can focus on the devotion and the sea breeze rather than the logistics.</>} /></p>
             <div className="p-intro-quote">
               <p>"Where the Lord of the Universe resides — we handle the journey, you carry the devotion."</p>
             </div>
@@ -917,7 +918,7 @@ export function JagannathPuriDetail() {
       <section className="p-section alt">
         <div className="p-dhams-header reveal">
           <div className="p-section-tag" style={{ justifyContent: "center", margin: "0 auto 16px" }}>What You Will See</div>
-          <h2 className="p-section-title">The Sacred Sights<br /><em>of Your Puri Yatra</em></h2>
+          <h2 className="p-section-title"><CmsHeadingContent sectionKey="sacred-sites" fallback={<>The Sacred Sights<br /><em>of Your Puri Yatra</em></>} /></h2>
           <div className="v-gold-rule" style={{ margin: "20px auto" }}></div>
           <p className="p-section-body" style={{ margin: "0 auto", textAlign: "center" }}>From the towering Jagannath temple to the sun-chariot of Konark, each stop on this Puri sightseeing package carries centuries of devotion and heritage.</p>
         </div>
@@ -942,7 +943,7 @@ export function JagannathPuriDetail() {
           <div className="p-complete-head reveal">
             <div className="p-complete-head">
               <div className="v-section-tag" style={{ color: "#ffffff", justifyContent: "center", margin: "0 auto 16px" }}>The Complete Journey</div>
-              <h2 className="v-section-title" style={{ color: "#ffffff" }}>Complete Jagannath Puri<br /><em>Tour Package</em></h2>
+              <h2 className="v-section-title" style={{ color: "#ffffff" }}><CmsHeadingContent sectionKey="package" fallback={<>Complete Jagannath Puri<br /><em>Tour Package</em></>} /></h2>
               <div className="v-gold-rule" style={{ margin: "20px auto", background: "#ffffff" }}></div>
             </div>
           </div>
@@ -963,7 +964,7 @@ export function JagannathPuriDetail() {
       <section className="p-section">
         <div className="p-price-header reveal">
           <div className="p-section-tag" style={{ justifyContent: "center", margin: "0 auto 16px" }}>Package & Pricing</div>
-          <h2 className="v-section-title" style={{ textAlign: "center" }}>Your Jagannath Puri<br /><em>Yatra, Fully Sorted</em></h2>
+          <h2 className="v-section-title" style={{ textAlign: "center" }}><CmsHeadingContent sectionKey="inclusions" fallback={<>Your Jagannath Puri<br /><em>Yatra, Fully Sorted</em></>} /></h2>
           <div className="v-gold-rule" style={{ margin: "20px auto" }}></div>
           <p className="p-section-body" style={{ margin: "0 auto", textAlign: "center" }}>One clear, well-organised Jagannath Puri tour package — travel, comfortable stays, AC transport, guided darshan and full coordination from Mumbai & Thane. Transparent pricing, no hidden costs.</p>
         </div>
@@ -1020,7 +1021,7 @@ export function JagannathPuriDetail() {
       <section className="p-section alt">
         <div className="r-itin-header reveal">
           <div className="p-section-tag" style={{ justifyContent: "center", margin: "0 auto 16px" }}>Day-by-Day Plan</div>
-          <h2 className="v-section-title" style={{ textAlign: "center" }}>Detailed Tour<br /><em>Itinerary</em></h2>
+          <h2 className="v-section-title" style={{ textAlign: "center" }}><CmsHeadingContent sectionKey="itinerary" fallback={<>Detailed Tour<br /><em>Itinerary</em></>} /></h2>
           <div className="v-gold-rule" style={{ margin: "20px auto" }}></div>
           <p className="p-section-body" style={{ margin: "0 auto", textAlign: "center" }}>A clear 3-day Jagannath Puri yatra covering Puri, Konark and Bhubaneswar. Dates, duration and temple order can be fully customised for your group or family.</p>
         </div>
@@ -1077,7 +1078,7 @@ export function JagannathPuriDetail() {
         <div className="v-why-grid">
           <div className="reveal">
             <div className="v-section-tag" style={{ color: "#ffffff", "--saffron": "#ffffff" } as React.CSSProperties}>Why Choose Us</div>
-            <h2 className="v-section-title">Why Mumbai & Thane<br /><em style={{ color: "#ffffff" }}>Yatris Choose Margika</em></h2>
+            <h2 className="v-section-title"><CmsHeadingContent sectionKey="why-margika" fallback={<>Why Mumbai & Thane<br /><em style={{ color: "#ffffff" }}>Yatris Choose Margika</em></>} /></h2>
             <div className="v-gold-rule" style={{ background: "#ffffff" }}></div>
             <p className="v-section-body" style={{ fontWeight: 700 }}>We are based in Brahmand, Thane. When you call us, you speak to a local team that understands your community, your travel concerns and your schedule — a level of trust no distant online operator can match. We specialise in spiritual journeys, so the planning is in experienced hands.</p>
             <ul className="v-features-list">
@@ -1110,7 +1111,7 @@ export function JagannathPuriDetail() {
         <div style={{position: 'absolute', inset: 0, zIndex: 0}}><Image unoptimized={true} src="/rambg.jpg" alt="Banner" fill sizes="100vw" quality={60} style={{objectFit: 'cover'}} /></div>
         <div className="v-cta-banner-content reveal">
           <div className="v-section-tag" style={{ justifyContent: "center", margin: "0 auto 16px" }}>Plan Your Yatra with Confidence</div>
-          <h2 className="v-section-title">Book Your Jagannath Puri<br /><em>Tour Today</em></h2>
+          <h2 className="v-section-title"><CmsHeadingContent sectionKey="cta" fallback={<>Book Your Jagannath Puri<br /><em>Tour Today</em></>} /></h2>
           <p className="v-section-body" style={{ fontWeight: "900" }}>Tell us your dates and group size, and our Mumbai–Thane team will put together a clear, personalised plan with honest pricing. No pressure — just guidance and support every step of the way.</p>
           <div className="v-cta-buttons">
             <a href="tel:+917208771688" className="v-btn-primary">📞 Call Now — +91 72087 71688</a>
@@ -1120,6 +1121,8 @@ export function JagannathPuriDetail() {
           </div>
         </div>
       </div>
+
+      <PackageCmsContent />
 
       <Footer />
 

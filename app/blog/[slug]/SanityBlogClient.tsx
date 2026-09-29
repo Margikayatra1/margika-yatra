@@ -15,7 +15,7 @@ import { PortableText } from "@portabletext/react"
 export default function SanityBlogClient({ blog }: { blog: any }) {
   const [scrollProgress, setScrollProgress] = useState(0)
   const [openFaq, setOpenFaq] = useState<number | null>(null)
-  
+
   // Extract sections from Sanity Portable Text
   const sections = useMemo(() => {
     return blog.content
@@ -54,11 +54,12 @@ export default function SanityBlogClient({ blog }: { blog: any }) {
   const wa = (text: string) => `https://wa.me/917208771688?text=${encodeURIComponent(text)}`
 
   // Title Splitting for Subtitle styling
-  const titleParts = blog.title.includes('|') 
-    ? blog.title.split('|') 
-    : blog.title.includes(':')
-      ? blog.title.split(':')
-      : [blog.title, '']
+  const headingSource = (blog.h1 || blog.title || '').trim()
+  const titleParts = headingSource.includes('|')
+    ? headingSource.split('|')
+    : headingSource.includes(':')
+      ? headingSource.split(':')
+      : [headingSource, '']
   const mainTitle = titleParts[0].trim()
   const subtitle = titleParts[1]?.trim() || ''
 
@@ -67,10 +68,10 @@ export default function SanityBlogClient({ blog }: { blog: any }) {
       h2: ({ children, value }: any) => {
         const text = value.children?.map((child: any) => child.text).join('') || ''
         const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')
-        
+
         let numberPart = ""
         let restOfTitle = children
-        
+
         if (typeof children[0] === 'string' && children[0].match(/^\d+\./)) {
            const match = children[0].match(/^(\d+\.)\s*(.*)/)
            if (match) {
@@ -78,7 +79,7 @@ export default function SanityBlogClient({ blog }: { blog: any }) {
               restOfTitle = [match[2], ...children.slice(1)]
            }
         }
-  
+
         return (
           <h2 id={id} className="scroll-mt-28 text-2xl font-serif font-medium text-orange-950 mb-4 mt-12 flex items-center gap-3 border-t border-orange-100/60 pt-6">
             {numberPart && <span className="text-orange-600">{numberPart}</span>}
@@ -87,6 +88,7 @@ export default function SanityBlogClient({ blog }: { blog: any }) {
         )
       },
       h3: ({ children }: any) => <h3 className="text-xl font-serif font-semibold text-orange-900 mb-3 mt-8">{children}</h3>,
+      h4: ({ children }: any) => <h4 className="text-lg font-semibold text-orange-900 mb-3 mt-6">{children}</h4>,
       blockquote: ({ children }: any) => (
         <blockquote className="border-l-4 border-orange-500 pl-4 py-2 my-6 italic text-gray-700 bg-orange-50/40 rounded-r-lg shadow-sm">
           {children}
@@ -97,6 +99,25 @@ export default function SanityBlogClient({ blog }: { blog: any }) {
     list: {
       bullet: ({ children }: any) => <ul className="grid gap-3 list-none pl-0 mb-6">{children}</ul>,
       number: ({ children }: any) => <ol className="list-decimal pl-5 mb-6 space-y-2">{children}</ol>,
+    },
+    types: {
+      image: ({ value }: any) => {
+        const src = urlForImage(value)?.width(1200).fit('max').url()
+        if (!src) return null
+        return (
+          <figure className="my-8">
+            <Image
+              src={src}
+              alt={value.alt || ''}
+              width={1200}
+              height={800}
+              className="h-auto w-full rounded-lg object-cover"
+              sizes="(max-width: 768px) 100vw, 900px"
+            />
+            {value.caption && <figcaption className="mt-2 text-center text-sm text-gray-500">{value.caption}</figcaption>}
+          </figure>
+        )
+      },
     },
     listItem: {
       bullet: ({ children }: any) => (
@@ -113,7 +134,7 @@ export default function SanityBlogClient({ blog }: { blog: any }) {
       <Header />
 
       {/* Reading Progress Bar */}
-      <div 
+      <div
         className="fixed top-0 left-0 z-[1000] h-1 bg-gradient-to-r from-orange-500 to-amber-500 transition-all duration-75"
         style={{ width: `${scrollProgress}%` }}
       />
@@ -124,7 +145,7 @@ export default function SanityBlogClient({ blog }: { blog: any }) {
         <div className="absolute inset-0 z-0">
           <Image unoptimized={true}
             src={blog.coverImage ? urlForImage(blog.coverImage)?.url() || '/placeholder.png' : '/placeholder.png'}
-            alt={mainTitle}
+            alt={blog.coverImage?.alt || mainTitle}
             fill
             className="object-cover opacity-70 scale-105"
             priority
@@ -147,7 +168,7 @@ export default function SanityBlogClient({ blog }: { blog: any }) {
                 </>
               )}
             </h1>
-            
+
             <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-300 border-t border-b border-white/10 py-4 max-w-2xl mx-auto">
               <span className="flex items-center gap-2 text-white">
                 <CalendarDays className="h-4 w-4 text-orange-400" />
@@ -171,7 +192,7 @@ export default function SanityBlogClient({ blog }: { blog: any }) {
       {/* Main Content Layout */}
       <section className="container mx-auto px-4 py-12 md:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-[250px_1fr_320px] gap-8 md:gap-12 items-start">
-          
+
           {/* Left Column: Sticky Table of Contents (Desktop Only) */}
           <aside className="hidden lg:block sticky top-28 space-y-6 self-start max-h-[calc(100vh-140px)] overflow-y-auto pr-2 scrollbar-thin">
             <div className="bg-white/80 border border-orange-100/60 rounded-lg p-5 backdrop-blur-sm">
@@ -203,13 +224,13 @@ export default function SanityBlogClient({ blog }: { blog: any }) {
                 Let us plan your spiritual journey from Thane, Mumbai or anywhere in India.
               </p>
               <div className="space-y-2">
-                <a 
+                <a
                   href="tel:+917208771688"
                   className="flex items-center justify-center gap-2 bg-white text-orange-700 py-2 rounded font-medium text-xs hover:bg-orange-50 transition-colors"
                 >
                   <Phone className="h-3.5 w-3.5" /> Call Expert
                 </a>
-                <a 
+                <a
                   href={wa(`I want to enquire about ${mainTitle}`)}
                   className="flex items-center justify-center gap-2 bg-emerald-500 text-white py-2 rounded font-medium text-xs hover:bg-emerald-600 transition-colors"
                   target="_blank"
@@ -235,13 +256,13 @@ export default function SanityBlogClient({ blog }: { blog: any }) {
                 <h2 className="text-3xl font-serif font-medium text-orange-950 mb-6 flex items-center gap-3">
                   <HelpCircle className="h-7 w-7 text-orange-600" /> Frequently Asked Questions
                 </h2>
-                
+
                 <div className="space-y-4">
                   {blog.faqs.map((faq: any, index: number) => {
                     const isOpen = openFaq === index;
                     return (
-                      <div 
-                        key={index} 
+                      <div
+                        key={index}
                         className="border border-orange-100 rounded-lg overflow-hidden bg-white shadow-sm transition-all duration-300"
                       >
                         <button
@@ -253,10 +274,10 @@ export default function SanityBlogClient({ blog }: { blog: any }) {
                             +
                           </span>
                         </button>
-                        
-                        <div 
+
+                        <div
                           className="transition-all duration-300 ease-in-out overflow-hidden"
-                          style={{ 
+                          style={{
                             maxHeight: isOpen ? "500px" : "0px",
                             opacity: isOpen ? 1 : 0
                           }}
