@@ -60,8 +60,9 @@ jobs:
       - name: Decode upgrade patch
         shell: bash
         run: |
-          base64 --decode scripts/seo-upgrade/upgrade.patch.gz.b64 | gzip -dc > /tmp/sanity-seo-upgrade.patch
+          cat scripts/seo-upgrade/part-*.b64 | base64 --decode | gzip -dc > /tmp/sanity-seo-upgrade.patch
           test -s /tmp/sanity-seo-upgrade.patch
+          echo 'e9c634d33c3812376e9b0366680cd952eb35f1d43b942a8e60929e0de36e8d99  /tmp/sanity-seo-upgrade.patch' | sha256sum -c -
 
       - name: Verify patch matches exact baseline
         run: git apply --check --whitespace=error /tmp/sanity-seo-upgrade.patch
