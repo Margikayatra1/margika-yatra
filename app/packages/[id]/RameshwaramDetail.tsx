@@ -8,6 +8,7 @@ import { Header } from "@/components/ui/newheader"
 import { CharStats } from "@/components/char-stats"
 import { GoogleReviews } from "@/components/ui/google-reviews"
 import { FAQ } from "@/components/faq"
+import { CmsHeadingContent, CmsTextContent, PackageCmsContent } from "./PackageCmsContext"
 
 export function RameshwaramDetail() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
@@ -811,8 +812,8 @@ export function RameshwaramDetail() {
         <div className="r-hero-overlay"></div>
         <div className="r-hero-content">
           {/* <div className="r-hero-tag" style={{ color: "var(--saffron-dark)", fontWeight: 900, fontSize: 14 }}>Ramanathaswamy · Dhanushkodi · Madurai</div> */}
-          <h1 className="r-hero-title">Rameshwaram<br /><em>Tour Package</em></h1>
-          <p className="r-hero-subtitle">A guided spiritual journey to Rameshwaram — Ramanathaswamy Jyotirlinga darshan, the holy Agni Theertham, Dhanushkodi, Pamban Bridge and Madurai's Meenakshi temple. Flights, hotels and darshan fully coordinated for travellers from Mumbai & Thane.</p>
+          <h1 className="r-hero-title"><CmsHeadingContent sectionKey="hero" fallback={<>Rameshwaram<br /><em>Tour Package</em></>} /></h1>
+          <p className="r-hero-subtitle"><CmsTextContent textKey="heroSubtitle" fallback={<>A guided spiritual journey to Rameshwaram — Ramanathaswamy Jyotirlinga darshan, the holy Agni Theertham, Dhanushkodi, Pamban Bridge and Madurai's Meenakshi temple. Flights, hotels and darshan fully coordinated for travellers from Mumbai & Thane.</>} /></p>
           <div className="r-hero-ctas">
             <a href="tel:+917208771688" className="r-btn-primary">📞 Call to Book</a>
             <a href={wa("I want to enquire about the Rameshwaram tour package")} className="r-btn-wa" target="_blank" rel="noopener noreferrer">
@@ -834,10 +835,10 @@ export function RameshwaramDetail() {
           </div>
           <div className="reveal reveal-delay-2">
             <div className="r-section-tag">Char Dham of the South · One Sacred Island</div>
-            <h2 className="r-section-title">Rameshwaram Tour Package —<br /><em>The Holy Land of Lord Ram & Shiva</em></h2>
+            <h2 className="r-section-title"><CmsHeadingContent sectionKey="intro" fallback={<>Rameshwaram Tour Package —<br /><em>The Holy Land of Lord Ram & Shiva</em></>} /></h2>
             <div className="r-gold-rule"></div>
-            <p className="r-section-body">Rameshwaram is where the Ramayana comes alive. This is the island from which Lord Ram is believed to have built the bridge to Lanka, and where he worshipped Lord Shiva — making the Ramanathaswamy Temple both one of the twelve Jyotirlingas and one of the four sacred Char Dham shrines of India.</p>
-            <p className="r-section-body" style={{ marginTop: 16 }}>For travellers from Mumbai and Thane, reaching this corner of Tamil Nadu can feel daunting. Our Rameshwaram spiritual tour package removes all of that — flights or trains, hotels, AC transport and darshan timings are arranged for you, so the whole family can focus on the prayers and the sea air rather than the planning.</p>
+            <p className="r-section-body"><CmsTextContent textKey="intro1" fallback={<>Rameshwaram is where the Ramayana comes alive. This is the island from which Lord Ram is believed to have built the bridge to Lanka, and where he worshipped Lord Shiva — making the Ramanathaswamy Temple both one of the twelve Jyotirlingas and one of the four sacred Char Dham shrines of India.</>} /></p>
+            <p className="r-section-body" style={{ marginTop: 16 }}><CmsTextContent textKey="intro2" fallback={<>For travellers from Mumbai and Thane, reaching this corner of Tamil Nadu can feel daunting. Our Rameshwaram spiritual tour package removes all of that — flights or trains, hotels, AC transport and darshan timings are arranged for you, so the whole family can focus on the prayers and the sea air rather than the planning.</>} /></p>
             <div className="r-intro-quote">
               <p>"Where Lord Ram once prayed to Mahadev — we carry the arrangements, you carry the devotion."</p>
             </div>
@@ -849,7 +850,7 @@ export function RameshwaramDetail() {
       <section className="r-section alt">
         <div className="r-dhams-header reveal">
           <div className="r-section-tag" style={{ justifyContent: "center", margin: "0 auto 16px" }}>What You Will See</div>
-          <h2 className="r-section-title">The Sacred Sights<br /><em>of Rameshwaram</em></h2>
+          <h2 className="r-section-title"><CmsHeadingContent sectionKey="sacred-sites" fallback={<>The Sacred Sights<br /><em>of Rameshwaram</em></>} /></h2>
           <div className="v-gold-rule" style={{ margin: "20px auto" }}></div>
           <p className="r-section-body" style={{ margin: "0 auto", textAlign: "center" }}>From the grand temple corridors to the meeting of two seas, each stop on this Rameshwaram darshan package carries its own place in the Ramayana.</p>
         </div>
@@ -872,7 +873,7 @@ export function RameshwaramDetail() {
       <section className="r-section">
         <div className="r-price-header reveal">
           <div className="r-section-tag" style={{ justifyContent: "center", margin: "0 auto 16px" }}>Package & Pricing</div>
-          <h2 className="v-section-title" style={{ textAlign: "center" }}>Your Rameshwaram<br /><em>Yatra, Fully Sorted</em></h2>
+          <h2 className="v-section-title" style={{ textAlign: "center" }}><CmsHeadingContent sectionKey="package" fallback={<>Your Rameshwaram<br /><em>Yatra, Fully Sorted</em></>} /></h2>
           <div className="v-gold-rule" style={{ margin: "20px auto" }}></div>
           <p className="r-section-body" style={{ margin: "0 auto", textAlign: "center" }}>One clear, well-organised Rameshwaram spiritual tour package — travel, comfortable stays, AC transport, guided darshan and full coordination from Mumbai & Thane. Transparent pricing, no hidden costs.</p>
         </div>
@@ -931,7 +932,7 @@ export function RameshwaramDetail() {
           <div className="r-complete-head reveal">
             <div className="r-complete-head">
               <div className="v-section-tag" style={{ color: "#ffffff", justifyContent: "center", margin: "0 auto 16px" }}>The Complete Journey</div>
-              <h2 className="v-section-title" style={{ color: "#ffffff" }}>Complete Rameshwaram<br /><em>Spiritual Tour Package</em></h2>
+              <h2 className="v-section-title" style={{ color: "#ffffff" }}><CmsHeadingContent sectionKey="inclusions" fallback={<>Complete Rameshwaram<br /><em>Spiritual Tour Package</em></>} /></h2>
               <div className="v-gold-rule" style={{ margin: "20px auto", background: "#ffffff" }}></div>
             </div>
           </div>
@@ -954,7 +955,7 @@ export function RameshwaramDetail() {
       {/* <section className="r-section alt">
         <div className="r-itin-header reveal">
           <div className="r-section-tag" style={{ justifyContent: "center", margin: "0 auto 16px" }}>Day-by-Day Plan</div>
-          <h2 className="v-section-title" style={{ textAlign: "center" }}>Detailed Tour<br /><em>Itinerary</em></h2>
+          <h2 className="v-section-title" style={{ textAlign: "center" }}><CmsHeadingContent sectionKey="itinerary" fallback={<>Detailed Tour<br /><em>Itinerary</em></>} /></h2>
           <div className="v-gold-rule" style={{ margin: "20px auto" }}></div>
           <p className="r-section-body" style={{ margin: "0 auto", textAlign: "center" }}>A sample 4-day Rameshwaram yatra with Madurai. Dates, duration and temple order can be fully customised for your group, family or temple sangat.</p>
         </div>
@@ -1044,7 +1045,7 @@ export function RameshwaramDetail() {
         <div className="v-why-grid">
           <div className="reveal">
             <div className="v-section-tag" style={{ color: "#ffffff", "--saffron": "#ffffff" } as React.CSSProperties}>Why Choose Us</div>
-            <h2 className="v-section-title">Why Mumbai & Thane<br /><em style={{ color: "#ffffff" }}>Yatris Choose Margika</em></h2>
+            <h2 className="v-section-title"><CmsHeadingContent sectionKey="why-margika" fallback={<>Why Mumbai & Thane<br /><em style={{ color: "#ffffff" }}>Yatris Choose Margika</em></>} /></h2>
             <div className="v-gold-rule" style={{ background: "#ffffff" }}></div>
             <p className="v-section-body" style={{ fontWeight: 700 }}>We are based in Brahmand, Thane. When you call us, you speak to a local team that understands your community, your travel concerns and your schedule — a level of trust no distant online operator can match. We specialise in spiritual journeys, so the planning is in experienced hands.</p>
             <ul className="v-features-list">
@@ -1077,7 +1078,7 @@ export function RameshwaramDetail() {
         <div style={{position: 'absolute', inset: 0, zIndex: 0}}><Image unoptimized={true} src="/rambg.jpg" alt="Banner" fill sizes="100vw" quality={60} style={{objectFit: 'cover'}} /></div>
         <div className="v-cta-banner-content reveal">
           <div className="v-section-tag" style={{ justifyContent: "center", margin: "0 auto 16px" }}>Plan Your Yatra with Confidence</div>
-          <h2 className="v-section-title">Book Your Rameshwaram<br /><em>Tour Today</em></h2>
+          <h2 className="v-section-title"><CmsHeadingContent sectionKey="cta" fallback={<>Book Your Rameshwaram<br /><em>Tour Today</em></>} /></h2>
           <p className="v-section-body" style={{ fontWeight: "900" }}>Tell us your dates and group size, and our Mumbai–Thane team will put together a clear, personalised plan with honest pricing. No pressure — just guidance and support every step of the way.</p>
           <div className="v-cta-buttons">
             <a href="tel:+917208771688" className="v-btn-primary">📞 Call Now — +91 72087 71688</a>
@@ -1087,6 +1088,8 @@ export function RameshwaramDetail() {
           </div>
         </div>
       </div>
+
+      <PackageCmsContent />
 
       <Footer />
 

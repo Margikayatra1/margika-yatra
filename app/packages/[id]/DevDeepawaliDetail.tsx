@@ -9,6 +9,7 @@ import { Header } from "@/components/ui/newheader"
 import { GoogleReviews } from "@/components/ui/google-reviews"
 import { CharStats } from "@/components/char-stats"
 import { FAQ } from "@/components/faq"
+import { CmsHeadingContent, CmsTextContent, PackageCmsContent } from "./PackageCmsContext"
 
 export function DevDeepawaliDetail() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
@@ -1506,14 +1507,14 @@ export function DevDeepawaliDetail() {
           <div className="hero-content">
             <div className="hero-event-badge" style={{ color: "#f5a94e", fontWeight: 900 }}>🪔 Dev Deepawali 2026 · Varanasi</div>
             <div className="hero-tag" style={{ color: "#f5a94e", fontWeight: 900 }}>Margika Yatra · Spiritual Travel</div>
-            <h1 className="hero-title">
+            <h1 className="hero-title"><CmsHeadingContent sectionKey="hero" fallback={<>
               Dev Deepawali<br />Tour Package from<br /><em>Mumbai & Thane</em>
-            </h1>
-            <p className="hero-subtitle" style={{ color: 'var(--black)', fontWeight: 500 }}>
+            </>} /></h1>
+            <p className="hero-subtitle" style={{ color: 'var(--black)', fontWeight: 500 }}><CmsTextContent textKey="heroSubtitle" fallback={<>
               When the gods celebrate Diwali — the 84 ghats of Varanasi light up with a million earthen lamps. Be there
               for one of the most spiritually charged nights in the Hindu calendar. A 2-night, 3-day experience you
               will carry for a lifetime.
-            </p>
+            </>} /></p>
             <div className="hero-ctas">
               <a href="tel:+917208771688" className="btn-primary">
                 📞 Call Now to Book
@@ -1547,21 +1548,21 @@ export function DevDeepawaliDetail() {
             </div>
             <div className="reveal reveal-delay-2">
               <div className="section-tag">Dev Deepawali 2026 · Kashi</div>
-              <h2 className="section-title">
+              <h2 className="section-title"><CmsHeadingContent sectionKey="intro" fallback={<>
                 Dev Deepawali<br /><em>— The Night the Gods Celebrate</em>
-              </h2>
+              </>} /></h2>
               <div className="gold-rule"></div>
-              <p className="section-body">
+              <p className="section-body"><CmsTextContent textKey="intro1" fallback={<>
                 Dev Deepawali falls on Kartik Purnima — the full moon night fifteen days after Diwali. On this night,
                 legend holds that all the gods descend to bathe in the Ganga at Varanasi. Every one of Kashi's 84
                 ghats is lined with hundreds of thousands of earthen diyas, turning the river into a river of light.
-              </p>
-              <p className="section-body" style={{ marginTop: 16 }}>
+              </>} /></p>
+              <p className="section-body" style={{ marginTop: 16 }}><CmsTextContent textKey="intro2" fallback={<>
                 This is not just a festival — it is a spiritual event that draws devotees and visitors from across
                 India and abroad. Securing the right vantage point, the correct darshan timings at Kashi Vishwanath,
                 and peaceful ghat access requires local knowledge and advance planning. That is what Margika Yatra
                 provides for travelers from Mumbai and Thane.
-              </p>
+              </>} /></p>
               <div className="intro-quote">
                 <p>"We handle every arrangement. You carry only your devotion and your camera."</p>
               </div>
@@ -1575,9 +1576,9 @@ export function DevDeepawaliDetail() {
             <div className="section-tag" style={{ justifyContent: "center", margin: "0 auto 16px" }}>
               What You Will Experience
             </div>
-            <h2 className="section-title" style={{ textAlign: "center" }}>
+            <h2 className="section-title" style={{ textAlign: "center" }}><CmsHeadingContent sectionKey="sacred-sites" fallback={<>
               Three Moments<br /><em>You Will Never Forget</em>
-            </h2>
+            </>} /></h2>
             <div className="gold-rule" style={{ margin: "24px auto" }}></div>
             <p className="section-body" style={{ margin: "0 auto", textAlign: "center" }}>
               Every element of this package is built around these rare, once-a-year spiritual experiences in Kashi.
@@ -1635,9 +1636,9 @@ export function DevDeepawaliDetail() {
             <div className="section-tag" style={{ justifyContent: "center", margin: "0 auto 16px" }}>
               Package & Pricing
             </div>
-            <h2 className="section-title" style={{ textAlign: "center" }}>
+            <h2 className="section-title" style={{ textAlign: "center" }}><CmsHeadingContent sectionKey="package" fallback={<>
               Your Dev Deepawali Yatra,<br /><em>Fully Sorted</em>
-            </h2>
+            </>} /></h2>
             <div className="gold-rule"></div>
             <p className="section-body" style={{ margin: "0 auto", textAlign: "center" }}>
               One clear, all-inclusive Dev Deepawali Varanasi package — travel, comfortable stays near the ghats, AC transport, festival boat ride, guided darshans, and full coordination from Mumbai & Thane. Transparent pricing, no hidden costs.
@@ -1725,9 +1726,9 @@ export function DevDeepawaliDetail() {
           <div className="itinerary-section">
             <div className="itin-header reveal">
               <div className="section-tag" style={{ justifyContent: "center" }}>Complete Itinerary</div>
-              <h2 className="section-title">
+              <h2 className="section-title"><CmsHeadingContent sectionKey="itinerary" fallback={<>
                 Dev Deepawali Varanasi Package<br /><em>— What Your Days Look Like</em>
-              </h2>
+              </>} /></h2>
               <div className="gold-rule"></div>
               <p className="section-body" style={{ margin: "0 auto" }}>
                 A thoughtfully sequenced 2-night, 3-day plan crafted to capture the most spiritually significant moments
@@ -1971,9 +1972,9 @@ export function DevDeepawaliDetail() {
               <div className="section-tag" style={{ justifyContent: "center", margin: "0 auto 12px" }}>
                 What's Included
               </div>
-              <h2 className="section-title" style={{ textAlign: "center" }}>
+              <h2 className="section-title" style={{ textAlign: "center" }}><CmsHeadingContent sectionKey="inclusions" fallback={<>
                 Everything <em>Taken Care Of</em>
-              </h2>
+              </>} /></h2>
             </div>
             <div className="inclusions-grid">
               <div className="inc-card reveal">
@@ -2035,9 +2036,9 @@ export function DevDeepawaliDetail() {
               <div className="section-tag" style={{ color: "#ffffff", "--saffron": "#ffffff" } as React.CSSProperties}>
                 Why Choose Us
               </div>
-              <h2 className="section-title">
+              <h2 className="section-title"><CmsHeadingContent sectionKey="why-margika" fallback={<>
                 Why Mumbai & Thane<br /><em style={{ color: "#ffffff" }}>Yatris Choose Margika</em>
-              </h2>
+              </>} /></h2>
               <div className="gold-rule" style={{ background: "#ffffff" }}></div>
               <p className="section-body" style={{ fontWeight: 700, color: "#ffffff" }}>
                 We are based in Brahmand, Thane. When you call us, you speak to someone from your community who
@@ -2117,9 +2118,9 @@ export function DevDeepawaliDetail() {
             <div className="section-tag" style={{ justifyContent: "center", margin: "0 auto 16px" }}>
               Simple & Transparent
             </div>
-            <h2 className="section-title" style={{ textAlign: "center" }}>
+            <h2 className="section-title" style={{ textAlign: "center" }}><CmsHeadingContent sectionKey="booking" fallback={<>
               How Your <em>Booking Begins</em>
-            </h2>
+            </>} /></h2>
             <div className="gold-rule" style={{ margin: "20px auto" }}></div>
           </div>
           <div className="steps-grid">
@@ -2162,9 +2163,9 @@ export function DevDeepawaliDetail() {
             <div className="section-tag" style={{ justifyContent: "center" }}>
               Memories of Kashi
             </div>
-            <h2 className="section-title">
+            <h2 className="section-title"><CmsHeadingContent sectionKey="testimonials" fallback={<>
               Yatris Who <em>Travelled Before You</em>
-            </h2>
+            </>} /></h2>
             <div className="gold-rule" style={{ margin: "20px auto" }}></div>
           </div>
           <div className="gallery-strip reveal" style={{ marginBottom: "60px" }}>
@@ -2202,9 +2203,9 @@ export function DevDeepawaliDetail() {
             <div className="section-tag" style={{ justifyContent: "center", marginTop: "100px" }}>
               Other Pilgrimages
             </div>
-            <h2 className="section-title">
+            <h2 className="section-title"><CmsHeadingContent sectionKey="related" fallback={<>
               Other Sacred <em>Packages</em>
-            </h2>
+            </>} /></h2>
             <div className="gold-rule" style={{ margin: "20px auto" }}></div>
           </div>
           <div className="other-pkgs reveal">
@@ -2257,9 +2258,9 @@ export function DevDeepawaliDetail() {
         <section className="cta-banner">
           <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}><Image unoptimized={true} src="/rambg.jpg" alt="Banner" fill sizes="100vw" quality={60} style={{ objectFit: 'cover' }} /></div>
           <div className="cta-banner-content reveal">
-            <h2 className="section-title" style={{ color: "var(--white)", marginBottom: 16 }}>
+            <h2 className="section-title" style={{ color: "var(--white)", marginBottom: 16 }}><CmsHeadingContent sectionKey="cta" fallback={<>
               Witness the River of Light
-            </h2>
+            </>} /></h2>
             <p className="section-body" style={{ color: "rgba(255,255,255,0.8)", margin: "0 auto 32px", fontWeight: "900", fontSize: "18px" }}>
               Varanasi's Dev Deepawali 2026 slots are extremely limited due to boat and hotel availability. Plan your
               yatra today.
@@ -2281,6 +2282,8 @@ export function DevDeepawaliDetail() {
         </section>
 
       </div>{/* end dd-page for CTA */}
+
+      <PackageCmsContent />
 
       <Footer />
 

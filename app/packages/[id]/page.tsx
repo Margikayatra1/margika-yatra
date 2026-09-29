@@ -26,6 +26,7 @@ import { CharStats } from "@/components/char-stats"
 import { FAQ } from "@/components/faq"
 import { SchemaMarkup } from "@/components/SchemaMarkup"
 import { schemas } from "@/lib/schemas"
+import { CmsHeadingContent, CmsTextContent, PackageCmsContent } from "./PackageCmsContext"
 
 
 export default function PackageDetailPage() {
@@ -118,7 +119,7 @@ export default function PackageDetailPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
                   <div className="absolute bottom-5 left-5 right-5">
                     <Badge className="mb-3 bg-orange-500 text-white">{pkg.location}</Badge>
-                    <h1 className="max-w-3xl text-3xl font-bold text-white drop-shadow md:text-5xl">{pkg.name}</h1>
+                    <h1 className="max-w-3xl text-3xl font-bold text-white drop-shadow md:text-5xl"><CmsHeadingContent sectionKey="hero" fallback={<>{pkg.name}</>} /></h1>
                   </div>
                 </div>
               </motion.div>
@@ -131,7 +132,7 @@ export default function PackageDetailPage() {
               >
                 <Card className="border-orange-200 bg-white/95 shadow-2xl">
                   <CardContent className="p-6">
-                    <p className="mb-5 text-gray-700">{pkg.description}</p>
+                    <p className="mb-5 text-gray-700"><CmsTextContent textKey="heroSubtitle" fallback={pkg.description} /></p>
 
                     <div className="mb-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
                       <div className="rounded-lg bg-orange-50 p-4">
@@ -152,7 +153,7 @@ export default function PackageDetailPage() {
                     </div>
 
                     <div className="mb-6">
-                      <h2 className="mb-3 text-xl font-bold text-orange-700">Highlights</h2>
+                      <h2 className="mb-3 text-xl font-bold text-orange-700"><CmsHeadingContent sectionKey="sacred-sites" fallback={<>Highlights</>} /></h2>
                       <div className="flex flex-wrap gap-2">
                         {pkg.highlights.map((highlight) => (
                           <Badge key={highlight} variant="outline" className="border-orange-300 text-orange-700">
@@ -192,14 +193,14 @@ export default function PackageDetailPage() {
           <div className="container mx-auto grid gap-8 px-4 lg:grid-cols-2">
             <Card className="border-orange-200 bg-white/90 shadow-xl">
               <CardContent className="p-6">
-                <h2 className="mb-3 text-2xl font-bold text-orange-700">Package Details</h2>
-                <p className="leading-7 text-gray-700">{pkg.overview}</p>
+                <h2 className="mb-3 text-2xl font-bold text-orange-700"><CmsHeadingContent sectionKey="intro" fallback={<>Package Details</>} /></h2>
+                <p className="leading-7 text-gray-700"><CmsTextContent textKey="intro1" fallback={pkg.overview} /></p>
               </CardContent>
             </Card>
 
             <Card className="border-orange-200 bg-white/90 shadow-xl">
               <CardContent className="p-6">
-                <h2 className="mb-4 text-2xl font-bold text-orange-700">Included</h2>
+                <h2 className="mb-4 text-2xl font-bold text-orange-700"><CmsHeadingContent sectionKey="inclusions" fallback={<>Included</>} /></h2>
                 <div className="grid gap-3">
                   {pkg.inclusions.map((item) => (
                     <div key={item} className="flex items-center gap-3 text-gray-800">
@@ -213,6 +214,8 @@ export default function PackageDetailPage() {
           </div>
         </section>
       </main>
+
+      <PackageCmsContent />
 
       <Footer />
     </div>
@@ -664,7 +667,7 @@ function MaharashtraJyotirlingDetail() {
         <div className="hero-overlay"></div>
         <div className="char-hero-content">
           <div className="char-tag" style={{ fontWeight: 900, fontSize: 14 }}>Bhimashankar · Trimbakeshwar · Grishneshwar</div>
-          <h1 className="char-title">Three Jyotirlinga Maharashtra<br /><em>Tour Package</em></h1>
+          <h1 className="char-title"><CmsHeadingContent sectionKey="hero" fallback={<>Three Jyotirlinga Maharashtra<br /><em>Tour Package</em></>} /></h1>
           <p className="char-subtitle" style={{ color: 'var(--black)', fontWeight: 500 }}>A guided pilgrimage to the 3 Jyotirlinga of Maharashtra with Shani Shingnapur, Ellora Caves, and Pune heritage. Planned and coordinated for travellers from Mumbai and Thane.</p>
           <div className="char-actions">
             {/* <a href={razorpayLink} target="_blank" rel="noopener noreferrer" className="char-btn">Book Now →</a> */}
@@ -685,10 +688,10 @@ function MaharashtraJyotirlingDetail() {
           </div>
           <div className="char-reveal">
             <div className="char-tag">A Sacred Maharashtra Circuit</div>
-            <h2 className="char-section-title">Three Jyotirlingas,<br /><em>One Smooth Yatra</em></h2>
+            <h2 className="char-section-title"><CmsHeadingContent sectionKey="intro" fallback={<>Three Jyotirlingas,<br /><em>One Smooth Yatra</em></>} /></h2>
             <div className="char-rule" />
-            <p className="char-body">This Maharashtra Jyotirlinga route brings together Bhimashankar, Trimbakeshwar, and Grishneshwar with the spiritual stops of Shani Shingnapur, Ellora Caves, Dagdu Seth Ganpati, and Shaniwar Wada.</p>
-            <p className="char-body" style={{ marginTop: 16 }}>Margika Yatra coordinates the route, vehicle, stay, and darshan timing so your family can focus on devotion instead of logistics.</p>
+            <p className="char-body"><CmsTextContent textKey="intro1" fallback={<>This Maharashtra Jyotirlinga route brings together Bhimashankar, Trimbakeshwar, and Grishneshwar with the spiritual stops of Shani Shingnapur, Ellora Caves, Dagdu Seth Ganpati, and Shaniwar Wada.</>} /></p>
+            <p className="char-body" style={{ marginTop: 16 }}><CmsTextContent textKey="intro2" fallback={<>Margika Yatra coordinates the route, vehicle, stay, and darshan timing so your family can focus on devotion instead of logistics.</>} /></p>
             <div className="char-quote">"You bring the dates and your group. We shape the yatra around you."</div>
           </div>
         </div>
@@ -698,7 +701,7 @@ function MaharashtraJyotirlingDetail() {
         <div className="char-wrap">
           <div className="char-center char-reveal">
             <div className="char-tag">The Sacred Route</div>
-            <h2 className="char-section-title">The 3 Jyotirlinga<br /><em>of Maharashtra</em></h2>
+            <h2 className="char-section-title"><CmsHeadingContent sectionKey="sacred-sites" fallback={<>The 3 Jyotirlinga<br /><em>of Maharashtra</em></>} /></h2>
             <div className="char-rule" />
             <p className="char-body">Each temple has its own energy, route rhythm, and story. Together, they create one of Maharashtra's most loved Shiva circuits.</p>
           </div>
@@ -722,7 +725,7 @@ function MaharashtraJyotirlingDetail() {
         <div className="char-wrap char-reveal" style={{ maxWidth: 980 }}>
           <div className="char-center" style={{ marginBottom: 36 }}>
             <div className="char-tag">Complete Package</div>
-            <h2 className="char-section-title">Maharashtra Three Jyotirlinga<br /><em style={{ color: "#ffffff" }}>Tour from Mumbai & Thane</em></h2>
+            <h2 className="char-section-title"><CmsHeadingContent sectionKey="package" fallback={<>Maharashtra Three Jyotirlinga<br /><em style={{ color: "#ffffff" }}>Tour from Mumbai & Thane</em></>} /></h2>
             <div className="char-rule" />
           </div>
           <p className="char-body">This 3 days / 2 nights journey is designed for families, senior citizens, groups, and Shiva devotees who want all three Jyotirlingas covered without rushing. The route is Pune-based, with support for Mumbai and Thane travellers joining by train, bus, flight, or private plan.</p>
@@ -738,7 +741,7 @@ function MaharashtraJyotirlingDetail() {
       <section className="char-section">
         <div className="char-center char-reveal">
           <div className="char-tag">Detailed Itinerary</div>
-          <h2 className="char-section-title">Three Days,<br /><em>Clearly Planned</em></h2>
+          <h2 className="char-section-title"><CmsHeadingContent sectionKey="itinerary" fallback={<>Three Days,<br /><em>Clearly Planned</em></>} /></h2>
           <div className="char-rule" />
         </div>
         <div className="mh-itinerary">
@@ -763,7 +766,7 @@ function MaharashtraJyotirlingDetail() {
       <section className="char-section alt">
         <div className="char-center char-reveal">
           <div className="char-tag">Package & Pricing</div>
-          <h2 className="char-section-title">Your Maharashtra 3 Jyotirlinga<br /><em>Trip, Fully Sorted</em></h2>
+          <h2 className="char-section-title"><CmsHeadingContent sectionKey="inclusions" fallback={<>Your Maharashtra 3 Jyotirlinga<br /><em>Trip, Fully Sorted</em></>} /></h2>
           <div className="char-rule" />
         </div>
         <div className="mh-price-card char-reveal">
@@ -818,7 +821,7 @@ function MaharashtraJyotirlingDetail() {
         <div className="char-wrap char-two">
           <div className="char-reveal">
             <div className="char-tag" style={{ color: "#ffffff" }}>Why Margika</div>
-            <h2 className="char-section-title">Why Mumbai & Thane<br /><em style={{ color: "#ffffff" }}>Travellers Choose Us</em></h2>
+            <h2 className="char-section-title"><CmsHeadingContent sectionKey="why-margika" fallback={<>Why Mumbai & Thane<br /><em style={{ color: "#ffffff" }}>Travellers Choose Us</em></>} /></h2>
             <div className="char-rule" style={{ background: "#ffffff" }} />
             <p className="char-body" style={{ color: "#ffffff", fontWeight: 700 }}>We are based in Thane, so your booking conversation stays local, practical, and personal. You get honest planning, route clarity, and responsive coordination before and during the journey.</p>
             <ul className="char-features">
@@ -840,7 +843,7 @@ function MaharashtraJyotirlingDetail() {
         <div className="char-wrap">
           <div className="char-center char-reveal">
             <div className="char-tag">Simple & Transparent</div>
-            <h2 className="char-section-title">How Your <em>Yatra Begins</em></h2>
+            <h2 className="char-section-title"><CmsHeadingContent sectionKey="booking" fallback={<>How Your <em>Yatra Begins</em></>} /></h2>
             <div className="char-rule" />
           </div>
           <div className="char-steps">
@@ -859,7 +862,7 @@ function MaharashtraJyotirlingDetail() {
         <div className="char-wrap">
           <div className="char-center char-reveal">
             <div className="char-tag">Memories from Our Trips</div>
-            <h2 className="char-section-title">Yatris Who <em>Travelled Before You</em></h2>
+            <h2 className="char-section-title"><CmsHeadingContent sectionKey="testimonials" fallback={<>Yatris Who <em>Travelled Before You</em></>} /></h2>
           </div>
           <div className="char-gallery">
             {["/1.jpg", "/2.jpg", "/Home1.jpeg", "/Home2.jpeg", "/5.jpg", "/6.jpg", "/Home3.jpeg", "/Home4.jpeg", "/Home5.jpeg", "/Home6.jpg", "/Home7.jpg"].map((image) => (
@@ -875,7 +878,7 @@ function MaharashtraJyotirlingDetail() {
       <section className="char-cta">
         <div className="char-cta-content char-reveal">
           <div className="char-tag">Plan Your Maharashtra Jyotirlinga Yatra</div>
-          <h2 className="char-section-title">Book Your Three Jyotirlinga<br /><em>Maharashtra Tour Today</em></h2>
+          <h2 className="char-section-title"><CmsHeadingContent sectionKey="cta" fallback={<>Book Your Three Jyotirlinga<br /><em>Maharashtra Tour Today</em></>} /></h2>
           <p className="char-body" style={{ margin: "0 auto 34px", textAlign: "center", fontWeight: 700 }}>Tell us your dates, group size, and pickup point. Our Mumbai-Thane team will put together a clear itinerary with an honest per-person quote.</p>
           <div className="char-actions" style={{ justifyContent: "center" }}>
             <a href={razorpayLink} target="_blank" rel="noopener noreferrer" className="char-btn">Book Now →</a>
@@ -884,6 +887,8 @@ function MaharashtraJyotirlingDetail() {
           </div>
         </div>
       </section>
+
+      <PackageCmsContent />
 
       <Footer />
 
@@ -1424,7 +1429,7 @@ function CharDhamDetail() {
 
         <div className="char-hero-content">
           <div className="char-tag" style={{ fontWeight: 700, fontSize: 14 }}>Sacred Himalayan Pilgrimage</div>
-          <h1 className="char-title">Char Dham &<br /><em>Do Dham Yatra</em></h1>
+          <h1 className="char-title"><CmsHeadingContent sectionKey="hero" fallback={<>Char Dham &<br /><em>Do Dham Yatra</em></>} /></h1>
           <p className="char-subtitle" style={{ color: 'var(--black)', fontWeight: 400 }}>Plan your sacred Himalayan pilgrimage with confidence — departing from Mumbai & Thane. VIP darshan, expert coordinators, senior-friendly packages.</p>
           <div className="char-actions">
             <a href="tel:+917208771688" className="char-btn">📞 Call to Book</a>
@@ -1445,10 +1450,10 @@ function CharDhamDetail() {
           </div>
           <div className="char-reveal">
             <div className="char-tag">A Once-in-a-Lifetime Journey</div>
-            <h2 className="char-section-title">The Char Dham<br /><em>Yatra</em></h2>
+            <h2 className="char-section-title"><CmsHeadingContent sectionKey="intro" fallback={<>The Char Dham<br /><em>Yatra</em></>} /></h2>
             <div className="char-rule" />
-            <p className="char-body">Yamunotri, Gangotri, Kedarnath, Badrinath — four shrines, one sacred circuit that Hindus have walked for centuries. Completing the Char Dham Yatra is not just a journey across Uttarakhand; it is a journey inward.</p>
-            <p className="char-body" style={{ marginTop: 16 }}>The Himalayan terrain, altitude, seasonal permits, and helicopter bookings can quickly overwhelm even the most prepared traveller. That is precisely why yatris across India trust Margika Yatra — so they can focus entirely on their faith.</p>
+            <p className="char-body"><CmsTextContent textKey="intro1" fallback={<>Yamunotri, Gangotri, Kedarnath, Badrinath — four shrines, one sacred circuit that Hindus have walked for centuries. Completing the Char Dham Yatra is not just a journey across Uttarakhand; it is a journey inward.</>} /></p>
+            <p className="char-body" style={{ marginTop: 16 }}><CmsTextContent textKey="intro2" fallback={<>The Himalayan terrain, altitude, seasonal permits, and helicopter bookings can quickly overwhelm even the most prepared traveller. That is precisely why yatris across India trust Margika Yatra — so they can focus entirely on their faith.</>} /></p>
             <div className="char-quote">"We handle every detail. You carry only your devotion."</div>
           </div>
         </div>
@@ -1458,7 +1463,7 @@ function CharDhamDetail() {
         <div className="char-wrap">
           <div className="char-center char-reveal">
             <div className="char-tag">The Sacred Circuit</div>
-            <h2 className="char-section-title">Four Shrines,<br /><em>One Eternal Path</em></h2>
+            <h2 className="char-section-title"><CmsHeadingContent sectionKey="sacred-sites" fallback={<>Four Shrines,<br /><em>One Eternal Path</em></>} /></h2>
             <div className="char-rule" />
             <p className="char-body">Each dham represents a cardinal direction and a divine energy. Together, they form the most sacred circuit in Hinduism.</p>
           </div>
@@ -1483,7 +1488,7 @@ function CharDhamDetail() {
           <div className="char-packages-head char-reveal">
             <div>
               <div className="char-tag">Our Offerings</div>
-              <h2 className="char-section-title">Choose Your<br /><em>Sacred Journey</em></h2>
+              <h2 className="char-section-title"><CmsHeadingContent sectionKey="package" fallback={<>Choose Your<br /><em>Sacred Journey</em></>} /></h2>
             </div>
             <p className="char-body" style={{ maxWidth: 340 }}>All packages depart from Mumbai & Thane. Customisation available for all group sizes.</p>
           </div>
@@ -1536,7 +1541,7 @@ function CharDhamDetail() {
         <div className="char-wrap char-two">
           <div className="char-reveal">
             <div className="char-tag" style={{ color: "#ffffff" }}>Why Choose Us</div>
-            <h2 className="char-section-title">Why Mumbai & Thane<br /><em style={{ color: "#ffffff" }}>Yatris Choose Margika</em></h2>
+            <h2 className="char-section-title"><CmsHeadingContent sectionKey="why-margika" fallback={<>Why Mumbai & Thane<br /><em style={{ color: "#ffffff" }}>Yatris Choose Margika</em></>} /></h2>
             <div className="char-rule" style={{ background: "#ffffff" }} />
             <p className="char-body" style={{ fontWeight: 700, color: "#ffffff" }}>We are based in Brahmand, Thane — when you call us, you speak to a local who understands your community, your expectations, and your schedule. That local trust is something no national online operator can replicate.</p>
             <ul className="char-features">
@@ -1564,7 +1569,7 @@ function CharDhamDetail() {
         <div className="char-wrap">
           <div className="char-center char-reveal">
             <div className="char-tag">Simple & Transparent</div>
-            <h2 className="char-section-title">How Your <em>Yatra Begins</em></h2>
+            <h2 className="char-section-title"><CmsHeadingContent sectionKey="booking" fallback={<>How Your <em>Yatra Begins</em></>} /></h2>
             <div className="char-rule" />
           </div>
           <div className="char-steps">
@@ -1590,7 +1595,7 @@ function CharDhamDetail() {
         <div className="char-wrap">
           <div className="char-center char-reveal">
             <div className="char-tag">Memories from the Mountains</div>
-            <h2 className="char-section-title">Yatris Who <em>Walked Before You</em></h2>
+            <h2 className="char-section-title"><CmsHeadingContent sectionKey="testimonials" fallback={<>Yatris Who <em>Walked Before You</em></>} /></h2>
           </div>
           <div className="char-gallery">
             {["/1.jpg", "/2.jpg", "/Home1.jpeg", "/Home2.jpeg", "/5.jpg", "/6.jpg", "/Home3.jpeg", "/Home4.jpeg", "/Home5.jpeg", "/Home6.jpg", "/Home7.jpg"].map((image) => (
@@ -1606,7 +1611,7 @@ function CharDhamDetail() {
       <section className="char-cta">
         <div className="char-cta-content char-reveal">
           <div className="char-tag">Yatra Season Fills Up Fast</div>
-          <h2 className="char-section-title">Secure Your Sacred<br /><em>Spot Today</em></h2>
+          <h2 className="char-section-title"><CmsHeadingContent sectionKey="cta" fallback={<>Secure Your Sacred<br /><em>Spot Today</em></>} /></h2>
           <p className="char-body" style={{ margin: "0 auto 34px", textAlign: "center", fontWeight: 700 }}>Char Dham 2026 slots — especially helicopters — are extremely limited. Reach out today to check availability for your dates and group size.</p>
           <div className="char-actions" style={{ justifyContent: "center" }}>
             <a href="tel:+917208771688" className="char-btn">📞 Call Now — +91 72087 71688</a>
@@ -1614,6 +1619,8 @@ function CharDhamDetail() {
           </div>
         </div>
       </section>
+
+      <PackageCmsContent />
 
       <Footer />
 

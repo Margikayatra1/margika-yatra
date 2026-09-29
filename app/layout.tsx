@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Script from 'next/script'
+
+import { getPageMetadata } from '@/lib/seo'
 import './globals.css'
 
 // Disable preload to eliminate the 370ms render-blocking request
@@ -12,9 +14,17 @@ const inter = Inter({
   preload: false,
 })
 
-export const metadata: Metadata = {
-  title: 'Spiritual Tour Packages from Mumbai | Margika Yatra',
-  description: 'Book spiritual tour & pilgrimage packages from Mumbai with Margika Yatra. Char Dham, Kerala, Dwarka-Somnath & more. VIP darshan assured, 4.9★ rated agency.',
+export async function generateMetadata(): Promise<Metadata> {
+  const pageMetadata = await getPageMetadata('/', {
+    title: 'Spiritual Tour Packages from Mumbai | Margika Yatra',
+    description:
+      'Book spiritual tour & pilgrimage packages from Mumbai with Margika Yatra. Char Dham, Kerala, Dwarka-Somnath & more. VIP darshan assured, 4.9★ rated agency.',
+  })
+
+  return {
+    metadataBase: new URL('https://www.margikayatra.com'),
+    ...pageMetadata,
+  }
 }
 
 export default function RootLayout({

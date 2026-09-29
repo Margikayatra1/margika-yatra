@@ -8,6 +8,7 @@ import { Header } from "@/components/ui/newheader"
 import { GoogleReviews } from "@/components/ui/google-reviews"
 import { CharStats } from "@/components/char-stats"
 import { FAQ } from "@/components/faq"
+import { CmsHeadingContent, CmsTextContent, PackageCmsContent } from "./PackageCmsContext"
 
 export function KeralaDetail() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
@@ -743,13 +744,13 @@ export function KeralaDetail() {
         <div className="hero-content">
           <div className="hero-tag" style={{ color: "var(--saffron-light)", fontWeight: 900, fontSize: 14 }}> Kerala · God's Own Country</div>
           <div className="hero-tag" style={{ color: "var(--saffron-light)", fontWeight: 900, fontSize: 14 }}>Margika Yatra · Holiday Travel</div>
-          <h1 className="hero-title">
+          <h1 className="hero-title"><CmsHeadingContent sectionKey="hero" fallback={<>
             Kerala Tour Package<br />from<br /><em>Mumbai & Thane</em>
-          </h1>
-          <p className="hero-subtitle">
+          </>} /></h1>
+          <p className="hero-subtitle"><CmsTextContent textKey="heroSubtitle" fallback={<>
             Misty tea hills, spice forests, a night on an Alleppey houseboat, and the colonial charm of Fort Kochi
             — all arranged from your doorstep in Mumbai or Thane. A complete 4-day holiday with zero planning stress.
-          </p>
+          </>} /></p>
           <div className="hero-ctas">
             <a href="tel:+917208771688" className="btn-primary">📞 Call Now to Book</a>
             <a href={wa("I want to book the Kerala tour package from Mumbai")} className="btn-wa" target="_blank" rel="noopener noreferrer">
@@ -774,18 +775,18 @@ export function KeralaDetail() {
           </div>
           <div className="reveal reveal-delay-2">
             <div className="section-tag">God's Own Country · Family & Couple Holiday</div>
-            <h2 className="section-title">Kerala Tour Packages<br /><em>— God's Own Country Awaits</em></h2>
+            <h2 className="section-title"><CmsHeadingContent sectionKey="intro" fallback={<>Kerala Tour Packages<br /><em>— God's Own Country Awaits</em></>} /></h2>
             <div className="gold-rule"></div>
-            <p className="section-body">
+            <p className="section-body"><CmsTextContent textKey="intro1" fallback={<>
               Our Kerala tour packages from Mumbai bring together everything that makes this southern state special
               — the misty tea hills of Munnar, the spice gardens and Periyar wildlife of Thekkady, a night on an
               Alleppey backwater houseboat, and the colonial charm of Fort Kochi.
-            </p>
-            <p className="section-body" style={{ marginTop: 16 }}>
+            </>} /></p>
+            <p className="section-body" style={{ marginTop: 16 }}><CmsTextContent textKey="intro2" fallback={<>
               Planning all of this from Mumbai or Thane can take time. We take care of the flights, hotels, AC
               transport, sightseeing and the houseboat stay — so you simply arrive and enjoy. From your first
               enquiry to your safe return, every detail is handled by our team.
-            </p>
+            </>} /></p>
             <div className="intro-quote">
               <p>"The hills, the backwaters and the sea — we plan the journey, you simply soak it all in."</p>
             </div>
@@ -797,7 +798,7 @@ export function KeralaDetail() {
       <section className="highlights-section">
         <div className="highlights-header reveal">
           <div className="section-tag" style={{ justifyContent: "center", margin: "0 auto 16px" }}>Your Kerala Circuit</div>
-          <h2 className="section-title" style={{ textAlign: "center" }}>Four Destinations,<br /><em>One Perfect Holiday</em></h2>
+          <h2 className="section-title" style={{ textAlign: "center" }}><CmsHeadingContent sectionKey="sacred-sites" fallback={<>Four Destinations,<br /><em>One Perfect Holiday</em></>} /></h2>
           <div className="gold-rule" style={{ margin: "24px auto" }}></div>
           <p className="section-body" style={{ margin: "0 auto", textAlign: "center" }}>From hill stations to backwaters to the coast, this Kerala package covers the very best the state has to offer.</p>
         </div>
@@ -837,7 +838,7 @@ export function KeralaDetail() {
         <div className="itinerary-section">
           <div className="itin-header reveal">
             <div className="section-tag" style={{ justifyContent: "center" }}>Complete Itinerary</div>
-            <h2 className="section-title">Kerala Holiday Package<br /><em>— What Your Days Look Like</em></h2>
+            <h2 className="section-title"><CmsHeadingContent sectionKey="itinerary" fallback={<>Kerala Holiday Package<br /><em>— What Your Days Look Like</em></>} /></h2>
             <div className="gold-rule"></div>
             <p className="section-body" style={{ margin: "0 auto" }}>A thoughtfully sequenced 4-day, 3-night plan — Munnar, Thekkady, Alleppey and Kochi — crafted for families and couples from Mumbai & Thane.</p>
           </div>
@@ -928,7 +929,7 @@ export function KeralaDetail() {
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <div className="reveal" style={{ textAlign: "center", marginBottom: 48 }}>
             <div className="section-tag" style={{ justifyContent: "center", margin: "0 auto 12px" }}>What's Included</div>
-            <h2 className="section-title" style={{ textAlign: "center" }}>Everything <em>Taken Care Of</em></h2>
+            <h2 className="section-title" style={{ textAlign: "center" }}><CmsHeadingContent sectionKey="inclusions" fallback={<>Everything <em>Taken Care Of</em></>} /></h2>
           </div>
           <div className="inclusions-grid">
             <div className="inc-card reveal"><div className="inc-icon">✈️</div><div className="inc-title">Flight / Train Coordination</div><div className="inc-desc">Return flights or train bookings from Mumbai or Thane coordinated by our team, including Cochin airport pickup on arrival.</div></div>
@@ -947,7 +948,7 @@ export function KeralaDetail() {
           <div className="complete-head reveal">
             <div className="complete-head">
               <div className="section-tag" style={{ color: "#ffffff", justifyContent: "center", margin: "0 auto 16px" }}>The Complete Journey</div>
-              <h2 className="section-title" style={{ color: "#ffffff" }}>Complete Kerala<br /><em>Tour Package from Mumbai</em></h2>
+              <h2 className="section-title" style={{ color: "#ffffff" }}><CmsHeadingContent sectionKey="package" fallback={<>Complete Kerala<br /><em>Tour Package from Mumbai</em></>} /></h2>
               <div className="gold-rule" style={{ margin: "20px auto", background: "#ffffff" }}></div>
             </div>
           </div>
@@ -969,7 +970,7 @@ export function KeralaDetail() {
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <div className="price-header reveal" style={{ textAlign: "center", marginBottom: 48 }}>
             <div className="section-tag" style={{ justifyContent: "center", margin: "0 auto 12px" }}>Package & Pricing</div>
-            <h2 className="section-title" style={{ textAlign: "center" }}>Your Kerala Holiday<br /><em>from Mumbai, Fully Sorted</em></h2>
+            <h2 className="section-title" style={{ textAlign: "center" }}><CmsHeadingContent sectionKey="package" fallback={<>Your Kerala Holiday<br /><em>from Mumbai, Fully Sorted</em></>} /></h2>
             <div className="gold-rule" style={{ margin: "20px auto" }}></div>
             <p className="section-body" style={{ margin: "0 auto", textAlign: "center" }}>One clear, well-organised Kerala tour package with price — travel, comfortable stays, a backwater houseboat, AC transport and full coordination from Mumbai &amp; Thane. Transparent pricing, no hidden costs.</p>
           </div>
@@ -1033,7 +1034,7 @@ export function KeralaDetail() {
         <div className="why-grid">
           <div className="reveal">
             <div className="section-tag" style={{ color: "#ffffff", "--saffron": "#ffffff" } as React.CSSProperties}>Why Choose Us</div>
-            <h2 className="section-title">Why Mumbai & Thane<br /><em style={{ color: "#ffffff" }}>Travellers Choose Margika</em></h2>
+            <h2 className="section-title"><CmsHeadingContent sectionKey="why-margika" fallback={<>Why Mumbai & Thane<br /><em style={{ color: "#ffffff" }}>Travellers Choose Margika</em></>} /></h2>
             <div className="gold-rule" style={{ background: "#ffffff" }}></div>
             <p className="section-body" style={{ fontWeight: 700, color: "#ffffff" }}>We are based in Brahmand, Thane. When you call us, you speak to someone from your community who understands your expectations and schedule. That local trust is something no large national portal can offer.</p>
             <ul className="features-list">
@@ -1064,7 +1065,7 @@ export function KeralaDetail() {
       <section className="steps-section">
         <div className="steps-header reveal">
           <div className="section-tag" style={{ justifyContent: "center", margin: "0 auto 16px" }}>Simple & Transparent</div>
-          <h2 className="section-title" style={{ textAlign: "center" }}>How Your <em>Booking Begins</em></h2>
+          <h2 className="section-title" style={{ textAlign: "center" }}><CmsHeadingContent sectionKey="booking" fallback={<>How Your <em>Booking Begins</em></>} /></h2>
           <div className="gold-rule" style={{ margin: "20px auto" }}></div>
         </div>
         <div className="steps-grid">
@@ -1083,7 +1084,7 @@ export function KeralaDetail() {
       <section>
         <div className="itin-header reveal" style={{ textAlign: "center", margin: "0 auto 40px" }}>
           <div className="section-tag" style={{ justifyContent: "center" }}>Other Packages</div>
-          <h2 className="section-title">Other Sacred & Holiday <em>Packages</em></h2>
+          <h2 className="section-title"><CmsHeadingContent sectionKey="related" fallback={<>Other Sacred & Holiday <em>Packages</em></>} /></h2>
           <div className="gold-rule" style={{ margin: "20px auto" }}></div>
         </div>
         <div className="other-pkgs reveal">
@@ -1123,7 +1124,7 @@ export function KeralaDetail() {
       {/* CTA BANNER */}
       <section className="cta-banner">
         <div className="cta-banner-content reveal">
-          <h2 className="section-title" style={{ color: "var(--white)", marginBottom: 16 }}>Book Your Kerala Holiday Today</h2>
+          <h2 className="section-title" style={{ color: "var(--white)", marginBottom: 16 }}><CmsHeadingContent sectionKey="cta" fallback={<>Book Your Kerala Holiday Today</>} /></h2>
           <p className="section-body" style={{ color: "rgba(255,255,255,0.8)", margin: "0 auto 32px", fontWeight: "700", fontSize: "16px" }}>
             Kerala houseboat slots and hill-station hotels fill up fast, especially for peak season. Plan your Mumbai–Kerala holiday today.
           </p>
@@ -1135,6 +1136,8 @@ export function KeralaDetail() {
       </section>
 
       </div>{/* end dd-page for CTA */}
+
+      <PackageCmsContent />
 
       <Footer />
 

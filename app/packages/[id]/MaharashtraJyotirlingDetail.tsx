@@ -8,6 +8,7 @@ import { FAQ } from "@/components/faq"
 import { GoogleReviews } from "@/components/ui/google-reviews"
 import Link from "next/link"
 import Image from "next/image"
+import { CmsHeadingContent, CmsTextContent, PackageCmsContent } from "./PackageCmsContext"
 
 function PackageHtmlPage({ src, title }: { src: string; title: string }) {
   return (
@@ -454,7 +455,7 @@ function MaharashtraJyotirlingDetail() {
         <div className="hero-overlay"></div>
         <div className="char-hero-content">
           <div className="char-tag" style={{ fontWeight: 900, fontSize: 14 }}>Bhimashankar · Trimbakeshwar · Grishneshwar</div>
-          <h1 className="char-title">Three Jyotirlinga Maharashtra<br /><em>Tour Package</em></h1>
+          <h1 className="char-title"><CmsHeadingContent sectionKey="hero" fallback={<>Three Jyotirlinga Maharashtra<br /><em>Tour Package</em></>} /></h1>
           <p className="char-subtitle" style={{ color: 'var(--black)', fontWeight: 500 }}>A guided pilgrimage to the 3 Jyotirlinga of Maharashtra with Shani Shingnapur, Ellora Caves, and Pune heritage. Planned and coordinated for travellers from Mumbai and Thane.</p>
           <div className="char-actions">
             {/* <a href={razorpayLink} target="_blank" rel="noopener noreferrer" className="char-btn">Book Now →</a> */}
@@ -474,10 +475,10 @@ function MaharashtraJyotirlingDetail() {
           </div>
           <div className="char-reveal">
             <div className="char-tag">A Sacred Maharashtra Circuit</div>
-            <h2 className="char-section-title">Three Jyotirlingas,<br /><em>One Smooth Yatra</em></h2>
+            <h2 className="char-section-title"><CmsHeadingContent sectionKey="intro" fallback={<>Three Jyotirlingas,<br /><em>One Smooth Yatra</em></>} /></h2>
             <div className="char-rule" />
-            <p className="char-body">This Maharashtra Jyotirlinga route brings together Bhimashankar, Trimbakeshwar, and Grishneshwar with the spiritual stops of Shani Shingnapur, Ellora Caves, Dagdu Seth Ganpati, and Shaniwar Wada.</p>
-            <p className="char-body" style={{ marginTop: 16 }}>Margika Yatra coordinates the route, vehicle, stay, and darshan timing so your family can focus on devotion instead of logistics.</p>
+            <p className="char-body"><CmsTextContent textKey="intro1" fallback={<>This Maharashtra Jyotirlinga route brings together Bhimashankar, Trimbakeshwar, and Grishneshwar with the spiritual stops of Shani Shingnapur, Ellora Caves, Dagdu Seth Ganpati, and Shaniwar Wada.</>} /></p>
+            <p className="char-body" style={{ marginTop: 16 }}><CmsTextContent textKey="intro2" fallback={<>Margika Yatra coordinates the route, vehicle, stay, and darshan timing so your family can focus on devotion instead of logistics.</>} /></p>
             <div className="char-quote">"You bring the dates and your group. We shape the yatra around you."</div>
           </div>
         </div>
@@ -487,7 +488,7 @@ function MaharashtraJyotirlingDetail() {
         <div className="char-wrap">
           <div className="char-center char-reveal">
             <div className="char-tag">The Sacred Route</div>
-            <h2 className="char-section-title">The 3 Jyotirlinga<br /><em>of Maharashtra</em></h2>
+            <h2 className="char-section-title"><CmsHeadingContent sectionKey="sacred-sites" fallback={<>The 3 Jyotirlinga<br /><em>of Maharashtra</em></>} /></h2>
             <div className="char-rule" />
             <p className="char-body">Each temple has its own energy, route rhythm, and story. Together, they create one of Maharashtra's most loved Shiva circuits.</p>
           </div>
@@ -511,7 +512,7 @@ function MaharashtraJyotirlingDetail() {
         <div className="char-wrap char-reveal" style={{ maxWidth: 980 }}>
           <div className="char-center" style={{ marginBottom: 36 }}>
             <div className="char-tag">Complete Package</div>
-            <h2 className="char-section-title">Maharashtra Three Jyotirlinga<br /><em style={{ color: "#ffffff" }}>Tour from Mumbai & Thane</em></h2>
+            <h2 className="char-section-title"><CmsHeadingContent sectionKey="package" fallback={<>Maharashtra Three Jyotirlinga<br /><em style={{ color: "#ffffff" }}>Tour from Mumbai & Thane</em></>} /></h2>
             <div className="char-rule" />
           </div>
           <p className="char-body">This 3 days / 2 nights journey is designed for families, senior citizens, groups, and Shiva devotees who want all three Jyotirlingas covered without rushing. The route is Pune-based, with support for Mumbai and Thane travellers joining by train, bus, flight, or private plan.</p>
@@ -527,7 +528,7 @@ function MaharashtraJyotirlingDetail() {
       <section className="char-section">
         <div className="char-center char-reveal">
           <div className="char-tag">Detailed Itinerary</div>
-          <h2 className="char-section-title">Three Days,<br /><em>Clearly Planned</em></h2>
+          <h2 className="char-section-title"><CmsHeadingContent sectionKey="itinerary" fallback={<>Three Days,<br /><em>Clearly Planned</em></>} /></h2>
           <div className="char-rule" />
         </div>
         <div className="mh-itinerary">
@@ -552,7 +553,7 @@ function MaharashtraJyotirlingDetail() {
       <section className="char-section alt">
         <div className="char-center char-reveal">
           <div className="char-tag">Package & Pricing</div>
-          <h2 className="char-section-title">Your Maharashtra 3 Jyotirlinga<br /><em>Trip, Fully Sorted</em></h2>
+          <h2 className="char-section-title"><CmsHeadingContent sectionKey="inclusions" fallback={<>Your Maharashtra 3 Jyotirlinga<br /><em>Trip, Fully Sorted</em></>} /></h2>
           <div className="char-rule" />
         </div>
         <div className="mh-price-card char-reveal">
@@ -600,7 +601,7 @@ function MaharashtraJyotirlingDetail() {
         <div className="char-wrap char-two">
           <div className="char-reveal">
             <div className="char-tag" style={{ color: "#ffffff" }}>Why Margika</div>
-            <h2 className="char-section-title">Why Mumbai & Thane<br /><em style={{ color: "#ffffff" }}>Travellers Choose Us</em></h2>
+            <h2 className="char-section-title"><CmsHeadingContent sectionKey="why-margika" fallback={<>Why Mumbai & Thane<br /><em style={{ color: "#ffffff" }}>Travellers Choose Us</em></>} /></h2>
             <div className="char-rule" style={{ background: "#ffffff" }} />
             <p className="char-body" style={{ color: "#ffffff", fontWeight: 700 }}>We are based in Thane, so your booking conversation stays local, practical, and personal. You get honest planning, route clarity, and responsive coordination before and during the journey.</p>
             <ul className="char-features">
@@ -622,7 +623,7 @@ function MaharashtraJyotirlingDetail() {
         <div className="char-wrap">
           <div className="char-center char-reveal">
             <div className="char-tag">Simple & Transparent</div>
-            <h2 className="char-section-title">How Your <em>Yatra Begins</em></h2>
+            <h2 className="char-section-title"><CmsHeadingContent sectionKey="booking" fallback={<>How Your <em>Yatra Begins</em></>} /></h2>
             <div className="char-rule" />
           </div>
           <div className="char-steps">
@@ -641,7 +642,7 @@ function MaharashtraJyotirlingDetail() {
         <div className="char-wrap">
           <div className="char-center char-reveal">
             <div className="char-tag">Memories from Our Trips</div>
-            <h2 className="char-section-title">Yatris Who <em>Travelled Before You</em></h2>
+            <h2 className="char-section-title"><CmsHeadingContent sectionKey="testimonials" fallback={<>Yatris Who <em>Travelled Before You</em></>} /></h2>
           </div>
           <div className="char-gallery">
             {["/1.jpg", "/2.jpg", "/Home1.jpeg", "/Home2.jpeg", "/5.jpg", "/6.jpg", "/Home3.jpeg", "/Home4.jpeg", "/Home5.jpeg", "/Home6.jpg", "/Home7.jpg"].map((image) => (
@@ -658,7 +659,7 @@ function MaharashtraJyotirlingDetail() {
         <div style={{position: 'absolute', inset: 0, zIndex: 0}}><img src="/rambg.jpg" alt="Banner" style={{width: '100%', height: '100%', objectFit: 'cover'}} /></div>
         <div className="char-cta-content char-reveal">
           <div className="char-tag">Plan Your Maharashtra Jyotirlinga Yatra</div>
-          <h2 className="char-section-title">Book Your Three Jyotirlinga<br /><em>Maharashtra Tour Today</em></h2>
+          <h2 className="char-section-title"><CmsHeadingContent sectionKey="cta" fallback={<>Book Your Three Jyotirlinga<br /><em>Maharashtra Tour Today</em></>} /></h2>
           <p className="char-body" style={{ margin: "0 auto 34px", textAlign: "center", fontWeight: 700 }}>Tell us your dates, group size, and pickup point. Our Mumbai-Thane team will put together a clear itinerary with an honest per-person quote.</p>
           <div className="char-actions" style={{ justifyContent: "center" }}>
             <a href={razorpayLink} target="_blank" rel="noopener noreferrer" className="char-btn">Book Now →</a>
@@ -667,6 +668,8 @@ function MaharashtraJyotirlingDetail() {
           </div>
         </div>
       </section>
+
+      <PackageCmsContent />
 
       <Footer />
 

@@ -1,18 +1,11 @@
-export const metadata = {
-  title: 'Sanity Studio',
-  description: 'Manage content for Margika Yatra',
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Sanity Studio | Margika Yatra',
+  description: 'Manage content and SEO for Margika Yatra',
+  robots: { index: false, follow: false },
 }
 
-export default function StudioLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
-  return (
-    <html lang="en">
-      <body>
-        {children}
-      </body>
-    </html>
-  )
+export default function StudioLayout({ children }: { children: React.ReactNode }) {
+  return <>{children}</>
 }

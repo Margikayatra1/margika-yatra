@@ -8,6 +8,7 @@ import { FAQ } from "@/components/faq"
 import { GoogleReviews } from "@/components/ui/google-reviews"
 import Link from "next/link"
 import Image from "next/image"
+import { CmsHeadingContent, CmsTextContent, PackageCmsContent } from "./PackageCmsContext"
 
 function CharDhamDetail() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
@@ -535,7 +536,7 @@ function CharDhamDetail() {
       {/* <section className="char-hero">
         <div className="char-hero-content">
           <div className="char-tag" style={{ fontWeight: 700, fontSize: 14 }}>Sacred Himalayan Pilgrimage</div>
-          <h1 className="char-title">Char Dham &<br /><em>Do Dham Yatra</em></h1>
+          <h1 className="char-title"><CmsHeadingContent sectionKey="hero" fallback={<>Char Dham &<br /><em>Do Dham Yatra</em></>} /></h1>
           <p className="char-subtitle" style={{ color: 'var(--black)', fontWeight: 400 }}>Plan your sacred Himalayan pilgrimage with confidence — departing from Mumbai & Thane. VIP darshan, expert coordinators, senior-friendly packages.</p>
           <div className="char-actions">
             <a href="tel:+917208771688" className="char-btn">📞 Call to Book</a>
@@ -564,10 +565,10 @@ function CharDhamDetail() {
           </div>
           <div className="char-reveal">
             <div className="char-tag">A Once-in-a-Lifetime Journey</div>
-            <h2 className="char-section-title">The Char Dham<br /><em>Yatra</em></h2>
+            <h2 className="char-section-title"><CmsHeadingContent sectionKey="intro" fallback={<>The Char Dham<br /><em>Yatra</em></>} /></h2>
             <div className="char-rule" />
-            <p className="char-body">Yamunotri, Gangotri, Kedarnath, Badrinath — four shrines, one sacred circuit that Hindus have walked for centuries. Completing the Char Dham Yatra is not just a journey across Uttarakhand; it is a journey inward.</p>
-            <p className="char-body" style={{ marginTop: 16 }}>The Himalayan terrain, altitude, seasonal permits, and helicopter bookings can quickly overwhelm even the most prepared traveller. That is precisely why yatris across India trust Margika Yatra — so they can focus entirely on their faith.</p>
+            <p className="char-body"><CmsTextContent textKey="intro1" fallback={<>Yamunotri, Gangotri, Kedarnath, Badrinath — four shrines, one sacred circuit that Hindus have walked for centuries. Completing the Char Dham Yatra is not just a journey across Uttarakhand; it is a journey inward.</>} /></p>
+            <p className="char-body" style={{ marginTop: 16 }}><CmsTextContent textKey="intro2" fallback={<>The Himalayan terrain, altitude, seasonal permits, and helicopter bookings can quickly overwhelm even the most prepared traveller. That is precisely why yatris across India trust Margika Yatra — so they can focus entirely on their faith.</>} /></p>
             <div className="char-quote">"We handle every detail. You carry only your devotion."</div>
           </div>
         </div>
@@ -577,7 +578,7 @@ function CharDhamDetail() {
         <div className="char-wrap">
           <div className="char-center char-reveal">
             <div className="char-tag">The Sacred Circuit</div>
-            <h2 className="char-section-title">Four Shrines,<br /><em>One Eternal Path</em></h2>
+            <h2 className="char-section-title"><CmsHeadingContent sectionKey="sacred-sites" fallback={<>Four Shrines,<br /><em>One Eternal Path</em></>} /></h2>
             <div className="char-rule" />
             <p className="char-body">Each dham represents a cardinal direction and a divine energy. Together, they form the most sacred circuit in Hinduism.</p>
           </div>
@@ -602,7 +603,7 @@ function CharDhamDetail() {
           <div className="char-packages-head char-reveal">
             <div>
               <div className="char-tag">Our Offerings</div>
-              <h2 className="char-section-title">Choose Your<br /><em>Sacred Journey</em></h2>
+              <h2 className="char-section-title"><CmsHeadingContent sectionKey="package" fallback={<>Choose Your<br /><em>Sacred Journey</em></>} /></h2>
             </div>
             <p className="char-body" style={{ maxWidth: 340 }}>All packages depart from Mumbai & Thane. Customisation available for all group sizes.</p>
           </div>
@@ -655,7 +656,7 @@ function CharDhamDetail() {
         <div className="char-wrap char-two">
           <div className="char-reveal">
             <div className="char-tag" style={{ color: "#ffffff" }}>Why Choose Us</div>
-            <h2 className="char-section-title">Why Mumbai & Thane<br /><em style={{ color: "#ffffff" }}>Yatris Choose Margika</em></h2>
+            <h2 className="char-section-title"><CmsHeadingContent sectionKey="why-margika" fallback={<>Why Mumbai & Thane<br /><em style={{ color: "#ffffff" }}>Yatris Choose Margika</em></>} /></h2>
             <div className="char-rule" style={{ background: "#ffffff" }} />
             <p className="char-body" style={{ fontWeight: 700, color: "#ffffff" }}>We are based in Brahmand, Thane — when you call us, you speak to a local who understands your community, your expectations, and your schedule. That local trust is something no national online operator can replicate.</p>
             <ul className="char-features">
@@ -683,7 +684,7 @@ function CharDhamDetail() {
         <div className="char-wrap">
           <div className="char-center char-reveal">
             <div className="char-tag">Simple & Transparent</div>
-            <h2 className="char-section-title">How Your <em>Yatra Begins</em></h2>
+            <h2 className="char-section-title"><CmsHeadingContent sectionKey="booking" fallback={<>How Your <em>Yatra Begins</em></>} /></h2>
             <div className="char-rule" />
           </div>
           <div className="char-steps">
@@ -709,7 +710,7 @@ function CharDhamDetail() {
         <div className="char-wrap">
           <div className="char-center char-reveal">
             <div className="char-tag">Memories from the Mountains</div>
-            <h2 className="char-section-title">Yatris Who <em>Walked Before You</em></h2>
+            <h2 className="char-section-title"><CmsHeadingContent sectionKey="testimonials" fallback={<>Yatris Who <em>Walked Before You</em></>} /></h2>
           </div>
           <div className="char-gallery">
             {["/1.jpg", "/2.jpg", "/Home1.jpeg", "/Home2.jpeg", "/5.jpg", "/6.jpg", "/Home3.jpeg", "/Home4.jpeg", "/Home5.jpeg", "/Home6.jpg", "/Home7.jpg"].map((image) => (
@@ -725,7 +726,7 @@ function CharDhamDetail() {
       <section className="char-cta">
         <div className="char-cta-content char-reveal">
           <div className="char-tag">Yatra Season Fills Up Fast</div>
-          <h2 className="char-section-title">Secure Your Sacred<br /><em>Spot Today</em></h2>
+          <h2 className="char-section-title"><CmsHeadingContent sectionKey="cta" fallback={<>Secure Your Sacred<br /><em>Spot Today</em></>} /></h2>
           <p className="char-body" style={{ margin: "0 auto 34px", textAlign: "center", fontWeight: 700 }}>Char Dham 2026 slots — especially helicopters — are extremely limited. Reach out today to check availability for your dates and group size.</p>
           <div className="char-actions" style={{ justifyContent: "center" }}>
             <a href="tel:+917208771688" className="char-btn">📞 Call Now — +91 72087 71688</a>
@@ -733,6 +734,8 @@ function CharDhamDetail() {
           </div>
         </div>
       </section>
+
+      <PackageCmsContent />
 
       <Footer />
 
