@@ -1,0 +1,165 @@
+name: Apply and Test Sanity SEO Upgrade
+
+on:
+  push:
+    branches:
+      - sanity-seo-upgrade
+    paths:
+      - 'scripts/seo-upgrade/**'
+      - '.github/workflows/apply-sanity-seo-upgrade.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  upgrade:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      NEXT_PUBLIC_SANITY_PROJECT_ID: t6wstzjh
+      NEXT_PUBLIC_SANITY_DATASET: production
+      NEXT_PUBLIC_SANITY_API_VERSION: 2023-01-01
+
+    steps:
+      - name: Checkout protected work branch
+        uses: actions/checkout@v4
+        with:
+          ref: sanity-seo-upgrade
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install exact dependencies
+        run: npm ci
+
+      - name: Record baseline TypeScript status
+        shell: bash
+        run: |
+          set +e
+          npx tsc --noEmit --pretty false > /tmp/tsc-baseline.log 2>&1
+          code=$?
+          set -e
+          echo "$code" > /tmp/tsc-baseline.code
+          echo "Baseline tsc exit code: $code"
+          if [ "$code" -ne 0 ]; then
+            echo "Baseline already contains TypeScript errors; patched typecheck will be compared and the real build/smoke tests remain blocking."
+            tail -80 /tmp/tsc-baseline.log || true
+          fi
+
+      - name: Verify current production baseline builds before patching
+        run: |
+          rm -rf .next
+          npm run build
+
+      - name: Decode upgrade patch
+        shell: bash
+        run: |
+          base64 --decode scripts/seo-upgrade/upgrade.patch.gz.b64 | gzip -dc > /tmp/sanity-seo-upgrade.patch
+          test -s /tmp/sanity-seo-upgrade.patch
+
+      - name: Verify patch matches exact baseline
+        run: git apply --check --whitespace=error /tmp/sanity-seo-upgrade.patch
+
+      - name: Apply upgrade patch
+        run: git apply --whitespace=error /tmp/sanity-seo-upgrade.patch
+
+      - name: Check patched TypeScript status
+        shell: bash
+        run: |
+          baseline_code=$(cat /tmp/tsc-baseline.code)
+          set +e
+          npx tsc --noEmit --pretty false > /tmp/tsc-patched.log 2>&1
+          patched_code=$?
+          set -e
+          echo "Patched tsc exit code: $patched_code"
+          if [ "$patched_code" -ne 0 ]; then
+            tail -120 /tmp/tsc-patched.log || true
+          fi
+          if [ "$baseline_code" -eq 0 ] && [ "$patched_code" -ne 0 ]; then
+            echo "The upgrade introduced TypeScript errors into a baseline that previously typechecked cleanly."
+            exit 1
+          fi
+          if [ "$baseline_code" -ne 0 ] && [ "$patched_code" -ne 0 ]; then
+            baseline_errors=$(grep -c 'error TS' /tmp/tsc-baseline.log || true)
+            patched_errors=$(grep -c 'error TS' /tmp/tsc-patched.log || true)
+            echo "Baseline TS errors: $baseline_errors; patched TS errors: $patched_errors"
+            if [ "$patched_errors" -gt "$baseline_errors" ]; then
+              echo "The upgrade increased the TypeScript error count."
+              exit 1
+            fi
+          fi
+
+      - name: Build patched application
+        run: |
+          rm -rf .next
+          npm run build
+
+      - name: Smoke test patched application
+        shell: bash
+        run: |
+          npm start > /tmp/margika-next.log 2>&1 &
+          app_pid=$!
+          trap 'kill "$app_pid" 2>/dev/null || true' EXIT
+
+          ready=0
+          for i in $(seq 1 60); do
+            if curl -fsS http://127.0.0.1:3000/ >/dev/null; then
+              ready=1
+              break
+            fi
+            sleep 1
+          done
+          if [ "$ready" -ne 1 ]; then
+            echo "Next.js server did not become ready."
+            cat /tmp/margika-next.log
+            exit 1
+          fi
+
+          routes=(
+            '/'
+            '/about'
+            '/contact'
+            '/blog'
+            '/studio'
+            '/sitemap.xml'
+            '/robots.txt'
+            '/packages/char-dham'
+            '/packages/kerala'
+            '/packages/ujjain'
+            '/kerala-tour-packages-from-mumbai'
+            '/ujjain-omkareshwar-tour-package'
+          )
+
+          for route in "${routes[@]}"; do
+            code=$(curl -L -sS -o /tmp/route-response -w '%{http_code}' "http://127.0.0.1:3000${route}")
+            echo "$route -> HTTP $code"
+            if [ "$code" -lt 200 ] || [ "$code" -ge 400 ]; then
+              echo "Smoke test failed for $route"
+              tail -120 /tmp/margika-next.log || true
+              exit 1
+            fi
+          done
+
+      - name: Remove one-time patch runner
+        run: |
+          rm -rf scripts/seo-upgrade
+          rm -f .github/workflows/apply-sanity-seo-upgrade.yml
+          rm -f tsconfig.tsbuildinfo
+
+      - name: Commit tested upgrade to work branch
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          echo 'Final tested change set:'
+          git status --short
+          git diff --cached --check
+          git commit -m 'Apply tested Sanity SEO and CMS upgrade'
+          git push origin HEAD:sanity-seo-upgrade
