@@ -63,7 +63,6 @@ jobs:
           curl -L --fail --retry 3 --retry-delay 2 \
             'https://drive.usercontent.google.com/download?id=1NLBYUNacp9M-lWQK22muPb5Q6kfswKR0&export=download&confirm=t' \
             -o /tmp/sanity-seo-upgrade.patch.gz
-          echo '4e7e720120e50e468348184429183a4dfc0deec6b6ad259c3ce03b627a2b2dcb  /tmp/sanity-seo-upgrade.patch.gz' | sha256sum -c -
           gzip -dc /tmp/sanity-seo-upgrade.patch.gz > /tmp/sanity-seo-upgrade.patch
           echo 'e9c634d33c3812376e9b0366680cd952eb35f1d43b942a8e60929e0de36e8d99  /tmp/sanity-seo-upgrade.patch' | sha256sum -c -
 
